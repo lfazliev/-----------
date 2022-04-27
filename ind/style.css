@@ -1,0 +1,19 @@
+#bar {
+  background-color: rgb(196, 165, 125);
+  height: 100%;
+  float: left;
+}
+
+#bar nav ul {
+  list-style: none;
+}
+
+#bar nav ul li {
+  padding: 5px 0px;
+  margin-left: 0px 0px;
+}
+#highbar{
+  background-color: rgb(212, 153, 74);
+  weight: 100%;
+  float: center;
+}

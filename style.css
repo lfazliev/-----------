@@ -1,42 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
-
-body {
-  font-family: 'Nunito', sans-serif;
-}
-
 #head {
-  transition: 3s;
-  background: url('img/channels4_banner.jpg') center center/cover no-repeat; height: 300px;
+    transition: 1s;
+    background: url('/img/channels4_banner.jpg') center center/cover no-repeat;
+    height: 300px;
 }
-h2{
-  text-align:left; 
-  color:#285034;
-  padding: 15px 0px;
-}
-t{
-  font-size: 20px;
+body {
+    font-family: 'Nunito', sans-serif;
 }
 
-@media screen and (max-width:800px) {
-  #head {
-    height: 200px;
-    transition: 3s;
-  }
-}
 a.button {
-  display: inline-block;
-  background: rgb(51, 51, 51);
-  color: rgb(255, 255, 255);
-  padding: 12px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-size: 18px;
-  line-height: 1;
-  font-weight: 100;
-  transition: 200ms;
+    display: inline-block;
+    background: rgb(51, 51, 51);
+    color: rgb(255, 255, 255);
+    padding: 12px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 25px;
+    line-height: 1;
+    font-weight: 100;
+    transition: 100ms;
 }
+
 a.button:hover {
-color:rgb(104, 104, 104);
-background-color: rgb(0, 0, 0);
-transition: 500ms;
+    color: rgb(104, 104, 104);
+    background-color: rgb(0, 0, 0);
+    transition: 300ms;
+}
+
+@media screen and (max-width:900px) {
+    #head {
+        height: 200px;
+        transition: 1s;
+    }
+    a.button{
+        font-size:18px
+    }
+}
+t {
+    font-size: 20px;
 }
