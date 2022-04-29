@@ -1,7 +1,15 @@
 video {
-    width: 40%;
+    transition: 300ms;
+    width: 50%;
     height: 40vh;
     margin: 0 auto;
     display: block;
     text-align: center;
+}
+
+@media screen and (max-width:900px) {
+    video {
+        transition: 300ms;
+        width: 70%;
+    }
 }
