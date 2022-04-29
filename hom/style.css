@@ -3,11 +3,11 @@
     float: left;
 }
 
-#bar nav ul {
-    list-style: none;
-}
-
 #bar nav ul li {
     padding: 5px 0px;
     margin: 0 auto;
+}
+
+#bar a.button {
+    width: 100%;
 }

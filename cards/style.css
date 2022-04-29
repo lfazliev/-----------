@@ -1,16 +1,13 @@
 .cards div {
     float: left;
-    /*Задаем обтекание*/
     line-height: 120px;
-    /*Высота строки +  верт. центрирования текста*/
     font-size: 40px;
     background: dodgerblue;
     margin-top: 60px;
     width: 120px;
-    /*Фиксируем ширину блока*/
     margin-right: 10px;
     text-align: center;
-    /*Центрируем текст по горизонтали*/
+    margin-bottom: 10px;
 }
 
 .red {
