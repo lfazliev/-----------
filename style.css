@@ -4,8 +4,14 @@
     background: url('/img/channels4_banner.jpg') center center/cover no-repeat;
     height: 300px;
 }
+
 body {
     font-family: 'Nunito', sans-serif;
+}
+
+hr {
+    background-color: coral;
+    height: 7px
 }
 
 a.button {
@@ -32,10 +38,29 @@ a.button:hover {
         height: 200px;
         transition: 1s;
     }
-    a.button{
-        font-size:18px
+    a.button {
+        font-size: 18px
     }
 }
+
 t {
     font-size: 20px;
+}
+
+.clear {
+    clear: both;
+}
+
+#highbar {
+    width: 100%;
+    height: 200px;
+    position: absolute;
+    top: 40%;
+    margin: 0 0;
+    justify-content: center;
+    background-color: grey;
+}
+
+#highbar nav ul {
+    list-style: none;
 }
