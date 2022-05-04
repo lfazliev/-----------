@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
 #head {
-    /* transition: 300ms; */
+    transition: 300ms;
     background: url('img/channels4_banner.jpg') 54% center/cover no-repeat;
     height: 300px;
 }
@@ -80,7 +80,7 @@ a.button {
     line-height: 1;
     position: relative;
     font-weight: 100;
-    /* transition: 300ms; */
+    transition: 300ms;
 }
 
 a.button:hover {
@@ -90,7 +90,7 @@ a.button:hover {
 }
 
 p {
-    font-size: 20px;
+    font-size: 23px;
     transition: 300ms;
 }
 
@@ -99,16 +99,19 @@ p {
 }
 
 @media screen and (max-width:900px) {
+    html {
+        transition: all 300ms
+    }
     #head {
         height: 200px;
-        transition: 300ms;
     }
     a.button {
         font-size: 18px;
-        transition: 300ms;
     }
     #highbar {
         padding: 1px;
-        transition: 300ms;
+    }
+    p {
+        font-size: 18px;
     }
 }
