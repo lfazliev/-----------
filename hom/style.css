@@ -1,11 +1,17 @@
 #bar {
     height: 100%;
-    float: left;
+}
+
+#bar ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 #bar nav ul li {
-    padding: 5px 0px;
-    margin: 0 auto;
+    padding: 5px 15px;
+    list-style-type: none;
+    flex-basis: 350px;
 }
 
 #bar a.button {

@@ -1,0 +1,30 @@
+ul {
+    list-style-position: inside;
+    list-style-image: url(../img/unchecked_16.png);
+}
+
+li {
+    background-color: rgb(165, 204, 218);
+    padding: 10px 20px;
+}
+
+li::after {
+    content: "x";
+    color: red;
+    margin-left: 20px;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+span li span {
+    text-decoration: line-through;
+}
+
+span li {
+    background-color: rgb(226, 226, 226);
+    list-style-image: url(../img/checked_16.png);
+}
+
+li:nth-child(even) {
+    background-color: rgb(173, 216, 230);
+}
