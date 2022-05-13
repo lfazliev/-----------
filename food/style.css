@@ -1,0 +1,27 @@
+#main {
+    height: 100%;
+}
+
+#main ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center
+}
+
+p {
+    font-size: 30px;
+    font-weight: bold
+}
+
+h1 {
+    text-align: center;
+}
+
+#main nav ul li {
+    padding: 5px 15px;
+    list-style-type: none;
+    flex-basis: 130px;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin: 10px 10px;
+}
