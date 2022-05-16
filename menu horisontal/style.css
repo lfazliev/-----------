@@ -1,4 +1,4 @@
-body {
+#visibl body {
     background-color: #f7f7f7;
 }
 
@@ -6,40 +6,40 @@ body {
     display: flex;
 }
 
-span {
+#visibl span {
     color: white;
     padding: 0 50px 0 0;
     font-size: 20px;
     transition: 300ms;
 }
 
-img {
+#visibl img {
     width: 100px;
     padding: 0 10px 0 10px;
     transition: 300ms;
 }
 
-a {
+#visibl a {
     display: flex;
     align-items: center;
 }
 
-li {
+#visibl li {
     padding-right: 50px;
     list-style: none;
     background: darkgrey;
 }
 
-li:hover {
+#visibl li:hover {
     background: grey;
 }
 
 @media screen and (max-width:900px) {
-    img {
+    #visibl img {
         width: 50px;
         transition: 300ms
     }
-    span {
+    #visibl span {
         font-size: 15px;
         transition: 300ms;
     }

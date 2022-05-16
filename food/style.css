@@ -8,12 +8,12 @@
     justify-content: center
 }
 
-p {
+#visibl p {
     font-size: 30px;
     font-weight: bold
 }
 
-h1 {
+#visibl h1 {
     text-align: center;
 }
 

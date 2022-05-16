@@ -1,12 +1,12 @@
-h1 {
+#visibl h1 {
     text-align: center;
 }
 
-h2 {
+#visibl h2 {
     text-align: center
 }
 
-p {
+#visibl p {
     line-height: 30px;
     padding: 0px 50px
 }
@@ -19,21 +19,21 @@ p {
     background-color: rgb(214, 214, 214)
 }
 
-p span {
+#visibl p span {
     color: brown;
     background-color: rgb(221, 221, 211);
 }
 
-code {
+#visibl code {
     color: brown;
     white-space: pre-wrap;
 }
 
-code span {
+#visibl code span {
     color: black
 }
 
-u {
+#visibl u {
     text-decoration: underline dashed;
 }
 

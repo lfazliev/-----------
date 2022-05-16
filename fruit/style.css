@@ -4,18 +4,18 @@
     padding: 10px 10px
 }
 
-ol {
+#visibl ol {
     list-style-position: inside;
     padding-inline-start: 0px;
 }
 
-li {
+#visibl li {
     background-color: rgb(198, 99, 118);
     padding: 10px 10px;
     margin: 10px 0px
 }
 
-li span {
+#visibl li span {
     padding: 10px 7px;
     background-color: rgb(158, 53, 74)
 }
