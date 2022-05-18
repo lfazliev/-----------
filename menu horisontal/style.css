@@ -6,40 +6,40 @@
     display: flex;
 }
 
-#visibl span {
+#menu span {
     color: white;
     padding: 0 50px 0 0;
     font-size: 20px;
     transition: 300ms;
 }
 
-#visibl img {
+#menu img {
     width: 100px;
     padding: 0 10px 0 10px;
     transition: 300ms;
 }
 
-#visibl a {
+#menu a {
     display: flex;
     align-items: center;
 }
 
-#visibl li {
+#menu li {
     padding-right: 50px;
     list-style: none;
     background: darkgrey;
 }
 
-#visibl li:hover {
+#menu li:hover {
     background: grey;
 }
 
 @media screen and (max-width:900px) {
-    #visibl img {
+    #menu img {
         width: 50px;
         transition: 300ms
     }
-    #visibl span {
+    #menu span {
         font-size: 15px;
         transition: 300ms;
     }

@@ -81,6 +81,7 @@ a.button {
     position: relative;
     font-weight: 100;
     transition: 300ms;
+    margin: 10px auto;
 }
 
 a.button:hover {
@@ -116,6 +117,12 @@ p {
     }
     #bar nav ul li {
         flex-basis: 300px;
+    }
+    #footer li {
+        margin: 5px 10px;
+    }
+    #center {
+        flex-direction: column
     }
 }
 
@@ -162,27 +169,27 @@ footer div {
 }
 
 a.fb {
-    background: url('imgfoot/fb_gray.png') 54% center/cover no-repeat;
+    background: url('imgfoot/fb_gray.png') center/cover no-repeat;
 }
 
 a.fb:hover {
-    background: url('imgfoot/fb.png') 54% center/cover no-repeat;
+    background: url('imgfoot/fb.png') center/cover no-repeat;
 }
 
 a.yt {
-    background: url('imgfoot/youtube_gray.png') 54% center/cover no-repeat;
+    background: url('imgfoot/youtube_gray.png') center/cover no-repeat;
 }
 
 a.yt:hover {
-    background: url('imgfoot/youtube.png') 54% center/cover no-repeat;
+    background: url('imgfoot/youtube.png') center/cover no-repeat;
 }
 
 a.ins {
-    background: url('imgfoot/insta_gray.png') 54% center/cover no-repeat;
+    background: url('imgfoot/insta_gray.png') center/cover no-repeat;
 }
 
 a.ins:hover {
-    background: url('imgfoot/insta.png') 54% center/cover no-repeat;
+    background: url('imgfoot/insta.png') center/cover no-repeat;
 }
 
 a.caps:hover {

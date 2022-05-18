@@ -20,8 +20,16 @@
 #main nav ul li {
     padding: 5px 15px;
     list-style-type: none;
-    flex-basis: 130px;
     border-radius: 10px;
     border: 1px solid black;
     margin: 10px 10px;
+    flex-basis: 150px;
+    transition: 1s;
+}
+
+@media screen and (max-width:600px) {
+    #main nav ul li {
+        flex-basis: 90px;
+        transition: 1s;
+    }
 }

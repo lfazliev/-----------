@@ -6,3 +6,60 @@
     text-align: center;
     font-size: 50px
 }
+
+p {
+    font-size: 35px;
+    font-weight: bold;
+    color: rgb(0, 0, 0)
+}
+
+#menu {
+    display: flex;
+}
+
+#menu span {
+    color: rgb(0, 0, 0);
+    padding: 0 50px 0 0;
+    font-size: 30px;
+    transition: 300ms;
+}
+
+#menu img {
+    width: 70px;
+    padding: 0 10px 0 10px;
+    transition: 300ms;
+}
+
+#menu a {
+    display: flex;
+    align-items: center;
+}
+
+#menu li {
+    padding-right: 50px;
+    list-style: none;
+    background: rgb(255, 255, 255);
+}
+
+#menu li:hover {
+    background: grey;
+}
+
+@media screen and (max-width:900px) {
+    #visibl img {
+        width: 50px;
+        transition: 300ms
+    }
+    #visibl span {
+        font-size: 15px;
+        transition: 300ms;
+    }
+}
+
+li.prof {
+    padding: 5px;
+    margin: 10px 0px;
+    border: 2px solid;
+    border-radius: 10px;
+    border-color: black;
+}
