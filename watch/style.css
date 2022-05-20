@@ -1,20 +1,20 @@
 #rotat {
     position: relative;
-    height: 100px;
-    width: 100px;
+    height: 400px;
+    width: 400px;
     border: 2px solid rgb(0, 0, 0);
     border-radius: 50%;
     background: rgb(255, 255, 255);
-    margin-bottom: 5px;
+    margin-bottom: 20px;
 }
 
 #strela1 {
     background-color: rgb(1, 255, 56);
     position: absolute;
-    height: 30px;
-    width: 2px;
-    top: 21px;
-    left: 51px;
+    height: 120px;
+    width: 4px;
+    top: 84px;
+    left: 204px;
     margin-block-start: 0em;
     margin-block-end: 0em;
     transform-origin: 0% 100%;
@@ -24,10 +24,10 @@
 #strela2 {
     background-color: rgb(68, 0, 255);
     position: absolute;
-    height: 40px;
-    width: 2px;
-    top: 12px;
-    left: 51px;
+    height: 160px;
+    width: 4px;
+    top: 40px;
+    left: 200px;
     margin-block-start: 0em;
     margin-block-end: 0em;
     transform-origin: 0% 100%;
@@ -35,12 +35,12 @@
 }
 
 #dot {
-    left: 50px;
+    left: 200px;
     position: absolute;
-    background-color: rgb(255, 0, 0);
-    width: 3px;
-    height: 3px;
-    top: 50px;
+    background-color: rgb(27, 22, 22);
+    width: 4px;
+    height: 4px;
+    top: 200px;
     margin-block-start: 0em;
     margin-block-end: 0em;
     /* text-align: center; */
@@ -52,5 +52,31 @@
     }
     to {
         transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #rotat {
+        height: 200px;
+        width: 200px;
+        margin-bottom: 20px;
+    }
+    #strela1 {
+        height: 60px;
+        width: 4px;
+        top: 42px;
+        left: 102px;
+    }
+    #strela2 {
+        height: 80px;
+        width: 4px;
+        top: 20px;
+        left: 100px;
+    }
+    #dot {
+        left: 100px;
+        width: 3px;
+        height: 3px;
+        top: 100px;
     }
 }

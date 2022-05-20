@@ -1,14 +1,14 @@
-#visibl ul {
+#task ul {
     list-style-position: inside;
     list-style-image: url(../img/unchecked_16.png);
 }
 
-#visibl li {
+#task li {
     background-color: rgb(165, 204, 218);
     padding: 10px 20px;
 }
 
-#visibl li::after {
+#task li::after {
     content: "x";
     color: red;
     margin-left: 20px;
@@ -16,15 +16,15 @@
     text-decoration: none;
 }
 
-#visibl span li span {
+#task span li span {
     text-decoration: line-through;
 }
 
-#visibl span li {
+#task span li {
     background-color: rgb(226, 226, 226);
     list-style-image: url(../img/checked_16.png);
 }
 
-#visibl li:nth-child(even) {
+#task li:nth-child(even) {
     background-color: rgb(173, 216, 230);
 }

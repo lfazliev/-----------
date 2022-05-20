@@ -1,0 +1,69 @@
+.photo {
+    background: url(img/burger-6859072_960_720.webp) center/110% no-repeat;
+    width: 50%;
+    transition: background-size 1s;
+    mix-blend-mode: color;
+}
+
+.main p {
+    padding: auto;
+}
+
+.text {
+    display: flex;
+    text-align: center;
+    width: 50%;
+    justify-content: space-around;
+    flex-direction: column
+}
+
+.main {
+    display: flex;
+    height: 17%;
+    transition: background-color, height 1s;
+}
+
+.main:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: background-color 1s
+}
+
+.main:hover .photo {
+    background-size: 140%;
+    transition: background-size 1s;
+}
+
+@media screen and (min-width: 600px) {
+    .main {
+        height: 22%;
+        transition: 1s
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .main {
+        height: 30%;
+        transition: 1s
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .main {
+        height: 35%;
+        transition: 1s
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .main {
+        height: 42%;
+        transition: 1s
+    }
+}
+
+@media screen and (min-width: 1900px) {
+    .main {
+        height: 47%;
+        transition: 1s
+    }
+}

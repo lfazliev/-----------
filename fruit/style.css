@@ -4,18 +4,18 @@
     padding: 10px 10px
 }
 
-#visibl ol {
+#frdi ol {
     list-style-position: inside;
     padding-inline-start: 0px;
 }
 
-#visibl li {
+#frdi li {
     background-color: rgb(198, 99, 118);
     padding: 10px 10px;
     margin: 10px 0px
 }
 
-#visibl li span {
+#frdi li span {
     padding: 10px 7px;
     background-color: rgb(158, 53, 74)
 }
