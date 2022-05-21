@@ -39,13 +39,14 @@
 }
 
 #visibl main>div aside {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 #visibl section {
     background-color: rgb(182, 91, 128);
     flex: 5;
     margin: 0px 15px;
+    margin-bottom: 15px;
     padding: 10px 10px;
 }
 
