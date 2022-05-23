@@ -11,7 +11,7 @@
 #bar nav ul li {
     padding: 5px 15px;
     list-style-type: none;
-    flex-basis: 350px;
+    flex-basis: 290px;
 }
 
 #bar a.button {

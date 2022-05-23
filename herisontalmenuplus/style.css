@@ -1,0 +1,89 @@
+#visibl body {
+    background-color: #f7f7f7;
+}
+
+#menu {
+    display: flex;
+}
+
+#menu og h1 {
+    width: 100%;
+    text-align: center;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    color: #f7f7f7;
+    transition: widh, font-size 1s;
+    background: darkgrey;
+}
+
+#menu span {
+    color: white;
+    padding: 0 50px 0 0;
+    font-size: 20px;
+    transition: 1s;
+}
+
+#menu img {
+    width: 100px;
+    padding: 0 10px 0 10px;
+    transition: 1s;
+}
+
+#menu a {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#menu li {
+    list-style: none;
+    background: darkgrey;
+    transition: 1s
+}
+
+#menu li:hover {
+    background: grey;
+}
+
+#menu li span {
+    display: none
+}
+
+#menu ul {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    width: 120px;
+    transition: width 1s
+}
+
+#menu ul:hover {
+    width: 400px;
+    transition: width 1s
+}
+
+#menu ul:hover li span {
+    display: inline;
+}
+
+@media screen and (max-width:900px) {
+    #menu img {
+        width: 50px;
+        transition: 1s
+    }
+    #menu span {
+        font-size: 15px;
+        transition: 1s;
+    }
+    #menu h1 {
+        font-size: 15px;
+        transition: 1s
+    }
+    #menu ul {
+        width: 70px;
+        transition: 1s;
+    }
+    #menu ul:hover {
+        width: 170px;
+        transition: 1s;
+    }
+}
