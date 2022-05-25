@@ -95,6 +95,8 @@ a.button:hover {
 p {
     font-size: 23px;
     transition: 300ms;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
 }
 
 .clear {
@@ -196,4 +198,14 @@ a.ins:hover {
 
 a.caps:hover {
     text-decoration: underline black;
+}
+
+h1 {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+h2 {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
 }
