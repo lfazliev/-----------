@@ -174,26 +174,32 @@ footer div {
 
 a.fb {
     background: url('imgfoot/fb_gray.png') center/cover no-repeat;
+    transition: 300ms;
 }
 
 a.fb:hover {
     background: url('imgfoot/fb.png') center/cover no-repeat;
+    transition: 300ms;
 }
 
 a.yt {
     background: url('imgfoot/youtube_gray.png') center/cover no-repeat;
+    transition: 300ms;
 }
 
 a.yt:hover {
     background: url('imgfoot/youtube.png') center/cover no-repeat;
+    transition: 300ms;
 }
 
 a.ins {
     background: url('imgfoot/insta_gray.png') center/cover no-repeat;
+    transition: 300ms;
 }
 
 a.ins:hover {
     background: url('imgfoot/insta.png') center/cover no-repeat;
+    transition: 300ms;
 }
 
 a.caps:hover {

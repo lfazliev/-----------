@@ -1,4 +1,4 @@
-#task ul {
+#task {
     list-style-position: inside;
     list-style-image: url(../img/unchecked_16.png);
 }
