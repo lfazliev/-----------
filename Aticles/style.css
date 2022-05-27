@@ -12,6 +12,7 @@ img {
     color: rgb(160, 160, 160);
     margin: 80px 90px 30px;
     font-size: 20px;
+    transition: 300ms
 }
 
 #main {
@@ -24,10 +25,12 @@ h1 {
     color: white;
     font-weight: 1000;
     margin: 0px 90px 60px;
+    transition: 300ms
 }
 
 #main div {
     margin: 0px 40px 0px 0px;
+    transition: 300ms
 }
 
 #main div p {
@@ -57,31 +60,32 @@ h1 {
     min-width: 137px;
     margin: 10px 0 0 15px;
 }
-
+#main{
+    margin-bottom: 50px;
+}
 @media screen and (max-width:600px) {
     h1 {
         font-size: 30px;
         margin: 0px 40px 60px;
+        transition: 300ms
     }
 
     #main img {
-        width: 100px;
-        transition: 300ms;
         margin: 0px 30px 0px 40px;
+        transition: 300ms;
     }
     #main div p {
         font-size: 17px;
+        transition: 300ms
 
     }
     #main div{
         margin: 0px 0px 15px 0px;
+        transition: 300ms
     }
     .page {
         margin: 80px 40px 30px;
-    }
-
-    #main div a {
-        font-size: 18px;
+        transition: 300ms
     }
    
 }
