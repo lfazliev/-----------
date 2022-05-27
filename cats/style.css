@@ -1,0 +1,19 @@
+figure {
+    background: #4070a7;
+    padding-bottom: 1.2rem;
+    border-radius: 10px;
+}
+
+figcaption {
+    text-align: center;
+    height: 3rem;
+    padding: 1rem;
+}
+
+img {
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+@media screen and (min-width: 800px) {}
