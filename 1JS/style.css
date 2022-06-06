@@ -1,0 +1,45 @@
+#res {
+    margin: 0.5rem 0rem 0.5rem 2px;
+    font-size: 17px;
+}
+
+#res span {
+    margin-left: 10px;
+    border: 1px solid rgb(87, 87, 87);
+    border-radius: 8px;
+    padding: 2px 90px 2px 5px;
+    font-size: 15px;
+    background-color: white;
+    font-weight: bold;
+    line-height: 2;
+}
+
+.zad {
+    margin-left: 1rem;
+    width: 80%;
+    margin-top: 1rem;
+    background-color: rgba(219, 219, 219, 0.685);
+    padding: 5px;
+    border: 1px solid rgb(21, 50, 95);
+    border-radius: 10px
+}
+
+input {
+    border-radius: 5px;
+}
+
+input:active {
+    border: 1px solid rgba(0, 0, 0, 0.562);
+    border-radius: 5px;
+}
+
+button {
+    margin-top: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.521);
+    border-radius: 7px;
+}
+
+button:hover {
+    background-color: rgba(158, 158, 158, 0.459);
+    cursor: pointer;
+}

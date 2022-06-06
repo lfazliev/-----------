@@ -11,8 +11,8 @@
 //     }
 // }
 // 1
-z1.onkeypress = function(e) {
-    if (e.key=='Enter') {
+z1.onkeypress = function (e) {
+    if (e.key == 'Enter') {
         let a = Number(this.value)
         switch (a) {
             case 0:
@@ -56,7 +56,7 @@ z1.onkeypress = function(e) {
 // alert(`${hours}:${min} ${sec} sec`)
 // 5
 // let x
-// let y 
+// let y
 // if (x > 0) {
 //     if (y > 0)
 //     {
