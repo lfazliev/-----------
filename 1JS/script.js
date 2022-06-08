@@ -11,8 +11,15 @@
 //     }
 // }
 
-// inta()
 // 1
+
+function rezult(obj, text) {
+    let paddingR = (90-text.length*6<5)?5:90-text.length*6
+    // let paddingL = ()
+    obj.style.paddingRight = paddingR+'px'
+    obj.innerHTML = text
+}
+
 z1btn.onclick = function (e) {
     rez1(z1v1.value)
 }
@@ -25,9 +32,11 @@ for (item of document.querySelectorAll('#z1 input')) {
 }
 function rez1(a) {
     if (z1v1.value !== '') {
-        r1.innerText = (Number(a) ** 2)
+        //r1.innerText = (Number(a) ** 2)
+        rezult(r1, String((Number(a) ** 2)))
     } else {
-        r1.innerText = 'Не все данные'
+        rezult(r1, 'Не все данные')
+        //r1.innerText = 'Не все данные'
     }
 
 }
@@ -44,9 +53,9 @@ for (item of document.querySelectorAll('#z2 input')) {
 }
 function rez2(a, b) {
     if (z2v1.value !== '' && z2v2.value !== '') {
-        r2.innerText = ((Number(a) + Number(b)) / 2)
+        rezult(r2, String((Number(a) + Number(b)) / 2))
     } else {
-        r2.innerText = 'Не все данные'
+        rezult(r2,'Не все данные')
     }
 
 }
@@ -63,9 +72,9 @@ for (item of document.querySelectorAll('#z3 input')) {
 }
 function rez3(a) {
     if (z3v1.value !== '') {
-        r3.innerText = (Number(a) * Number(a))
+        rezult(r3, String(Number(a) * Number(a)))
     } else {
-        r3.innerText = 'Не все данные'
+        rezult(r3, 'Не все данные')
     }
 
 }
@@ -85,9 +94,9 @@ for (item of document.querySelectorAll('#z4 input')) {
 function rez4(a) {
     if (z4v1.value !== '') {
         const mile = 0.621371
-        r4.innerText = (z4v1.value * mile).toFixed(2)
+        rezult(r4, String(z4v1.value * mile).toFixed(2))
     } else {
-        r4.innerText = 'Не все данные'
+        rezult(r4,'Не все данные')
     }
 
 }
@@ -113,12 +122,15 @@ function rez5(a, b) {
         else {
             c = "Деление на ноль невозможно"
         }
-        r5v1.innerText = `Сложение - ${a + b}`
-        r5v2.innerHTML = `Вычитание- ${a - b}<br>`
-        r5v3.innerText = `Умножение - ${a * b}`
-        r5v4.innerText = `Деление - ${c}`
+        rezult(r5v1, `Сложение -> ${a + b}`)
+        rezult(r5v2 ,`Вычитание -> ${a - b}`)
+        rezult(r5v3,`Умножение -> ${a * b}<br>`)
+        rezult(r5v4, `Деление -> ${c}`)
     } else {
-        r5.innerText = 'Не все данные'
+        rezult(r5v1,'Не все данные')
+        r5v2.innerText = ''
+        r5v3.innerText = ''
+        r5v4.innerText = ''
     }
 
 }
@@ -147,7 +159,8 @@ function rez6(a, b) {
         r6v1.innerText = `${(a)}x + ${b} = 0`
         r6v2.innerText = `x = ${c}`
     } else {
-        r6.innerText = 'Не все данные'
+        r6v1.innerText = 'Не все данные'
+        r6v2.innerText = ""
     }
 
 }
@@ -158,7 +171,7 @@ z7btn.onclick = function (e) {
 for (item of document.querySelectorAll('#z7 input')) {
     item.addEventListener('keypress', function (e) {
         if (e.key == 'Enter') {
-            rez2(z7v1.value, z7v2.value)
+            rez7(z7v1.value, z7v2.value)
         }
     })
 }
@@ -178,8 +191,8 @@ function rez7(b, c) {
                 c = b * 60 + c
                 c = 60 * 24 - c
                 a = c % 60
-                b = Number(((c -a)/ 60).toFixed(0))
-                r7.innerText = `${b} : ${(a==0)?"00":a}`
+                b = Number(((c - a) / 60).toFixed(0))
+                r7.innerText = `${b} : ${(a == 0) ? "00" : a}`
             }
         }
 
@@ -188,41 +201,100 @@ function rez7(b, c) {
     }
 
 }
-
-// let hour
-// let min
-// let a
-// do {
-//    hour = Number(prompt("Введите час"))
-// }while (hour > 23 || hour < 0)
-// do {
-//     min = Number(prompt("Введите минуту"))
-// }while (min > 59 || min < 0)
-// min = hour * 60 + min
-// min = 60*24 - min
-// a = min % 60
-// hour = Number(((min -a)/ 60).toFixed(0))
-// alert(`${hour} : ${a}`)
 // 8
-// let a
-// do {
-//         a = Number(prompt("Введите число"))
-//      }while (a > 999 || a < 100)
-// alert(a = (a%100 - ((a % 100)%10))/10)
-// 9
-// let a
-// let b
-// do {
-//     a = prompt("Введите число")
-// } while (a > 99999 || a < 10000)
-// b = a[a.length-1]
-// for(let i =0;i<a.length-1;i++)
-//     b+=a[i]
-// console.log(b)
+z8btn.onclick = function (e) {
+    rez8(z8v1.value)
+}
+let z8v1Width = 200
+z8v1.style.width = z8v1Width + 'px'
+for (item of document.querySelectorAll('#z8 input')) {
+    item.addEventListener('keypress', function (e) {
+        if (e.key == 'Enter') {
+            rez8(z8v1.value)
+        }
+    })
+}
+function rez8(a) {
+    if (z8v1.value !== '') {
+        if (a > 999 || a < 100) {
+            r8.innerText = 'Неверное значение'
+        }
+        else {
+            a = Number(a)
+            r8.innerText = ((a % 100 - ((a % 100) % 10)) / 10)
+        }
+    } 
+    else {
+        r8.innerText = 'Не все данные'
+    }
 
+}
+// 9
+z9btn.onclick = function (e) {
+    rez9(z9v1.value)
+}
+let z9v1Width = 200
+z9v1.style.width = z9v1Width + 'px'
+for (item of document.querySelectorAll('#z9 input')) {
+    item.addEventListener('keypress', function (e) {
+        if (e.key == 'Enter') {
+            rez9(z9v1.value)
+        }
+    })
+}
+function rez9(a) {
+    if (z9v1.value !== '') {
+        if (a > 99999 || a < 10000) {
+            r9.innerText = 'Неверное значение'
+        }
+        else {
+            let b = (a[a.length - 1])
+            for (let i = 0; i < a.length - 1; i++) {
+                b += a[i]
+
+            }
+            b = Number(b)
+            if (Number.isInteger(b)) {
+                r9.innerText = b
+            } else {
+                r9.innerText = 'Неверное значение'
+            }
+
+        }
+    } 
+    else {
+        r9.innerText = 'Не все данные'
+    }
+
+}
 // 10
-// let sale
-// do{
-//     sale = Number(prompt("Введите сумму продаж за месяц"))
-// }while (sale < 0)
-// alert(`${250 + (sale * 0.10)}\$`)
+z10btn.onclick = function (e) {
+    rez10(z10v1.value)
+}
+let z10v1Width = 200
+z10v1.style.width = z10v1Width + 'px'
+for (item of document.querySelectorAll('#z10 input')) {
+    item.addEventListener('keypress', function (e) {
+        if (e.key == 'Enter') {
+            rez10(z10v1.value)
+        }
+    })
+}
+function rez10(a) {
+    if (z10v1.value !== '') {
+        if (a < 0) {
+            r10.innerText = 'Неверное значение'
+        }
+        else {
+            r10.innerText = `${(250 + (a * 0.10)).toFixed(1)}\$`
+        }
+    } 
+    else {
+        r10.innerText = 'Не все данные'
+    }
+
+}
+// if (this.value.length > 20) {
+//     z10v1Width += 5
+//     z10v1.style.width = z8v1Width + 'px'
+// }

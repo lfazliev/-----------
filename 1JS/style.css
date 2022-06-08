@@ -1,9 +1,13 @@
-#res {
+.res {
     margin: 0.5rem 0rem 0.5rem 2px;
     font-size: 17px;
 }
-
-#res span {
+#exe{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center
+}
+.res span {
     margin-left: 10px;
     border: 1px solid rgb(87, 87, 87);
     border-radius: 8px;
@@ -16,12 +20,13 @@
 
 .zad {
     margin-left: 1rem;
-    width: 80%;
+    width: 90%;
     margin-top: 1rem;
     background-color: rgba(219, 219, 219, 0.685);
     padding: 5px;
     border: 1px solid rgb(21, 50, 95);
-    border-radius: 10px
+    border-radius: 10px;
+    transition: width 300ms;
 }
 
 input {
@@ -42,4 +47,40 @@ button {
 button:hover {
     background-color: rgba(158, 158, 158, 0.459);
     cursor: pointer;
+}
+@media screen and (min-width: 600px){
+    .zad{
+        width: 80%;
+        transition: 300ms
+    }
+}
+@media screen and (min-width: 700px){
+    .zad{
+        width: 70%;
+        transition: 300ms
+    }
+}
+@media screen and (min-width: 900px){
+    .zad{
+        width: 65%;
+        transition: 300ms
+    }
+}
+@media screen and (min-width: 1100px){
+    .zad{
+        width: 55%;
+        transition: 300ms
+    }
+}
+@media screen and (min-width: 1300px){
+    .zad{
+        width: 45%;
+        transition: 300ms
+    }
+}
+@media screen and (min-width: 1500px){
+    .zad{
+        width: 35%;
+        transition: 300ms
+    }
 }
