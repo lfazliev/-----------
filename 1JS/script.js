@@ -14,9 +14,9 @@
 // 1
 
 function rezult(obj, text) {
-    let paddingR = (90-text.length*6<5)?5:90-text.length*6
+    let paddingR = (90 - text.length * 6 < 5) ? 5 : 90 - text.length * 6
     // let paddingL = ()
-    obj.style.paddingRight = paddingR+'px'
+    obj.style.paddingRight = paddingR + 'px'
     obj.innerHTML = text
 }
 
@@ -32,11 +32,9 @@ for (item of document.querySelectorAll('#z1 input')) {
 }
 function rez1(a) {
     if (z1v1.value !== '') {
-        //r1.innerText = (Number(a) ** 2)
         rezult(r1, String((Number(a) ** 2)))
     } else {
         rezult(r1, 'Не все данные')
-        //r1.innerText = 'Не все данные'
     }
 
 }
@@ -55,7 +53,7 @@ function rez2(a, b) {
     if (z2v1.value !== '' && z2v2.value !== '') {
         rezult(r2, String((Number(a) + Number(b)) / 2))
     } else {
-        rezult(r2,'Не все данные')
+        rezult(r2, 'Не все данные')
     }
 
 }
@@ -96,7 +94,7 @@ function rez4(a) {
         const mile = 0.621371
         rezult(r4, String(z4v1.value * mile).toFixed(2))
     } else {
-        rezult(r4,'Не все данные')
+        rezult(r4, 'Не все данные')
     }
 
 }
@@ -123,11 +121,11 @@ function rez5(a, b) {
             c = "Деление на ноль невозможно"
         }
         rezult(r5v1, `Сложение -> ${a + b}`)
-        rezult(r5v2 ,`Вычитание -> ${a - b}`)
-        rezult(r5v3,`Умножение -> ${a * b}<br>`)
+        rezult(r5v2, `Вычитание -> ${a - b}`)
+        rezult(r5v3, `Умножение -> ${a * b}<br>`)
         rezult(r5v4, `Деление -> ${c}`)
     } else {
-        rezult(r5v1,'Не все данные')
+        rezult(r5v1, 'Не все данные')
         r5v2.innerText = ''
         r5v3.innerText = ''
         r5v4.innerText = ''
@@ -223,7 +221,7 @@ function rez8(a) {
             a = Number(a)
             r8.innerText = ((a % 100 - ((a % 100) % 10)) / 10)
         }
-    } 
+    }
     else {
         r8.innerText = 'Не все данные'
     }
@@ -261,7 +259,7 @@ function rez9(a) {
             }
 
         }
-    } 
+    }
     else {
         r9.innerText = 'Не все данные'
     }
@@ -288,7 +286,7 @@ function rez10(a) {
         else {
             r10.innerText = `${(250 + (a * 0.10)).toFixed(1)}\$`
         }
-    } 
+    }
     else {
         r10.innerText = 'Не все данные'
     }

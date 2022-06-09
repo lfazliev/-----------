@@ -13,61 +13,154 @@
 
 <body>
     <div id="head"></div>
-    <hr>
-    <p>
-        1. Запросить у пользователя число и определить, оно поло-
-        жительное, отрицательное или ноль.
-        
-    </p>
-    <input id="z1" type="text" placeholder="Введите число">
-    <p >Результат <span id="r1"></span> </p>
-    <br>
-    <p>
-        2. Запросить у пользователя его возраст и проверить кор-
-        ректность введенных данных (0–120 лет).
-        
-    </p>
-    <br>
-    <p>
-        
-        3. Запросить у пользователя число и вывести его модуль
-        (|7| = 7, |-7| = 7).
-        
-    </p>
-    <br>
-    <p>
-        4. Запросить у пользователя время (часы, минуты, секунды)
-        и проверить корректность введенных данных.
-        
-    </p>
-    <br>
-    <p>
-        5. Запросить координаты точки (x, y) и определить номер
-        четверти, в которую попала эта точка. Необходимо учесть
-        случаи попадания точки на оси X или Y или в начало
-        координат.
-    </p>
-    <img src="img/4ti.jpg" alt="четверти">
-    <hr>
-    <p>
-        1. Запросить у пользователя номер месяца и вывести на экран
-        его название.
-    </p>
-    <p>
-        2. Реализовать калькулятор. Пользователь вводит 2 числа и
-        знак (+ - * /). В зависимости от введенного знака решить
-        пример и вывести результат.
-    </p>
-    <hr>
-    <p>1. Запросить 2 числа и вывести большее из них.</p>
-    <p>2. Запросить 1 число и проверить, оно кратно 5 или нет.</p>
-    <p>
-        3. Запросить у пользователя название планеты. Если поль-
-        зователь ввел «Земля» или «земля», то вывести «Привет,
-        землянин!», в остальных случаях вывести «Привет, ино-
-        планетянин!».
-    </p>
-    <hr>
-    
+    <div id="visibl">
+        <hr>
+        <div id="exe">
+            <div id="z1" class="task">
+                <p>
+                    1. Запросить у пользователя число и определить, оно поло-
+                    жительное, отрицательное или ноль.
+                </p>
+                <input id="z1v1" type="text" placeholder="Введите число">
+                <button id="z1btn">Выполнить</button>
+                <p class=res>
+                    Это число -
+                    <span id="r1"></span>
+                </p>
+            </div>
+            <div id="z2" class="task">
+                <p>
+                    2. Запросить у пользователя его возраст и проверить кор-
+                    ректность введенных данных (0–120 лет).
+                </p>
+                <input id="z2v1" type="text" placeholder="Введите возраст">
+                <button id="z2btn">Выполнить</button>
+                <p class=res>
+                    Результат -
+                    <span id="r2"></span>
+                </p>
+            </div>
+            <div id="z3" class="task">
+                <p>
+                    3. Запросить у пользователя число и вывести его модуль
+                    (|7| = 7, |-7| = 7).
+                </p>
+                <input id="z3v1" type="text" placeholder="Введите число">
+                <button id="z3btn">Выполнить</button>
+                <p class=res>
+                    Результат -
+                    <span id="r3"></span>
+                </p>
+            </div>
+            <div id="z4" class="task">
+                <p>
+                    4. Запросить у пользователя время (часы, минуты, секунды)
+                    и проверить корректность введенных данных.
+                </p>
+                <input id="z4v1" type="text" placeholder="Введите часы">
+                <input id="z4v2" type="text" placeholder="Введите минуты">
+                <input id="z4v3" type="text" placeholder="Введите секунды">
+                <button id="z4btn">Выполнить</button>
+                <p class=res>
+                    Результат -<span id="r4v1"></span>
+                </p>
+            </div>
+            <div id="z5" class="task">
+                <p>
+                    5. Запросить координаты точки (x, y) и определить номер
+                    четверти, в которую попала эта точка. Необходимо учесть
+                    случаи попадания точки на оси X или Y или в начало
+                    координат.
+                </p>
+                <div class="container">
+                    <img src="img/4ti.jpg" alt="четверти">
+                    <div class="zab">
+                        <input id="z5v1" type="text" placeholder="Введите X">
+                        <input id="z5v2" type="text" placeholder="Введите Y">
+                        <button id="z5btn">Выполнить</button>
+                        <p class=res>
+                            Результат -<span id="r5v1"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="z6" class="task">
+                <p>
+                    6. Запросить у пользователя номер месяца и вывести на экран
+                    его название.
+                </p>
+            </div>
+            <div id="z7" class="task">
+                <p>
+                    7. Реализовать калькулятор. Пользователь вводит 2 числа и
+                    знак (+ - * /). В зависимости от введенного знака решить
+                    пример и вывести результат.
+                </p>
+            </div>
+            <div id="z8" class="task">
+                <p>8. Запросить 2 числа и вывести большее из них.</p>
+            </div>
+            <div id="z9" class="task">
+                <p>9. Запросить 1 число и проверить, оно кратно 5 или нет.</p>
+            </div>
+            <div id="z10" class="task">
+                <p>
+                    10. Запросить у пользователя название планеты. Если поль-
+                    зователь ввел «Земля» или «земля», то вывести «Привет,
+                    землянин!», в остальных случаях вывести «Привет, ино-
+                    планетянин!».
+                </p>
+            </div>
+        </div>
+        <a class=button href="../hom/index.html">Назад</a>
+        <footer>
+            <div id=center>
+                <ul>
+                    <li>
+                        <a class="caps" href="../romiju/index.html">Home</a>
+                    </li>
+                    <li>
+                        <a class="caps" href="../romiju/index.html">About</a>
+                    </li>
+                    <li>
+                        <a class="caps" href="../romiju/index.html">Gallery</a>
+                    </li>
+                    <li>
+                        <a class="caps" href="../romiju/index.html">News</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a class="caps" href="../romiju/index.html">Blog</a>
+                    </li>
+                    <li>
+                        <a class="caps" href="../romiju/index.html">FAQ</a>
+                    </li>
+                    <li>
+                        <a class="caps" href="../romiju/index.html">Contacts</a>
+                    </li>
+                    <li>
+                        <a class="caps" href="../romiju/index.html">Privacy & cookies</a>
+                    </li>
+                </ul>
+                <ul id=social>
+                    <li>
+                        <a class="fb" href="https://vk.ru/lfazliev"></a>
+                    </li>
+                    <li>
+                        <a class="yt" href="https://www.youtube.com/c/WarLenar"></a>
+                    </li>
+                    <li>
+                        <a class="ins" href="../ind/index.html"></a>
+                    </li>
+                </ul>
+            </div>
+            <hr>
+            <p style="color : white">Copyright Lenar 2005-2022</p>
+        </footer>
+    </div>
     <script src="script.js"></script>
+</body>
+
+<script src="script.js"></script>
 </body>

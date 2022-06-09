@@ -18,7 +18,7 @@
     line-height: 2;
 }
 
-.zad {
+.task {
     margin-left: 1rem;
     width: 90%;
     margin-top: 1rem;
@@ -49,37 +49,37 @@ button:hover {
     cursor: pointer;
 }
 @media screen and (min-width: 600px){
-    .zad{
+    .task{
         width: 80%;
         transition: 300ms
     }
 }
 @media screen and (min-width: 700px){
-    .zad{
+    .task{
         width: 70%;
         transition: 300ms
     }
 }
 @media screen and (min-width: 900px){
-    .zad{
+    .task{
         width: 65%;
         transition: 300ms
     }
 }
 @media screen and (min-width: 1100px){
-    .zad{
+    .task{
         width: 55%;
         transition: 300ms
     }
 }
 @media screen and (min-width: 1300px){
-    .zad{
+    .task{
         width: 45%;
         transition: 300ms
     }
 }
 @media screen and (min-width: 1500px){
-    .zad{
+    .task{
         width: 35%;
         transition: 300ms
     }
