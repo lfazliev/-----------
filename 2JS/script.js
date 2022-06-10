@@ -61,150 +61,149 @@ function rez2(a) {
     else {
         rezult(r2, 'Не все данные')
     }
-    // 3
-    z3btn.onclick = function (e) {
-        rez3(z3v1.value)
-    }
-    for (item of document.querySelectorAll('#z3 input')) {
-        item.addEventListener('keypress', function (e) {
-            if (e.key == 'Enter') {
-                rez3(z3v1.value)
-            }
-        })
-    }
-    function rez3(a) {
-        if (z3v1.value !== '') {
-            a = Number(a)
-            if (Number.isInteger(a)) {
-                if (a < 0)
-                    rezult(r3, String(a * -1))
-                else
-                    rezult(r3, String(a));
-            }
-            else { rezuult(r3, 'Неверный тип') }
+}
+// 3
+z3btn.onclick = function (e) {
+    rez3(z3v1.value)
+}
+for (item of document.querySelectorAll('#z3 input')) {
+    item.addEventListener('keypress', function (e) {
+        if (e.key == 'Enter') {
+            rez3(z3v1.value)
         }
-        else {
-            rezult(r3, 'Не все данные')
+    })
+}
+function rez3(a) {
+    if (z3v1.value !== '') {
+        a = Number(a)
+        if (Number.isInteger(a)) {
+            if (a < 0)
+                rezult(r3, String(a * -1))
+            else
+                rezult(r3, String(a));
         }
-        // 4
-        z4btn.onclick = function (e) {
+        else { rezuult(r3, 'Неверный тип') }
+    }
+    else {
+        rezult(r3, 'Не все данные')
+    }
+}
+// 4
+z4btn.onclick = function (e) {
+    rez4(z4v1.value, z4v2.value, z4v3.value)
+}
+for (item of document.querySelectorAll('#z4 input')) {
+    item.addEventListener('keypress', function (e) {
+        if (e.key == 'Enter') {
             rez4(z4v1.value, z4v2.value, z4v3.value)
         }
-        for (item of document.querySelectorAll('#z4 input')) {
-            item.addEventListener('keypress', function (e) {
-                if (e.key == 'Enter') {
-                    rez4(z4v1.value, z4v2.value, z4v3.value)
-                }
-            })
-        }
-        function rez4(a, b, c) {
-            if (z4v1.value !== '' && z4v2.value !== '' && z4v3.value !== '') {
+    })
+}
+function rez4(a, b, c) {
+    if (z4v1.value !== '' && z4v2.value !== '' && z4v3.value !== '') {
 
-                if (a <= 23 && a >= 0)
-                    if (b <= 59 && b >= 0)
-                        if (c <= 59 && c >= 0)
-                            rezult(r4v1, `${a} : ${(b == 0) ? "00" : (b < 10) ? '0' + b : b} ${c} sec`)
-                        else
-                            rezult(r4v1, "Неверные значения");
-                    else
-                        rezult(r4v1, "Неверные значения");
+        if (a <= 23 && a >= 0)
+            if (b <= 59 && b >= 0)
+                if (c <= 59 && c >= 0)
+                    rezult(r4v1, `${a} : ${(b == 0) ? "00" : (b < 10) ? '0' + b : b} ${c} sec`)
                 else
-                    rezult(r4v1, "Неверные значения")
+                    rezult(r4v1, "Неверные значения");
+            else
+                rezult(r4v1, "Неверные значения");
+        else
+            rezult(r4v1, "Неверные значения")
 
-            } else {
-                rezult(r4v1, 'Не все данные')
-            }
+    } else {
+        rezult(r4v1, 'Не все данные')
+    }
 
-        }
-        // 5
-        z5btn.onclick = function (e) {
+}
+// 5
+z5btn.onclick = function (e) {
+    rez5(z5v1.value, z5v2.value)
+}
+for (item of document.querySelectorAll('#z5 input')) {
+    item.addEventListener('keypress', function (e) {
+        if (e.key == 'Enter') {
             rez5(z5v1.value, z5v2.value)
         }
-        for (item of document.querySelectorAll('#z5 input')) {
-            item.addEventListener('keypress', function (e) {
-                if (e.key == 'Enter') {
-                    rez5(z5v1.value, z5v2.value)
+    })
+}
+function rez5(a, b) {
+    if (z5v1.value !== '' && z5v2.value !== '') {
+        a = Number(a)
+        b = Number(b)
+        if (Number.isInteger(a) && Number.isInteger(b)) {
+            if (a > 0) {
+                if (b > 0) {
+                    rezult(r5v1, `1 - (${a};${b})`)
                 }
-            })
-        }
-        function rez5(x, y) {
-            if (z5v1.value !== '' && z5v2.value !== '') {
-                x = Number(x)
-                y = Number(y)
-                if (Number.isInteger(x) && Number.isInteger(y)) {
-                    if (x > 0) {
-                        if (y > 0) {
-                            rezult(r5v1, `1 - (${x};${y})`)
-                        }
-                        else {
-                            if (y == 0) {
-                                rezult(r5v1, `1,4 - (${x};${y})`)
-                            }
-                            else {
-                                rezult(r5v1, `4 - (${x};${y})`)
-                            }
-                        }
+                else {
+                    if (b == 0) {
+                        rezult(r5v1, `1,4 - (${a};${b})`)
                     }
                     else {
-                        if (x < 0) {
-                            if (y < 0) {
-                                rezult(r5v1, `3 - (${x};${y})`)
-                            }
-                            else {
-                                if (y == 0) {
-                                    rezult(r5v1, `2,3 - (${x};${y})`)
-                                }
-                                else
-                                    rezult(r5v1, `2 - (${x};${y})`)
-                            }
+                        rezult(r5v1, `4 - (${a};${b})`)
+                    }
+                }
+            }
+            else {
+                if (a < 0) {
+                    if (b < 0) {
+                        rezult(r5v1, `3 - (${a};${b})`)
+                    }
+                    else {
+                        if (b == 0) {
+                            rezult(r5v1, `2,3 - (${a};${b})`)
                         }
-                        else {
-                            if (x == 0) {
-                                if (y == 0) {
-                                    rezult(r5v1, `1,2,3,4 - (${x};${y})`)
-                                }
-                                else {
-                                    if (y < 0) {
-                                        rezult(r5v1, `3,4 - (${x};${y})`)
-                                    }
-                                    else {
-                                        rezult(r5v1, `1,2 - (${x};${y})`)
-                                    }
-                                }
-                            }
-                        }
+                        else
+                            rezult(r5v1, `2 - (${a};${b})`)
                     }
                 }
                 else {
-                    rezult(r5v1, 'Неверный тип')
+                    if (a == 0) {
+                        if (b == 0) {
+                            rezult(r5v1, `1,2,3,4 - (${a};${b})`)
+                        }
+                        else {
+                            if (b < 0) {
+                                rezult(r5v1, `3,4 - (${a};${b})`)
+                            }
+                            else {
+                                rezult(r5v1, `1,2 - (${a};${b})`)
+                            }
+                        }
+                    }
                 }
-
-
-            } else {
-                rezult(r5v1, 'Не все данные')
             }
-
         }
+        else {
+            rezult(r5v1, 'Неверный тип')
+        }
+
+
+    } else {
+        rezult(r5v1, 'Не все данные')
     }
 }
 // 6
 z6btn.onclick = function (e) {
-    rez6(z6v1.value, z6v2.value)
+    rez6(z6v1.value)
 }
 let z6v1Width = 200
 z6v1.style.width = z6v1Width + 'px'
 for (item of document.querySelectorAll('#z6 input')) {
     item.addEventListener('keypress', function (e) {
         if (e.key == 'Enter') {
-            rez6(z6v1.value, z6v2.value)
+            rez6(z6v1.value)
         }
     })
 }
-function rez6(x, y) {
-    if (z6v1.value !== '' && z6v2.value !== '') {
-        x = Number(x)
-        if (Number.isInteger(x) && Number.isInteger(y)) {
-            switch (x) {
+function rez6(a) {
+    if (z6v1.value !== '') {
+        a = Number(a)
+        if (Number.isInteger(a)) {
+            switch (a) {
                 case 1:
                     rezult(r6v1, 'Январь')
                     break;
@@ -263,7 +262,6 @@ z7btndel.onclick = function (e) {
 z7btnumn.onclick = function (e) {
     rez7(z7v1.value, z7v2.value, c = '*')
 }
-z7v1.style.width = z7v1Width + 'px'
 for (item of document.querySelectorAll('#z7 input')) {
     item.addEventListener('keypress', function (e) {
         if (e.key == 'Enter') {
@@ -273,29 +271,105 @@ for (item of document.querySelectorAll('#z7 input')) {
 }
 function rez7(a, b, c) {
     if (z7v1.value !== '' && z7v2.value !== '') {
-        if (Number.isInteger(a) && Number.isInteger(b)) {
-            switch (true) {
-                case c == '+':
-                    rezult(r7v1, `${a + b}`)
-                    break;
-                case c == '-':
-                    rezult(r7v1, `${a - b}`)
-                    break;
-                case c == '/':
-                    if (b != 0)
-                        rezult(r7v1, `${(a / b).toFixed(0)}`)
-                    break;
-                case c == '*':
-                    rezult(r7v1, `${a * b}`)
-                    break;
-            }
+        a = Number(a)
+        b = Number(b)
+
+        switch (true) {
+            case c == '+':
+                rezult(r7v1, `${(a + b).toFixed(3)}`)
+                break;
+            case c == '-':
+                rezult(r7v1, `${(a - b).toFixed(3)}`)
+                break;
+            case c == '/':
+                if (b != 0)
+                    rezult(r7v1, `${(a / b).toFixed(3)}`)
+                else
+                    rezult(r7v1, `На ноль не делится`)
+                break;
+            case c == '*':
+                rezult(r7v1, `${(a * b).toFixed(3)}`)
+                break;
         }
-        else {
-            rezult(r7v1, 'Неверный тип')
-        }
-    } else {
+    }
+    else {
         rezult(r7v1, 'Не все данные')
     }
 
 }
-
+// 8
+z8btn.onclick = function (e) {
+    rez8(z8v1.value, z8v2.value)
+}
+for (item of document.querySelectorAll('#z8 input')) {
+    item.addEventListener('keypress', function (e) {
+        if (e.key == 'Enter') {
+            rez8(z8v1.value, z8v2.value)
+        }
+    })
+}
+function rez8(a, b) {
+    if (z8v1.value !== '' && z8v2.value !== '') {
+        a = Number(a)
+        b = Number(b)
+        if (Number.isInteger(a) && Number.isInteger(b)) {
+            if (a > b)
+                rezult(r8v1, a)
+            else
+                rezult(r8v1, b)
+        }
+        else {
+            rezult(r8v1, 'Неверный тип')
+        }
+    } else {
+        rezult(r8v1, 'Не все данные')
+    }
+}
+// 9
+z9btn.onclick = function (e) {
+    rez9(z9v1.value)
+}
+for (item of document.querySelectorAll('#z9 input')) {
+    item.addEventListener('keypress', function (e) {
+        if (e.key == 'Enter') {
+            rez9(z9v1.value)
+        }
+    })
+}
+function rez9(a) {
+    if (z9v1.value !== '') {
+        a = Number(a)
+        if (Number.isInteger(a)) {
+            if (a % 5 == 0)
+                rezult(r9v1, 'Кратно пяти')
+            else
+                rezult(r9v1, 'Не кратно пяти')
+        }
+        else {
+            rezult(r9v1, 'Неверный тип')
+        }
+    } else {
+        rezult(r9v1, 'Не все данные')
+    }
+}
+// 10
+z10btn.onclick = function (e) {
+    rez10(z10v1.value)
+}
+for (item of document.querySelectorAll('#z10 input')) {
+    item.addEventListener('keypress', function (e) {
+        if (e.key == 'Enter') {
+            rez10(z10v1.value)
+        }
+    })
+}
+function rez10(a) {
+    if (z10v1.value !== '') {
+        if (a == 'Земля' || a == 'земля')
+            rezult(r10v1, 'Привет, землянин!')
+        else
+            rezult(r10v1, 'Привет, инопланетянин!')
+    } else {
+        rezult(r10v1, 'Кратно пяти')
+    }
+}
