@@ -273,29 +273,27 @@ function rez7(a, b, c) {
     if (z7v1.value !== '' && z7v2.value !== '') {
         a = Number(a)
         b = Number(b)
-
         switch (true) {
             case c == '+':
-                rezult(r7v1, `${(a + b).toFixed(3)}`)
+                rezult(r7v1, `${(a + b)}`)
                 break;
             case c == '-':
-                rezult(r7v1, `${(a - b).toFixed(3)}`)
+                rezult(r7v1, `${(a - b)}`)
                 break;
             case c == '/':
                 if (b != 0)
-                    rezult(r7v1, `${(a / b).toFixed(3)}`)
+                    rezult(r7v1, `${(a / b)}`)
                 else
                     rezult(r7v1, `На ноль не делится`)
                 break;
             case c == '*':
-                rezult(r7v1, `${(a * b).toFixed(3)}`)
+                rezult(r7v1, `${(a * b)}`)
                 break;
         }
     }
     else {
         rezult(r7v1, 'Не все данные')
     }
-
 }
 // 8
 z8btn.onclick = function (e) {
