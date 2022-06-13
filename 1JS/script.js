@@ -92,7 +92,7 @@ for (item of document.querySelectorAll('#z4 input')) {
 function rez4(a) {
     if (z4v1.value !== '') {
         const mile = 0.621371
-        rezult(r4, String(z4v1.value * mile).toFixed(2))
+        rezult(r4, String((z4v1.value * mile).toFixed(2)))
     } else {
         rezult(r4, 'Не все данные')
     }
@@ -126,9 +126,9 @@ function rez5(a, b) {
         rezult(r5v4, `Деление -> ${c}`)
     } else {
         rezult(r5v1, 'Не все данные')
-        r5v2.innerText = ''
-        r5v3.innerText = ''
-        r5v4.innerText = ''
+        rezult(r5v2, '')
+        rezult(r5v3, '')
+        rezult(r5v4, '')
     }
 
 }
@@ -154,11 +154,11 @@ function rez6(a, b) {
             b = Number(b)
             c = (b / (0 - a)).toFixed(2)
         }
-        r6v1.innerText = `${(a)}x + ${b} = 0`
-        r6v2.innerText = `x = ${c}`
+        rezult(r6v1, `${(a)}x + ${b} = 0`)
+        rezult(r6v2, `x = ${c}`)
     } else {
-        r6v1.innerText = 'Не все данные'
-        r6v2.innerText = ""
+        rezult(r6v1, 'Не все данные')
+        rezult(r6v2, "")
     }
 
 }

@@ -192,6 +192,86 @@ function rez6(a) {
         rezult(r6, 'Нет зачений')
     }
 }
+// 7
+z7btn.onclick = function (e) {
+    rez7()
+}
+function rez7() {
+    let a = 1000
+    r7.innerHTML = '1000 '
+    for (let i = 0; a > 50; i++) {
+        rezult(r7, r7.innerHTML += ((a /= 2) + ' '))
+
+    }
+}
+// 8
+z8btn.onclick = function (e) {
+    rez8(z8v1.value)
+}
+for (item of document.querySelectorAll('#z8 input')) {
+    item.addEventListener('keypress', function (e) {
+        if (e.key == 'Enter') {
+            rez8(z8v1.value)
+        }
+    })
+}
+function rez8(a) {
+    if (z8v1.value !== '') {
+        a = Number(a)
+        if (Number.isInteger(a)) {
+            r8.innerHTML = ''
+            for (let i = 1; i < 100; i++) {
+                if (i % a == 0) {
+                    rezult(r8, r8.innerHTML += i + " ")
+                }
+            }
+            if (r8.innerHTML == "") {
+                rezult(r8, "Нету значений кратных " + a)
+            }
+        }
+        else
+            rezult(r8, 'Неверный тип')
+    }
+    else {
+        rezult(r8, 'Нет зачений')
+    }
+}
+// 9
+z9btn.onclick = function (e) {
+    rez9(z9v1.value, z9v2.value)
+}
+for (item of document.querySelectorAll('#z9 input')) {
+    item.addEventListener('keypress', function (e) {
+        if (e.key == 'Enter') {
+            rez9(z9v1.value, z9v2.value)
+        }
+    })
+}
+function rez9(a, b) {
+    r9.innerText = ''
+    if (z9v1.value !== '' && z9v2.value !== '') {
+        a = Number(a)
+        b = Number(b)
+        if (Number.isInteger(a) && Number.isInteger(b)) {
+            if (a > b) {
+
+            }
+            else {
+                for (let i = a; i < b;) {
+                    for (let j = 0; j < 4; j++, i++) {
+                        if (j == 3)
+                            rezult(r9, r9.innerHTML += i + ' ')
+                    }
+                }
+            }
+        }
+        else
+            rezult(r9, 'Неверный тип')
+    }
+    else {
+        rezult(r9, 'Нет зачений')
+    }
+}
 // 10
 z10btn.onclick = function (e) {
     rez10(z10v1.value)
