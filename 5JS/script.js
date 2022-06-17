@@ -21,12 +21,7 @@ function rez1(a, b) {
         a = Number(a)
         b = Number(b)
         if (Number.isInteger(a)) {
-            if (a > b) {
-                r1.innerHTML = String(b)
-            }
-            else {
-                r1.innerHTML = String(a)
-            }
+
         }
         else
             r1.innerHTML = 'Неверно'

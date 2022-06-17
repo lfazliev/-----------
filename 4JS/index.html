@@ -97,8 +97,11 @@
                     возвращает их сумму.
                 </p>
                 <input id="z7v1" type="text" placeholder="Введите первое число">
-                <button id="z7btn">-</button>
-                <button id="z7btn">+</button>
+                <input id="z7v2" type="text" placeholder="Введите второе число">
+                <input id="z7v3" type="text" placeholder="Введите третье число">
+                <input id="z7v4" type="text" placeholder="Введите четвёртое число">
+                <input id="z7v5" type="text" placeholder="Введите пятое число">
+
                 <button id="z7btn">Выполнить</button>
                 <div class=res>
                     <p>
@@ -114,8 +117,11 @@
                     возвращает большее из них.
                 </p>
                 <input id="z8v1" type="text" placeholder="Введите первое число">
-                <button id="z8btn">-</button>
-                <button id="z8btn">+</button>
+                <input id="z8v2" type="text" placeholder="Введите второе число">
+                <input id="z8v3" type="text" placeholder="Введите третье число">
+                <input id="z8v4" type="text" placeholder="Введите четвёртое число">
+                <input id="z8v5" type="text" placeholder="Введите пятое число">
+
                 <button id="z8btn">Выполнить</button>
                 <div class=res>
                     <p>
@@ -125,34 +131,36 @@
                     </div>
                 </div>
             </div>
+            <!-- 9 -->
             <div id=z9 class=task>
                 <p>
-                    9. Написать функцию, которая выводит все четные или не-
-                    четные числа, в указанном пользователем диапазоне. Какие
-                    числа выводить, определяется третьим параметром типа
-                    bool (true – четные, false – нечетные).
+                    9. Написать функцию, которая выводит все четные или нечетные числа, в указанном пользователем
+                    диапазоне.
                 </p>
-                <input id="z6v1" type="text" placeholder="Введите первое число">
-                <input id="z6v2" type="text" placeholder="Введите второе число">
-                <button id="z6btn">Выполнить</button>
+                <input id="z9v1" type="text" placeholder="Введите первое число">
+                <input id="z9v2" type="text" placeholder="Введите второе число">
+                <div class="choose"></div>
+                <label for="a1">Четные</label><input id="a1" type="radio" name="oddeven" value=true checked>
+                <label for="a2">Нечетные</label><input id="a2" type="radio" name="oddeven" value=false>
+                <button id="z9btn">Выполнить</button>
                 <div class=res>
                     <p>
                         Результат:
                     </p>
-                    <div id=r6 class=resd>
+                    <div id=r9 class=resd>
                     </div>
                 </div>
             </div>
+            <!-- 10 -->
             <div id=z10 class=task>
                 <p>
                     10. Написать функцию, которая принимает дату (день, месяц,
                     год) и возвращает дату следующего дня в виде строки
-                    «дд.мм.гггг». Проверку на високосный год желательно
-                    написать отдельной функцией.
+                    «гггг.мм.дд».
                 </p>
-                <input id="z10v1" type="text" placeholder="Введите первое число">
-                <input id="z10v2" type="text" placeholder="Введите второе число">
-                <input id="z10v3" type="text" placeholder="Введите третье число">
+                <input id="z10v1" type="text" placeholder="Введите год">
+                <input id="z10v2" type="text" placeholder="Введите месяц">
+                <input id="z10v3" type="text" placeholder="Введите день">
                 <button id="z10btn">Выполнить</button>
                 <div class=res>
                     <p>

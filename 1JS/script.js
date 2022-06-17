@@ -190,7 +190,7 @@ function rez7(b, c) {
                 c = 60 * 24 - c
                 a = c % 60
                 b = Number(((c - a) / 60).toFixed(0))
-                r7.innerText = `${b} : ${(a == 0) ? "00" : a}`
+                r7.innerText = `${b} : ${(a == 0) ? "00" : (a < 10) ? '0' + a : a}`
             }
         }
 
@@ -284,7 +284,7 @@ function rez10(a) {
             r10.innerText = 'Неверное значение'
         }
         else {
-            r10.innerText = `${(250 + (a * 0.10)).toFixed(1)}\$`
+            r10.innerText = `${(250 + (a * 0.10)).toFixed(1)} \$`
         }
     }
     else {
