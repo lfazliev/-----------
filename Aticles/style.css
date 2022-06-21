@@ -8,12 +8,7 @@ img {
     margin: 0px 30px 0px 90px;
 }
 
-.page {
-    color: rgb(160, 160, 160);
-    margin: 80px 90px 30px;
-    font-size: 20px;
-    transition: 300ms
-}
+
 
 #main {
     display: flex;
@@ -51,18 +46,21 @@ h1 {
 
 .flex {
     display: flex;
-    flex:1;
+    flex: 1;
     flex-direction: row;
     flex-wrap: wrap;
 }
+
 .flex div {
-    flex:1;
+    flex: 1;
     min-width: 137px;
     margin: 10px 0 0 15px;
 }
-#main{
+
+#main {
     margin-bottom: 50px;
 }
+
 @media screen and (max-width:600px) {
     h1 {
         font-size: 30px;
@@ -74,18 +72,20 @@ h1 {
         margin: 0px 30px 0px 40px;
         transition: 300ms;
     }
+
     #main div p {
         font-size: 17px;
         transition: 300ms
-
     }
-    #main div{
+
+    #main div {
         margin: 0px 0px 15px 0px;
         transition: 300ms
     }
+
     .page {
         margin: 80px 40px 30px;
         transition: 300ms
     }
-   
+
 }

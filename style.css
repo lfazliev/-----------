@@ -1,14 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+
 #head {
     transition: 300ms;
     background: url('img/channels4_banner.jpg') 54% center/cover no-repeat;
     height: 300px;
 }
 
+
 @keyframes left {
     from {
         margin-left: 2000px;
     }
+
     to {
         margin-left: 0;
     }
@@ -52,6 +55,7 @@ body {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -107,24 +111,31 @@ p {
     html {
         transition: all 300ms
     }
+
     #head {
         height: 200px;
     }
+
     a.button {
         font-size: 18px;
     }
+
     #highbar {
         padding: 1px;
     }
+
     p {
         font-size: 18px;
     }
+
     #bar nav ul li {
         flex-basis: 300px;
     }
+
     #footer li {
         margin: 5px 10px;
     }
+
     #center {
         flex-direction: column
     }
@@ -206,9 +217,24 @@ a.caps:hover {
     text-decoration: underline black;
 }
 
+.page {
+    color: rgb(160, 160, 160);
+    margin: 5rem 90px 30px;
+    font-size: 20px;
+    transition: 300ms
+}
+
 h1 {
     margin-block-start: 0em;
     margin-block-end: 0em;
+}
+
+@media screen and (max-width:600px) {
+    .page {
+        margin: 3rem 40px 1.5rem;
+        transition: 300ms
+    }
+
 }
 
 h2 {
