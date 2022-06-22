@@ -38,9 +38,32 @@ input {
     border-radius: 5px;
 }
 
+.zab input {
+    margin-bottom: 5px;
+    width: 190px
+}
+
 input:active {
     border: 1px solid rgba(0, 0, 0, 0.562);
     border-radius: 5px;
+}
+
+img {
+    width: 100%;
+    height: 19em;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.zab {
+    display: flex;
+    flex-wrap: wrap
 }
 
 button {
@@ -58,6 +81,23 @@ button:hover {
     .task {
         width: 80%;
         transition: 300ms
+    }
+
+    .zab {
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container {
+        flex-direction: row !important;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    img {
+        width: 60% !important;
+        height: 16em
     }
 }
 
