@@ -219,7 +219,7 @@ a.caps:hover {
 
 .page {
     color: rgb(160, 160, 160);
-    margin: 5rem 90px 30px;
+    margin: 3rem 90px 30px;
     font-size: 20px;
     transition: 300ms
 }
@@ -231,8 +231,9 @@ h1 {
 
 @media screen and (max-width:600px) {
     .page {
-        margin: 3rem 40px 1.5rem;
-        transition: 300ms
+        margin: 2rem 1.5rem 1.5rem;
+        transition: 300ms;
+        font-size: 17px
     }
 
 }
