@@ -1,0 +1,117 @@
+.res {
+    margin: 0.5rem 0rem 0.5rem 2px;
+    font-size: 17px;
+    display: flex;
+}
+
+#exe {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center
+}
+
+.task .res .resd {
+    margin: 0 10px 0 10px;
+    box-shadow: 0px 0px 10px -2px rgb(0 0 0 / 66%);
+    border-radius: 8px;
+    background-color: white;
+    font-weight: bold;
+    line-height: 1.5;
+    min-width: 6rem;
+    padding: 0 5px 0 5px;
+    display: flex;
+    align-items: center
+}
+
+.task {
+    margin-left: 1rem;
+    width: 90%;
+    margin-top: 1rem;
+    background-color: rgba(219, 219, 219, 0.685);
+    padding: 5px;
+    border: 1px solid rgb(21, 50, 95);
+    border-radius: 10px;
+    transition: width 300ms;
+}
+
+input {
+    border-radius: 5px;
+}
+
+.zab input {
+    margin-bottom: 5px;
+    width: 190px
+}
+
+input:active {
+    border: 1px solid rgba(0, 0, 0, 0.562);
+    border-radius: 5px;
+}
+
+
+button {
+    margin-top: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.521);
+    border-radius: 7px;
+}
+
+button:hover {
+    background-color: rgba(158, 158, 158, 0.459);
+    cursor: pointer;
+}
+
+h4 {
+    margin: 1rem 1rem 0 3rem;
+    transition: 300ms
+}
+
+@media screen and (min-width: 600px) {
+    .task {
+        width: 80%;
+        transition: 300ms
+    }
+
+    h4 {
+        font-size: 23px;
+        transition: 300ms
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .task {
+        width: 70%;
+        transition: 300ms
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .task {
+        width: 65%;
+        transition: 300ms
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    .task {
+        width: 55%;
+        transition: 300ms
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .task {
+        width: 45%;
+        transition: 300ms
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .task {
+        width: 35%;
+        transition: 300ms
+    }
+}
+
+.red {
+    color: red
+}
