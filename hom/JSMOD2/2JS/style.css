@@ -60,6 +60,11 @@ button:hover {
     cursor: pointer;
 }
 
+ul {
+    margin-left: 20px;
+    list-style: decimal
+}
+
 h4 {
     margin: 1rem 1rem 0 3rem;
     transition: 300ms
