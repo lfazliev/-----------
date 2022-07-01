@@ -30,6 +30,7 @@ p {
     width: 70px;
     padding: 0 10px 0 10px;
     transition: 300ms;
+    mix-blend-mode: darken;
 }
 
 #menu a {
@@ -44,7 +45,8 @@ p {
 }
 
 #menu li:hover {
-    background: grey;
+    background-color: rgba(0, 0, 0, 0.367);
+    cursor: pointer;
 }
 
 @media screen and (max-width:900px) {
@@ -52,6 +54,7 @@ p {
         width: 50px;
         transition: 300ms
     }
+
     #visibl span {
         font-size: 15px;
         transition: 300ms;

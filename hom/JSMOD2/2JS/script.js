@@ -44,15 +44,11 @@ function rez4(arr) {
 // 5
 z5btn.onclick = function (e) {
     rez5(z5v1.value, arr10)
-
 }
 for (item of document.querySelectorAll('#z111 input')) {
     item.addEventListener('keypress', function (e) {
         if (e.key == 'Enter') {
             rez5(z5v1.value, arr10)
-
-
-
         }
     })
 }
@@ -76,15 +72,11 @@ function rez5(a, arr) {
 // 6
 z6btn.onclick = function (e) {
     rez6(z6v1.value, arr10)
-
 }
 for (item of document.querySelectorAll('#z111 input')) {
     item.addEventListener('keypress', function (e) {
         if (e.key == 'Enter') {
             rez6(z6v1.value, arr10)
-
-
-
         }
     })
 }
@@ -114,17 +106,14 @@ function arrcreate5() {
         arr5[i] = (Math.floor(Math.random() * 10))
         a += `${arr5[i]} `
         r79.innerHTML = a
-
     }
     rez7(); rez8(); rez9()
-
 }
 arrcreate5()
 // 7
 function rez7() {
     const newArr = []
     for (let i = 0; i < Math.max(arr5.length, arr10.length); i++) {
-
         if (i < arr5.length) {
             if (newArr.indexOf(arr5[i]) < 0) {
                 newArr.push(arr5[i])
@@ -177,13 +166,11 @@ function rez9() {
 let fruits = ['apple', 'orange', 'pineapple', 'cherry', 'pear']
 function rez10() {
     ulEl = document.createElement('ul')
-
     for (fruit of fruits) {
         liEl = document.createElement('li')
         liEl.innerHTML = fruit
         ulEl.appendChild(liEl)
     }
-
     r10.appendChild(ulEl)
 }
 rez10()
@@ -214,7 +201,6 @@ function rez11(a) {
         if (r11.innerHTML == '') {
             r11.innerHTML = '-1'
         }
-
     }
     else {
         r11.innerHTML = 'Нет зачений'
