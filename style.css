@@ -224,6 +224,10 @@ a.caps:hover {
     transition: 300ms
 }
 
+.page a:visited {
+    color: rgba(164, 164, 164, 0.942);
+}
+
 h1 {
     margin-block-start: 0em;
     margin-block-end: 0em;

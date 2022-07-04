@@ -151,7 +151,7 @@ for (item of document.querySelectorAll('#z6 input')) {
 function rez6(a) {
     if (z6v1.value !== '') {
         let b = []
-        let newA = a.toLowerCase().replace(' ', '', true)
+        let newA = a.toLowerCase().replace(/ /g, '')
 
         for (let i = newA.length - 1; i >= 0; i--) {
             {
@@ -170,6 +170,112 @@ function rez6(a) {
         r6.innerHTML = 'Нет зачений'
     }
 }
+// 7
+z7btn.onclick = function (e) {
+    rez7(z7v1.value)
+}
+for (item of document.querySelectorAll('#z7 input')) {
+    item.addEventListener('keypress', function (e) {
+        if (e.key == 'Enter') {
+            rez7(z7v1.value)
+        }
+    })
+}
+function rez7(a) {
+    if (z7v1.value !== '') {
+        let b
+        b = a.split(' ')
+        r7.innerHTML = b.length
+    }
+    else {
+        r7.innerHTML = 'Нет зачений'
+    }
+}
+// 8
+z8btn.onclick = function (e) {
+    rez8(z8v1.value)
+}
+for (item of document.querySelectorAll('#z8 input')) {
+    item.addEventListener('keypress', function (e) {
+        if (e.key == 'Enter') {
+            rez8(z8v1.value)
+        }
+    })
+}
+function rez8(a) {
+    if (z8v1.value !== '') {
+        let b
+        b = a.split(' ')
+        let maxLength = 0
+        let index
+        for (let i = 0; i < b.length; i++) {
+            if (b[i].length > maxLength) {
+                index = i
+                maxLength = b[i].length
+            }
+
+        }
+        r8.innerHTML = b[index]
+    }
+    else {
+        r8.innerHTML = 'Нет зачений'
+    }
+}
+// 9
+z9btn.onclick = function (e) {
+    rez9(z9v1.value)
+}
+for (item of document.querySelectorAll('#z9 input')) {
+    item.addEventListener('keypress', function (e) {
+        if (e.key == 'Enter') {
+            rez9(z9v1.value)
+        }
+    })
+}
+function rez9(a) {
+    if (z9v1.value !== '') {
+        let b
+        let c = 0
+        b = a.split(' ')
+        for (let i = 0; i < b.length; i++) {
+            c += b[i].length
+        }
+        r9.innerHTML = (c / b.length).toFixed(1)
+    }
+    else {
+        r9.innerHTML = 'Нет зачений'
+    }
+}
+// 10
+z10btn.onclick = function (e) {
+    rez10(z10v1.value, z10v2.value)
+}
+for (item of document.querySelectorAll('#z10 input')) {
+    item.addEventListener('keypress', function (e) {
+        if (e.key == 'Enter') {
+            rez10(z10v1.value, z10v2.value)
+        }
+    })
+}
+function rez10(a, b) {
+    if (z10v1.value !== '' && z10v2.value !== '') {
+        let c = []
+        let d = 0
+        do {
+            d = a.indexOf(b, d)
+            if (d !== -1) {
+                c.push(d)
+            }
+            d++
+        }
+        while (d > 0)
+        r10.innerHTML = `индексы ${c} <br>${c.length} всего`
+    }
+    else {
+        r10.innerHTML = 'Нет зачений'
+    }
+}
+
 // if (this.value.length > 20) {
 //     z10v1Width += 5
 //     z10v1.style.width = z8v1Width + 'px'
