@@ -350,12 +350,28 @@ function rez10(year, month, day) {
                     else {
                         days = mDays[month - 1];
                     }
-                    if (day <= days && day > 0) {
-                        r10.innerHTML = `${year}:${month}:${day}`
+                    if (day < days && day > 0) {
+                        day++
+                        date = new Date(year, month - 1, day)
+                        r10.innerHTML = `${date.getFullYear()} ${date.getMonth() + 1} ${date.getDate()}`
                     }
                     else {
-                        r10.innerHTML = 'Неверно день'
+                        if (day == days) {
+                            day = 1
+                            if (month == 12) {
+                                year++; month = 1;
+                            }
+                            else {
+                                month++
+                            }
+                            date = new Date(year, month - 1, day)
+                            r10.innerHTML = `${date.getFullYear()} ${date.getMonth() + 1} ${date.getDate()}`
+                        }
+                        else {
+                            r10.innerHTML = 'Неверно день'
+                        }
                     }
+
                 }
                 else {
                     r10.innerHTML = 'Неверно мес'
