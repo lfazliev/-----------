@@ -37,53 +37,44 @@ function rez1(a, b, c, d) {
 }
 // 2
 function checked(year, month, day) {
-    year = Number(year)
-    month = Number(month)
-    day = Number(day)
-    if (Number.isInteger(year) && Number.isInteger(month) && Number.isInteger(day)) {
-        let mDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-        let days;
-        let current;
-        let t = [6, 2, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4];
-        if (year > 1900 && year < 2035) {
-            if (month >= 1 && month <= 12) {
-                let y = year % 100;
-                current = y / 12 + y % 12 + y % 12 / 4 + t[month - 1] + (20 - year / 100);
-                if ((year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) && month <= 2)
-                    current--;
-                current = current % 7;
-                if (month == 2) {
-                    if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) {
-                        days = 29;
-                    }
-                    else {
-                        days = mDays[month - 1];
-                    }
+
+
+    let mDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    let days;
+    let current;
+    let t = [6, 2, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4];
+    if (year > 1900 && year < 2035) {
+        if (month >= 1 && month <= 12) {
+            let y = year % 100;
+            current = y / 12 + y % 12 + y % 12 / 4 + t[month - 1] + (20 - year / 100);
+            if ((year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) && month <= 2)
+                current--;
+            current = current % 7;
+            if (month == 2) {
+                if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) {
+                    days = 29;
                 }
                 else {
                     days = mDays[month - 1];
                 }
-                if (day > days || day < 0) {
-
-                    r2.innerHTML = 'Неверно день'
-                    return 0
-                }
-
             }
             else {
-                r2.innerHTML = 'Неверно мес'
-                return 0
+                days = mDays[month - 1];
             }
+            if (day > days || day < 0) {
+
+                r2.innerHTML = 'Неверно день'
+            }
+
         }
         else {
-            r2.innerHTML = 'Неверно год'
-            exit
+            r2.innerHTML = 'Неверно мес'
         }
     }
     else {
-        r2.innerHTML = 'Неверно тип'
-        return 0
+        r2.innerHTML = 'Неверно год'
     }
+
 }
 
 z2btn.onclick = function (e) {
@@ -97,26 +88,68 @@ for (item of document.querySelectorAll('#z2 input')) {
     })
 }
 function rez2(a, b, c, day, month, year) {
-    if (z2v5.value !== '') {
-        date = new Date(year, month - 1, day)
-        actualdate = new Date()
-        checked(year, month, day)
-        if (actualdate.getDate() == date.getDate() && actualdate.getMonth() == date.getMonth() && actualdate.getFullYear() == date.getFullYear()) {
-            r2.innerHTML = 'YJHV'
+    r2.innerHTML = ''
+    let h2 = document.createElement('h2')
+    h2.style.paddingBottom = '1rem'
+    let dat = document.createElement('p')
+    dat.style.fontSize = '15px'
+    dat.style.paddingBottom = '1rem'
+    let text = document.createElement('p')
+    text.style.paddingBottom = '1rem'
+    let tag = document.createElement('p')
+    h2.innerText = a
+    r2.appendChild(h2)
+    if (year !== '' && month !== '' && day !== '') {
+        year = Number(year)
+        month = Number(month)
+        day = Number(day)
+        if (Number.isInteger(year) && Number.isInteger(month) && Number.isInteger(day)) {
+            date = new Date(year, month - 1, day)
+            actualdate = new Date()
+            checked(year, month, day)
+            if (actualdate.getDate() == date.getDate() && actualdate.getMonth() == date.getMonth() && actualdate.getFullYear() == date.getFullYear()) {
+                dat.innerText = 'Сегодня'
+            } else {
+                let pol = 0
+                for (let i = 0; i < 6; i++) {
+                    actualdate.setDate(actualdate.getDate() - 1)
+                    if (actualdate.getDate() == date.getDate() && actualdate.getMonth() == date.getMonth() && actualdate.getFullYear() == date.getFullYear()) {
+                        if (i == 0) {
+                            dat.innerText = `${i + 1} день назад`
+                        }
+                        else {
+                            if (i > 0 && i < 4) {
+                                dat.innerText = `${i + 1} дня назад`
+                            }
+                            else
+                                dat.innerText = `${i + 1} дней назад`
+                        }
+                        pol = 1
+                    }
+                }
+                if (pol == 0) {
+                    dat.innerText = date.getFullYear() + '.' + date.getMonth() + 1 + '.' + date.getDate()
+                }
+
+            }
+            r2.appendChild(dat)
         }
         else {
-            let pol
-            for (let i = 0; i < 7; i++) {
-                actualdate.setDate(actualdate.getDate() - 1)
-                if (actualdate.getDate() == date.getDate() && actualdate.getMonth() == date.getMonth() && actualdate.getFullYear() == date.getFullYear()) { r2.innerHTML = i + 1 }
-            }
-
+            r2.innerHTML = 'Неверно тип даты'
         }
+
     }
-    else {
-        r2.innerHTML = 'Нет зачений'
+    text.innerText = b
+    r2.appendChild(text)
+    if (c !== '') {
+        let taglist = c.split(' ')
+        for (let i = 0; i < taglist.length; i++) {
+            tag.innerText += `#${taglist[i]} `
+        }
+        r2.appendChild(tag)
     }
 }
+
 // if (this.value.length > 20) {
 //     z10v1Width += 5
 //     z10v1.style.width = z8v1Width + 'px'

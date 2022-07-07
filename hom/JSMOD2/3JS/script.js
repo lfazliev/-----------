@@ -151,7 +151,7 @@ for (item of document.querySelectorAll('#z6 input')) {
 function rez6(a) {
     if (z6v1.value !== '') {
         let b = []
-        let newA = a.toLowerCase().replace(/ /g, '')
+        let newA = a.toLowerCase().replace(/  /g, ' ')
 
         for (let i = newA.length - 1; i >= 0; i--) {
             {

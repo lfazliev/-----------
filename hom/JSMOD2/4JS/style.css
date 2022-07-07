@@ -4,6 +4,10 @@
     display: flex;
 }
 
+#r2 {
+    display: block;
+}
+
 #exe {
     display: flex;
     flex-wrap: wrap;
