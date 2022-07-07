@@ -88,65 +88,72 @@ for (item of document.querySelectorAll('#z2 input')) {
     })
 }
 function rez2(a, b, c, day, month, year) {
-    r2.innerHTML = ''
-    let h2 = document.createElement('h2')
-    h2.style.paddingBottom = '1rem'
-    let dat = document.createElement('p')
-    dat.style.fontSize = '15px'
-    dat.style.paddingBottom = '1rem'
-    let text = document.createElement('p')
-    text.style.paddingBottom = '1rem'
-    let tag = document.createElement('p')
-    h2.innerText = a
-    r2.appendChild(h2)
-    if (year !== '' && month !== '' && day !== '') {
-        year = Number(year)
-        month = Number(month)
-        day = Number(day)
-        if (Number.isInteger(year) && Number.isInteger(month) && Number.isInteger(day)) {
-            date = new Date(year, month - 1, day)
-            actualdate = new Date()
-            checked(year, month, day)
-            if (actualdate.getDate() == date.getDate() && actualdate.getMonth() == date.getMonth() && actualdate.getFullYear() == date.getFullYear()) {
-                dat.innerText = 'Сегодня'
-            } else {
-                let pol = 0
-                for (let i = 0; i < 6; i++) {
-                    actualdate.setDate(actualdate.getDate() - 1)
-                    if (actualdate.getDate() == date.getDate() && actualdate.getMonth() == date.getMonth() && actualdate.getFullYear() == date.getFullYear()) {
-                        if (i == 0) {
-                            dat.innerText = `${i + 1} день назад`
-                        }
-                        else {
-                            if (i > 0 && i < 4) {
-                                dat.innerText = `${i + 1} дня назад`
-                            }
-                            else
-                                dat.innerText = `${i + 1} дней назад`
-                        }
-                        pol = 1
-                    }
-                }
-                if (pol == 0) {
-                    dat.innerText = date.getFullYear() + '.' + date.getMonth() + 1 + '.' + date.getDate()
-                }
-
-            }
-            r2.appendChild(dat)
-        }
-        else {
-            r2.innerHTML = 'Неверно тип даты'
-        }
-
+    if (a == '' && b == '' && c == '') {
+        r2.innerHTML = 'Нет значений'
     }
-    text.innerText = b
-    r2.appendChild(text)
-    if (c !== '') {
-        let taglist = c.split(' ')
-        for (let i = 0; i < taglist.length; i++) {
-            tag.innerText += `#${taglist[i]} `
+    else {
+        r2 = document.createElement('div')
+        rez2.style.display = 'block'
+        r2.innerHTML = ''
+        let h2 = document.createElement('h2')
+        h2.style.paddingBottom = '1rem'
+        let dat = document.createElement('p')
+        dat.style.fontSize = '15px'
+        dat.style.paddingBottom = '1rem'
+        let text = document.createElement('p')
+        text.style.paddingBottom = '1rem'
+        let tag = document.createElement('p')
+        h2.innerText = a
+        r2.appendChild(h2)
+        if (year !== '' && month !== '' && day !== '') {
+            year = Number(year)
+            month = Number(month)
+            day = Number(day)
+            if (Number.isInteger(year) && Number.isInteger(month) && Number.isInteger(day)) {
+                date = new Date(year, month - 1, day)
+                actualdate = new Date()
+                checked(year, month, day)
+                if (actualdate.getDate() == date.getDate() && actualdate.getMonth() == date.getMonth() && actualdate.getFullYear() == date.getFullYear()) {
+                    dat.innerText = 'Сегодня'
+                } else {
+                    let pol = 0
+                    for (let i = 0; i < 6; i++) {
+                        actualdate.setDate(actualdate.getDate() - 1)
+                        if (actualdate.getDate() == date.getDate() && actualdate.getMonth() == date.getMonth() && actualdate.getFullYear() == date.getFullYear()) {
+                            if (i == 0) {
+                                dat.innerText = `${i + 1} день назад`
+                            }
+                            else {
+                                if (i > 0 && i < 4) {
+                                    dat.innerText = `${i + 1} дня назад`
+                                }
+                                else
+                                    dat.innerText = `${i + 1} дней назад`
+                            }
+                            pol = 1
+                        }
+                    }
+                    if (pol == 0) {
+                        dat.innerText = date.getFullYear() + '.' + (date.getMonth() + 1) + '.' + date.getDate()
+                    }
+
+                }
+                r2.appendChild(dat)
+            }
+            else {
+                r2.innerHTML = 'Неверно тип даты'
+            }
+
         }
-        r2.appendChild(tag)
+        text.innerText = b
+        r2.appendChild(text)
+        if (c !== '') {
+            let taglist = c.split(' ')
+            for (let i = 0; i < taglist.length; i++) {
+                tag.innerText += `#${taglist[i]} `
+            }
+            r2.appendChild(tag)
+        }
     }
 }
 

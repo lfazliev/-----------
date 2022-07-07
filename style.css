@@ -224,8 +224,16 @@ a.caps:hover {
     transition: 300ms
 }
 
+.page a:hover {
+    color: rgba(117, 117, 117, 0.942);
+}
+
 .page a:visited {
-    color: rgba(164, 164, 164, 0.942);
+    color: rgb(160, 160, 160);
+}
+
+.page a:visited:hover {
+    color: rgba(117, 117, 117, 0.942);
 }
 
 h1 {
