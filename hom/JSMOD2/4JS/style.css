@@ -6,9 +6,11 @@
 
 #r2 {
     display: none;
-    border: 2px solid black;
-    border-radius: 10px;
-    background-color: aliceblue;
+    padding-left: 5px;
+}
+
+#r3 {
+    display: none;
     padding-left: 5px;
 }
 
@@ -16,6 +18,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center
+}
+
+.News {
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: aliceblue;
 }
 
 :focus-visible {
@@ -60,9 +68,6 @@ input {
     margin-bottom: 5px;
     width: 190px
 }
-
-input:active {}
-
 
 button {
     margin-top: 5px;
