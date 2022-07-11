@@ -24,9 +24,8 @@
 }
 
 .task {
-    margin-left: 1rem;
+    margin: 1rem 1rem 0 1rem;
     width: 90%;
-    margin-top: 1rem;
     background-color: rgba(219, 219, 219, 0.685);
     padding: 5px;
     border: 1px solid rgb(21, 50, 95);

@@ -35,14 +35,15 @@ img {
     border-top-right-radius: 10px;
 }
 
+.mainFlex {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
 @media screen and (min-width: 600px) {
     figure {
         margin: 10px 5px 10px 5px;
         width: 50%;
-    }
-
-    #cura {
-        display: none;
     }
 
     .cats {
@@ -57,28 +58,23 @@ img {
         width: 100%;
     }
 
-    #onea {
-        display: none;
-    }
-
-    #cura {
+    .mainFlex {
         display: block;
     }
+
 
     h1 {
         display: inline;
     }
 
     .text {
-        display: flex;
-        flex-wrap: wrap;
         padding-top: 1rem;
     }
 
     .cats {
-        float: right;
         width: 30%;
         flex-direction: column;
         margin-left: 10px;
+        float: right;
     }
 }
