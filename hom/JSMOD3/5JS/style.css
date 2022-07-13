@@ -26,16 +26,7 @@ ul {
     border: 1px solid rgba(0, 0, 0, 0.664);
 }
 
-#center div {
-    display: flex;
-    width: 50%;
-}
 
-@media screen and (max-width: 600px) {
-    #center div {
-        width: 100%;
-    }
-}
 
 .task .res .resd {
     margin: 0 10px 0 10px;

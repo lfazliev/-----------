@@ -1,0 +1,159 @@
+<head>
+    <!DOCTYPE html>
+    <html lang="en">
+    <html>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link link href="../../../style.css" type="text/css" rel="stylesheet">
+    <link link href="style.css" type="text/css" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="head"></div>
+    <hr>
+    <div id="visibl">
+        <p class="page"><a href="../../index.html">Homework</a>/<a href="../index.html">JavaScript модуль
+                №2</a>/Практика №4</p>
+        <div id="exe">
+            <!-- 1 -->
+            <div id=z1 class=task>
+                <p>Реализовать класс PrintMaсhine, которой состоит из:<br>
+                <ul>
+                    <li>размера шрифта;</li>
+                    <li>цвета шрифта;</li>
+                    <li>семейства шрифта;</li>
+                    <li>
+                        метода print(), который принимает текст и печатает его
+                        соответствующим шрифтом
+                    </li>
+                    </p>
+                </ul>
+                <input id="z1v1" type="text" placeholder="Текст">
+                <input id="z1v2" type="text" placeholder="Размер">
+                <input id="z1v3" type="text" placeholder="Цвет">
+                <input id="z1v4" type="text" placeholder="Шрифт">
+                <button id="z1btn">Выполнить</button>
+                <div class=res>
+                    <p>
+                        Результат:
+                    </p>
+                    <div id=r1 class=resd>
+                    </div>
+                </div>
+            </div>
+
+            <div id=z2 class=task>
+                <p>
+                    Реализовать класс, описывающий новость (заголовок, текст,
+                    массив тегов, дата публикации). В классе необходимо реализовать
+                    один метод print, который выводит всю информацию в таком
+                    виде
+                </p>
+                <ul>
+                    <li>
+                        если с даты публикации прошло менее дня, то выводится
+                        «сегодня»;
+                    </li>
+                    <li>
+                        если с даты публикации прошло менее недели, то выводится «N дней назад»;
+                    </li>
+                    <li>в остальных случаях, полная дата в формате «дд.мм.гггг».</li>
+                </ul>
+                <input id="z2v1" type="text" placeholder="Заголовок">
+                <input id="z2v2" type="text" placeholder="Текст">
+                <input id="z2v3" type="text" placeholder="Теги через пробел">
+                <input id="z2v4" type="date">
+
+                <button id="z2btn">Добавить новость</button>
+                <div class=res id=r2>
+
+                </div>
+            </div>
+
+            <div id=z3 class=task>
+                <p>
+                    Реализовать класс, описывающий новостную ленту.
+                    Класс должен содержать:
+                </p>
+                <ul>
+                    <li>массив новостей;</li>
+                    <li>get-свойство, которое возвращает количество новостей</li>
+                    <li>метод для вывода на экран всех новостей;</li>
+                    <li>метод для добавления новости;</li>
+                    <li>метод для удаления новости;</li>
+                    <li>
+                        метод для сортировки новостей по дате (от последних новостей до старых);
+                    </li>
+                    <li>
+                        метод для поиска новостей по тегу (возвращает массив
+                        новостей, в которых указан переданный в метод тег).
+                        Продемонстрировать работу написанных методов.
+                    </li>
+                </ul>
+                <button id="z3btn">Вывести всё</button>
+                <button id="z3btndel">Удалить новость</button>
+                <input id="z3v1" type="text" placeholder="id удаляемой новости">
+                <button id="z3btnsort">Сортировка по дате</button>
+                <button id="z3btnfind">Поиск по тегу</button>
+                <input id="z3v2" type="text" placeholder="Тег для поиска">
+                <p id="colnews"></p>
+                <div class=res id=r3>
+
+                </div>
+            </div>
+
+        </div>
+        <a class=button href="../index.html">Назад</a>
+        <footer>
+            <div id=center>
+                <ul>
+                    <li>
+                        <a class="caps" href="../romiju/index.html">Home</a>
+                    </li>
+                    <li>
+                        <a class="caps" href="../romiju/index.html">About</a>
+                    </li>
+                    <li>
+                        <a class="caps" href="../romiju/index.html">Gallery</a>
+                    </li>
+                    <li>
+                        <a class="caps" href="../romiju/index.html">News</a>
+                    </li>
+                </ul>
+                <div>
+                    <ul>
+                        <li>
+                            <a class="caps" href="../romiju/index.html">Blog</a>
+                        </li>
+                        <li>
+                            <a class="caps" href="../romiju/index.html">FAQ</a>
+                        </li>
+                        <li>
+                            <a class="caps" href="../romiju/index.html">Contacts</a>
+                        </li>
+                        <li>
+                            <a class="caps" href="../romiju/index.html">Privacy & cookies</a>
+                        </li>
+                    </ul>
+                    <ul id=social>
+                        <li>
+                            <a class="fb" href="https://vk.ru/lfazliev"></a>
+                        </li>
+                        <li>
+                            <a class="yt" href="https://www.youtube.com/c/WarLenar"></a>
+                        </li>
+                        <li>
+                            <a class="ins" href="../ind/index.html"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p style="color : white">Copyright Lenar 2005-2022</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>

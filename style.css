@@ -136,8 +136,21 @@ p {
         margin: 5px 10px;
     }
 
+
+}
+
+#center div {
+    display: flex;
+    width: 50%;
+}
+
+@media screen and (max-width:600px) {
     #center {
         flex-direction: column
+    }
+
+    #center div {
+        width: 100%;
     }
 }
 
