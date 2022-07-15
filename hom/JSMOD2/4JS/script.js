@@ -14,12 +14,6 @@ class PrintMachine {
         el.appendChild(p)
     }
 }
-
-PmH1 = new PrintMachine('18px', '', '');
-PmP = new PrintMachine('14px', '', '');
-PmD = new PrintMachine('12px', '', '');
-PmT = new PrintMachine('16px', '', '');
-
 // 1
 z1btn.onclick = function (e) {
     rez1(z1v1.value, z1v2.value, z1v3.value, z1v4.value)
@@ -42,6 +36,65 @@ function rez1(a, b, c, d) {
     }
 }
 // 2
+
+class newsRool {
+    constructor() {
+        this.newslist = []
+        this.rand = []
+    }
+    getNews() {
+        return `${this.newslist.length} кол-во новостей`
+    }
+    printRool() {
+        if (this.newslist.length > 0) {
+            r3.innerHTML = ''
+            colnews.innerHTML = this.getNews()
+            for (let i = 0; i < this.newslist.length; i++) {
+                this.newslist[i].printnews(r3)
+                r3.style.display = 'block'
+            }
+        }
+        else {
+            r3.style.display = 'none'
+        }
+    }
+    addNews(newsOne) {
+        this.newslist.push(newsOne)
+        this.printRool(r3)
+    }
+    sortDate() {
+        this.newslist.sort(function (a, b) {
+            const DateA = a.date
+            const DateB = b.date
+            if (DateA < DateB) {
+                return -1;
+            }
+            if (DateA > DateB) {
+                return 1;
+            }
+            return 0;
+        })
+        this.printRool()
+    }
+    findTag(tag) {
+        r3.innerHTML = ''
+        let newstag = []
+        let j = 0
+        for (let i = 0; i < this.newslist.length; i++) {
+            if (this.newslist[i].taglist.includes(tag) == 1) {
+                newstag.push(this.newslist[i])
+                this.newslist[i].printnews(r3)
+                j++
+            }
+
+        }
+        colnews.innerHTML = `${j} кол-во новостей`
+
+    }
+}
+
+newsRool = new newsRool()
+
 class news {
     constructor(header, text, taglist, date, id) {
         if (date !== '') {
@@ -71,11 +124,17 @@ class news {
         this.id = id
     }
     printnews(rez) {
-
         let Newdiv = document.createElement('div')
         Newdiv.className = 'News'
         Newdiv.style.paddingLeft = '	1em'
         Newdiv.style.marginBottom = '1rem'
+        let btndel = document.createElement('button')
+        btndel.style.float = 'right'
+        btndel.innerHTML = "Удалить"
+        btndel.onclick = function () {
+            delNews(this.id, newsRool)
+        }
+        Newdiv.appendChild(btndel)
         let num = document.createElement('p')
         num.innerText = `id ${this.id}`
         num.style.fontSize = '13px'
@@ -136,72 +195,20 @@ class news {
         rez.appendChild(Newdiv)
     }
 }
-class newsRool {
-    constructor() {
-        this.newslist = []
-        this.rand = []
-    }
-    getNews() {
-        return `${this.newslist.length} кол-во новостей`
-    }
-    printRool() {
-        if (this.newslist.length > 0) {
-            r3.innerHTML = ''
-            colnews.innerHTML = this.getNews()
-            for (let i = 0; i < this.newslist.length; i++) {
-                this.newslist[i].printnews(r3)
-                r3.style.display = 'block'
-            }
-        }
-        else {
-            r3.style.display = 'none'
-        }
-    }
-    addNews(newsOne) {
-        this.newslist.push(newsOne)
-        this.printRool(r3)
-    }
-    delNews(id) {
-        for (let i = 0; i < this.newslist.length; i++) {
-            if (this.newslist[i].id == id) {
-                this.newslist.splice(i, 1)
-                this.printRool(r3)
-                this.rand.splice(this.rand.indexOf(id), 1)
-                return
-            }
-        }
-    }
-    sortDate() {
-        this.newslist.sort(function (a, b) {
-            const DateA = a.date
-            const DateB = b.date
-            if (DateA < DateB) {
-                return -1;
-            }
-            if (DateA > DateB) {
-                return 1;
-            }
-            return 0;
-        })
-        this.printRool()
-    }
-    findTag(tag) {
-        r3.innerHTML = ''
-        let newstag = []
-        let j = 0
-        for (let i = 0; i < this.newslist.length; i++) {
-            if (this.newslist[i].taglist.includes(tag) == 1) {
-                newstag.push(this.newslist[i])
-                this.newslist[i].printnews(r3)
-                j++
-            }
 
+function delNews(id, roll) {
+    for (let i = 0; i < roll.newslist.length; i++) {
+        if (roll.newslist[i].id == id) {
+            roll.newslist.splice(i, 1)
+            roll.printRool(r3)
+            roll.rand.splice(roll.rand.indexOf(id), 1)
+            return
         }
-        colnews.innerHTML = `${j} кол-во новостей`
-
     }
 }
-newsRool = new newsRool()
+
+
+
 
 z2btn.onclick = function (e) {
     rez2(z2v1.value, z2v2.value, z2v3.value, z2v4.value)
@@ -239,7 +246,7 @@ function rez2(header, text, tag, date) {
 // 3
 z3btndel.onclick = function (e) {
     if (newsRool.newslist.length > 0 && z3v1.value !== '') {
-        newsRool.delNews(z3v1.value)
+        delNews(z3v1.value, newsRool)
     }
     else {
         r3.innerHTML = 'Нет новостей'
@@ -268,7 +275,7 @@ for (item of document.querySelectorAll('#z3v1')) {
     item.addEventListener('keypress', function (e) {
         if (e.key == 'Enter') {
             if (newsRool.newslist.length > 0 && z3v1.value !== '') {
-                newsRool.delNews(z3v1.value)
+                delNews(z3v1.value, newsRool)
             }
             else {
                 r3.innerHTML = 'Нет новостей'
