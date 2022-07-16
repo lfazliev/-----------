@@ -55,6 +55,7 @@ class newsRool {
             }
         }
         else {
+            colnews.innerHTML = this.getNews()
             r3.style.display = 'none'
         }
     }
@@ -131,7 +132,7 @@ class news {
         let btndel = document.createElement('button')
         btndel.style.float = 'right'
         btndel.innerHTML = "Удалить"
-        btndel.onclick = function () {
+        btndel.onclick = () => {
             delNews(this.id, newsRool)
         }
         Newdiv.appendChild(btndel)
