@@ -16,144 +16,131 @@
     <hr>
     <div id="visibl">
         <p class="page"><a href="../../index.html">Homework</a>/<a href="../index.html">JavaScript модуль
-                №2</a>/Практика №4</p>
+                №3</a>/Практика №2</p>
         <div id="exe">
             <!-- 1 -->
             <div id=z1 class=task>
-                <p>Реализовать класс PrintMaсhine, которой состоит из:<br>
-                <ul>
-                    <li>размера шрифта;</li>
-                    <li>цвета шрифта;</li>
-                    <li>семейства шрифта;</li>
-                    <li>
-                        метода print(), который принимает текст и печатает его
-                        соответствующим шрифтом
-                    </li>
-                    </p>
-                </ul>
-                <input id="z1v1" type="text" placeholder="Текст">
-                <input id="z1v2" type="text" placeholder="Размер">
-                <input id="z1v3" type="text" placeholder="Цвет">
-                <input id="z1v4" type="text" placeholder="Шрифт">
-                <button id="z1btn">Выполнить</button>
+                <p>
+                    Задание 1
+                    Создать html-страницу с таблицей.
+                    При наведении мышкой на ячейку таблицы, у этой ячейки
+                    должен меняться фон. Учтите, что когда мышку уводят с ячейки,
+                    то ее фон возвращается к прежнему.
+                    Выполнить задание с помощью JS, а не с помощью CSS.
+                </p>
+                <a class=button id=z1btn href="Z1/index.html">Перейти</a>
+
+            </div>
+            <div id=z2 class=task>
+                Задание 2
+                Создать html-страницу с кнопкой Like, при нажатии на которую увеличивается счетчик лайков.
+                <div id="like">
+                    <img src="img/like.png" alt="like">
+                    <p>Like</p>
+                    <p id=schet>0</p>
+                </div>
+            </div>
+            <div id=z3 class=task>
+                Задание 3
+                Создать html-страницу «Калькулятор». Реализовать его функциональность.
                 <div class=res>
-                    <p>
-                        Результат:
-                    </p>
-                    <div id=r1 class=resd>
+                    <div id=r2 class=resd>
+                    </div>
+                    <div id=col>
+                        <div class=main>
+                            <div class="num">
+                                <div class="num">7</div>
+                                <div class="num">4</div>
+                                <div class="num">1</div>
+                            </div>
+                            <div class="num">
+                                <div>8</div>
+                                <div>5</div>
+                                <div>2</div>
+                            </div>
+                            <div class="num">
+                                <div>9</div>
+                                <div>6</div>
+                                <div>3</div>
+                            </div>
+
+                            <div class=zn>
+                                <div>+</div>
+                                <div>-</div>
+                                <div>*</div>
+                            </div>
+                        </div>
+                        <div class="down">
+                            <div>/</div>
+                            <div id=rovn>=</div>
+                            <div class="nool">0</div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div id=z2 class=task>
-                <p>
-                    Реализовать класс, описывающий новость (заголовок, текст,
-                    массив тегов, дата публикации). В классе необходимо реализовать
-                    один метод print, который выводит всю информацию в таком
-                    виде
-                </p>
-                <ul>
-                    <li>
-                        если с даты публикации прошло менее дня, то выводится
-                        «сегодня»;
-                    </li>
-                    <li>
-                        если с даты публикации прошло менее недели, то выводится «N дней назад»;
-                    </li>
-                    <li>в остальных случаях, полная дата в формате «дд.мм.гггг».</li>
-                </ul>
-                <input id="z2v1" type="text" placeholder="Заголовок">
-                <input id="z2v2" type="text" placeholder="Текст">
-                <input id="z2v3" type="text" placeholder="Теги через пробел">
-                <input id="z2v4" type="date">
-
-                <button id="z2btn">Добавить новость</button>
-                <div class=res id=r2>
-
-                </div>
+            <div id=z4 class=task>
+                Задание 4
+                Создать html-страницу с меню, которое имеет выпадающие
+                списки. Список с элементами подменю должен появляться по
+                щелчку на соответствующий элемент меню.
             </div>
-
-            <div id=z3 class=task>
-                <p>
-                    Реализовать класс, описывающий новостную ленту.
-                    Класс должен содержать:
-                </p>
-                <ul>
-                    <li>массив новостей;</li>
-                    <li>get-свойство, которое возвращает количество новостей</li>
-                    <li>метод для вывода на экран всех новостей;</li>
-                    <li>метод для добавления новости;</li>
-                    <li>метод для удаления новости;</li>
-                    <li>
-                        метод для сортировки новостей по дате (от последних новостей до старых);
-                    </li>
-                    <li>
-                        метод для поиска новостей по тегу (возвращает массив
-                        новостей, в которых указан переданный в метод тег).
-                        Продемонстрировать работу написанных методов.
-                    </li>
-                </ul>
-                <button id="z3btn">Вывести всё</button>
-                <button id="z3btndel">Удалить новость</button>
-                <input id="z3v1" type="text" placeholder="id удаляемой новости">
-                <button id="z3btnsort">Сортировка по дате</button>
-                <button id="z3btnfind">Поиск по тегу</button>
-                <input id="z3v2" type="text" placeholder="Тег для поиска">
-                <p id="colnews"></p>
-                <div class=res id=r3>
-
-                </div>
-            </div>
-
+            <div id=z5 class=task>
+                Задание 5
+                Создать html-страницу со списком статей.
+                При прокрутке страницы вниз более чем на 100 пикселей,
+                справа внизу должна появиться кнопка Вверх – для быстрого
+                перехода к началу страницы.</div>
         </div>
-        <a class=button href="../index.html">Назад</a>
-        <footer>
-            <div id=center>
+
+    </div>
+    <a class=button href="../index.html">Назад</a>
+    <footer>
+        <div id=center>
+            <ul>
+                <li>
+                    <a class="caps" href="../romiju/index.html">Home</a>
+                </li>
+                <li>
+                    <a class="caps" href="../romiju/index.html">About</a>
+                </li>
+                <li>
+                    <a class="caps" href="../romiju/index.html">Gallery</a>
+                </li>
+                <li>
+                    <a class="caps" href="../romiju/index.html">News</a>
+                </li>
+            </ul>
+            <div>
                 <ul>
                     <li>
-                        <a class="caps" href="../romiju/index.html">Home</a>
+                        <a class="caps" href="../romiju/index.html">Blog</a>
                     </li>
                     <li>
-                        <a class="caps" href="../romiju/index.html">About</a>
+                        <a class="caps" href="../romiju/index.html">FAQ</a>
                     </li>
                     <li>
-                        <a class="caps" href="../romiju/index.html">Gallery</a>
+                        <a class="caps" href="../romiju/index.html">Contacts</a>
                     </li>
                     <li>
-                        <a class="caps" href="../romiju/index.html">News</a>
+                        <a class="caps" href="../romiju/index.html">Privacy & cookies</a>
                     </li>
                 </ul>
-                <div>
-                    <ul>
-                        <li>
-                            <a class="caps" href="../romiju/index.html">Blog</a>
-                        </li>
-                        <li>
-                            <a class="caps" href="../romiju/index.html">FAQ</a>
-                        </li>
-                        <li>
-                            <a class="caps" href="../romiju/index.html">Contacts</a>
-                        </li>
-                        <li>
-                            <a class="caps" href="../romiju/index.html">Privacy & cookies</a>
-                        </li>
-                    </ul>
-                    <ul id=social>
-                        <li>
-                            <a class="fb" href="https://vk.ru/lfazliev"></a>
-                        </li>
-                        <li>
-                            <a class="yt" href="https://www.youtube.com/c/WarLenar"></a>
-                        </li>
-                        <li>
-                            <a class="ins" href="../ind/index.html"></a>
-                        </li>
-                    </ul>
-                </div>
+                <ul id=social>
+                    <li>
+                        <a class="fb" href="https://vk.ru/lfazliev"></a>
+                    </li>
+                    <li>
+                        <a class="yt" href="https://www.youtube.com/c/WarLenar"></a>
+                    </li>
+                    <li>
+                        <a class="ins" href="../ind/index.html"></a>
+                    </li>
+                </ul>
             </div>
-            <hr>
-            <p style="color : white">Copyright Lenar 2005-2022</p>
-        </footer>
+        </div>
+        <hr>
+        <p style="color : white">Copyright Lenar 2005-2022</p>
+    </footer>
     </div>
     <script src="script.js"></script>
 </body>

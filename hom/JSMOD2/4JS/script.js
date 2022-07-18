@@ -246,7 +246,8 @@ function rez2(header, text, tag, date) {
 // 3
 z3btndel.onclick = function (e) {
     if (newsRool.newslist.length > 0 && z3v1.value !== '') {
-        delNews(z3v1.value, newsRool)
+        delNews(z3v1.value, newsRool
+        )
     }
     else {
         r3.innerHTML = 'Нет новостей'

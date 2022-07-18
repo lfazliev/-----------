@@ -91,8 +91,8 @@ a.button {
 }
 
 a.button:hover {
-    color: rgb(104, 104, 104);
-    background-color: rgb(41, 24, 0);
+    color: rgb(166, 166, 166);
+    background-color: rgb(61, 61, 61);
     transition: 300ms;
 }
 
@@ -145,11 +145,15 @@ p {
 }
 
 @media screen and (max-width:600px) {
-    #center {
+    footer #center {
         flex-direction: column
     }
 
-    #center div {
+    footer #social li {
+        margin-bottom: 10px
+    }
+
+    footer #center div {
         width: 100%;
     }
 }
