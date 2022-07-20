@@ -162,7 +162,9 @@ a.caps {
     color: rgb(255, 255, 255);
     text-decoration: none;
     font-size: 14px;
+    /* max-width: 20px */
 }
+
 
 footer {
     background-color: rgb(126, 110, 68);
@@ -171,6 +173,11 @@ footer {
 
 footer ul {
     list-style-type: none;
+    max-width: 20%;
+}
+
+footer #social {
+    max-width: 100%
 }
 
 #social {
@@ -197,7 +204,7 @@ footer p {
 
 footer div {
     display: flex;
-    justify-content: space-around
+    /* justify-content: space-around */
 }
 
 a.fb {
@@ -225,14 +232,27 @@ a.ins {
     transition: 300ms;
 }
 
+a.caps::after {
+    content: '';
+    width: 0px;
+    height: 1px;
+    display: block;
+    background: black;
+    transition: 400ms;
+}
+
+a.caps:hover::after {
+    width: 100%;
+}
+
 a.ins:hover {
     background: url('imgfoot/insta.png') center/cover no-repeat;
     transition: 300ms;
 }
 
-a.caps:hover {
+/* a.caps:hover {
     text-decoration: underline black;
-}
+} */
 
 .page {
     color: rgb(160, 160, 160);
@@ -263,6 +283,13 @@ h1 {
         margin: 2rem 1.5rem 1.5rem;
         transition: 300ms;
         font-size: 17px
+    }
+
+}
+
+@media screen and (min-width:600px) {
+    footer div {
+        justify-content: space-around
     }
 
 }
