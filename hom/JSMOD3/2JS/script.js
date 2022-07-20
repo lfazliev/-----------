@@ -49,6 +49,7 @@ document.onclick = function (e) {
         for (item of menuelem) {
             let a = item.children[1]
             a.style.display = 'none'
+            item.style.backgroundColor = null
         }
     }
 }
@@ -60,9 +61,11 @@ for (item of menuelem) {
         for (item of menuelem) {
             let a = item.children[1]
             a.style.display = 'none'
+            item.style.backgroundColor = null
         }
         let a = this.children[1]
         a.style.display = 'block'
+        this.style.backgroundColor = 'rgb(96, 96, 144)'
 
     }
 }
