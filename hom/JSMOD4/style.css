@@ -1,0 +1,19 @@
+#bar {
+    height: 100%;
+}
+
+#bar ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#bar nav ul li {
+    padding: 5px 15px;
+    list-style-type: none;
+    flex-basis: 290px;
+}
+
+#bar a.button {
+    width: 95%;
+}

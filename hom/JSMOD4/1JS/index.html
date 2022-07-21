@@ -1,0 +1,150 @@
+<head>
+    <!DOCTYPE html>
+    <html lang="en">
+    <html>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link link href="../../../style.css" type="text/css" rel="stylesheet">
+    <link link href="style.css" type="text/css" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="head"></div>
+    <hr>
+    <div id="visibl">
+        <p class="page"><a href="../../index.html">Homework</a>/<a href="../index.html">JavaScript модуль
+                №4</a>/Практика №1</p>
+        <div id="exe">
+            <div id=z1 class=task>
+                <p>
+                    Задание 1
+                    Создать html-страницу с возможностью ввода числового значения через кнопки (больше, меньше).
+                    Пользователь не должен иметь возможность печатать текст
+                    или цифры. Число изменяется только при нажатии на кнопки.
+                </p>
+                <div id="container">
+                    <div id="number">0</div>
+                    <div id=btnplace>
+                        <div id=btnup>
+                            &#9650;</div>
+                        <div id=btndwn>
+                            &#9660;</div>
+                    </div>
+                </div>
+            </div>
+            <div id=z2 class=task>
+                <p>
+                    Задание 2
+                    Создать html-страницу с кнопкой, по нажатию на которую
+                    добавляются цветные блоки на страницу. По клику на сам блок,
+                    он должен удаляться со страницы.
+                </p>
+                <button id='z2btn'>Добавить</button>
+                <div id="colholder"></div>
+            </div>
+            <div id=z3 class=task>
+                <p id=z3text>
+                    Задание 3
+                    Создать html-страницу с текстом и палитрой цветов.
+                    При клике на цвет палитры, должен изменяться цвет текста на
+                    выбранный. Для указания, какой ячейке какой цвет соответствует,
+                    можно использовать атрибут data-color в каждой ячейке, а потом
+                    с помощью JS получать необходимый цвет из этого атрибута.
+                </p>
+                <div id=colplace>
+                    <div class="red" data-background-color="red"></div>
+                    <div class=" blue" data-background-color="blue"></div>
+                    <div class="black" data-background-color="black"></div>
+                    <div class="white" data-background-color="white"></div>
+                    <div class="orange" data-background-color="orange"></div>
+                    <div class="yellow" data-background-color="yellow"></div>
+                    <div class="purple" data-background-color="purple"></div>
+                    <div class="green" data-background-color="green"></div>
+                </div>
+            </div>
+            <div id=z4 class=task>
+                <p>
+                    Задание 4
+                    Создать html-страницу со статьей, комментариями к ней и
+                    формой для добавления нового комментария.
+                    При нажатии на кнопку Добавить комментарий форма должна
+                    очищаться, а комментарий добавляться к списку всех комментариев. Комментарий состоит из имени
+                    пользователя, даты и текста.
+                    <hr class="norm">
+                <div id="comlist"></div>
+                <div id="addcom">
+                    <p>Оставьте свой комментарий</p>
+                    <div id="name">Имя: <input type="text" placeholder="Введите ваше имя"></div>
+                    <div id=com>Комментарий <textarea type="text" placeholder="Оставьте свой комментарий"></textarea>
+                    </div>
+                    <button id=z4btn>Оставить комментарий</button>
+                </div>
+                </p>
+            </div>
+            <div id=z5 class=task>
+                <p>
+                    Задание 5
+                    Создать html-страницу с текстовым полем для ввода страны.
+                    При вводе пользователем страны, под текстовым полем должен
+                    появляться выпадающий список с подсказками (максимум 10 штук).
+                    Подсказки зависят от того, что ввел пользователь. Данные
+                    для подсказок храните в массиве, которые заранее создайте и
+                    заполните странами. При щелчке на подсказку ее текст должен
+                    вводится в input.
+                </p>
+            </div>
+        </div>
+        <a class=button href="../index.html">Назад</a>
+        <footer>
+            <div id=center>
+                <div>
+                    <ul>
+                        <li>
+                            <a class="caps" href="../romiju/index.html">Home</a>
+                        </li>
+                        <li>
+                            <a class="caps" href="../romiju/index.html">About</a>
+                        </li>
+                        <li>
+                            <a class="caps" href="../romiju/index.html">Gallery</a>
+                        </li>
+                        <li>
+                            <a class="caps" href="../romiju/index.html">News</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a class="caps" href="../romiju/index.html">Blog</a>
+                        </li>
+                        <li>
+                            <a class="caps" href="../romiju/index.html">FAQ</a>
+                        </li>
+                        <li>
+                            <a class="caps" href="../romiju/index.html">Contacts</a>
+                        </li>
+                        <li>
+                            <a class="caps" href="../romiju/index.html">Privacy & cookies</a>
+                        </li>
+                    </ul>
+                </div>
+                <ul id=social>
+                    <li>
+                        <a class="fb" href="https://vk.ru/lfazliev"></a>
+                    </li>
+                    <li>
+                        <a class="yt" href="https://www.youtube.com/c/WarLenar"></a>
+                    </li>
+                    <li>
+                        <a class="ins" href="../ind/index.html"></a>
+                    </li>
+                </ul>
+            </div>
+            <hr>
+            <p style="color : white">Copyright Lenar 2005-2022</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>

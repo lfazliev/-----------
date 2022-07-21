@@ -18,11 +18,6 @@
     justify-content: center
 }
 
-.News {
-    border: 2px solid black;
-    border-radius: 10px;
-    background-color: aliceblue;
-}
 
 :focus-visible {
     outline: -webkit-focus-ring-color auto 0px;
@@ -103,11 +98,6 @@ input {
     border: 1px solid #ccc;
 }
 
-.zab input {
-    margin-bottom: 5px;
-    width: 190px
-}
-
 button {
     margin-top: 5px;
     border-radius: 5px;
@@ -124,24 +114,10 @@ button:hover {
     cursor: pointer;
 }
 
-ul {
-    margin-left: 20px;
-    list-style: decimal
-}
-
-h4 {
-    margin: 1rem 1rem 0 3rem;
-    transition: 300ms
-}
 
 @media screen and (min-width: 600px) {
     .task {
         width: 80%;
-        transition: 300ms
-    }
-
-    h4 {
-        font-size: 23px;
         transition: 300ms
     }
 }
