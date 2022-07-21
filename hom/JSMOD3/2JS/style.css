@@ -39,15 +39,6 @@
     cursor: pointer;
 }
 
-#up {
-    width: 100px;
-    height: 100px;
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    font-size: 50px;
-    cursor: pointer;
-}
 
 .highmenu {
     background-color: rgb(115, 115, 178);
@@ -109,13 +100,12 @@
 }
 
 #like {
-    width: 25%;
-    height: 45%;
+    width: 150px;
+    height: 40px;
     border: 1px solid black;
     border-radius: 10px;
     justify-content: space-around;
     display: flex;
-    margin-bottom: 15px;
     align-items: center;
     background-color: aliceblue;
     transition: 300ms;
