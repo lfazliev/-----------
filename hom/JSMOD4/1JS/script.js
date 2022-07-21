@@ -47,10 +47,46 @@ z2btn.onclick = function () {
     }
 }
 let pipet = document.querySelectorAll('#colplace>div')
-console.log(pipet)
 for (item of pipet) {
     item.onclick = function () {
         z3text.style.color = this.dataset.backgroundColor
+    }
+}
+for (item of document.querySelectorAll('#z4 input')) {
+    item.addEventListener('keypress', function (e) {
+        if (e.key == 'Enter') {
+            rez4(z4v1.value, z4v2.value)
+        }
+    })
+}
+z4btn.onclick = function (e) {
+    rez4(z4v1.value, z4v2.value)
+}
+function rez4(a, b) {
+    if (a !== '' && b !== '') {
+        if (comlist.innerHTML == 'Нет комментариев') {
+            comlist.innerHTML = ''
+        }
+        let com = document.createElement('div')
+        let name = document.createElement('p')
+        name.style.fontWeight = 'bold'
+        name.style.paddingBottom = '5px'
+        let hr = document.createElement('hr')
+        hr.style.height = 2 + 'px'
+        name.innerHTML = a
+        let date = document.createElement('div')
+        let nowdate = new Date()
+        date.innerHTML = nowdate.toLocaleDateString()
+        date.style.fontSize = '12px'
+        date.style.paddingBottom = '5px'
+        let text = document.createElement('p')
+        text.innerHTML = b
+        com.appendChild(name)
+        com.appendChild(date)
+        com.appendChild(text)
+        com.style.padding = '20px 0 20px 0'
+        comlist.appendChild(com)
+        comlist.appendChild(hr)
     }
 }
 // if (this.value.length > 20) {
