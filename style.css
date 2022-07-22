@@ -204,7 +204,7 @@ footer p {
 
 footer div {
     display: flex;
-    /* justify-content: space-around */
+    justify-content: space-around
 }
 
 a.fb {

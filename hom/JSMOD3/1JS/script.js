@@ -48,6 +48,18 @@ z5btn.onclick = function () {
 
     zapoln.style.width = (zapoln.style.width != '100%') ? `${parseInt(zapoln.style.width) + 5}%` : '100%'
 }
+window.addEventListener('scroll', function () {
+    let a = scrollY + 'px';
+    if (parseInt(a) > 100) {
+        up.style.display = 'block'
+    }
+    else {
+        up.style.display = 'none'
+    }
+})
+up.onclick = function () {
+    window.scrollTo(0, 0)
+}
 // if (this.value.length > 20) {
 //     z10v1Width += 5
 //     z10v1.style.width = z8v1Width + 'px'

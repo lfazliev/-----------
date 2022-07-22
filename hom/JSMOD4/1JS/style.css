@@ -168,6 +168,14 @@ button:hover {
     width: 100%;
 }
 
+#prom>input {
+    width: 100%;
+}
+
+#prom {
+    width: 200px;
+}
+
 #addcom {
     margin-top: 20px;
 }

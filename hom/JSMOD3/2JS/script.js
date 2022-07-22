@@ -45,7 +45,6 @@ document.onclick = function (e) {
     if (clickel.className.indexOf('elem') == -1 &&
         clickel.parentElement.className.indexOf('elem') == -1 &&
         clickel.parentElement.parentElement.className.indexOf('elem') == -1) {
-
         for (item of menuelem) {
             let a = item.children[1]
             a.style.display = 'none'

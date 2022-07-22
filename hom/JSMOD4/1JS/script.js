@@ -89,6 +89,39 @@ function rez4(a, b) {
         comlist.appendChild(hr)
     }
 }
+let city = ['Москва', "Ижевск", 'Сочи', 'Санкт-петербург', 'Новосибирск', 'Екатеринбург', 'Казань', 'Нижний Новгород']
+z5v1.addEventListener('input', function () {
+    for (let i = 0; i < 10; i++) {
+        let b = character.children[i]
+        b.value = ''
+    }
+    if (z5v1.value != '') {
+        let a = city.filter(e => {
+            b = e.toLowerCase()
+            if (b.match(z5v1.value.toLowerCase())) {
+                return e
+            }
+        })
+        console.log(a)
+        for (let i = 0; i < 10; i++) {
+            let b = character.children[i]
+            b.value = a[i]
+        }
+    }
+})
+window.addEventListener('scroll', function () {
+    let a = scrollY + 'px';
+    if (parseInt(a) > 100) {
+        up.style.display = 'block'
+    }
+    else {
+        up.style.display = 'none'
+    }
+})
+up.onclick = function () {
+    window.scrollTo(0, 0)
+}
+
 // if (this.value.length > 20) {
 //     z10v1Width += 5
 //     z10v1.style.width = z8v1Width + 'px'
