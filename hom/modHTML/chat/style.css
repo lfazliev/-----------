@@ -1,0 +1,60 @@
+#main {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center
+}
+
+#main>div {
+    display: flex;
+}
+
+#main>div>.user {
+    display: flex;
+    width: 25%;
+    align-items: center;
+}
+
+#main>div>.massage {
+    margin: 10px;
+    width: 50%;
+}
+
+#main>div>.sender {
+    width: 25%;
+}
+
+.sender {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.rose {
+    flex-direction: row
+}
+
+.massage {
+    border-radius: 25px;
+}
+
+.massage>p {
+    padding: 20px
+}
+
+.blue>.massage {
+    background-color: rgba(135, 207, 235, 0.677)
+}
+
+.rose>.massage {
+    background-color: rgba(193, 117, 168, 0.661)
+}
+
+.blue>.user {
+    flex-direction: row-reverse
+}
+
+.rose>.user {
+    flex-direction: row
+}
