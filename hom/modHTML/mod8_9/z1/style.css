@@ -1,0 +1,30 @@
+#main {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#main>div {
+    width: 30%;
+
+}
+
+#main>div>div img {
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+}
+
+#main>div>div {
+    background-color: white;
+    margin-bottom: 10%;
+    border-radius: 10px;
+}
+
+#main>div>div>p {
+    padding: 10px;
+}
+
+body {
+    background-color: rgb(144, 205, 255);
+}
