@@ -2,6 +2,10 @@
     margin: 0px 40px;
 }
 
+#visibl>div {
+    padding: 0 15px
+}
+
 #visibl span {
     color: rgb(145, 145, 145);
 }
