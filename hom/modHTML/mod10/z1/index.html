@@ -16,8 +16,10 @@
     <div id="visibl">
         <p class="page"><a href="../../../index.html">Homework</a>/<a href="../../index.html">HTML практика</a>/Чат</p>
         <form>
-            <input type="tel" inputmode="numeric" placeholder="1234 5678 9012 3456" pattern="[0-9]{16,16}"
-                autocomplete="cc-number" minlength="16" maxlength="19">
+            <input id=cardnum required type="tel" inputmode="numeric" placeholder="1234 5678 9012 3456"
+                pattern="[0-9]{19,19}" autocomplete="cc-number" minlength="16" maxlength="19">
+            <input id=name required type="text" placeholder="Name Surname" pattern="[A-Z a-z а-я А-Я]{2,100}"
+                minlength="2">
         </form>
         <a class=button href="../../index.html">
 
@@ -67,5 +69,11 @@
             <hr>
             <p style="color : white">Copyright Lenar 2005-2022</p>
         </footer>
+
     </div>
+    <div id=up>
+        &#9757;
+    </div>
+    <script src="script.js"></script>
+    <script src="../../../../script.js"></script>
 </body>
