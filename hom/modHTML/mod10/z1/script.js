@@ -1,23 +1,34 @@
-for (item of document.querySelectorAll('input')) {
-    item.addEventListener('keypress', function (e) {
-        setTimeout(delprob, 20)
-    })
+let a
+cardnum.addEventListener('keypress', function (e) {
+    cardnum.focus();
+    a = cardnum.selectionStart
+    delprob()
+    vozvrat(a + 1)
+})
+cardnum.addEventListener('keyup', logKey);
+function logKey(e) {
+    if (e.code == 'Backspace') {
+        cardnum.focus();
+        a = cardnum.selectionStart
+        delprob()
+        vozvrat(a)
+    }
 }
 function delprob() {
-    cardnum.value = cardnum.value.replace(/ /g, '')
-    if (cardnum.value[4] != ' ' && cardnum.value.length >= 4) {
-        let drum = Array.from(cardnum.value)
-        drum.splice(4, 0, ' ')
-        cardnum.value = drum.join('')
-    }
-    if (cardnum.value[9] != ' ' && cardnum.value.length >= 9) {
-        let drum = Array.from(cardnum.value)
-        drum.splice(9, 0, ' ')
-        cardnum.value = drum.join('')
-    }
-    if (cardnum.value[14] != ' ' && cardnum.value.length >= 14) {
-        let drum = Array.from(cardnum.value)
-        drum.splice(14, 0, ' ')
-        cardnum.value = drum.join('')
-    }
+    console.log(a)
+    var cardCode = cardnum.value.replace(/[^\d]/g, '').substring(0, 16);
+    cardCode = cardCode !== '' ? cardCode.match(/.{1,4}/g).join(' ') : '';
+    cardnum.value = cardCode;
 }
+function vozvrat(pol) {
+    cardnum.focus();
+    cardnum.selectionStart = pol
+    cardnum.selectionEnd = pol
+}
+
+year.addEventListener('change', function (e) {
+    const select = document.querySelector('#year').getElementsByTagName('option');
+    for (let i = 0; i < select.length; i++) {
+        if (select[i].selected == true && ) select[i].selected = true;
+    }
+})

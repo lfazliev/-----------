@@ -18,8 +18,33 @@
         <form>
             <input id=cardnum required type="tel" inputmode="numeric" placeholder="1234 5678 9012 3456"
                 pattern="[0-9]{19,19}" autocomplete="cc-number" minlength="16" maxlength="19">
-            <input id=name required type="text" placeholder="Name Surname" pattern="[A-Z a-z а-я А-Я]{2,100}"
-                minlength="2">
+            <!-- <input id=name required type="text" placeholder="Name Surname" pattern="[A-Z a-z а-я А-Я]{2,100}"
+                minlength="2"> -->
+            <select name="month">
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+            <select id=year name="year">
+                <option value="2022">2022</option>
+                <option value="2023" selected>2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <option value="2028">2028</option>
+                <option value="2029">2029</option>
+                <option value="2030">2030</option>
+            </select>
         </form>
         <a class=button href="../../index.html">
 
