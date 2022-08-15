@@ -1,0 +1,119 @@
+input {
+    border: 0px;
+    border-bottom: 1px solid black;
+    background-color: white;
+    border-radius: 0px;
+    width: 90%;
+    transition: border 300ms, box-shadow 300ms
+}
+
+form {
+    display: flex;
+}
+
+form>div {
+    width: 45%;
+    margin: 0px 10px 0px 10px;
+}
+
+.inp {
+    display: flex;
+
+}
+
+#pass {
+    margin-right: 10px;
+}
+
+form>div>div img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.cbox>input {
+    height: 15px;
+    width: 15px;
+}
+
+#persd>div {
+    display: flex;
+
+}
+
+
+select {
+    width: 45%;
+    border: 0px;
+    border-bottom: 1px solid black;
+}
+
+select:focus {
+    outline: 0px;
+}
+
+select:focus {
+    background-color: rgb(201, 201, 201);
+}
+
+option:focus {
+    background-color: rgba(190, 190, 190, 0.993);
+}
+
+#persd>div>input {
+    margin: 0px 10px 0px 0px
+}
+
+button {
+    border: none;
+    display: inline-block;
+    background: rgb(96, 96, 96);
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 20px;
+    line-height: 1;
+    position: relative;
+    font-weight: 100;
+    transition: 300ms;
+    margin: 10px;
+}
+
+button:hover {
+    background-color: rgb(79, 79, 79);
+    cursor: pointer;
+}
+
+input:valid {
+    border-bottom: 1px solid rgb(60, 135, 67);
+
+}
+
+input:invalid {
+    border-bottom: 1px solid rgb(164, 79, 79);
+
+}
+
+input:focus-visible {
+    outline: none;
+    border-bottom: 1px solid rgb(52, 88, 166);
+    box-shadow: 0px 12px 12px -10px rgba(0, 0, 0, 0.358);
+
+}
+
+form>div>div {
+    width: 100%;
+    margin: 10px 0 10px 0;
+}
+
+#date {
+    width: 50%;
+    margin-left: 15px !important
+}
+
+@media screen and (min-width: 900px) {
+    input {
+        font-size: 15px
+    }
+}
