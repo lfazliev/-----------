@@ -48,14 +48,16 @@
             </div>
             <div id=persd>
                 <h1>Personal details</h1>
-                <div><input type="text" required name="fname" placeholder='First name' pattern="[A-Za-zА-Яа-я]{2,20}">
-                    <input type="text" required name="lname" placeholder='Last name' pattern="[A-Za-zА-Яа-я]{2,20}">
+                <div><input type="text" required name="fname" autocomplete=given-name placeholder='First name'
+                        pattern="[A-Za-zА-Яа-я]{2,20}">
+                    <input type="text" required name="lname" autocomplete=family-name placeholder='Last name'
+                        pattern="[A-Za-zА-Яа-я]{2,20}">
                 </div>
                 <div><select id=gender name="gender">
                         <option value="m">Male</option>
                         <option value="f">Female</option>
                     </select>
-                    <input type="date" id=date>
+                    <input type="date" id=date required autocomplete=bday>
                 </div>
                 <button type="submit">Отправить</button>
             </div>

@@ -78,6 +78,9 @@ button {
     font-weight: 100;
     transition: 300ms;
     margin: 10px;
+    position: relative;
+    left: 200px;
+    bottom: -150px;
 }
 
 button:hover {
