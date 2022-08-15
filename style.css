@@ -79,6 +79,15 @@ hr {
     width: 100%;
 }
 
+input {
+    border-radius: 5px;
+    background: #f9f9f9;
+    color: #515151;
+    padding: 4px 7px;
+    margin-bottom: 7px;
+    border: 1px solid #ccc;
+}
+
 a.button {
     display: inline-block;
     background: rgb(62, 58, 43);
