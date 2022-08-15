@@ -1,0 +1,122 @@
+#visibl>div {
+    margin: 10px;
+}
+
+.btn {
+    padding: 10px;
+    border: 0;
+    border-radius: 10px;
+    font-size: 15px;
+    background-color: #5b7503;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.btn:hover {
+    color: white;
+    background-color: purple;
+}
+
+.btn:active {
+    color: white;
+    background-color: rgb(0, 0, 0);
+}
+
+#circle {
+    border: 0px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 35px;
+    background-color: green;
+    transition: background 0.3s, color 0.3s;
+}
+
+#circle:hover {
+    cursor: pointer;
+    background-color: #ff0000;
+}
+
+input {
+    border-radius: 5px;
+    background: #f9f9f9;
+    color: #515151;
+    padding: 4px 7px;
+    margin-bottom: 7px;
+    border: 1px solid #ccc;
+}
+
+#invalid:invalid {
+    border: red 1px solid;
+}
+
+#valid:valid {
+    border: green 1px solid;
+}
+
+
+
+#highload1 {
+    display: none;
+}
+
+#highload1+.lb1,
+#highload1+.lb1::before,
+#highload1+.lb1::after {
+    transition: all .3s;
+}
+
+#highload1+.lb1 {
+    display: inline-block;
+    position: relative;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+#highload1+.lb1::before {
+    display: block;
+    content: attr(data-offlabel);
+    position: absolute;
+    top: 3px;
+    right: 10px;
+    color: black;
+    font-size: 19px;
+}
+
+#highload1+.lb1::after {
+    border-radius: 5px;
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 54px;
+    height: 25px;
+    background-color: white;
+}
+
+#highload1:checked+.lb1::before {
+    content: attr(data-onlabel);
+    left: 11px;
+    right: auto;
+    color: #fff;
+}
+
+#highload1:checked+.lb1::after {
+    left: 43px;
+    background-color: #f7f7f7;
+}
+
+#highload1+.lb1 {
+    background-color: #ccc;
+}
+
+#highload1:checked+.lb1 {
+    background-color: green;
+}
+
+#highload1:checked+.lb1::before {
+    color: #fff;
+}

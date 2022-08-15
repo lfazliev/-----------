@@ -14,55 +14,51 @@
     <div id="head"></div>
     <hr>
     <div id="visibl">
-        <p class="page"><a href="../../../index.html">Homework</a>/<a href="../../index.html">HTML практика</a>/Чат</p>
-        <div id=main>
-            <div class=blue>
-                <div class=sender><img src="img/avatar_1.png" alt="Аватар">
-                    <div>Anne Smith<p>3 hours ago</p>
-                    </div>
-                </div>
-                <div class=massage>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus velit a quaerat vel
-                        voluptates
-                        porro nisi expedita nihil odio! Possimus eligendi velit consequatur non beatae quia laboriosam
-                        facere
-                        harum consequuntur.
-                    </p>
-                </div>
-                <div class=user></div>
+        <p class="page"><a href="../../../index.html">Homework</a>/<a href="../../index.html">HTML
+                практика</a>/Библеотека input</p>
+        <div>
+            <input type="text" name="normal" id="normal" value="normal" size="10">
+            <input type="text" name="valid" id="valid" value="valid" size="10">
+            <input type="text" name="invalid" id="invalid" pattern="[0-9]" value="Hello" size="10">
+        </div>
+        <div>
+            <div>
+                <input type="checkbox" id="One" name="One" checked>
+                <label for="One">One</label>
             </div>
-            <div class=rose>
-                <div class=sender></div>
-                <div class=massage>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis sint est perspiciatis, sapiente
-                        dicta dolorum, ut fugit reiciendis quod harum accusantium vitae praesentium dolore impedit qui
-                        molestias, doloribus nemo quo.</p>
-                </div>
-                <div class=user><img src="img/avatar_2.png" alt="Аватар">
-                    <div>Anne Smith<p>3 hours ago</p>
-                    </div>
-                </div>
+            <div>
+                <input type="checkbox" id="Two" name="Two">
+                <label for="horns">Two</label>
             </div>
-            <div class=blue>
-                <div class=sender><img src="img/avatar_1.png" alt="Аватар">
-                    <div>Anne Smith<p>3 hours ago</p>
-                    </div>
-                </div>
-                <div class=massage>
-                    <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus non ducimus explicabo
-                        inventore! Eligendi recusandae illo dicta quasi odit eaque! Dolores, eveniet deserunt? Minus
-                        optio
-                        sunt velit consectetur quaerat quos.
-                    </p>
 
-                </div>
-                <div class=user></div>
+            <div>
+                <input type="checkbox" id="highload1" name="highload1">
+                <label for="highload1" data-onlabel="on" data-offlabel="off" class="lb1"></label>
             </div>
         </div>
-        <a class=button href="../../index.html">
+        <div>
+            <input type="radio" id="contactChoice1" name="contact" value="email">
+            <label for="contactChoice1">Email</label>
 
+            <input type="radio" id="contactChoice2" name="contact" value="phone">
+            <label for="contactChoice2">Phone</label>
+
+            <input type="radio" id="contactChoice3" name="contact" value="mail">
+            <label for="contactChoice3">Mail</label>
+        </div>
+        <div>
+            <button class=btn>Active</button>
+            <button class=btn>Hover</button>
+            <button id=circle>+</button>
+        </div>
+        <div><textarea cols="30" rows="10"></textarea></div>
+
+
+
+
+
+
+        <a class=button href="../../index.html">
             &#10096; Назад</a>
         <footer>
             <div id=center>
@@ -109,8 +105,13 @@
             <hr>
             <p style="color : white">Copyright Lenar 2005-2022</p>
         </footer>
-        <div id=up>
-            &#9757;
-        </div>
+
     </div>
+    <div id=up>
+        &#9757;
+    </div>
+    <script src="script.js"></script>
+    <script src="../../../../script.js"></script>
 </body>
+
+</html>
