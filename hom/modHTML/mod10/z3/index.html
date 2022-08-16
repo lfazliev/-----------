@@ -17,50 +17,56 @@
         <p class="page"><a href="../../../index.html">Homework</a>/<a href="../../index.html">HTML
                 практика</a>/Библеотека input</p>
         <form>
-            <div>
-                <!-- <input type="text" pattern="[0-9]"> -->
-                <h1>Registration form</h1>
-                <div class=inp><img src="../img/username.png" alt="ava">
+            <div id=main>
+                <div>
+                    <!-- <input type="text" pattern="[0-9]"> -->
+                    <h1>Registration form</h1>
+                    <div class=inp><img src="../img/username.png" alt="ava">
 
-                    <input autocomplete=username title="Используйте числовой формат" type="text" required
-                        name="username" placeholder=Username pattern="[0-9A-Za-z]{2,20}">
-                </div>
-                <div class=inp><img src="../img/email.png" alt="email">
-                    <input autocomplete=on type="email" required name="Email" placeholder='Email adress'
-                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
-                </div>
+                        <input autocomplete=username title="Используйте числовой формат" type="text" required
+                            name="username" placeholder=Username pattern="[0-9A-Za-z]{2,20}">
+                    </div>
+                    <div class=inp><img src="../img/email.png" alt="email">
+                        <input autocomplete=on type="email" required name="Email" placeholder='Email adress'
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                    </div>
 
-                <div class=inp><img src="../img/pswd.png" autocomplete=on alt="pswd">
-                    <input id=pass type="Password" required name="pswd" placeholder='Password'
-                        autocomplete=new-password>
-                    <input type="Password" id=copass required placeholder='Confirm password' autocomplete=new-password>
-                </div>
+                    <div class=inp><img src="../img/pswd.png" autocomplete=on alt="pswd">
+                        <div id=inpbot>
+                            <input id=pass type="Password" required name="pswd" placeholder='Password'
+                                autocomplete=new-password>
+                            <input type="Password" id=copass required placeholder='Confirm password'
+                                autocomplete=new-password>
+                        </div>
+                    </div>
 
-                <div class=cbox>
-                    <input type="checkbox" id="Want" name="Want">
-                    <label for="Want">Я хочу получать новостную рассылку</label>
                 </div>
-
-                <div class=cbox>
-                    <input type="checkbox" id="Agree" name="Agree">
-                    <label for="Agree">Я согласен с Правилами и Политикой конфиденсальности</label>
+                <div id=persd>
+                    <h1>Personal details</h1>
+                    <div><input type="text" required name="fname" autocomplete=given-name placeholder='First name'
+                            pattern="[A-Za-zА-Яа-я]{2,20}">
+                        <input type="text" required name="lname" autocomplete=family-name placeholder='Last name'
+                            pattern="[A-Za-zА-Яа-я]{2,20}">
+                    </div>
+                    <div><select id=gender name="gender">
+                            <option value="m">Male</option>
+                            <option value="f">Female</option>
+                        </select>
+                        <input type="date" id=date required autocomplete=bday>
+                    </div>
                 </div>
             </div>
-            <div id=persd>
-                <h1>Personal details</h1>
-                <div><input type="text" required name="fname" autocomplete=given-name placeholder='First name'
-                        pattern="[A-Za-zА-Яа-я]{2,20}">
-                    <input type="text" required name="lname" autocomplete=family-name placeholder='Last name'
-                        pattern="[A-Za-zА-Яа-я]{2,20}">
-                </div>
-                <div><select id=gender name="gender">
-                        <option value="m">Male</option>
-                        <option value="f">Female</option>
-                    </select>
-                    <input type="date" id=date required autocomplete=bday>
-                </div>
-                <button type="submit">Отправить</button>
+            <div class=cbox>
+                <input type="checkbox" id="Want" name="Want">
+                <label for="Want">Я хочу получать новостную рассылку</label>
             </div>
+
+            <div class=cbox>
+                <input type="checkbox" id="Agree" name="Agree">
+                <label for="Agree">Я согласен с Правилами и Политикой конфиденсальности</label>
+            </div>
+            <hr>
+            <button type="submit">Отправить</button>
         </form>
         <a class=button href="../../index.html">
             &#10096; Назад</a>
