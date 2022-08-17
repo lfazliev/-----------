@@ -9,7 +9,7 @@
 }
 
 #bar nav ul li {
-    padding: 5px 15px;
+    padding: 5px 60px 0 30px;
     list-style-type: none;
     flex-basis: 290px;
 }

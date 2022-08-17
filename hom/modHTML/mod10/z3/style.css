@@ -14,7 +14,7 @@ form {
 }
 
 form>div>div {
-    width: 45%;
+    width: 50%;
     margin: 0px 20px 0px 20px;
 }
 
@@ -40,7 +40,7 @@ form>div>div>div img {
 
 #persd>div {
     display: flex;
-
+    height: 40px;
 }
 
 .cbox {
@@ -148,7 +148,7 @@ form>div {
 
     form>div>div {
         width: 100%;
-        margin: 10px 20px 10px 20px;
+        margin: 10px 0px 10px 0px;
     }
 }
 
@@ -173,6 +173,9 @@ form>div {
 
     #persd>div {
         flex-direction: column;
+        display: flex;
+        height: 100px;
+
     }
 
     #persd>div>input {
