@@ -64,7 +64,32 @@ p {
 li.prof {
     padding: 5px;
     margin: 10px 0px;
-    border: 2px solid;
+    border: 1px solid black;
     border-radius: 10px;
-    border-color: black;
+}
+
+.speech-bubble {
+    position: relative;
+    background-color: #292929c2;
+    width: 200px;
+    height: 300px;
+    line-height: 150px;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-top: 16px;
+}
+
+.speech-bubble:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 15px solid;
+    border-right-color: #292929c2;
+    top: 75%;
+    right: 100%;
+    margin-right: 0px;
+    z-index: -1;
 }

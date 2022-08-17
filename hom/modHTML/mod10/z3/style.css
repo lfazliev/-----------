@@ -109,6 +109,7 @@ input:invalid {
 
 }
 
+
 input:focus-visible {
     outline: none;
     border-bottom: 1px solid rgb(52, 88, 166);
@@ -128,6 +129,10 @@ form>div {
 #inpbot {
     display: flex;
     width: 100%;
+}
+
+#main {
+    margin-left: 20px;
 }
 
 #date {

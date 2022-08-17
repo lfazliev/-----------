@@ -6,6 +6,12 @@
     height: 300px;
 }
 
+#head>a {
+    display: block;
+    width: 100%;
+    height: 100%
+}
+
 
 @keyframes left {
     from {
@@ -22,7 +28,8 @@
 }
 
 #highbar nav {
-    width: fit-content;
+    width: 35%;
+    max-width: 350px;
     margin: 0 auto;
 }
 
