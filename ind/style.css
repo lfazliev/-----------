@@ -121,6 +121,20 @@ li.prof {
 
 }
 
+@keyframes anim {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+p {
+    animation: anim 400ms
+}
+
 @media screen and (max-width:600px) {
     #speechbubble {
         height: 465px;
