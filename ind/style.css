@@ -7,7 +7,7 @@
     font-size: 50px
 }
 
-p {
+#visibl h2 {
     font-size: 35px;
     font-weight: bold;
     margin-left: 15px;
@@ -38,6 +38,10 @@ p {
     align-items: center;
 }
 
+#menu p {
+    display: none
+}
+
 #menu li {
     padding-right: 50px;
     list-style: none;
@@ -49,17 +53,6 @@ p {
     cursor: pointer;
 }
 
-@media screen and (max-width:900px) {
-    #visibl img {
-        width: 50px;
-        transition: 300ms
-    }
-
-    #visibl span {
-        font-size: 15px;
-        transition: 300ms;
-    }
-}
 
 li.prof {
     padding: 5px;
@@ -68,28 +61,82 @@ li.prof {
     border-radius: 10px;
 }
 
-.speech-bubble {
+#speechbubble {
     position: relative;
     background-color: #292929c2;
-    width: 200px;
-    height: 300px;
-    line-height: 150px;
+    width: 70%;
+    height: 465px;
     color: white;
-    text-align: center;
     border-radius: 10px;
-    margin-left: 20px;
-    margin-top: 16px;
+    margin: 15px 10px 15px 20px;
+    max-width: 470px
 }
 
-.speech-bubble:after {
+#speechbubble>::-webkit-scrollbar {
+    border-radius: 10px
+}
+
+#speechbubble>p {
+    margin: 5px;
+    overflow: auto;
+    height: 95%;
+}
+
+#after {
     content: '';
     position: absolute;
     width: 0;
     height: 0;
     border: 15px solid;
     border-right-color: #292929c2;
-    top: 75%;
+    top: 12%;
     right: 100%;
     margin-right: 0px;
     z-index: -1;
+    transition: top 300ms;
+}
+
+@media screen and (max-width:900px) {
+    #visibl img {
+        width: 50px;
+        transition: 300ms;
+    }
+
+    #menu li {
+        padding-right: 0px;
+    }
+
+    #menu span {
+        padding-right: 10px;
+    }
+
+    #visibl span {
+        font-size: 15px;
+        transition: 300ms;
+    }
+
+    #speechbubble {
+        height: 365px;
+    }
+
+}
+
+@media screen and (max-width:600px) {
+    #speechbubble {
+        height: 465px;
+    }
+
+    #menu span {
+        padding: 0 0px 0 0;
+    }
+
+    #menu li {
+        padding-right: 5px;
+    }
+
+    #menu a {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
 }
