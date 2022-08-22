@@ -132,7 +132,7 @@ li.prof {
 }
 
 p {
-    animation: anim 400ms
+    animation: anim 400ms;
 }
 
 @media screen and (max-width:600px) {
