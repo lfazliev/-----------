@@ -105,37 +105,54 @@ button:hover {
     }
 }
 
-#mass {
-    animation: opt 400ms;
+@keyframes animout {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.mass-in {
+    animation: anim 400ms;
+}
+
+input:invalid {
+    border: 1px solid rgb(164, 79, 79);
+}
+
+input:valid {
+    border: 1px solid rgb(60, 135, 67);
+}
+
+
+.mass-out {
+    animation: animout 400ms;
+}
+
+form {
+    margin-top: 20px
 }
 
 #mass {
     display: none;
     position: fixed;
-    margin: auto auto;
+    margin: auto;
     padding: 50px;
-    background-color: rgba(0, 0, 0, 0.648);
+    background-color: rgba(0, 0, 0, 0.745);
     border-radius: 20px;
-    color: #ccc;
+    color: rgb(255, 255, 255);
 
 }
 
-@keyframes opt {
-    from {
-        opacity: 0;
-    }
 
-    to {
-        opacity: 1;
-    }
-}
-
-
-#z1 .inp {
+#z1 .z1inp {
     display: flex;
     flex-direction: column-reverse
 }
 
-#z1 button {
+.task button {
     width: 100%;
 }

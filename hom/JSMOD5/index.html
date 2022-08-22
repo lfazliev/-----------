@@ -25,20 +25,42 @@
                     галочкой «Запомнить меня». После заполнения формы вывести на
                     экран: «Привет, Имя! Я тебя запомнил/не запомнил».
                 </p>
-                <form>
-                    <div class=inp><input placeholder="Username" required pattern="[0-9A-Za-z]{2,20}" type="text"
-                            name="username" id="username">
-                        <label for="username">Имя пользователя</label>
+                <form onsubmit="return false;">
+                    <div class=z1inp><input id=z1username placeholder="Username" required pattern="[0-9A-Za-z]{2,20}"
+                            type="text" name="z1username" id="z1username">
+                        <label for="z1username">Имя пользователя</label>
                     </div>
-                    <div class=inp><input type="password" name="pwrd" required placeholder='Password'
-                            autocomplete=new-password id="pwrd">
-                        <label for="pwrd">Пароль</label>
+                    <div class=z1inp><input type="password" name="z1pwrd" required placeholder='Password' minlength="3"
+                            autocomplete=new-password id="z1pwrd">
+                        <label for="z1pwrd">Пароль</label>
                     </div>
 
-                    <div><input type="checkbox" name="remem" id="remem">
-                        <label for="remem">Запомнить меня</label>
+                    <div><input type="checkbox" name="z1remem" id="z1remem">
+                        <label for="z1remem">Запомнить меня</label>
                     </div>
-                    <button type="submit" id=sub>Войти</button>
+                    <button type="z1submit" id=z1sub>Войти</button>
+                </form>
+            </div>
+            <div id=z2 class=task>
+                <p>
+                    Создать html-страницу с формой для регистрации пользова-
+                    теля. Форма должна состоять из указания почты, логина, пароля
+                    (2 раза). После заполнения формы вывести на экран: «На почту
+                    такую-то отправлено письмо с подтверждением».
+                </p>
+                <form onsubmit="return false;">
+                    <input autocomplete=username type="text" required name="username" placeholder=Username
+                        pattern="[0-9A-Za-z]{2,20}">
+                    <input autocomplete=on type="email" required name="Email" placeholder='Email adress'
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+
+                    <div id=inpbot>
+                        <input id=z2pass type="Password" required name="z2pswd" placeholder='Password'
+                            autocomplete=new-password>
+                        <input type="Password" id=z2copass required placeholder='Confirm password'
+                            autocomplete=new-password>
+                    </div>
+                    <button type="submit" id=z2sub>Зарегистрироваться</button>
                 </form>
             </div>
             <div id="mass"></div>
