@@ -49,23 +49,112 @@
                     такую-то отправлено письмо с подтверждением».
                 </p>
                 <form onsubmit="return false;">
-                    <input autocomplete=username type="text" required name="username" placeholder=Username
-                        pattern="[0-9A-Za-z]{2,20}">
-                    <input autocomplete=on type="email" required name="Email" placeholder='Email adress'
-                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                    <div>
+                        <input autocomplete=username type="text" id=z2v1 required name="username" placeholder=Username
+                            pattern="[0-9A-Za-z]{2,20}">
+                        <input autocomplete=on type="email" id=z2v2 required name="Email" placeholder='Email adress'
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
 
-                    <div id=inpbot>
-                        <input id=z2pass type="Password" required name="z2pswd" placeholder='Password'
+                    </div>
+                    <div>
+                        <input id=z2v3 type="Password" required name="z2pswd" placeholder='Password'
                             autocomplete=new-password>
-                        <input type="Password" id=z2copass required placeholder='Confirm password'
+                        <input type="Password" id=z2v4 required placeholder='Confirm password'
                             autocomplete=new-password>
                     </div>
                     <button type="submit" id=z2sub>Зарегистрироваться</button>
                 </form>
             </div>
+            <div id=z3 class=task>
+                <p>
+                    Создать html-страницу с формой для заполнения информации
+                    о пользователе. После заполнения формы вывести всю введенную
+                    информацию в текстовом виде.
+                </p>
+                <form onsubmit="return false;">
+                    <div id=inp>
+                        <div>
+                            <div>
+                                <label for="fname">Имя:</label>
+                                <input type="text" required name="fname" autocomplete=given-name
+                                    placeholder='First name' pattern="[A-Za-zА-Яа-я]{2,20}">
+                            </div>
+
+                            <div>
+                                <label for="lname">Фамилия:</label>
+                                <input type="text" required name="lname" autocomplete=family-name
+                                    placeholder='Last name' pattern="[A-Za-zА-Яа-я]{2,20}">
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label for="date">День рождения:</label>
+                                <input name=date type="date" id=date required autocomplete=bday>
+                            </div>
+                            <div id=gender>
+                                Пол:
+                                <label for="gender"><input type="radio" value="male" name="gender"
+                                        class="gender">Мужчина</label>
+                                <label for="gender"><input type="radio" name="gender" value=female
+                                        class="gender">Женщина</label>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label for="country">Страна:</label>
+                                <select id=country name="country">
+                                    <option selected disabled></option>
+                                    <option value="ru">Россия</option>
+                                    <option value="us">США</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="city">Город:</label>
+                                <select id=city name="city">
+                                    <option selected disabled></option>
+                                    <option value="moscow">Москва</option>
+                                    <option value="sochi">Сочи</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id=skill>
+                        Skills:
+                        <div class=cbox>
+                            <input type="checkbox" name="html">
+                            <label for="html">HTML</label>
+                        </div>
+                        <div class=cbox>
+                            <input type="checkbox" name="CSS">
+                            <label for="CSS">CSS</label>
+                        </div>
+                        <div class=cbox>
+                            <input type="checkbox" name="JS">
+                            <label for="JS">JS</label>
+                        </div>
+                        <div class=cbox>
+                            <input type="checkbox" name="PHP">
+                            <label for="PHP">PHP</label>
+                        </div>
+                        <div class=cbox>
+                            <input type="checkbox" name="C++">
+                            <label for="C++">C++</label>
+                        </div>
+                        <div class=cbox>
+                            <input type="checkbox" name="Java">
+                            <label for="Java">Java</label>
+                        </div>
+                        <div class=cbox>
+                            <input type="checkbox" name="C#">
+                            <label for="C#">C#</label>
+                        </div>
+                    </div>
+                    <hr>
+                    <button type="submit" id=z3sub>Добавить</button>
+                </form>
+            </div>
             <div id="mass"></div>
         </div>
-
         <a class=button href="../index.html">&#10096; Назад</a>
         <footer>
             <div id=center>

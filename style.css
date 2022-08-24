@@ -90,10 +90,16 @@ input {
     border-radius: 5px;
     background: #f9f9f9;
     color: #515151;
-    padding: 4px 7px;
+    padding: 4px 1%;
     margin-bottom: 7px;
     border: 1px solid #ccc;
 }
+
+input:focus-visible {
+    outline: 0px;
+    border: 0;
+}
+
 
 a.button {
     display: inline-block;
