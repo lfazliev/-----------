@@ -43,20 +43,20 @@ z2sub.onclick = function (e) {
     setTimeout(disbl, 3000)
 }
 z3sub.onclick = function () {
-    let gendsel = document.getElementsByClassName('gender')
+
     if (!gendsel[0].checked && !gendsel[1].checked) {
 
-        let errmas = document.createElement('div')
-        let after = document.createElement('div')
-        after.id = 'after';
-        errmas.style.position = 'absolute'
-        errmas.style.left = '100px'
-        errmas.style.padding = '3px'
-        errmas.style.bottom = '-30px'
-        errmas.style.borderRadius = '5px'
-        errmas.style.backgroundColor = 'red'
-        errmas.innerHTML = 'Укажите пол'
-        errmas.appendChild(after)
-        gender.appendChild(errmas)
     }
+
+    count = country.children
+    for (item of count) {
+        if (item.selected == true && item.disabled == true) {
+
+        }
+        else if (item.selected == true && item.disabled == false) {
+
+        }
+    }
+    city = city.children
+
 }

@@ -166,6 +166,11 @@ form {
     flex-direction: row
 }
 
+#divcount,
+#divcity {
+    position: relative;
+}
+
 #z3 #inp>div>div {
     display: flex;
     flex-direction: column;
@@ -178,6 +183,7 @@ form {
     display: flex;
     flex-direction: row;
     width: 100%;
+    padding-bottom: 10px;
 }
 
 #gender {
@@ -192,20 +198,6 @@ select {
     margin-bottom: 7px;
     border-bottom: 1px solid #ccc;
     border-radius: 5px;
-}
-
-#after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 0;
-    border: 15px solid;
-    border-right-color: #292929c2;
-    top: 12%;
-    right: 100%;
-    margin-right: 0px;
-    z-index: -1;
-    transition: top 300ms;
 }
 
 @media (max-width: 600px) {
