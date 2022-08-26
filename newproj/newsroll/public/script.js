@@ -162,11 +162,18 @@ class news {
     }
 }
 
-function delNews(id, roll) {
+async function delNews(id, roll) {
     for (let i = 0; i < roll.newslist.length; i++) {
         if (roll.newslist[i].id == id) {
             roll.newslist.splice(i, 1)
-            await db.deleteOne({ id })
+            const result = await fetch('/news', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+                body: JSON.stringify({ id })
+            })
+            const insertRes = await result.json()
             roll.printRool(r3)
             return
         }
@@ -194,7 +201,7 @@ async function rez2(header, text, tag, date) {
     }
     else {
 
-        tagarr = split(tag, ' ')
+        tagarr = tag.split(' ')
         const result = await fetch('/news', {
             method: 'POST',
             headers: {
@@ -203,7 +210,6 @@ async function rez2(header, text, tag, date) {
             body: JSON.stringify({ header, text, tagarr, date })
         })
         const insertRes = await result.json()
-        console.log(insertRes.result.insertedId)
         let curnews = new news(header, text, tag, date, insertRes.result.insertedId)
         curnews.printnews(r2)
         newsRool.addNews(curnews)

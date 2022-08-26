@@ -38,19 +38,34 @@ z2sub.onclick = function (e) {
         mass.style.display = 'block'
     mass.classList.add('mass-in')
     mass.innerHTML = `На почту ${z2v2.value} отправлено письмо с подтверждением`
-
-
     setTimeout(disbl, 3000)
 }
 z3sub.onclick = function () {
-
+    let nonvalidinp = z3.querySelectorAll('input[type="text"], input[type="date"]')
+    for (item of nonvalidinp) {
+        if (!item.checkValidity()) {
+            item.setAttribute('class', 'text_input_invalid')
+        }
+    }
+    gendsel = gender.getElementsByClassName('gender')
     if (!gendsel[0].checked && !gendsel[1].checked) {
+        let fiemass = gender.getElementsByClassName('text-field__message')
+        fiemass[0].innerText = 'Выберите пол'
+        fiemass[0].style.color = 'red'
+        fiemass[0].style.position = 'absolute'
+        fiemass[0].style.bottom = '-15px'
+        fiemass[0].style.fontSize = '14px'
 
     }
-
     count = country.children
     for (item of count) {
         if (item.selected == true && item.disabled == true) {
+            let fiemass = country.nextSibling.nextSibling
+            fiemass.innerText = 'Выберите cтрану'
+            fiemass.style.color = 'red'
+            fiemass.style.position = 'absolute'
+            fiemass.style.bottom = '-11px'
+            fiemass.style.fontSize = '14px'
 
         }
         else if (item.selected == true && item.disabled == false) {

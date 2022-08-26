@@ -35,9 +35,9 @@ router.get('/clear', async (request, response) => {
   }
 })
 
-router.post('/check', async (request, response) => {
+router.delete('/news', async (request, response) => {
   try {
-    const res = await db.updateOne({ _id: new ObjectId(request.body._id) }, { $set: { done: request.body.done } })
+    const res = await db.deleteOne({ _id: new ObjectId(request.body.id) })
     response.send({ result: res })
   } catch (e) {
     response.send({ result: 'error', data: e })
