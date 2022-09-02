@@ -135,20 +135,27 @@ form {
 }
 
 .text_input_invalid {
-    border-color: #dc3545;
+    border-bottom: 1px solid #dc3545 !important;
 }
 
 .text_input_valid {
-    border-color: #198754;
+    border-bottom: 1px solid #198754 !important;
+}
+
+
+input:focus-visible {
+    border-bottom: 1px solid;
+    border: 0px;
 }
 
 .text_input_invalid:focus-visible {
-    border-color: #dc3545;
+    border-bottom: 1px solid #dc3545 !important;
 }
 
 .text-field__input_valid:focus-visible {
-    border-color: #198754;
+    border-bottom: 1px solid #198754 !important;
 }
+
 
 #mass {
     display: none;
@@ -176,7 +183,7 @@ form {
 }
 
 #divcount,
-#divcity {
+#divcit {
     position: relative;
 }
 

@@ -82,6 +82,12 @@ class news {
         }
         if (taglist !== '') {
             this.taglist = taglist.split(' ')
+            for (let i = 0; i < tagarr.length; i++) {
+                if (this.taglist[i] == '' || this.taglist[i].indexOf(' ') >= 0) {
+                    this.taglist.splice(i, 1)
+                    i--
+                }
+            }
         }
         else {
             this.taglist = 'Теги не указаны'
@@ -202,6 +208,12 @@ async function rez2(header, text, tag, date) {
     else {
 
         tagarr = tag.split(' ')
+        for (let i = 0; i < tagarr.length; i++) {
+            if (tagarr[i] == '' || tagarr[i].indexOf(' ') >= 0) {
+                tagarr.splice(i, 1)
+                i--
+            }
+        }
         const result = await fetch('/news', {
             method: 'POST',
             headers: {
