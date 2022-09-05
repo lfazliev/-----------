@@ -26,8 +26,9 @@
                     экран: «Привет, Имя! Я тебя запомнил/не запомнил».
                 </p>
                 <form onsubmit="return false;">
-                    <div class=z1inp><input id=z1username placeholder="Username" required pattern="[0-9A-Za-z]{2,20}"
-                            type="text" name="z1username" id="z1username">
+                    <div class=z1inp>
+                        <input autocomplete=username type="text" id=z1username required name="z1username"
+                            placeholder=Username pattern="[0-9A-Za-z]{2,20}">
                         <label for="z1username">Имя пользователя</label>
                     </div>
                     <div class=z1inp><input type="password" name="z1pwrd" required placeholder='Password' minlength="3"

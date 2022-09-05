@@ -24,6 +24,7 @@ z1sub.onclick = function (e) {
     for (item of nonvalidinpz1) {
         if (!item.checkValidity()) {
             item.setAttribute('class', 'text_input_invalid')
+
         }
     }
     if (z1username.checkValidity()) {
@@ -117,6 +118,7 @@ z3sub.onclick = function () {
             fiemass.style.position = 'absolute'
             fiemass.style.bottom = '-11px'
             fiemass.style.fontSize = '14px'
+            country.style.borderColor = 'red'
 
         }
     }
@@ -129,6 +131,7 @@ z3sub.onclick = function () {
             fiemass.style.position = 'absolute'
             fiemass.style.bottom = '-11px'
             fiemass.style.fontSize = '14px'
+            city.style.borderColor = 'red'
 
         }
     }
@@ -138,11 +141,13 @@ count = document.getElementById('country')
 count.addEventListener('change', function () {
     let fiemass = country.nextSibling.nextSibling
     fiemass.style.display = 'none'
+    country.style.borderColor = null
 })
 cit = document.getElementById('city')
 cit.addEventListener('change', function () {
     let fiemass = city.nextSibling.nextSibling
     fiemass.style.display = 'none'
+    city.style.borderColor = null
 })
 gendsel[0].addEventListener('change', function () {
     let fiemass = gender.getElementsByClassName('text-field__message')
