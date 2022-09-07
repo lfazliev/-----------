@@ -46,11 +46,13 @@
     padding-right: 50px;
     list-style: none;
     background: rgb(255, 255, 255);
+    transition: 300ms;
 }
 
 #menu li:hover {
-    background-color: rgba(0, 0, 0, 0.367);
+    background-color: rgba(0, 0, 0, 0.25);
     cursor: pointer;
+    transition: 300ms;
 }
 
 

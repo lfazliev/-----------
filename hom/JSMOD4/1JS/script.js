@@ -1,31 +1,31 @@
 // 1
-btnup.onclick = function () {
-    number.innerHTML = Number(number.innerHTML) + 1
-    if (Number(number.innerHTML) > 99) {
-        container.style.width = 90 + 'px'
-    }
-    else {
-        if (Number(number.innerHTML) < 0 || Number(number.innerHTML) > 9) {
-            container.style.width = 75 + 'px'
+function checknum() {
+    if (Number(number.innerHTML) > 9 || Number(number.innerHTML) < 0) {
+        if (Number(number.innerHTML) < -9 || Number(number.innerHTML) > 99) {
+            if (Number(number.innerHTML) < -99 || Number(number.innerHTML) > 999) {
+                container.style.width = 105 + 'px'
+            }
+            else {
+                container.style.width = 90 + 'px'
+            }
         }
         else {
-            container.style.width = null
+            container.style.width = 75 + 'px'
         }
     }
+    else {
+        container.style.width = null
+    }
+}
+
+
+btnup.onclick = function () {
+    number.innerHTML = Number(number.innerHTML) + 1
+    checknum()
 }
 btndwn.onclick = function () {
     number.innerHTML = Number(number.innerHTML) - 1
-    if (Number(number.innerHTML) < 100 && Number(number.innerHTML) > 9) {
-        container.style.width = 75 + 'px'
-    }
-    else {
-        if (Number(number.innerHTML) < 0) {
-            container.style.width = 75 + 'px'
-        }
-        else if (Number(number.innerHTML) < 10) {
-            container.style.width = null
-        }
-    }
+    checknum()
 }
 let appDivcol
 z2btn.onclick = function () {
