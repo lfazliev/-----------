@@ -78,10 +78,22 @@ ul {
   transition: width 300ms;
 }
 
+textarea {
+  border-radius: 5px;
+  background: #f9f9f9;
+  color: #000000;
+  padding: 4px 7px;
+  margin-bottom: 7px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  width: 100%;
+  min-height: 100px;
+}
+
 input {
   border-radius: 5px;
   background: #f9f9f9;
-  color: #515151;
+  color: #000000;
   padding: 4px 7px;
   margin-bottom: 7px;
   border: 1px solid #ccc;

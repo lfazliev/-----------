@@ -81,13 +81,7 @@ class news {
             this.text = 'Не указан текст'
         }
         if (taglist !== '') {
-            this.taglist = taglist.split(' ')
-            for (let i = 0; i < tagarr.length; i++) {
-                if (this.taglist[i] == '' || this.taglist[i].indexOf(' ') >= 0) {
-                    this.taglist.splice(i, 1)
-                    i--
-                }
-            }
+            this.taglist = taglist
         }
         else {
             this.taglist = 'Теги не указаны'
@@ -222,7 +216,7 @@ async function rez2(header, text, tag, date) {
             body: JSON.stringify({ header, text, tagarr, date })
         })
         const insertRes = await result.json()
-        let curnews = new news(header, text, tag, date, insertRes.result.insertedId)
+        let curnews = new news(header, text, tagarr, date, insertRes.result.insertedId)
         curnews.printnews(r2)
         newsRool.addNews(curnews)
 
@@ -296,6 +290,14 @@ up.onclick = function () {
         top: 0,
         behavior: 'smooth',
     })
+}
+
+window.onload = async () => {
+    resp = await fetch('/news')
+    data = await resp.json()
+    for (let el of data.data) {
+        newsRool.addNews(new news(el.header, el.text, el.tagarr, el.date, el._id))
+    }
 }
 
 // if (this.value.length > 20) {
