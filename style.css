@@ -53,7 +53,7 @@ ul {
     animation: anim 2s
 }
 
-body {
+* {
     font-family: 'Nunito', sans-serif;
     margin: 0
 }
