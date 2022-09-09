@@ -69,7 +69,7 @@ ul {
 }
 
 .task {
-  margin: 1rem 1rem 0 1rem;
+  margin: 1rem;
   width: 90%;
   background-color: rgba(219, 219, 219, 0.685);
   padding: 5px;

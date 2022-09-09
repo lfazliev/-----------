@@ -26,6 +26,17 @@ router.post('/news', async (request, response) => {
   }
 })
 
+router.put('/news', async (request, response) => {
+  //console.log('post')
+  // console.log(request.body)
+  try {
+    const res = await db.updateOne({ _id: new ObjectId(request.body.id) }, { $set: { header: request.body.header, text: request.body.text, tagarr: request.body.tagarr } })
+    response.send({ result: res })
+  } catch (e) {
+    response.send({ result: 'error', data: e })
+  }
+})
+
 router.get('/clear', async (request, response) => {
   try {
     const res = await db.deleteMany({})
