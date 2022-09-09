@@ -80,7 +80,7 @@ class news {
         else {
             this.text = 'Не указан текст'
         }
-        if (taglist !== '') {
+        if (taglist.length !== 0) {
             this.taglist = taglist
         }
         else {
@@ -132,8 +132,10 @@ class news {
             taginp.type = "text"
             textinp.style.marginRight = '10px'
             headinp.type = "text"
-            textinp.value = maintext.innerHTML
-            headinp.value = header.innerHTML
+            if (maintext.innerHTML !== 'Не указан текст')
+                textinp.value = maintext.innerHTML
+            if (header.innerHTML !== 'Не указан заголовок')
+                headinp.value = header.innerHTML
             if (this.taglist !== 'Теги не указаны') {
                 taginp.value = this.taglist.join(' ')
             }
@@ -164,16 +166,16 @@ class news {
                     this.text = 'Не указан текст'
                 }
                 if (taginp.value !== '') {
-                    this.taglist = taginp.value//.split(' ')
-                    // for (let i = 0; i < this.taglist.length; i++) {
-                    //     if (this.taglist[i] == '') {
-                    //         this.taglist.splice(i, 1)
-                    //         i--
-                    //     }
-                    // }
-                    // if (this.taglist.length = 0) {
-                    //     this.taglist = 'Теги не указаны'
-                    // }
+                    this.taglist = taginp.value.split(' ')
+                    for (let i = 0; i < this.taglist.length; i++) {
+                        if (this.taglist[i] == '') {
+                            this.taglist.splice(i, 1)
+                            i--
+                        }
+                    }
+                    if (this.taglist.length == 0) {
+                        this.taglist = 'Теги не указаны'
+                    }
                 }
                 else {
                     this.taglist = 'Теги не указаны'
