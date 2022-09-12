@@ -59,7 +59,7 @@ class newsRool {
 }
 
 newsRool = new newsRool()
-
+let pol = 0
 class news {
     constructor(header, text, taglist, date, id) {
         if (date !== '') {
@@ -107,7 +107,7 @@ class news {
         Newdiv.style.marginBottom = '1rem'
         let btndel = document.createElement('button')
         btndel.style.float = 'right'
-        btndel.style.margin = '10px 5px'
+        btndel.style.margin = '10px'
         btndel.innerHTML = `<svg height="19px" width="15px" viewBox="0 0 98 137"><path d="M75.6,44.8v73c0,3.4-2.8,6.2-6.2,6.2H21.3c-3.4,0-6.2-2.8-6.2-6.2v-73H75.6L75.6,44.8z M59.9,52.9v62.8h3.6V52.9H59.9  L59.9,52.9z M43.6,52.9v62.8h3.6V52.9H43.6L43.6,52.9z M27.3,52.9v62.8h3.6V52.9H27.3L27.3,52.9z M31.3,27.9v-5.2  c0-3.3,2.6-5.9,5.9-5.9h16.4c3.3,0,5.9,2.6,5.9,5.9v5.2h18.1c3.4,0,6.2,2.8,6.2,6.2v4.3H7V34c0-3.4,2.8-6.2,6.2-6.2H31.3L31.3,27.9z   M37.2,20.8c-1,0-1.8,0.8-1.8,1.8v5.2h20.1v-5.2c0-1-0.8-1.8-1.8-1.8H37.2L37.2,20.8z"/></svg>`
         btndel.onclick = () => {
             delNews(this.id, newsRool)
@@ -121,74 +121,80 @@ class news {
         btnedit.style.padding = '0 5px'
         btnedit.innerHTML = '&#9998'
         btnedit.onclick = () => {
-            let divchild = Newdiv.children
-            console.log(divchild)
-            let header = divchild[3]
-            let maintext = divchild[5]
-            let thistag = divchild[6]
-            let taginp = document.createElement('input')
-            let textinp = document.createElement('textarea')
-            let headinp = document.createElement('input')
-            taginp.type = "text"
-            textinp.style.marginRight = '10px'
-            headinp.type = "text"
-            if (maintext.innerHTML !== 'Не указан текст')
-                textinp.value = maintext.innerHTML
-            if (header.innerHTML !== 'Не указан заголовок')
-                headinp.value = header.innerHTML
-            if (this.taglist !== 'Теги не указаны') {
-                taginp.value = this.taglist.join(' ')
-            }
-            Newdiv.replaceChild(taginp, thistag)
-            Newdiv.replaceChild(textinp, maintext)
-            Newdiv.replaceChild(headinp, header)
-            btnedit.style.display = 'none'
-            btnedit.previousElementSibling.style.display = 'none'
-            let btnsave = document.createElement('button')
-            let btncancel = document.createElement('button')
-            btnsave.innerHTML = 'Сохранить'
-            btncancel.innerHTML = 'Отмена'
-            btncancel.style.margin = '0 10px 5px auto'
-            btnsave.style.margin = '0 10px 5px auto'
-            btnsave.style.display = 'block'
-            btncancel.style.display = 'block'
-            btnsave.onclick = () => {
-                if (headinp.value !== '') {
-                    this.header = headinp.value
+            if (pol == 0) {
+                pol = 1
+                let divchild = Newdiv.children
+                let header = divchild[3]
+                let maintext = divchild[5]
+                let thistag = divchild[6]
+                let taginp = document.createElement('input')
+                let textinp = document.createElement('textarea')
+                let headinp = document.createElement('input')
+                taginp.type = "text"
+                textinp.style.marginRight = '10px'
+                headinp.type = "text"
+                if (maintext.innerHTML !== 'Не указан текст')
+                    textinp.value = maintext.innerHTML
+                if (header.innerHTML !== 'Не указан заголовок')
+                    headinp.value = header.innerHTML
+                if (this.taglist !== 'Теги не указаны') {
+                    taginp.value = this.taglist.join(' ')
                 }
-                else {
-                    this.header = 'Не указан заголовок'
-                }
-                if (textinp.value !== '') {
-                    this.text = textinp.value
-                }
-                else {
-                    this.text = 'Не указан текст'
-                }
-                if (taginp.value !== '') {
-                    this.taglist = taginp.value.split(' ')
-                    for (let i = 0; i < this.taglist.length; i++) {
-                        if (this.taglist[i] == '') {
-                            this.taglist.splice(i, 1)
-                            i--
+                Newdiv.replaceChild(taginp, thistag)
+                Newdiv.replaceChild(textinp, maintext)
+                Newdiv.replaceChild(headinp, header)
+                btnedit.style.display = 'none'
+                btnedit.previousElementSibling.style.display = 'none'
+                let btnsave = document.createElement('button')
+                let btncancel = document.createElement('button')
+                btnsave.innerHTML = 'Сохранить'
+                btncancel.innerHTML = 'Отмена'
+                btncancel.style.margin = '0 10px 5px auto'
+                btnsave.style.margin = '0 10px 5px auto'
+                btnsave.style.display = 'block'
+                btncancel.style.display = 'block'
+                btnsave.onclick = () => {
+                    pol = 0
+                    if (headinp.value !== '') {
+                        this.header = headinp.value
+                    }
+                    else {
+                        this.header = 'Не указан заголовок'
+                    }
+                    if (textinp.value !== '') {
+                        this.text = textinp.value
+                    }
+                    else {
+                        this.text = 'Не указан текст'
+                    }
+                    if (taginp.value !== '') {
+                        this.taglist = taginp.value.split(' ')
+                        for (let i = 0; i < this.taglist.length; i++) {
+                            if (this.taglist[i] == '') {
+                                this.taglist.splice(i, 1)
+                                i--
+                            }
+                        }
+                        if (this.taglist.length == 0) {
+                            this.taglist = 'Теги не указаны'
                         }
                     }
-                    if (this.taglist.length == 0) {
+                    else {
                         this.taglist = 'Теги не указаны'
                     }
+                    this.editNews()
                 }
-                else {
-                    this.taglist = 'Теги не указаны'
-                }
-                this.editNews()
+                btncancel.onclick = () => { newsRool.printRool(); pol = 0 }
+                Newdiv.appendChild(btncancel)
+                Newdiv.appendChild(btnsave)
             }
-            btncancel.onclick = () => { newsRool.printRool() }
-            Newdiv.appendChild(btncancel)
-            Newdiv.appendChild(btnsave)
+            else {
+                alert('Вы уже редактируйте другую новость')
+            }
         }
         Newdiv.appendChild(btnedit)
         let num = document.createElement('p')
-        num.style.margin = '10px 0 0 0'
+        num.style.margin = '10px'
         num.innerText = `id ${this.id}`
         num.style.fontSize = '13px'
         Newdiv.appendChild(num)

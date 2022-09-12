@@ -37,6 +37,10 @@ function rez1(a, b, c, d) {
 }
 // 2
 
+
+
+// 2
+
 class newsRool {
     constructor() {
         this.newslist = []
@@ -95,7 +99,7 @@ class newsRool {
 }
 
 newsRool = new newsRool()
-
+let pol = 0
 class news {
     constructor(header, text, taglist, date, id) {
         if (date !== '') {
@@ -116,27 +120,117 @@ class news {
         else {
             this.text = 'Не указан текст'
         }
-        if (taglist !== '') {
-            this.taglist = taglist.split(' ')
+        if (taglist.length !== 0) {
+            this.taglist = taglist
         }
         else {
             this.taglist = 'Теги не указаны'
         }
         this.id = id
     }
+    async editNews() {
+        newsRool.printRool()
+    }
+
     printnews(rez) {
         let Newdiv = document.createElement('div')
         Newdiv.className = 'News'
-        Newdiv.style.paddingLeft = '	1em'
+        Newdiv.style.paddingLeft = '1em'
         Newdiv.style.marginBottom = '1rem'
         let btndel = document.createElement('button')
         btndel.style.float = 'right'
-        btndel.innerHTML = "Удалить"
+        btndel.style.margin = '10px'
+        btndel.innerHTML = `<svg height="19px" width="15px" viewBox="0 0 98 137"><path d="M75.6,44.8v73c0,3.4-2.8,6.2-6.2,6.2H21.3c-3.4,0-6.2-2.8-6.2-6.2v-73H75.6L75.6,44.8z M59.9,52.9v62.8h3.6V52.9H59.9  L59.9,52.9z M43.6,52.9v62.8h3.6V52.9H43.6L43.6,52.9z M27.3,52.9v62.8h3.6V52.9H27.3L27.3,52.9z M31.3,27.9v-5.2  c0-3.3,2.6-5.9,5.9-5.9h16.4c3.3,0,5.9,2.6,5.9,5.9v5.2h18.1c3.4,0,6.2,2.8,6.2,6.2v4.3H7V34c0-3.4,2.8-6.2,6.2-6.2H31.3L31.3,27.9z   M37.2,20.8c-1,0-1.8,0.8-1.8,1.8v5.2h20.1v-5.2c0-1-0.8-1.8-1.8-1.8H37.2L37.2,20.8z"/></svg>`
         btndel.onclick = () => {
             delNews(this.id, newsRool)
         }
         Newdiv.appendChild(btndel)
+        let btnedit = document.createElement('button')
+        btnedit.style.float = 'right'
+        btnedit.style.margin = '10px'
+        btnedit.style.fontSize = '16px'
+        btnedit.style.height = '25px'
+        btnedit.style.padding = '0 5px'
+        btnedit.innerHTML = '&#9998'
+        btnedit.onclick = () => {
+            if (pol == 0) {
+                pol = 1
+                let divchild = Newdiv.children
+                let header = divchild[3]
+                let maintext = divchild[5]
+                let thistag = divchild[6]
+                let taginp = document.createElement('input')
+                let textinp = document.createElement('textarea')
+                textinp.style.width = '98%'
+                textinp.style.minHeight = '150px'
+                textinp.style.marginBottom = '10px'
+
+                let headinp = document.createElement('input')
+                taginp.type = "text"
+                textinp.style.marginRight = '10px'
+                headinp.type = "text"
+                if (maintext.innerHTML !== 'Не указан текст')
+                    textinp.value = maintext.innerHTML
+                if (header.innerHTML !== 'Не указан заголовок')
+                    headinp.value = header.innerHTML
+                if (this.taglist !== 'Теги не указаны') {
+                    taginp.value = this.taglist.join(' ')
+                }
+                Newdiv.replaceChild(taginp, thistag)
+                Newdiv.replaceChild(textinp, maintext)
+                Newdiv.replaceChild(headinp, header)
+                btnedit.style.display = 'none'
+                btnedit.previousElementSibling.style.display = 'none'
+                let btnsave = document.createElement('button')
+                let btncancel = document.createElement('button')
+                btnsave.innerHTML = 'Сохранить'
+                btncancel.innerHTML = 'Отмена'
+                btncancel.style.margin = '0 10px 5px auto'
+                btnsave.style.margin = '0 10px 5px auto'
+                btnsave.style.display = 'block'
+                btncancel.style.display = 'block'
+                btnsave.onclick = () => {
+                    pol = 0
+                    if (headinp.value !== '') {
+                        this.header = headinp.value
+                    }
+                    else {
+                        this.header = 'Не указан заголовок'
+                    }
+                    if (textinp.value !== '') {
+                        this.text = textinp.value
+                    }
+                    else {
+                        this.text = 'Не указан текст'
+                    }
+                    if (taginp.value !== '') {
+                        this.taglist = taginp.value.split(' ')
+                        for (let i = 0; i < this.taglist.length; i++) {
+                            if (this.taglist[i] == '') {
+                                this.taglist.splice(i, 1)
+                                i--
+                            }
+                        }
+                        if (this.taglist.length == 0) {
+                            this.taglist = 'Теги не указаны'
+                        }
+                    }
+                    else {
+                        this.taglist = 'Теги не указаны'
+                    }
+                    this.editNews()
+                }
+                btncancel.onclick = () => { newsRool.printRool(); pol = 0 }
+                Newdiv.appendChild(btncancel)
+                Newdiv.appendChild(btnsave)
+            }
+            else {
+                alert('Вы уже редактируйте другую новость')
+            }
+        }
+        Newdiv.appendChild(btnedit)
         let num = document.createElement('p')
+        num.style.margin = '10px'
         num.innerText = `id ${this.id}`
         num.style.fontSize = '13px'
         Newdiv.appendChild(num)
@@ -147,7 +241,9 @@ class news {
         dat.style.paddingBottom = '1rem'
         let text = document.createElement('p')
         text.style.paddingBottom = '1rem'
+        text.style.width = '98%'
         let tag = document.createElement('p')
+        tag.style.marginBottom = '5px'
         h2.innerText = this.header
         Newdiv.appendChild(h2)
         if (this.date !== 'Дата не указана') {
@@ -156,7 +252,7 @@ class news {
             if (actualdate.getDate() == this.date.getDate() && actualdate.getMonth() == this.date.getMonth() && actualdate.getFullYear() == this.date.getFullYear()) {
                 dat.innerText = 'Сегодня'
             } else {
-                let pol = 0
+                let polosh = 0
                 for (let i = 0; i < 6; i++) {
                     actualdate.setDate(actualdate.getDate() - 1)
                     if (actualdate.getDate() == this.date.getDate() && actualdate.getMonth() == this.date.getMonth() && actualdate.getFullYear() == this.date.getFullYear()) {
@@ -170,10 +266,10 @@ class news {
                             else
                                 dat.innerText = `${i + 1} дней назад`
                         }
-                        pol = 1
+                        polosh = 1
                     }
                 }
-                if (pol == 0) {
+                if (polosh == 0) {
                     dat.innerText = this.date.toLocaleDateString()
                 }
             }
@@ -207,10 +303,6 @@ function delNews(id, roll) {
         }
     }
 }
-
-
-
-
 z2btn.onclick = function (e) {
     rez2(z2v1.value, z2v2.value, z2v3.value, z2v4.value)
 }
@@ -229,35 +321,43 @@ function rez2(header, text, tag, date) {
     }
     else {
         newsRool.rand.push(Math.floor(Math.random() * 99999))
-        pol = 0
+        polosh = 0
         do {
             if (newsRool.rand.lastIndexOf(newsRool.rand[newsRool.rand.length - 1], -2) == -1) {
-                let curnews = new news(header, text, tag, date, newsRool.rand[newsRool.rand.length - 1])
+                tagarr = tag.split(' ')
+                for (let i = 0; i < tagarr.length; i++) {
+                    if (tagarr[i] == '' || tagarr[i].indexOf(' ') >= 0) {
+                        tagarr.splice(i, 1)
+                        i--
+                    }
+                }
+                let curnews = new news(header, text, tagarr, date, newsRool.rand[newsRool.rand.length - 1])
                 curnews.printnews(r2)
                 newsRool.addNews(curnews)
-                pol = 1
+                polosh = 1
             }
             else {
                 newsRool.rand[newsRool.rand.length - 1] = Math.floor(Math.random() * 99999)
             }
-        } while (pol == 0)
+        } while (polosh == 0)
 
     }
 }
 // 3
-z3btndel.onclick = function (e) {
-    if (newsRool.newslist.length > 0 && z3v1.value !== '') {
-        delNews(z3v1.value, newsRool
-        )
+z3btndel.onclick = function () {
+    if (newsRool.newslist.length > 0) {
+        if (z3v1.value !== '') {
+            delNews(z3v1.value, newsRool)
+        }
     }
     else {
         r3.innerHTML = 'Нет новостей'
     }
 }
-z3btn.onclick = function (e) {
+z3btn.onclick = function () {
     newsRool.printRool(r3)
 }
-z3btnsort.onclick = function (e) {
+z3btnsort.onclick = function () {
     if (newsRool.newslist.length > 0) {
         newsRool.sortDate()
     }
@@ -265,7 +365,7 @@ z3btnsort.onclick = function (e) {
         r3.innerHTML = 'Нет новостей'
     }
 }
-z3btnfind.onclick = function (e) {
+z3btnfind.onclick = function () {
     if (newsRool.newslist.length > 0 && z3v2.value !== '') {
         newsRool.findTag(z3v2.value)
     }
@@ -297,8 +397,3 @@ for (item of document.querySelectorAll('#z3v2')) {
         }
     })
 }
-
-// if (this.value.length > 20) {
-//     z10v1Width += 5
-//     z10v1.style.width = z8v1Width + 'px'
-// }

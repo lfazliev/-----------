@@ -78,7 +78,7 @@ a:-webkit-any-link {
 }
 
 hr {
-    border: 1px solid coral;
+    border: 0px;
     background-color: coral;
     height: 7px;
     margin: 0;
@@ -171,12 +171,15 @@ p {
 }
 
 @media screen and (max-width:600px) {
-    footer #center {
-        flex-direction: column
-    }
+    footer #center {}
 
     footer #social li {
         margin-bottom: 10px
+    }
+
+    footer #social {
+        display: flex;
+        flex-direction: column;
     }
 
     footer #center div {

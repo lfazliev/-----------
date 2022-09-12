@@ -1,0 +1,73 @@
+#cur {
+    width: 50px;
+    height: 50px;
+    margin-left: 30px
+}
+
+h1 {
+    text-align: center;
+    padding: 20px;
+    font-weight: 500;
+}
+
+.container {
+    width: 45%
+}
+
+#btnmore {
+    display: block;
+    text-align: center;
+    width: 100%;
+    padding: 5px 0;
+    border-radius: 5px;
+    background-color: rgb(119, 119, 119);
+    text-decoration: none;
+    color: white
+}
+
+#main {
+    display: flex;
+    justify-content: space-around;
+}
+
+#hibar div>a {
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+#hibar {
+    justify-content: space-between;
+    display: flex;
+    background-color: darkcyan;
+    width: 100%;
+}
+
+#hibar>div {
+    display: flex;
+    align-items: center;
+    background-color: darkcyan;
+}
+
+#newscontainer>div {
+    border: solid 1px rgb(214, 214, 214);
+    display: flex;
+    flex-direction: row;
+}
+
+#newscontainer img {
+    max-height: 150px;
+    max-height: 150px;
+}
+
+#newscontainer>div>div>div {
+    display: flex;
+}
+
+#hibar>a {
+    margin-right: 30px;
+}
+
+#hibar div>a:hover {
+    background-color: rgb(1, 121, 121);
+}
