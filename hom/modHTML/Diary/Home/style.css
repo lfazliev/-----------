@@ -85,6 +85,72 @@ h1 {
     font-size: 14px;
 }
 
+.reward {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.reward img {
+    height: 35px;
+}
+
+#speechbubble {
+    position: relative;
+    background-color: rgb(214, 214, 214);
+    height: 40px;
+    color: rgb(79, 79, 79);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#oside {
+    display: flex;
+    width: 40%;
+    align-items: center;
+    color: black;
+
+}
+
+#medal {
+    width: 10%;
+    display: flex;
+    align-items: center;
+}
+
+#after {
+    content: '';
+    width: 0;
+    height: 0;
+    border: 20px solid;
+    z-index: -1;
+    color: white
+}
+
+
+.arig {
+    border-right-color: rgb(214, 214, 214) !important;
+}
+
+.ldate {
+    width: 30% !important;
+    margin: 0 10% 0 0;
+}
+
+.rdate {
+    width: 30% !important;
+    margin: 0 0 0 10%;
+}
+
+.alef {
+    border-left-color: rgb(214, 214, 214) !important;
+}
+
+
+
 #hibar div>a:hover {
     background-color: rgb(1, 121, 121);
 }
