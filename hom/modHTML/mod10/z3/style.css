@@ -36,6 +36,7 @@ form>div>div>div img {
 .cbox>input {
     height: 15px;
     width: 15px;
+    margin-right: 5px;
 }
 
 #persd>div {
@@ -99,7 +100,7 @@ button:hover {
     cursor: pointer;
 }
 
-input:valid {
+/* input:valid {
     border-bottom: 1px solid rgb(60, 135, 67);
 
 }
@@ -107,8 +108,11 @@ input:valid {
 input:invalid {
     border-bottom: 1px solid rgb(164, 79, 79);
 
-}
+} */
 
+.text-field__message {
+    bottom: 296px;
+}
 
 input:focus-visible {
     outline: none;
@@ -140,10 +144,24 @@ form>div {
     margin-left: 15px !important
 }
 
+.cbox>label {
+    flex: 1
+}
+
 @media screen and (min-width: 900px) {
     input {
         font-size: 15px
     }
+
+    .text-field__message {
+        bottom: 430px;
+    }
+
+    .cbox {
+        margin: 10px 20px 0px 40px;
+    }
+
+
 }
 
 @media screen and (max-width: 900px) {
@@ -160,6 +178,10 @@ form>div {
 @media screen and (max-width: 600px) {
     form>div>div {
         width: 95%;
+    }
+
+    .text-field__message {
+        bottom: 143px;
     }
 
     #inpbot>input {
@@ -199,4 +221,20 @@ form>div {
         margin-bottom: 10px;
         width: 100%;
     }
+}
+
+.text_input_invalid {
+    border-bottom: 1px solid #dc3545 !important;
+}
+
+.text_input_valid {
+    border-bottom: 1px solid #198754 !important;
+}
+
+.text_input_invalid:focus-visible {
+    border-bottom: 1px solid #dc3545 !important;
+}
+
+.text-field__input_valid:focus-visible {
+    border-bottom: 1px solid #198754 !important;
 }

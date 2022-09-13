@@ -16,7 +16,7 @@
     <div id="visibl">
         <p class="page"><a href="../../../index.html">Homework</a>/<a href="../../index.html">HTML
                 практика</a>/Адаптивная форма регистрации</p>
-        <form>
+        <form onsubmit="return false;">
             <div id=main>
                 <div>
                     <!-- <input type="text" pattern="[0-9]"> -->
@@ -51,7 +51,9 @@
                     <div><select id=gender name="gender">
                             <option value="m">Male</option>
                             <option value="f">Female</option>
+                            <option selected disabled>Пол</option>
                         </select>
+                        <div class="text-field__message"></div>
                         <input type="date" id=date required autocomplete=bday>
                     </div>
                 </div>
@@ -66,7 +68,7 @@
                 <label for="Agree">Я согласен с Правилами и Политикой конфиденсальности</label>
             </div>
             <hr>
-            <button type="submit">Отправить</button>
+            <button id=sdub type="submit">Отправить</button>
         </form>
         <a class=button href="../../index.html">
             &#10096; Назад</a>
