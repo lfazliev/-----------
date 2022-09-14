@@ -27,12 +27,12 @@ h1 {
     transition: 300ms;
 }
 
-#btnmore:hover {
+.btnmore:hover {
     background-color: rgb(99, 99, 99);
     transition: 300ms;
 }
 
-#btnmore {
+.btnmore {
     margin-top: 15px;
     display: block;
     text-align: center;
@@ -55,6 +55,22 @@ h1 {
     padding: 15px;
     color: white;
     text-decoration: none;
+    transition: 300ms;
+
+}
+
+#hibar>a {
+    border-radius: 50%;
+    transition: 300ms;
+}
+
+#hibar>a:hover {
+    background-color: rgb(66, 66, 66);
+    transition: 300ms;
+}
+
+#hibar>a>img:hover {
+    opacity: 0.6;
     transition: 300ms;
 }
 
@@ -111,7 +127,7 @@ h1 {
     height: 35px;
 }
 
-#speechbubble {
+.speechbubble {
     position: relative;
     background-color: rgb(214, 214, 214);
     height: 40px;
@@ -122,7 +138,7 @@ h1 {
     justify-content: center;
 }
 
-#oside {
+.oside {
     display: flex;
     width: 40%;
     align-items: center;
@@ -130,13 +146,13 @@ h1 {
 
 }
 
-#medal {
+.medal {
     width: 10%;
     display: flex;
     align-items: center;
 }
 
-#after {
+.after {
     content: '';
     width: 0;
     height: 0;
@@ -182,9 +198,11 @@ h1 {
 
 @media screen and (max-width: 500px) {
     #cur {
+        display: none;
+    }
 
-        margin-left: 10px;
-        transition: 300ms;
+    #newscontainer>div>div>div {
+        flex-direction: column;
     }
 
     #hibar div>a {

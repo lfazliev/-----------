@@ -94,6 +94,7 @@ hr {
 input[type="text"],
 input[type="password"],
 input[type="date"],
+input[type="tel"],
 input[type="email"] {
     border-radius: 5px;
     background: #f9f9f9;
@@ -166,6 +167,10 @@ p {
     }
 
 
+}
+
+footer>div {
+    margin-bottom: 5px
 }
 
 #center div {

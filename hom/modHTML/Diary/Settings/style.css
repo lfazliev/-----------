@@ -16,7 +16,24 @@ h2 {
     padding: 15px;
 }
 
+#hibar>a {
+    border-radius: 50%;
+    transition: 300ms;
+}
 
+#hibar>a:hover {
+    background-color: rgb(66, 66, 66);
+    transition: 300ms;
+}
+
+#hibar>a>img:hover {
+    opacity: 0.6;
+    transition: 300ms;
+}
+
+#hibar div>a:hover {
+    background-color: rgb(1, 121, 121);
+}
 
 #hibar div>a {
     padding: 15px;
@@ -32,12 +49,15 @@ h2 {
     width: 100%;
 }
 
+#hibar>div {
+    display: flex;
+    align-items: center;
+    background-color: darkcyan;
+}
 
 span {
     padding: 5px;
 }
-
-
 
 input[type="file"] {
     visibility: hidden;
@@ -47,26 +67,31 @@ label:hover {
     cursor: pointer;
 }
 
-
-
-
-
-
-
-
-
-#hibar>div {
-    display: flex;
-    align-items: center;
-    background-color: darkcyan;
+#bar {
+    width: 80%;
+    border-radius: 10px;
+    height: 50px;
+    background-color: rgb(106, 151, 212);
+    position: absolute;
+    z-index: -1;
 }
 
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+#main {
+    width: 100%;
+    display: flex;
+    position: relative;
+    justify-content: space-around;
+}
 
 @media screen and (max-width: 500px) {
     #cur {
-        margin-left: 10px;
-        transition: 300ms;
+        display: none;
     }
 
     #hibar div>a {

@@ -16,7 +16,11 @@ h2 {
     padding: 15px;
 }
 
-#fileedit {
+#hibar div>a:hover {
+    background-color: rgb(1, 121, 121);
+}
+
+.fileedit {
     margin-top: 21px;
     display: flex;
     justify-content: center;
@@ -24,35 +28,52 @@ h2 {
     border-radius: 5px;
 }
 
-#fileedit>div {
+#hibar>a {
+    border-radius: 50%;
+    transition: 300ms;
+}
+
+#hibar>a:hover {
+    background-color: rgb(66, 66, 66);
+    transition: 300ms;
+}
+
+#hibar>a>img:hover {
+    opacity: 0.6;
+    transition: 300ms;
+}
+
+.fileedit>div {
     width: 50%;
     display: flex;
     align-items: center;
+    transition: 300ms;
 }
 
-#fileedit>div:hover {
+.fileedit>div:hover {
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.09);
+    background-color: rgba(0, 0, 0, 0.203);
+    transition: 300ms;
 }
 
-#fileedit>#yourf {
+.fileedit>.yourf {
     border-right: 1px solid white;
 }
 
-#fileedit>div {
+.fileedit>div {
     padding: 4px;
     text-align: center;
     display: block;
 }
 
-#fileedit img {
+.fileedit img {
     width: 15px;
     height: 15px;
 }
 
 
 
-#homework {
+.homework {
     width: 25%;
     height: 100px;
     border-radius: 5px;
@@ -84,31 +105,40 @@ h2 {
     top: 380px;
     align-items: flex-end;
     flex-direction: column-reverse;
+    transition: 300ms;
 }
 
-#workcontainer {
+.workcontainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
 
-#filecont>div {
+.filecont>div {
     background-color: rgb(188, 188, 188);
     height: 100%;
     padding: 5px;
     border-radius: 0px 5px 5px 0px;
+    transition: 300ms;
 }
 
-#date {
+.filecont>div:hover {
+    background-color: rgb(135, 135, 135);
+    transition: 300ms;
+}
+
+.date {
     margin-top: 3px;
     font-size: 15px;
 }
 
 span {
     padding: 5px;
+    overflow: hidden;
+    height: 20px
 }
 
-#filecont {
+.filecont {
     background-color: rgb(255, 255, 255);
     display: flex;
     justify-content: space-between;
@@ -131,7 +161,7 @@ label:hover {
     align-items: center;
 }
 
-#round {
+.round {
     margin-left: 5px;
     width: 15px;
     height: 15px;
@@ -148,7 +178,7 @@ label:hover {
 }
 
 
-#num {
+.num {
     position: absolute;
     border-radius: 40%;
     width: 35px;
@@ -160,12 +190,12 @@ label:hover {
 }
 
 .green {
-    background-color: rgb(102, 218, 104);
+    background-color: rgb(48, 142, 50);
     color: white;
 }
 
 .red {
-    background-color: #ff6c6c;
+    background-color: #c05b5b;
     color: white;
 }
 
@@ -184,7 +214,7 @@ label:hover {
 
 @media screen and (max-width: 500px) {
     #cur {
-        margin-left: 10px;
+        display: none;
         transition: 300ms;
     }
 
@@ -193,8 +223,13 @@ label:hover {
         transition: 300ms;
     }
 
+    #rounds {
+        right: 5px;
+        transition: 300ms;
+    }
+
     h1 {
-        animation: sdwig 300ms;
+        padding: 15px;
         text-align: inherit;
         transition: 300ms;
     }

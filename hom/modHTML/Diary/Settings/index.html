@@ -19,14 +19,33 @@
         <div id=hibar>
             <div>
                 <img src="../img/fooddeliveryguy.svg" id='cur'>
-                <a href="">Home</a>
+                <a href="../Home/index.html">Home</a>
                 <a href="../Homework/index.html">Homework</a>
-                <a href="../Settings/index.html">Settings</a>
+                <a href="">Settings</a>
             </div>
             <a href="../Settings/index.html"><img src="../img/av_64.png" alt=""></a>
         </div>
+        <h1>Settings</h1>
         <div id=main>
-
+            <div id=bar></div>
+            <div class=content>
+                <h2>Avatar</h2>
+                <img src="../img/av_256.png">
+                <a href="">Choose photo</a>
+            </div>
+            <div class=content>
+                <h2>Students info</h2>
+                <input type="text" name="fname" autocomplete=given-name placeholder='Имя'
+                    pattern="[A-Za-zА-Яа-я]{2,30}">
+                <input type="text" id="sname" autocomplete=family-name placeholder="Фамилия"
+                    Pattern="[A-Za-zА-Яа-я]{2,30}">
+                <input autocomplete=on type="email" id=email placeholder='Email адрес'
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                <input type="tel" id="tel" autocomplete="tel" pattern="[0-9]{3,20}" placeholder="tel number">
+                <input type="text" id="adress" placeholder="Адрес">
+                <input type="text" id="fvlink" placeholder='VK'>
+                <a href="">Save Changes</a>
+            </div>
         </div>
         <a class=button href="../../index.html">
             &#10096; Назад</a>
