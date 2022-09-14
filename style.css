@@ -91,7 +91,10 @@ hr {
     width: 100%;
 }
 
-input {
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="email"] {
     border-radius: 5px;
     background: #f9f9f9;
     color: #515151;

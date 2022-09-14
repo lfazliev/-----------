@@ -1,0 +1,201 @@
+#cur {
+    width: 50px;
+    height: 50px;
+    margin-left: 30px;
+    transition: 300ms;
+}
+
+h1 {
+    text-align: center;
+    padding: 30px;
+    font-weight: 500;
+}
+
+h2 {
+    font-weight: 500;
+    padding: 15px;
+}
+
+#fileedit {
+    margin-top: 21px;
+    display: flex;
+    justify-content: center;
+    border: white 1px solid;
+    border-radius: 5px;
+}
+
+#fileedit>div {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+#fileedit>div:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.09);
+}
+
+#fileedit>#yourf {
+    border-right: 1px solid white;
+}
+
+#fileedit>div {
+    padding: 4px;
+    text-align: center;
+    display: block;
+}
+
+#fileedit img {
+    width: 15px;
+    height: 15px;
+}
+
+
+
+#homework {
+    width: 25%;
+    height: 100px;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 15px;
+    min-width: 230px;
+    max-width: 500px;
+    position: relative;
+}
+
+#hibar div>a {
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+    transition: 300ms;
+}
+
+#hibar {
+    justify-content: space-between;
+    display: flex;
+    background-color: darkcyan;
+    width: 100%;
+}
+
+#rounds {
+    position: absolute;
+    display: flex;
+    right: 15px;
+    top: 380px;
+    align-items: flex-end;
+    flex-direction: column-reverse;
+}
+
+#workcontainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#filecont>div {
+    background-color: rgb(188, 188, 188);
+    height: 100%;
+    padding: 5px;
+    border-radius: 0px 5px 5px 0px;
+}
+
+#date {
+    margin-top: 3px;
+    font-size: 15px;
+}
+
+span {
+    padding: 5px;
+}
+
+#filecont {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    color: black !important;
+    /* box-shadow: 0px 0px 18px -1px rgba(0, 0, 0, 0.2); */
+}
+
+input[type="file"] {
+    visibility: hidden;
+}
+
+label:hover {
+    cursor: pointer;
+}
+
+#rounds>div {
+    display: flex;
+    padding: 2px;
+    align-items: center;
+}
+
+#round {
+    margin-left: 5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.blue {
+    background-color: rgb(99, 203, 203);
+    color: white;
+}
+
+.grey {
+    background-color: rgb(220, 220, 220);
+}
+
+
+#num {
+    position: absolute;
+    border-radius: 40%;
+    width: 35px;
+    color: azure;
+    background-color: rgba(0, 0, 0, 0.33);
+    text-align: center;
+    right: 10px;
+    top: 10px;
+}
+
+.green {
+    background-color: rgb(102, 218, 104);
+    color: white;
+}
+
+.red {
+    background-color: #ff6c6c;
+    color: white;
+}
+
+#hibar>div {
+    display: flex;
+    align-items: center;
+    background-color: darkcyan;
+}
+
+@media screen and (min-width: 900px) {
+    #rounds {
+        top: 460px;
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+    #cur {
+        margin-left: 10px;
+        transition: 300ms;
+    }
+
+    #hibar div>a {
+        padding: 10px;
+        transition: 300ms;
+    }
+
+    h1 {
+        animation: sdwig 300ms;
+        text-align: inherit;
+        transition: 300ms;
+    }
+}

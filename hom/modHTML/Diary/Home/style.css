@@ -1,7 +1,8 @@
 #cur {
     width: 50px;
     height: 50px;
-    margin-left: 30px
+    margin-left: 30px;
+    transition: 300ms;
 }
 
 h1 {
@@ -17,6 +18,18 @@ h1 {
 .btnwhite {
     background-color: azure !important;
     color: black !important;
+    transition: 300ms;
+}
+
+.btnwhite:hover {
+    background-color: rgb(188, 252, 252) !important;
+    color: black !important;
+    transition: 300ms;
+}
+
+#btnmore:hover {
+    background-color: rgb(99, 99, 99);
+    transition: 300ms;
 }
 
 #btnmore {
@@ -28,7 +41,8 @@ h1 {
     border-radius: 5px;
     background-color: rgb(119, 119, 119);
     text-decoration: none;
-    color: white
+    color: white;
+    transition: 300ms;
 }
 
 
@@ -41,6 +55,7 @@ h1 {
     padding: 15px;
     color: white;
     text-decoration: none;
+    transition: 300ms;
 }
 
 #hibar {
@@ -162,5 +177,18 @@ h1 {
 
     .container {
         width: 100%
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #cur {
+
+        margin-left: 10px;
+        transition: 300ms;
+    }
+
+    #hibar div>a {
+        padding: 10px;
+        transition: 300ms;
     }
 }
