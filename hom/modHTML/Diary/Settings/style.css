@@ -59,21 +59,21 @@ span {
     padding: 5px;
 }
 
-input[type="file"] {
-    visibility: hidden;
-}
-
 label:hover {
     cursor: pointer;
 }
 
 #bar {
-    width: 80%;
+    width: 90%;
     border-radius: 10px;
     height: 50px;
     background-color: rgb(106, 151, 212);
     position: absolute;
     z-index: -1;
+}
+
+#container>.content {
+    width: 45%;
 }
 
 .content {
@@ -82,11 +82,35 @@ label:hover {
     align-items: center;
 }
 
+.content>a {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgb(138, 138, 138);
+    color: aliceblue;
+    text-decoration: none;
+    margin: 5px 0 20px 0;
+    transition: 300ms;
+    width: 100%;
+    text-align: center;
+}
+
+.content>a:hover {
+    background-color: rgb(113, 113, 113);
+    transition: 300ms;
+}
+
 #main {
     width: 100%;
     display: flex;
     position: relative;
-    justify-content: space-around;
+    justify-content: space-evenly
+}
+
+#container {
+    display: flex;
+    width: 68%;
+    flex-direction: row;
+    justify-content: space-evenly
 }
 
 @media screen and (max-width: 500px) {
@@ -98,4 +122,61 @@ label:hover {
         padding: 10px;
         transition: 300ms;
     }
+}
+
+input {
+    width: 100%;
+    margin: 5px 0 5px 0;
+}
+
+@media screen and (max-width: 950px) {
+    .content>h2 {
+        padding: 9px;
+        border-radius: 10px;
+        background-color: rgb(106, 151, 212);
+
+    }
+
+    #container {
+        flex-direction: column;
+        width: 50%;
+    }
+
+    #container>.content {
+        width: 100%;
+    }
+
+}
+
+@media screen and (min-width: 950px) {
+    #bar {
+        top: 5px;
+    }
+
+}
+
+@media screen and (max-width: 650px) {
+    #container {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    h2 {
+        width: 95%;
+        text-align: center;
+    }
+
+    .content {
+        width: 95%;
+    }
+
+    #main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #bar {
+        display: none;
+    }
+
 }

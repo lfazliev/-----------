@@ -29,22 +29,31 @@
         <div id=main>
             <div id=bar></div>
             <div class=content>
-                <h2>Avatar</h2>
+                <h2>AVATAR</h2>
                 <img src="../img/av_256.png">
                 <a href="">Choose photo</a>
             </div>
-            <div class=content>
-                <h2>Students info</h2>
-                <input type="text" name="fname" autocomplete=given-name placeholder='Имя'
-                    pattern="[A-Za-zА-Яа-я]{2,30}">
-                <input type="text" id="sname" autocomplete=family-name placeholder="Фамилия"
-                    Pattern="[A-Za-zА-Яа-я]{2,30}">
-                <input autocomplete=on type="email" id=email placeholder='Email адрес'
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
-                <input type="tel" id="tel" autocomplete="tel" pattern="[0-9]{3,20}" placeholder="tel number">
-                <input type="text" id="adress" placeholder="Адрес">
-                <input type="text" id="fvlink" placeholder='VK'>
-                <a href="">Save Changes</a>
+            <div id=container>
+                <div class=content>
+                    <h2>STUDENT`S INFO</h2>
+                    <input type="text" name="fname" autocomplete=given-name placeholder='Имя'
+                        pattern="[A-Za-zА-Яа-я]{2,30}">
+                    <input type="text" id="sname" autocomplete=family-name placeholder="Фамилия"
+                        Pattern="[A-Za-zА-Яа-я]{2,30}">
+                    <input autocomplete=on type="email" id=email placeholder='Email'
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                    <input type="tel" id="tel" autocomplete="tel" pattern="[0-9]{3,20}" placeholder="Номер телефона">
+                    <input type="text" id="adress" placeholder="Адрес">
+                    <input type="text" id="fvlink" placeholder='VK'>
+                    <a href="">Save Changes</a>
+                </div>
+                <div class=content>
+                    <h2>CHANGE PASSWORD</h2>
+                    <input id=oldpass type="text" placeholder='Old password' autocomplete=old-password>
+                    <input id=pass type="Password" placeholder='Password' autocomplete=new-password>
+                    <input type="Password" id=copass required placeholder='Confirm password' autocomplete=new-password>
+                    <a href="">Change Password</a>
+                </div>
             </div>
         </div>
         <a class=button href="../../index.html">
