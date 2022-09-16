@@ -27,7 +27,7 @@ form>div {
     width: 50%;
     border-radius: 10px;
     margin: 30px;
-    max-width: 350px;
+    max-width: 500px;
 }
 
 .down>div {
@@ -48,7 +48,7 @@ input:focus-visible {
 
 @media screen and (max-width: 405px) {
     form>div {
-        width: 60%;
+        width: 80%;
     }
 }
 
@@ -75,4 +75,19 @@ input {
     padding: 4px 7px;
     margin-bottom: 7px;
     border: 1px solid #ccc;
+}
+
+#cardnum {
+    width: 160px;
+}
+
+#cvv {
+    width: 30px;
+    text-align: center;
+}
+
+@media screen and (max-width: 600) {
+    form>div {
+        width: 80%;
+    }
 }

@@ -28,3 +28,37 @@
 body {
     background-color: rgb(144, 205, 255);
 }
+
+@media screen and (max-width: 1000px) {
+    #main>div {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    #main>div>div {
+        width: 45%
+    }
+
+    #main {
+        flex-direction: column
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #main>div {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    #main>div>div {
+        width: 95%
+    }
+
+    #main {
+        flex-direction: column
+    }
+}
