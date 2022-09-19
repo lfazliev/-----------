@@ -8,7 +8,7 @@ router.get('/news', async (request, response) => {
   //console.log(request.query)
   try {
     const all = await db.find({}).toArray()
-    response.send({ result: 'ok', data: all })
+    response.send({ result: 'ok', all })
   } catch (e) {
     response.send({ result: 'error', data: e })
   }

@@ -1,6 +1,6 @@
 {
-  title:String
-  done:Boolean
+  title: String
+  done: Boolean
 }
 
 const renderTodos = (obj) => {
@@ -13,13 +13,13 @@ const renderTodos = (obj) => {
   if (obj.done) {
     check.checked = 'checked'
   }
-  check.onclick = async function() {
+  check.onclick = async function () {
     let result = await fetch('/check', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8'
       },
-      body: JSON.stringify({_id:this.dataset.id, done:this.checked})
+      body: JSON.stringify({ _id: this.dataset.id, done: this.checked })
     })
   }
   div.appendChild(p)
@@ -36,16 +36,16 @@ window.onload = async () => {
 }
 
 add.onkeypress = async (e) => {
-  if (e.key=='Enter') {
+  if (e.key == 'Enter') {
     let result = await fetch('/todos', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8'
       },
-      body: JSON.stringify({title:add.value, done:false})
+      body: JSON.stringify({ title: add.value, done: false })
     })
     const res = await result.json()
-    renderTodos({title:add.value, done:false, _id:res.result.insertedId})
-    add.value=''
+    renderTodos({ title: add.value, done: false, _id: res.result.insertedId })
+    add.value = ''
   }
 }
