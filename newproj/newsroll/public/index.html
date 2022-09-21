@@ -72,7 +72,7 @@
                 <h3>{{n.header}}</h3>
                 <p>{{n.text}}</p>
                 <p>{{n.date}}</p>
-                <p>{{(n.tag)?n.tag.join(' #'):n.tag}}</p>
+                <p>#{{n.tag}}</p>
                 <button @click="delNews(n._id)">Delete</button>
             </div>
         </div>

@@ -113,11 +113,6 @@ input {
     border: 1px solid #ccc;
 }
 
-.zab input {
-    margin-bottom: 5px;
-    width: 190px
-}
-
 button {
     margin-top: 5px;
     color: #000000;
