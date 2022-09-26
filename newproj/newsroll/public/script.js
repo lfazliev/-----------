@@ -64,6 +64,17 @@ var app = new Vue({
             })
             const insertRes = await result.json()
         },
+        editNews: async function (_id) {
+            let a = this.news.findIndex(n => n._id == _id)
+            const result = await fetch('/news', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+                body: JSON.stringify({ id: _id })
+            })
+            const insertRes = await result.json()
+        },
         getTag: function () {
             if (this.tag !== '') {
                 let taglist = this.tag.split(' ')
