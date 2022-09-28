@@ -1,16 +1,26 @@
 <template>
-  <h1>NEWSROOL</h1>
-  <NewsRool></NewsRool>
+  <HeaderC></HeaderC>
+  <HighbarC></HighbarC>
+  <RouterView></RouterView>
+  <FooterC></FooterC>
 </template>
 
 <script>
-import NewsRool from '@/components/NewsRool.vue'
+import { RouterView } from 'vue-router'
+import HighbarC from '@/components/HighbarComp.vue'
+import HeaderC from '@/components/HeaderComp.vue'
+import FooterC from '@/components/FooterComp.vue'
 export default {
-  components: { NewsRool },
   data() { return {} },
-  computed: {},
+  beforeMount: async function () { },
   methods: {},
-  beforeMount() { },
+  computed: {},
+  components: {
+    HeaderC,
+    FooterC,
+    HighbarC,
+    RouterView,
+  },
 }
 </script>
 

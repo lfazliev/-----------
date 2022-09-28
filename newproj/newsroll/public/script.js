@@ -36,22 +36,24 @@ var app = new Vue({
     },
     methods: {
         addNews: async function () {
-            const date = this.getPrDate(this.date)
-            const result = await fetch('/news', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json;charset=utf-8'
-                },
-                body: JSON.stringify({ header: this.header, text: this.text, tag: this.getTag(), date: this.date })
-            })
-            const insertRes = await result.json()
-            this.news.push({
-                header: this.header,
-                text: this.text,
-                tag: this.tag,
-                date,
-                _id: insertRes.result.insertedId
-            })
+            if (this.text !== '') {
+                const date = this.getPrDate(this.date)
+                const result = await fetch('/news', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8'
+                    },
+                    body: JSON.stringify({ header: this.header, text: this.text, tag: this.getTag(), date: this.date })
+                })
+                const insertRes = await result.json()
+                this.news.push({
+                    header: this.header,
+                    text: this.text,
+                    tag: this.getPrTag(this.getTag()),
+                    date,
+                    _id: insertRes.result.insertedId
+                })
+            }
         },
         delNews: async function (_id) {
             this.news.splice(this.news.findIndex(n => n._id == _id), 1)
