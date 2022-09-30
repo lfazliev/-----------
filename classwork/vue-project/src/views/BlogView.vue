@@ -1,3 +1,18 @@
+
+<template>
+    <div id=visibl>
+        <div class="main">
+            <p>Часы, туда сюда это самое</p>
+
+            <div id=rotat>
+                <div id=dot></div>
+                <div id="strela1"></div>
+                <div id="strela2"></div>
+            </div>
+        </div>
+    </div>
+</template>
+<style scoped>
 .main {
     display: flex;
     flex-direction: column;
@@ -24,7 +39,7 @@
     margin-block-start: 0em;
     margin-block-end: 0em;
     transform-origin: 0% 100%;
-    animation: roll 600s infinite linear;
+    animation: roll 300s infinite linear;
 }
 
 #strela2 {
@@ -37,7 +52,7 @@
     margin-block-start: 0em;
     margin-block-end: 0em;
     transform-origin: 0% 100%;
-    animation: roll 10s infinite linear;
+    animation: roll 5s infinite linear;
 }
 
 #dot {
@@ -90,3 +105,4 @@
         top: 100px;
     }
 }
+</style>

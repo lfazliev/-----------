@@ -3,11 +3,17 @@
     <div id="highbar">
         <nav>
             <ul>
-                <li><a class="button" href="../ind/index.html">Home</a></li>
+
                 <li>
-                    <RouterLink to="/about">About</RouterLink>
+                    <RouterLink to="/blog" class="button">Blog</RouterLink>
                 </li>
-                <li><a class="button" href="../whoare/index.html">Blog</a></li>
+                <li>
+                    <RouterLink to="/home" class="button">Home</RouterLink>
+                </li>
+                <li>
+                    <RouterLink to="/about" class="button">About</RouterLink>
+                </li>
+
             </ul>
         </nav>
     </div>
