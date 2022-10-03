@@ -1,0 +1,31 @@
+h1 {
+  text-transform: uppercase;
+}
+.button {
+  margin-top: 20px;
+  display: block;
+  padding: 8px 16px;
+  color: white;
+  width: 130px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: -webkit-linear-gradient(0deg,#8490ff 0%,#62bdfc 100%);
+}
+.button:hover {
+  box-shadow: 0 20px 20px 0 rgb(132 144 255 / 30%);
+}
+.text {
+  flex:1;
+  padding: 100px 20px;
+}
+.imgConteiner {
+  flex:1;
+  text-align: center;
+}
+.imgConteiner img {
+  width: 100%;
+}
+.flex {
+  display: flex;
+}
