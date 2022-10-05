@@ -3,9 +3,19 @@ import router from '@/routes'
 import dbClient from '@/db'
 import pkg from 'body-parser'
 import cors from 'cors'
+import multer from 'multer'
 const { json, urlencoded } = pkg
 const port = 3002
+const storageConfig = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "public/uploads");
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + "-" + file.originalname);
+  }
+})
 const app = express()
+app.use(multer({ storage: storageConfig }).single("file"))
 // Use Node.js body parsing middleware
 app.use(json({ limit: '50mb' }))
 app.use(urlencoded({

@@ -1,31 +1,159 @@
-h1 {
-  text-transform: uppercase;
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@1000&display=swap');
+
+
+
+
+@keyframes left {
+  from {
+    margin-left: 2000px;
+  }
+
+  to {
+    margin-left: 0;
+  }
 }
-.button {
-  margin-top: 20px;
-  display: block;
-  padding: 8px 16px;
-  color: white;
-  width: 130px;
-  text-align: center;
+
+
+
+ul {
+  padding-inline-start: 0px;
+}
+
+
+#visibl {
+  animation: anim 2s
+}
+
+* {
+  font-family: 'Nunito', sans-serif;
+  margin: 0
+}
+
+a:-webkit-any-link {
+  color: rgb(160, 160, 160);
+}
+
+@keyframes anim {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+hr {
+  border: 0px;
+  background-color: coral;
+  height: 7px;
+  margin: 0;
+}
+
+
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="tel"],
+input[type="email"] {
+  border-radius: 5px;
+  background: #f9f9f9;
+  color: #515151;
+  padding: 4px 1%;
+  margin-bottom: 7px;
+  border: 1px solid #ccc;
+}
+
+input:focus-visible {
+  outline: 0px;
+}
+
+
+a.button {
+  display: inline-block;
+  background: rgb(62, 58, 43);
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  border-radius: 10px;
   text-decoration: none;
-  text-transform: uppercase;
-  background: -webkit-linear-gradient(0deg,#8490ff 0%,#62bdfc 100%);
+  font-size: 25px;
+  line-height: 1;
+  position: relative;
+  font-weight: 100;
+  transition: 300ms;
+  margin: 10px;
 }
-.button:hover {
-  box-shadow: 0 20px 20px 0 rgb(132 144 255 / 30%);
+
+a.button:hover {
+  color: rgb(143, 143, 143);
+  background-color: rgb(48, 45, 36);
+  transition: 300ms;
 }
-.text {
-  flex:1;
-  padding: 100px 20px;
+
+p {
+  font-size: 23px;
+  transition: 300ms;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
 }
-.imgConteiner {
-  flex:1;
-  text-align: center;
+
+.clear {
+  clear: both;
 }
-.imgConteiner img {
-  width: 100%;
+
+@media screen and (max-width:900px) {
+  html {
+    transition: all 300ms
+  }
+
+  a.button {
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+
 }
-.flex {
-  display: flex;
+
+h1 {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+
+@media screen and (max-width:600px) {}
+
+h2 {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+#up {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  font-size: 50px;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #352f1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #a78721;
+  border-radius: 16em;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #866b12;
 }

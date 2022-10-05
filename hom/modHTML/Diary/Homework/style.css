@@ -127,16 +127,6 @@ h2 {
     transition: 300ms;
 }
 
-.date {
-    margin-top: 3px;
-    font-size: 15px;
-}
-
-span {
-    padding: 5px;
-    overflow: hidden;
-    height: 20px
-}
 
 .filecont {
     background-color: rgb(255, 255, 255);
@@ -154,6 +144,18 @@ input[type="file"] {
 label:hover {
     cursor: pointer;
 }
+
+.date {
+    margin-top: 3px;
+    font-size: 15px;
+}
+
+span {
+    padding: 5px;
+    overflow: hidden;
+    height: 20px
+}
+
 
 #rounds>div {
     display: flex;
