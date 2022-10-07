@@ -35,7 +35,7 @@ ul {
 }
 
 a:-webkit-any-link {
-  color: rgb(160, 160, 160);
+  text-decoration: none
 }
 
 @keyframes anim {
@@ -61,24 +61,30 @@ input[type="text"],
 input[type="password"],
 input[type="date"],
 input[type="tel"],
-input[type="email"] {
+input[type="url"],
+input[type="email"],
+textarea {
   border-radius: 5px;
   background: #f9f9f9;
   color: #515151;
   padding: 4px 1%;
   margin-bottom: 7px;
   border: 1px solid #ccc;
+  resize: vertical;
 }
 
 input:focus-visible {
   outline: 0px;
 }
 
+.flex {
+  display: flex;
+}
 
 a.button {
   display: inline-block;
   background: rgb(62, 58, 43);
-  color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255) !important;
   padding: 10px;
   border-radius: 10px;
   text-decoration: none;

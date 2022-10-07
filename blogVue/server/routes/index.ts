@@ -6,32 +6,27 @@ const router = Router()
 
 router.get('/posts', async (request, response) => {
   //console.log(request.query)
-	try {
+  try {
     const all = await db.find({}).toArray()
     response.send({ all })
-  } catch(e) {
+  } catch (e) {
     response.send({ result: 'error', data: e })
   }
 })
 
 
-router.post('/todos', async (request, response) => {
-  //console.log('post')
-  //console.log(request.body)
+router.post('/posts', async (request, response) => {
   try {
-    let res
-    if (request.body._id) {
-      console.log(request.body)
-      const res = await db.updateOne({_id:new ObjectId(request.body._id)}, {
-        $set:{
-          title:request.body.title
-        }
-      })
+    let filedata = request.file
+    console.log(filedata)
+    if (!filedata) {
+      console.log("Ошибка при загрузке файла")
     } else {
-      const res = await db.insertOne(request.body)
+      console.log("Файл загружен")
+      const res = await db.insertOne({ ...request.body, src: filedata.originalname })
+      response.send({ result: res })
     }
-    response.send({ result: res })
-  } catch(e) {
+  } catch (e) {
     response.send({ result: 'error', data: e })
   }
 })
@@ -40,23 +35,22 @@ router.get('/clear', async (request, response) => {
   try {
     const res = await db.deleteMany({})
     response.send({ result: res })
-  } catch(e) {
+  } catch (e) {
     response.send({ result: 'error', data: e })
   }
 })
-
-router.post('/check', async (request, response) => {
+router.delete('/posts', async (request, response) => {
   try {
-    const res = await db.updateOne({_id:new ObjectId(request.body._id)}, {$set:{done:request.body.done}})
+    const res = await db.deleteOne({ _id: new ObjectId(request.body._id) })
     response.send({ result: res })
-  } catch(e) {
+  } catch (e) {
     response.send({ result: 'error', data: e })
   }
 })
 
 router.get('/contact', async (request, response) => {
   //console.log(request.query)
-	try {
+  try {
     //const all = await db.find({}).toArray()
     response.render("contact.hbs", {
       title: "Мои контакты",
@@ -67,7 +61,7 @@ router.get('/contact', async (request, response) => {
       emails: ["gavgav@mycorp.com", "mioaw@mycorp.com"],
       phone: "<b>+1234567890</b>"
     })
-  } catch(e) {
+  } catch (e) {
     response.send({ result: 'error', data: e })
   }
 })
