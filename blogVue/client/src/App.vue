@@ -1,8 +1,6 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import HighbarC from '@/components/HighbarComp.vue'
-import HeaderC from '@/components/HeaderComp.vue'
-import FooterC from '@/components/FooterComp.vue'
 </script>
 
 <template>
@@ -10,7 +8,9 @@ import FooterC from '@/components/FooterComp.vue'
   <HighbarC></HighbarC>
   <MainHeader v-if="!isAdmin"></MainHeader>
   <AdminHeader v-else></AdminHeader>
-  <RouterView />
+  <RouterView></RouterView>
+
+
 </template>
 
 <script>
