@@ -14,7 +14,14 @@ router.get('/posts', async (request, response) => {
   }
 })
 
-
+router.put('/posts', async (request, response) => {
+  try {
+    const res = await db.updateOne({ _id: new ObjectId(request.body.id) }, { $set: { title: request.body.title, text: request.body.text, url: request.body.url } })
+    response.send({ result: res })
+  } catch (e) {
+    response.send({ result: 'error', data: e })
+  }
+})
 router.post('/posts', async (request, response) => {
   try {
     let filedata = request.file

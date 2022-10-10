@@ -1,150 +1,194 @@
 <script setup>
-import HighbarC from '@/components/HighbarComp.vue'
-import HeaderC from '@/components/HeaderComp.vue'
-import FooterC from '@/components/FooterComp.vue'
+import HighbarC from "@/components/HighbarComp.vue";
 </script>
 <template>
-  <HeaderC></HeaderC>
-  <HighbarC></HighbarC>
   <main>
-    <div class="res" id=flexdiv>
-      <input v-model="header" type="text" placeholder="Заголовок">
+    <HighbarC></HighbarC>
+    <div class="res" id="flexdiv">
+      <input v-model="title" type="text" placeholder="Заголовок" />
       <div>
-        <input type="file" id=file1 @change="previewFiles" class=filest>
-        <label class=filecont for="file1">
-          <span>{{fileName}}</span>
+        <input type="file" id="file1" @change="previewFiles" class="filest" />
+        <label class="filecont" for="file1">
+          <span>{{ fileName }}</span>
           <div>Browse</div>
         </label>
       </div>
-      <input v-model="url" type="url" placeholder="Ссылка">
+      <input v-model="url" type="url" placeholder="Ссылка" />
       <textarea v-model="text" placeholder="Текст"></textarea>
       <button @click="addPost">Добавить пост</button>
     </div>
-    <div class=res>
-      <div v-for="p of posts" :key="p._id" class=post>
-        <h1>{{p.title}}</h1>
+    <div class="res">
+      <div v-for="p of posts" :key="p._id" class="post">
+        <h1 v-if="!edit">{{ p.title }}</h1>
+        <input
+          v-else
+          type="text"
+          placeholder="Заголовок"
+          v-model="titledit"
+          style="margin-top: 10px"
+        />
         <div>
           <div class="blogtext">
-            <p>
-              {{p.text}}
+            <p v-if="!edit">
+              {{ p.text }}
             </p>
+            <textarea
+              v-else
+              placeholder="Текст"
+              v-model="textedit"
+              style="width: 80%"
+            ></textarea>
           </div>
           <div class="imgConteiner">
-            <img :src="'src/assets/' + p.src" alt="">
+            <img :src="'src/assets/' + p.src" alt="" />
           </div>
-          <div class='flex btnpost'>
-            <a href="#" class="button">Discover Now</a>
-            <div style="margin-right:30px">
-              <button class="btnact" @click="delNews(p._id)"><img src="src/assets/img/trashimg.svg"></button>
-              <button class="btnact" @click="editNews(p._id)"><img src="src/assets/img/edit-svgrepo-com.svg"></button>
+          <div class="flex btnpost" v-if="!edit">
+            <a :href="'https://' + p.url" class="button">Discover Now</a>
+            <div style="margin-right: 30px">
+              <button class="btnact" @click="delPost(p._id)">
+                <img src="src/assets/img/trashimg.svg" />
+              </button>
+              <button class="btnact" @click="editPost(p._id)">
+                <img src="src/assets/img/edit-svgrepo-com.svg" />
+              </button>
             </div>
+          </div>
+          <div v-if="edit" class="res" id="flexdiv">
+            <div>
+              <input
+                type="file"
+                id="file1"
+                @change="previewFiles"
+                class="filest"
+              />
+              <label class="filecont" for="file1">
+                <span>{{ fileName }}</span>
+                <div>Browse</div>
+              </label>
+            </div>
+            <input type="url" placeholder="Ссылка" v-model="urledit" />
+            <button @click="savePost(p._id)">Сохранить пост</button>
           </div>
         </div>
       </div>
     </div>
   </main>
-  <FooterC></FooterC>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      header: '',
-      text: '',
-      url: '',
+      titledit: "",
+      textedit: "",
+      urledit: "",
+      edit: false,
+      title: "",
+      text: "",
+      url: "",
       file: undefined,
       posts: [],
-      fileName: 'Choose file'
-    }
+      fileName: "Choose file",
+      src: "",
+    };
   },
   async beforeMount() {
-    const data = await fetch('http://127.0.0.1:3002/posts')
-    const posts = await data.json()
-    this.posts = posts.all
+    const data = await fetch("http://127.0.0.1:3002/posts");
+    const posts = await data.json();
+    this.posts = posts.all;
   },
   methods: {
     previewFiles(event) {
-      console.log(event.target.files[0])
-      this.file = event.target.files[0]
-      this.fileName = event.target.files[0].name
+      console.log(event.target.files[0]);
+      this.file = event.target.files[0];
+      this.fileName = event.target.files[0].name;
+      this.src = event.target.files[0].name;
     },
     async upload() {
       if (this.file) {
-        const data = new FormData()
-        data.append('file', this.file)
-        data.append('name', 'newName')
-
-        const result = await fetch('/photo', {
-          method: 'POST',
-          body: data
-        })
-        console.log(result)
+        const data = new FormData();
+        data.append("file", this.file);
+        data.append("name", "newName");
+        const result = await fetch("/photo", {
+          method: "POST",
+          body: data,
+        });
+        console.log(result);
       }
     },
     addPost: async function () {
-
       if (this.file) {
-        const data = new FormData()
-        data.append('file', this.file)
-        data.append('title', this.header)
-        data.append('text', this.text)
-        data.append('url', this.url)
+        const data = new FormData();
+        data.append("file", this.file);
+        data.append("title", this.title);
+        data.append("text", this.text);
+        data.append("url", this.url);
 
-        const result = await fetch('http://127.0.0.1:3002/posts', {
-          method: 'POST',
-          body: data
-        })
-        const insertRes = await result.json()
-        this.post.push({
-          header: this.header,
+        const result = await fetch("http://127.0.0.1:3002/posts", {
+          method: "POST",
+          body: data,
+        });
+        const insertRes = await result.json();
+        this.posts.push({
+          title: this.title,
           text: this.text,
           url: this.url,
-          file: this.file,
-          _id: insertRes.result.insertedId
-        })
-        this.header = ''
-        this.text = ''
-        this.url = ''
-        this.file = undefined
-        this.fileName = 'Choose file'
+          src: this.src,
+          _id: insertRes.result.insertedId,
+        });
+        this.title = "";
+        this.text = "";
+        this.url = "";
+        this.file = undefined;
+        this.fileName = "Choose file";
       }
     },
-    delNews: async function (_id) {
-      this.posts.splice(this.posts.findIndex(p => p._id == _id), 1)
-      const result = await fetch('http://127.0.0.1:3002/posts', {
-        method: 'DELETE',
+    delPost: async function (_id) {
+      this.posts.splice(
+        this.posts.findIndex((p) => p._id == _id),
+        1
+      );
+      const result = await fetch("http://127.0.0.1:3002/posts", {
+        method: "DELETE",
         headers: {
-          'Content-Type': 'application/json;charset=utf-8'
+          "Content-Type": "application/json;charset=utf-8",
         },
-        body: JSON.stringify({ _id: _id })
-      })
-      const insertRes = await result.json()
+        body: JSON.stringify({ _id: _id }),
+      });
+      const insertRes = await result.json();
       console.log(insertRes);
     },
-    editPost: async function (_id) {
-      this.posts.findIndex(n => n._id == _id)
+    savePost: async function (_id) {
+      let post = this.posts.at(this.posts.findIndex((n) => n._id == _id));
+      post.title = this.titledit 
+      post.text = this.textedit 
+      post.url = this.urledit 
       const result = await fetch('http://127.0.0.1:3002/posts', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json;charset=utf-8'
         },
-        body: JSON.stringify({ id: _id })
+        body: JSON.stringify({ title: this.title, text: this.text, url: this.url, id: _id })
       })
       const insertRes = await result.json()
       console.log(insertRes);
+      this.edit = false;
+    },
+    editPost: async function (_id) {
+      this.edit = true;
+      let post = this.posts.at(this.posts.findIndex((n) => n._id == _id));
+      this.titledit = post.title;
+      this.textedit = post.text;
+      this.urledit = post.url;
     },
   },
-
-
-}
-
+};
 </script>
 
 <style>
 .imgConteiner img {
   width: 95%;
-  margin: 0 auto
+  margin: 0 auto;
 }
 
 #flexdiv {
@@ -164,7 +208,7 @@ export default {
   padding: 5px;
   flex-direction: column;
   width: 80%;
-  margin: 0 auto
+  margin: 0 auto;
 }
 
 .flexinp {
@@ -194,16 +238,13 @@ export default {
   color: black;
 }
 
-
 .btnact {
-
-  padding: 4px 7px;
-
+  height: 28px;
+  padding: 5px;
 }
 
-.btnact>img {
-
-  width: 15px
+.btnact > img {
+  width: 15px;
 }
 
 .btnact {
@@ -217,7 +258,7 @@ export default {
   margin: 5px;
 }
 
-.filecont>div {
+.filecont > div {
   background-color: rgb(188, 188, 188);
   height: 100%;
   padding: 5px;
@@ -225,16 +266,15 @@ export default {
   transition: 300ms;
 }
 
-.filecont>span {
+.filecont > span {
   padding: 5px;
   margin: auto 0;
 }
 
-.filecont>div:hover {
+.filecont > div:hover {
   background-color: rgb(202, 202, 202);
   transition: 300ms;
 }
-
 
 .filecont {
   display: flex;

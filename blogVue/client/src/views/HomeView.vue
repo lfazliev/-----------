@@ -1,9 +1,10 @@
 <script setup>
-
+import HighbarC from '@/components/HighbarComp.vue'
 </script>
 
 <template>
   <main>
+    <HighbarC></HighbarC>
     <div class="flex">
       <div class="text">
         <h1>Philip Gilbert</h1>
