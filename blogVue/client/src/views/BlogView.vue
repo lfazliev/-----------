@@ -19,30 +19,19 @@ import HighbarC from "@/components/HighbarComp.vue";
     </div>
     <div class="res">
       <div v-for="p of posts" :key="p._id" class="post">
-        <h1 v-if="!edit">{{ p.title }}</h1>
-        <input
-          v-else
-          type="text"
-          placeholder="Заголовок"
-          v-model="titledit"
-          style="margin-top: 10px"
-        />
+        <h1 v-if="editId!=p._id">{{ p.title }}</h1>
+        <input v-else type="text" placeholder="Заголовок" v-model="titledit" style="margin-top: 10px" />
         <div>
           <div class="blogtext">
-            <p v-if="!edit">
+            <p v-if="editId!=p._id">
               {{ p.text }}
             </p>
-            <textarea
-              v-else
-              placeholder="Текст"
-              v-model="textedit"
-              style="width: 80%"
-            ></textarea>
+            <textarea v-else placeholder="Текст" v-model="textedit" style="width: 80%"></textarea>
           </div>
           <div class="imgConteiner">
             <img :src="'src/assets/' + p.src" alt="" />
           </div>
-          <div class="flex btnpost" v-if="!edit">
+          <div class="flex btnpost" v-if="editId!=p._id">
             <a :href="'https://' + p.url" class="button">Discover Now</a>
             <div style="margin-right: 30px">
               <button class="btnact" @click="delPost(p._id)">
@@ -53,16 +42,11 @@ import HighbarC from "@/components/HighbarComp.vue";
               </button>
             </div>
           </div>
-          <div v-if="edit" class="res" id="flexdiv">
+          <div v-if="editId==p._id" class="res" id="flexdiv">
             <div>
-              <input
-                type="file"
-                id="file1"
-                @change="previewFiles"
-                class="filest"
-              />
-              <label class="filecont" for="file1">
-                <span>{{ fileName }}</span>
+              <input type="file" id="file2" @change="previewEditFiles" class="filest" />
+              <label class="filecont" for="file2">
+                <span>{{ fileEditName }}</span>
                 <div>Browse</div>
               </label>
             </div>
@@ -82,13 +66,14 @@ export default {
       titledit: "",
       textedit: "",
       urledit: "",
-      edit: false,
+      editId: '',
       title: "",
       text: "",
       url: "",
       file: undefined,
       posts: [],
       fileName: "Choose file",
+      fileEditName: '',
       src: "",
     };
   },
@@ -103,6 +88,12 @@ export default {
       this.file = event.target.files[0];
       this.fileName = event.target.files[0].name;
       this.src = event.target.files[0].name;
+    },
+    previewEditFiles(event) {
+      console.log(event.target.files[0]);
+      this.fileEdit = event.target.files[0];
+      this.fileEditName = event.target.files[0].name;
+      this.editSrc = event.target.files[0].name;
     },
     async upload() {
       if (this.file) {
@@ -123,7 +114,6 @@ export default {
         data.append("title", this.title);
         data.append("text", this.text);
         data.append("url", this.url);
-
         const result = await fetch("http://127.0.0.1:3002/posts", {
           method: "POST",
           body: data,
@@ -144,10 +134,7 @@ export default {
       }
     },
     delPost: async function (_id) {
-      this.posts.splice(
-        this.posts.findIndex((p) => p._id == _id),
-        1
-      );
+      this.posts.splice(this.posts.findIndex((p) => p._id == _id), 1);
       const result = await fetch("http://127.0.0.1:3002/posts", {
         method: "DELETE",
         headers: {
@@ -159,27 +146,42 @@ export default {
       console.log(insertRes);
     },
     savePost: async function (_id) {
-      let post = this.posts.at(this.posts.findIndex((n) => n._id == _id));
-      post.title = this.titledit 
-      post.text = this.textedit 
-      post.url = this.urledit 
-      const result = await fetch('http://127.0.0.1:3002/posts', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify({ title: this.title, text: this.text, url: this.url, id: _id })
-      })
-      const insertRes = await result.json()
-      console.log(insertRes);
-      this.edit = false;
+      if (this.titledit != '' && this.textedit != '') {
+        let post = this.posts.at(this.posts.findIndex((n) => n._id == _id));
+        post.title = this.titledit
+        post.text = this.textedit
+        post.url = this.urledit
+        post.src = this.src
+        const data = new FormData();
+        data.append("file", this.file);
+        data.append("title", this.title);
+        const result = await fetch('http://127.0.0.1:3002/posts', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+          },
+          body: JSON.stringify({ title: post.title, text: post.text, url: post.url, _id: _id, src: post.src })
+        })
+        const insertRes = await result.json()
+        console.log(insertRes);
+        this.editId = '';
+      }
+      else {
+        alert('Заполните поля текст и заголовок')
+      }
     },
     editPost: async function (_id) {
-      this.edit = true;
-      let post = this.posts.at(this.posts.findIndex((n) => n._id == _id));
-      this.titledit = post.title;
-      this.textedit = post.text;
-      this.urledit = post.url;
+      if (this.editId == '') {
+        this.editId = _id;
+        let post = this.posts.at(this.posts.findIndex((n) => n._id == _id));
+        this.titledit = post.title;
+        this.textedit = post.text;
+        this.urledit = post.url;
+        this.fileEditName = post.src
+      }
+      else {
+        alert('Вы не завершили ред-ие другого поста')
+      }
     },
   },
 };
@@ -243,7 +245,7 @@ export default {
   padding: 5px;
 }
 
-.btnact > img {
+.btnact>img {
   width: 15px;
 }
 
@@ -258,7 +260,7 @@ export default {
   margin: 5px;
 }
 
-.filecont > div {
+.filecont>div {
   background-color: rgb(188, 188, 188);
   height: 100%;
   padding: 5px;
@@ -266,12 +268,12 @@ export default {
   transition: 300ms;
 }
 
-.filecont > span {
+.filecont>span {
   padding: 5px;
   margin: auto 0;
 }
 
-.filecont > div:hover {
+.filecont>div:hover {
   background-color: rgb(202, 202, 202);
   transition: 300ms;
 }
