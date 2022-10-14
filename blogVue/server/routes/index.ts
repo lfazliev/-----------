@@ -17,14 +17,14 @@ router.get('/posts', async (request, response) => {
 router.put('/posts', async (request, response) => {
 
   try {
-    let filedata = request.file
-    console.log(filedata)
+    let data = request.body
+    let filedata = request.file;
     if (!filedata) {
       console.log("Ошибка при загрузке файла")
+      const res = await db.updateOne({ _id: new ObjectId(data._id) }, { $set: { title: data.title, text: data.text, url: data.url } })
+      response.send({ result: res })
     } else {
-      console.log("Файл загружен")
-      const res = await db.updateOne({ _id: new ObjectId(request.body._id) }, { $set: { title: request.body.title, text: request.body.text, url: request.body.url, src: request.body.src } })
-      console.log(request.body);
+      const res = await db.updateOne({ _id: new ObjectId(data._id) }, { $set: { title: data.title, text: data.text, url: data.url, src: data.src } })
       response.send({ result: res })
     }
   } catch (e) {

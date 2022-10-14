@@ -1,0 +1,133 @@
+
+#z1 #main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#ravn {
+    width: 50% !important;
+}
+
+#z1 {
+    display: flex;
+    justify-content: center
+}
+
+#z1 div div {
+    display: flex;
+    width: 100%;
+
+}
+
+#z1 div div p {
+    border: 1px solid black;
+    width: 25%;
+    font-size: 25px;
+    text-align: center;
+    margin: 2px;
+    border-radius: 5px;
+}
+
+#z1 div div p:hover {
+    background-color: bisque;
+    cursor: pointer;
+}
+#ster {
+    width: 25%;
+    border: 1px solid black;
+    font-size: 17px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    transition: 300ms;
+}
+
+#ster:hover {
+    background-color: bisque;
+    cursor: pointer;
+    transition: 300ms;
+}
+<div id=z1 class="task">
+                <div id=main>
+                    <div class=res>
+                        <div class=resd id=r1></div>
+                        <div id=ster>Стёрка</div>
+                    </div>
+                    <div class=num>
+                        <p>9</p>
+                        <p>8</p>
+                        <p>7</p>
+                        <p>+</p>
+                    </div>
+                    <div class=num>
+                        <p>6</p>
+                        <p>5</p>
+                        <p>4</p>
+                        <p>-</p>
+                    </div>
+                    <div class=num>
+                        <p>3</p>
+                        <p>2</p>
+                        <p>1</p>
+                        <p>*</p>
+                    </div>
+                    <div class=num>
+                        <p>0</p>
+                        <p id=ravn>=</p>
+                        <p>/</p>
+                    </div>
+                </div>
+
+            </div>
+
+let a = document.querySelectorAll('.num > p')
+for (item of a) {
+    item.onclick = function () {
+        if (this.innerText == '=') {
+            if (r1.innerHTML == '') {
+                'Ничего нет'
+            }
+            else {
+                r1.innerHTML = eval(r1.innerHTML)
+
+            }
+        }
+        else {
+            if (!Number.isInteger(Number(this.innerText))) {
+                if (!Number.isInteger(Number(r1.innerHTML[r1.innerHTML.length - 1]))) {
+                    if (r1.innerHTML.length > 1) {
+                        r1.innerHTML = (r1.innerHTML).slice(0, -1)
+                        r1.innerHTML += this.innerText
+                    }
+                    else {
+                        if (this.innerText == '-' && r1.innerHTML[0] !== '-') {
+                            r1.innerHTML += this.innerText
+                        }
+                    }
+
+                }
+                else
+                    r1.innerHTML += this.innerText
+            }
+            else {
+                r1.innerHTML += this.innerText
+            }
+        }
+    }
+    ster.onclick = function () {
+        r1.innerHTML = (r1.innerHTML).slice(0, -1)
+    }
+}
+a.caps::after {
+    content: '';
+    width: 0px;
+    height: 1px;
+    display: block;
+    background: black;
+    transition: 400ms;
+}
+
+a.caps:hover::after {
+    width: 100%;
+}

@@ -75,6 +75,7 @@ export default {
       fileName: "Choose file",
       fileEditName: '',
       src: "",
+      editSrc: "",
     };
   },
   async beforeMount() {
@@ -94,18 +95,6 @@ export default {
       this.fileEdit = event.target.files[0];
       this.fileEditName = event.target.files[0].name;
       this.editSrc = event.target.files[0].name;
-    },
-    async upload() {
-      if (this.file) {
-        const data = new FormData();
-        data.append("file", this.file);
-        data.append("name", "newName");
-        const result = await fetch("/photo", {
-          method: "POST",
-          body: data,
-        });
-        console.log(result);
-      }
     },
     addPost: async function () {
       if (this.file) {
@@ -151,20 +140,21 @@ export default {
         post.title = this.titledit
         post.text = this.textedit
         post.url = this.urledit
-        post.src = this.src
+        post.src = this.fileEditName
         const data = new FormData();
-        data.append("file", this.file);
-        data.append("title", this.title);
+        data.append("file", this.fileEdit);
+        data.append("title", post.title);
+        data.append("text", post.text);
+        data.append("url", post.url);
+        data.append("src", post.src);
+        data.append("_id", post._id);
+        this.editId = '';
         const result = await fetch('http://127.0.0.1:3002/posts', {
           method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-          },
-          body: JSON.stringify({ title: post.title, text: post.text, url: post.url, _id: _id, src: post.src })
+          body: data,
         })
         const insertRes = await result.json()
         console.log(insertRes);
-        this.editId = '';
       }
       else {
         alert('Заполните поля текст и заголовок')
@@ -245,6 +235,10 @@ export default {
   padding: 5px;
 }
 
+.btnact:hover {
+  background: #00000034;
+}
+
 .btnact>img {
   width: 15px;
 }
@@ -294,5 +288,11 @@ input[type="file"] {
 
 label:hover {
   cursor: pointer;
+}
+
+label span {
+  padding: 5px;
+  overflow: hidden;
+  height: 20px
 }
 </style>
