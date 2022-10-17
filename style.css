@@ -7,7 +7,7 @@
 
 #head {
     transition: 300ms;
-    background: url('img/channels4_banner.jpg') 54% center/cover no-repeat;
+    background: url('/img/channels4_banner.jpg') 54% center/cover no-repeat;
     height: 300px;
 }
 
@@ -168,6 +168,14 @@ p {
 
 
 }
+@media screen and (max-width:400px) {
+
+    p {
+        font-size: 16px;
+    }
+
+
+}
 
 footer>div {
     margin-bottom: 5px
@@ -256,27 +264,27 @@ footer div {
 }
 
 a.fb {
-    background: url('imgfoot/fb_gray.png') center/cover no-repeat;
+    background: url('/imgfoot/fb_gray.png') center/cover no-repeat;
     transition: 300ms;
 }
 
 a.fb:hover {
-    background: url('imgfoot/fb.png') center/cover no-repeat;
+    background: url('/imgfoot/fb.png') center/cover no-repeat;
     transition: 300ms;
 }
 
 a.yt {
-    background: url('imgfoot/youtube_gray.png') center/cover no-repeat;
+    background: url('/imgfoot/youtube_gray.png') center/cover no-repeat;
     transition: 300ms;
 }
 
 a.yt:hover {
-    background: url('imgfoot/youtube.png') center/cover no-repeat;
+    background: url('/imgfoot/youtube.png') center/cover no-repeat;
     transition: 300ms;
 }
 
 a.ins {
-    background: url('imgfoot/insta_gray.png') center/cover no-repeat;
+    background: url('/imgfoot/insta_gray.png') center/cover no-repeat;
     transition: 300ms;
 }
 
@@ -294,7 +302,7 @@ a.caps:hover::after {
 }
 
 a.ins:hover {
-    background: url('imgfoot/insta.png') center/cover no-repeat;
+    background: url('/imgfoot/insta.png') center/cover no-repeat;
     transition: 300ms;
 }
 
@@ -359,12 +367,11 @@ h2 {
 
 ::-webkit-scrollbar {
     width: 10px;
-    background-color: #352f1a;
 }
 
 ::-webkit-scrollbar-thumb {
     background-color: #a78721;
-    border-radius: 16em;
+    border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
