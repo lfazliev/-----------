@@ -35,6 +35,9 @@ textarea {
     font-size: 35px;
     background-color: green;
     transition: background 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #circle:hover {

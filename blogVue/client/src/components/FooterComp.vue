@@ -4,47 +4,33 @@
             <div>
                 <ul>
                     <li>
-                        <a class="caps" href="../romiju/index.html">Home</a>
+                        <a class="caps" href="/ind/index.html">Home & about</a>
                     </li>
                     <li>
-                        <a class="caps" href="../romiju/index.html">About</a>
+                        <a class="caps" href="/contacts/index.html">Contacts</a>
                     </li>
                     <li>
-                        <a class="caps" href="../romiju/index.html">Gallery</a>
+                        <a class="caps" href="/hom/index.html">My works</a>
                     </li>
                     <li>
-                        <a class="caps" href="../romiju/index.html">News</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <a class="caps" href="../romiju/index.html">Blog</a>
-                    </li>
-                    <li>
-                        <a class="caps" href="../romiju/index.html">FAQ</a>
-                    </li>
-                    <li>
-                        <a class="caps" href="../romiju/index.html">Contacts</a>
-                    </li>
-                    <li>
-                        <a class="caps" href="../romiju/index.html">Privacy & cookies</a>
+                        <a class="caps" href="/blogVue/client/index.html">Blog</a>
                     </li>
                 </ul>
             </div>
             <ul id=social>
                 <li>
-                    <a class="fb" href="https://vk.ru/lfazliev"></a>
+                    <a class="fb" href="https://www.facebook.com/lfazliev/"></a>
                 </li>
                 <li>
                     <a class="yt" href="https://www.youtube.com/c/WarLenar"></a>
                 </li>
                 <li>
-                    <a class="ins" href="../ind/index.html"></a>
+                    <a class="vk" href="https://vk.ru/lfazliev"></a>
                 </li>
             </ul>
         </div>
         <hr>
-        <p style="color : white">Copyright Lenar 2005-2022</p>
+        <p style="color : white">Fazliev Lenar 2022</p>
     </footer>
 </template>
 <style scoped>
@@ -177,7 +163,7 @@ a.yt:hover {
     transition: 300ms;
 }
 
-a.ins {
+a.vk {
     background: url('imgfoot/insta_gray.png') center/cover no-repeat;
     transition: 300ms;
 }
@@ -195,7 +181,7 @@ a.caps:hover::after {
     width: 100%;
 }
 
-a.ins:hover {
+a.vk:hover {
     background: url('imgfoot/insta.png') center/cover no-repeat;
     transition: 300ms;
 }

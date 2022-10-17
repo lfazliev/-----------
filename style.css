@@ -63,10 +63,6 @@ ul {
     margin: 0
 }
 
-a:-webkit-any-link {
-    color: rgb(160, 160, 160);
-}
-
 @keyframes anim {
     from {
         opacity: 0;
@@ -168,6 +164,7 @@ p {
 
 
 }
+
 @media screen and (max-width:400px) {
 
     p {
@@ -178,7 +175,7 @@ p {
 }
 
 footer>div {
-    margin-bottom: 5px
+    margin-bottom: 20px;
 }
 
 #center div {
@@ -186,33 +183,18 @@ footer>div {
     width: 50%;
 }
 
-@media screen and (max-width:600px) {
-    footer #center {
-        justify-content: space-between
-    }
-
-    footer {
-        padding: 40px 35px !important;
-    }
-
-    footer #social li {
-        margin-bottom: 10px
-    }
-
-    footer #social {
-        display: flex;
-        flex-direction: column;
-    }
-
-    footer #center div {
-        width: 100%;
+@media screen and (max-width:1400px) {
+    footer ul {
+        width: 50% !important;
     }
 }
+
+
 
 a.caps {
     color: rgb(255, 255, 255);
     text-decoration: none;
-    font-size: 14px;
+    font-size: 20px;
     /* max-width: 20px */
 }
 
@@ -224,43 +206,38 @@ footer {
 
 footer ul {
     list-style-type: none;
-    max-width: 20%;
-    margin-bottom: 3px;
-}
-
-footer>p {
-    padding-top: 10px;
-}
-
-footer #social {
-    max-width: 100%
-}
-
-#social {
-    margin-top: 30px
+    width: 40%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 #social li {
-    margin: 0 10px;
     display: inline-block;
 }
 
 #social li a {
     background-repeat: no-repeat;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     display: block;
 }
 
-footer p {
+footer>p {
     text-align: center;
     font-size: 14px;
-    color: white
+    color: white;
+    margin-top: 15px;
+}
+
+footer ul>li {
+    margin: auto 0;
+    padding: 20px;
 }
 
 footer div {
     display: flex;
-    justify-content: space-around
+    justify-content: space-around;
 }
 
 a.fb {
@@ -283,8 +260,8 @@ a.yt:hover {
     transition: 300ms;
 }
 
-a.ins {
-    background: url('/imgfoot/insta_gray.png') center/cover no-repeat;
+a.vk {
+    background: url('/imgfoot/vkgray.svg') center/cover no-repeat;
     transition: 300ms;
 }
 
@@ -301,8 +278,8 @@ a.caps:hover::after {
     width: 100%;
 }
 
-a.ins:hover {
-    background: url('/imgfoot/insta.png') center/cover no-repeat;
+a.vk:hover {
+    background: url('/imgfoot/vk.svg') center/cover no-repeat;
     transition: 300ms;
 }
 
@@ -336,21 +313,13 @@ h1 {
 
 @media screen and (max-width:600px) {
     .page {
-        margin: 2rem 1.5rem 1.5rem;
+        margin: 2rem 1rem 1.5rem;
         transition: 300ms;
         font-size: 17px
     }
 
 }
 
-@media screen and (min-width:600px) {
-    footer div {
-        justify-content: space-around
-    }
-
-}
-
-@media screen and (max-width:600px) {}
 
 h2 {
     margin-block-start: 0em;
