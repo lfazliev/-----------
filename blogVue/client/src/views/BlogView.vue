@@ -35,10 +35,10 @@ import HighbarC from "@/components/HighbarComp.vue";
             <a :href="'https://' + p.url" class="button">Discover Now</a>
             <div style="margin-right: 30px">
               <button class="btnact" @click="delPost(p._id)">
-                <img src="src/assets/img/trashimg.svg" />
+                <img src="/src/assets/img/trashimg.svg" />
               </button>
               <button class="btnact" @click="editPost(p._id)">
-                <img src="src/assets/img/edit-svgrepo-com.svg" />
+                <img src="/src/assets/img/edit-svgrepo-com.svg" />
               </button>
             </div>
           </div>

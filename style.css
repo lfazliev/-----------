@@ -298,11 +298,12 @@ a.vk:hover {
     color: rgba(117, 117, 117, 0.942);
 }
 
-.page a:visited {
+
+.page a:-webkit-any-link {
     color: rgb(160, 160, 160);
 }
 
-.page a:visited:hover {
+.page a:-webkit-any-link:hover {
     color: rgba(117, 117, 117, 0.942);
 }
 

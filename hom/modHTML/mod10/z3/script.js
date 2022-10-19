@@ -10,7 +10,7 @@ sdub.onclick = function () {
             item.setAttribute('class', 'text_input_invalid')
         }
         else {
-            item.removeAttribute('text_input_invalid')
+            item.removeAttribute('class', 'text_input_invalid')
             item.setAttribute('class', 'text_input_valid')
         }
 
@@ -20,7 +20,7 @@ sdub.onclick = function () {
     for (item of gender) {
         if (item.selected == true && item.disabled == true) {
             let fiemass = gender.nextSibling.nextSibling
-            fiemass.innerText = 'Выберите cтрану'
+            fiemass.innerText = 'Укажите пол'
             fiemass.style.color = 'red'
             fiemass.style.position = 'absolute'
             // fiemass.style.bottom = '130px'
@@ -36,12 +36,14 @@ gender.addEventListener('change', function () {
     gender.style.borderColor = null
 })
 copass.addEventListener('change', function (e) {
-    if (copass.value !== pass.value) {
-        copass.setAttribute('text_input_invalid')
+    if (copass.value != pass.value) {
+        copass.setAttribute('class', 'text_input_invalid')
         copass.setCustomValidity('Пароль должен совпадать')
     }
     else {
-        copass.removeAttribute('text_input_invalid')
+        copass.removeAttribute('class', 'text_input_invalid')
+        copass.setAttribute('class', 'text_input_valid')
+        copass.setCustomValidity('')
     }
 })
 for (item of nonvalidinp) {
@@ -52,7 +54,7 @@ for (item of nonvalidinp) {
                 this.setAttribute('class', 'text_input_invalid')
             }
             else {
-                this.removeAttribute('text_input_invalid')
+                this.removeAttribute('class', 'text_input_invalid')
                 this.setAttribute('class', 'text_input_valid')
             }
 

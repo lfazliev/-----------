@@ -1,11 +1,12 @@
 input {
-    border: 0px;
-    border-bottom: 1px solid black;
-    background-color: white;
-    border-radius: 0px;
+    border-radius: 5px 5px 0 0px !important;
+    border: 0;
+    background: #f9f9f9;
+    color: #515151;
+    padding: 4px 1%;
+    margin-bottom: 7px;
+    border-bottom: 1px solid #ccc;
     width: 100%;
-    transition: border 300ms, box-shadow 300ms;
-    margin-bottom: 0px;
 }
 
 form {
@@ -111,7 +112,7 @@ input:invalid {
 } */
 
 .text-field__message {
-    bottom: 296px;
+    bottom: 310px;
 }
 
 input:focus-visible {
@@ -154,7 +155,7 @@ form>div {
     }
 
     .text-field__message {
-        bottom: 430px;
+        bottom: 440px;
     }
 
     .cbox {
@@ -181,7 +182,7 @@ form>div {
     }
 
     .text-field__message {
-        bottom: 143px;
+        bottom: 182px;
     }
 
     #inpbot>input {
@@ -218,9 +219,16 @@ form>div {
 
     select {
         height: 40px;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
         width: 100%;
     }
+}
+
+@media screen and (max-width: 511px) {
+    .text-field__message {
+        bottom: 160px;
+    }
+
 }
 
 .text_input_invalid {
