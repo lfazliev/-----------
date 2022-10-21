@@ -94,10 +94,25 @@ for (item of nonvalidinp) {
         }
     })
 }
+for (item of nonvalidinp) {
+    item.addEventListener('change', function () {
+        for (item of nonvalidinp) {
+            if (!this.checkValidity()) {
+                this.setAttribute('class', 'text_input_invalid')
+            }
+            else {
+                this.removeAttribute('text_input_invalid')
+                this.setAttribute('class', 'text_input_valid')
+            }
+        }
+    })
+}
 z3sub.onclick = function () {
+    let pol = 1
     for (item of nonvalidinp) {
         if (!item.checkValidity()) {
             item.setAttribute('class', 'text_input_invalid')
+            pol = 0
         }
     }
     if (!gendsel[0].checked && !gendsel[1].checked) {
@@ -107,7 +122,7 @@ z3sub.onclick = function () {
         fiemass[0].style.position = 'absolute'
         fiemass[0].style.bottom = '-15px'
         fiemass[0].style.fontSize = '14px'
-
+        pol = 0
     }
     count = country.children
     for (item of count) {
@@ -119,7 +134,7 @@ z3sub.onclick = function () {
             fiemass.style.bottom = '-11px'
             fiemass.style.fontSize = '14px'
             country.style.borderColor = 'red'
-
+            pol = 0
         }
     }
     cit = city.children
@@ -132,10 +147,55 @@ z3sub.onclick = function () {
             fiemass.style.bottom = '-11px'
             fiemass.style.fontSize = '14px'
             city.style.borderColor = 'red'
-
+            pol = 0
         }
     }
-
+    if (pol == 1) {
+        result.innerHTML = '' 
+        let cbox = z3.querySelectorAll('input[type="checkbox"]')
+        let Newdiv = document.createElement('div')
+        for (item of nonvalidinp) {
+            let P = document.createElement('p')
+            P.innerHTML = item.placeholder
+            P.innerHTML += ': ' + item.value + '<br>'
+            Newdiv.appendChild(P)
+        }
+        for (item of cit) {
+            if (item.selected == true) {
+                let P = document.createElement('p')
+                P.innerHTML = 'Ciry'
+                P.innerHTML += ': ' + item.innerHTML + '<br>'
+                Newdiv.appendChild(P)
+            }
+            result.appendChild(Newdiv)
+        }
+        for (item of count) {
+            if (item.selected == true) {
+                let P = document.createElement('p')
+                P.innerHTML = 'Country'
+                P.innerHTML += ': ' + item.innerHTML + '<br>'
+                Newdiv.appendChild(P)
+            }
+            result.appendChild(Newdiv)
+        }
+        for (item of gendsel) {
+            if (item.checked) {
+                let P = document.createElement('p')
+                P.innerHTML = 'Gender'
+                P.innerHTML += ': ' + item.value + '<br>'
+                Newdiv.appendChild(P)
+            }
+        }
+        let CboxP = document.createElement('p')
+        CboxP.innerHTML = 'Skills: '
+        for (item of cbox) {
+            if (item.checked) {
+                CboxP.innerHTML += item.value + ' '
+            }
+        }
+        CboxP.innerHTML += '<br>'
+        Newdiv.appendChild(CboxP)
+    }
 }
 count = document.getElementById('country')
 count.addEventListener('change', function () {
@@ -157,3 +217,4 @@ gendsel[1].addEventListener('change', function () {
     let fiemass = gender.getElementsByClassName('text-field__message')
     fiemass[0].style.display = 'none'
 })
+

@@ -92,7 +92,7 @@
                         <div>
                             <div>
                                 <label for="date">День рождения:</label>
-                                <input name=date type="date" id=date required autocomplete=bday>
+                                <input name=date type="date" id=date required autocomplete=bday placeholder="Date">
                                 <div class="text-field__message"></div>
                             </div>
                             <div id=gender>
@@ -130,37 +130,38 @@
                     <div id=skill>
                         Skills:
                         <div class=cbox>
-                            <input type="checkbox" name="html">
+                            <input type="checkbox" value="HTML" name="html">
                             <label for="html">HTML</label>
                         </div>
                         <div class=cbox>
-                            <input type="checkbox" name="CSS">
+                            <input type="checkbox" value="CSS" name="CSS">
                             <label for="CSS">CSS</label>
                         </div>
                         <div class=cbox>
-                            <input type="checkbox" name="JS">
+                            <input type="checkbox" value="JS" name="JS">
                             <label for="JS">JS</label>
                         </div>
                         <div class=cbox>
-                            <input type="checkbox" name="PHP">
+                            <input type="checkbox" value="PHP" name="PHP">
                             <label for="PHP">PHP</label>
                         </div>
                         <div class=cbox>
-                            <input type="checkbox" name="C++">
+                            <input type="checkbox" value='C++' name="C++">
                             <label for="C++">C++</label>
                         </div>
                         <div class=cbox>
-                            <input type="checkbox" name="Java">
+                            <input type="checkbox" value="Java" name="Java">
                             <label for="Java">Java</label>
                         </div>
                         <div class=cbox>
-                            <input type="checkbox" name="C#">
+                            <input type="checkbox" value="C#" name="C#">
                             <label for="C#">C#</label>
                         </div>
                     </div>
                     <hr>
                     <button type="submit" id=z3sub>Добавить</button>
                 </form>
+                <div id=result></div>
             </div>
             <div id="mass"></div>
         </div>
