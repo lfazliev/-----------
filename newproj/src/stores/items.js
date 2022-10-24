@@ -2,24 +2,29 @@ import { defineStore } from 'pinia'
 
 export const useItemsStore = defineStore('items', {
     state: () => ({
-        items: []
+        
     }),
     getters: {
 
     },
     actions: {
-        createItems(state) {
-            console.log('items')
-            const length = Math.random() * (10 - 4) + 4
+        getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min) + min)
+        },
+        createItems() {
+            const items = []
+            const length = this.getRandom(4, 10)
             for (let i = 0; i <= length; i++) {
-                const count = Math.random() * (10 - 4) + 4
+                const count = this.getRandom(4, 10)
                 let letters = '0123456789ABCDEF';
                 let color = '#'
                 for (let i = 0; i < 6; i++) {
-                    color += letters[Math.floor(Math.random() * 16)];
+                    color += letters[this.getRandom(0, 16)];
                 }
-                state.items.push({ count, color })
+                items.push({ count, color })
             }
-        }
+            return items
+        },
+        
     }
 })

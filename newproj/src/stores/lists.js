@@ -8,8 +8,8 @@ export const useListsStore = defineStore('lists', {
 
     },
     actions: {
-        createLists(state, i, items) {
-            state.lists.push({ i, items })
+        createLists(i, items) {
+            this.lists.push({ i, items })
         }
     }
 })
