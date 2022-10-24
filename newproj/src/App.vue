@@ -24,8 +24,11 @@ export default {
     ...mapStores(useItemsStore)
   },
   onBeforeMount() {
+    this.itemsStore.createItems(this.itemsStore.$state)
+    console.log(this.itemsStore.items)
+
     for (let i = 0; i < 5; i++) {
-      this.listsStore.createLists(this.listsStore, i, this.itemsStore.createItems(this.itemsStore))
+      this.listsStore.createLists(this.listsStore.$state, i, this.itemsStore.createItems(this.itemsStore.$state))
     }
     console.log(this.listsStore.lists)
   },

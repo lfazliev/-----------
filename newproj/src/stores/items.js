@@ -9,6 +9,7 @@ export const useItemsStore = defineStore('items', {
     },
     actions: {
         createItems(state) {
+            console.log('items')
             const length = Math.random() * (10 - 4) + 4
             for (let i = 0; i <= length; i++) {
                 const count = Math.random() * (10 - 4) + 4
