@@ -22,7 +22,8 @@ export const useItemsStore = defineStore('items', {
                     color += letters[this.getRandom(0, 16)];
                 }
                 let checked = false
-                items.push({ i, count, color, checked })
+                let value = count + ' ' + color
+                items.push({ i, count, color, checked, value })
             }
             return items
         },
