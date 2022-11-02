@@ -4,13 +4,15 @@
   <div>
     <ul>
       <li v-for="l of listsStore.lists" :key="l.i">
-        <input type="checkbox" :id="l.i" :checked="l.checked" @change="fagol(l, $event)">
-        <label :for="l.i">
-          {{ l.i }}{{l.checkedItems}}
+        <label :for="l.i" class=checkbox>
+          <input type="checkbox" :id="l.i" :checked="l.checked" @change="fagol(l, $event)">
+          <span>
+            {{ l.i }}
+          </span>
         </label>
         <ul>
           <li v-for="i of l.items" :key="i.i">
-            <input type="checkbox" :id="String(l.i) + i.i" v-model="l.checkedItems" :value="i.value" :checked=i.checked
+            <input type="checkbox" :id="String(l.i) + i.i" :value="i.value" :checked=i.checked
               @change="fagal(i, $event)">
             <label :for="String(l.i) + i.i">
               {{ i.count }}{{ i.checked }} <div :style="{ 'background-color': i.color }" class="blocks"></div>
@@ -20,11 +22,12 @@
       </li>
     </ul>
     <div>
-      <div v-for="l of listsStore.lists" :key=l class="colorbox">
+      <div v-for="l of SortedLists" :key=l class="colorbox">
         <button @onclick='randbox'></button>
-        <div v-for="j of l.checkedItems" :key="j" style="display: flex;flex-wrap: wrap">
-          <div v-for="i in (Number((j.split(' '))[0]))" :key="i"
-            :style="{ 'background-color': (j.split(' '))[1], 'margin': '10px' }" class="blocks">
+        <div v-for="j of l.items" :key="j" style="display: flex;flex-wrap: wrap">
+          <div v-for="i in Number((j.value.split(' '))[0])" :key="i"
+            :style="{ 'background-color': (j.value.split(' '))[1], 'margin': '10px' }" class="blocks">
+
           </div>
         </div>
 
@@ -44,19 +47,18 @@ export default {
   },
   methods: {
     fagal(el, e) {
+      console.log(el, e);
       el.checked = e.target.checked;
     },
     fagol(lists, e) {
       if (e.target.checked == true) {
         for (let item of lists.items) {
           item.checked = true;
-          lists.checkedItems.push(item.value)
         }
       }
       else {
         for (let item of lists.items) {
           item.checked = false;
-          lists.checkedItems = []
         }
       }
     },
@@ -64,6 +66,19 @@ export default {
   computed: {
     ...mapStores(useListsStore),
     ...mapStores(useItemsStore),
+    SortedLists() {
+      const newLists = []
+      for (let l of this.listsStore.lists) {
+        let currentList = { id: l.i, items: [] }
+        for (let i of l.items) {
+          if (i.checked) {
+            currentList.items.push(i)
+          }
+        }
+        newLists.push(currentList)
+      }
+      return newLists
+    },
   },
   beforeMount() {
     this.itemsStore.createItems();
@@ -73,7 +88,8 @@ export default {
     }
   },
 
-};
+}
+
 </script>
 
 <style scoped>
@@ -95,6 +111,34 @@ label {
 .blocks {
   width: 15px;
   height: 15px;
+}
+
+.mincheck {
+  opacity: 0;
+}
+
+.checkbox>span::before {
+  content: '';
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border-radius: 0.25em;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100%;
+}
+
+.checkbox>span::before {
+  background-image: url(../src/assets/img/checkbox.svg);
+}
+
+.checkbox>input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
 }
 
 .colorbox {
