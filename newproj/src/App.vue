@@ -28,14 +28,17 @@
       <div v-for="l of SortedLists" :key=l class="colorbox">
         <div style="display: flex; justify-content: space-around; padding: 5px">
           <p style="margin:0">lists {{ l.id + 1 }}</p>
-          <button value="0" @click="polbutt($event, l.items)">Randomize</button>
+          <button @click="polbutt(l, $event)">Randomize</button>
         </div>
-        <div @click="polbutt($event)">
+        <div>
           <div v-for="j of l.items" :key="j" style="display: flex;flex-wrap: wrap">
-            <div v-for="i in j.count" :key="i" :style="{ 'background-color': j.color, 'margin': '10px' }"
-              class="blocks">
+            <div @click="j.count--" v-for="i in j.count" :key="i"
+              :style="{ 'background-color': j.color, 'margin': '10px' }" class="blocks">
             </div>
           </div>
+        </div>
+        <div>
+          <div></div>
         </div>
 
       </div>
@@ -54,7 +57,6 @@ export default {
   },
   methods: {
     fagal(el, e) {
-      console.log(el, e);
       el.checked = e.target.checked;
     },
     fagol(lists, e) {
@@ -69,15 +71,16 @@ export default {
         }
       }
     },
-    polbutt(i) {
-      let sum = []
-      let a = i.target.parentNode.children
-      for (let i = 0; i < a.length; i++) {
-        sum.push(...a[i].children)
+    polbutt(l, e) {
+      l.button = !l.button
+      if (l.button) {
+        e.target.innerHTML = 'Sorted'
       }
-      sum.sort(() => Math.random() - 0.5)
-      console.log(sum);
+      else {
+        e.target.innerHTML = 'Randomize'
+      }
     }
+
   },
   computed: {
     ...mapStores(useListsStore),
@@ -93,9 +96,9 @@ export default {
         }
         newLists.push(currentList)
       }
-      console.log(newLists);
       return newLists
     },
+
   },
   beforeMount() {
     this.itemsStore.createItems()

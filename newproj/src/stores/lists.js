@@ -10,7 +10,7 @@ export const useListsStore = defineStore('lists', {
     actions: {
         createLists(i, items) {
             let checked = false
-            this.lists.push({ i, items, checked })
+            this.lists.push({ i, items, checked, button: false, randarray: [] })
         }
     }
 })
