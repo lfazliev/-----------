@@ -1,7 +1,8 @@
-<script setup></script>
+<script setup>
+</script>
 
 <template>
-  <div>
+  <div style="display: flex; justify-content: space-between">
     <ul>
       <li v-for="l of listsStore.lists" :key="l.i">
         <label :for="l.i" class=checkbox>
@@ -15,19 +16,25 @@
             <input type="checkbox" :id="String(l.i) + i.i" :value="i.value" :checked=i.checked
               @change="fagal(i, $event)">
             <label :for="String(l.i) + i.i">
-              {{ i.count }}{{ i.checked }} <div :style="{ 'background-color': i.color }" class="blocks"></div>
+              <input type=number v-model=i.count style="border:none; width:20%">
+              <div :style="{ 'background-color': i.color }" class="blocks">
+              </div>
             </label>
           </li>
         </ul>
       </li>
     </ul>
-    <div>
+    <div style="width:45%">
       <div v-for="l of SortedLists" :key=l class="colorbox">
-        <button @onclick='randbox'></button>
-        <div v-for="j of l.items" :key="j" style="display: flex;flex-wrap: wrap">
-          <div v-for="i in Number((j.value.split(' '))[0])" :key="i"
-            :style="{ 'background-color': (j.value.split(' '))[1], 'margin': '10px' }" class="blocks">
-
+        <div style="display: flex; justify-content: space-around; padding: 5px">
+          <p style="margin:0">lists {{ l.id + 1 }}</p>
+          <button value="0" @click="polbutt($event, l.items)">Randomize</button>
+        </div>
+        <div @click="polbutt($event)">
+          <div v-for="j of l.items" :key="j" style="display: flex;flex-wrap: wrap">
+            <div v-for="i in j.count" :key="i" :style="{ 'background-color': j.color, 'margin': '10px' }"
+              class="blocks">
+            </div>
           </div>
         </div>
 
@@ -62,6 +69,15 @@ export default {
         }
       }
     },
+    polbutt(i) {
+      let sum = []
+      let a = i.target.parentNode.children
+      for (let i = 0; i < a.length; i++) {
+        sum.push(...a[i].children)
+      }
+      sum.sort(() => Math.random() - 0.5)
+      console.log(sum);
+    }
   },
   computed: {
     ...mapStores(useListsStore),
@@ -77,11 +93,12 @@ export default {
         }
         newLists.push(currentList)
       }
+      console.log(newLists);
       return newLists
     },
   },
   beforeMount() {
-    this.itemsStore.createItems();
+    this.itemsStore.createItems()
     for (let i = 0; i < 5; i++) {
       this.listsStore.createLists(i, this.itemsStore.createItems());
     }
@@ -95,7 +112,7 @@ export default {
 ul {
   list-style: none;
   margin: 10px;
-
+  padding: 0px
 }
 
 li {
