@@ -82,9 +82,8 @@ export default {
   },
   beforeMount() {
     this.itemsStore.createItems();
-    let checkedItems = []
     for (let i = 0; i < 5; i++) {
-      this.listsStore.createLists(i, this.itemsStore.createItems(), checkedItems);
+      this.listsStore.createLists(i, this.itemsStore.createItems());
     }
   },
 

@@ -18,12 +18,12 @@ import HighbarC from "@/components/HighbarComp.vue";
       <button @click="addPost">Добавить пост</button>
     </div>
     <div class="res">
-      <div v-for="p of posts" :key="p._id" class="post">
-        <h1 v-if="editId!=p._id">{{ p.title }}</h1>
+      <div v-for="p of postsStore.posts" :key="p._id" class="post">
+        <h1 v-if="editId != p._id">{{ p.title }}</h1>
         <input v-else type="text" placeholder="Заголовок" v-model="titledit" style="margin-top: 10px" />
         <div>
           <div class="blogtext">
-            <p v-if="editId!=p._id">
+            <p v-if="editId != p._id">
               {{ p.text }}
             </p>
             <textarea v-else placeholder="Текст" v-model="textedit" style="width: 80%"></textarea>
@@ -31,7 +31,7 @@ import HighbarC from "@/components/HighbarComp.vue";
           <div class="imgConteiner">
             <img :src="'src/assets/' + p.src" alt="" />
           </div>
-          <div class="flex btnpost" v-if="editId!=p._id">
+          <div class="flex btnpost" v-if="editId != p._id">
             <a :href="'https://' + p.url" class="button">Discover Now</a>
             <div style="margin-right: 30px">
               <button class="btnact" @click="delPost(p._id)">
@@ -42,7 +42,7 @@ import HighbarC from "@/components/HighbarComp.vue";
               </button>
             </div>
           </div>
-          <div v-if="editId==p._id" class="res" id="flexdiv">
+          <div v-if="editId == p._id" class="res" id="flexdiv">
             <div>
               <input type="file" id="file2" @change="previewEditFiles" class="filest" />
               <label class="filecont" for="file2">
@@ -60,6 +60,8 @@ import HighbarC from "@/components/HighbarComp.vue";
 </template>
 
 <script>
+import { usePostsStore } from "@/stores/posts";
+import { mapStores } from "pinia";
 export default {
   data() {
     return {
@@ -70,18 +72,17 @@ export default {
       title: "",
       text: "",
       url: "",
+      src: "",
       file: undefined,
-      posts: [],
       fileName: "Choose file",
       fileEditName: '',
-      src: "",
       editSrc: "",
     };
   },
   async beforeMount() {
     const data = await fetch("http://127.0.0.1:3002/posts");
     const posts = await data.json();
-    this.posts = posts.all;
+    this.postsStore.posts = posts.all;
   },
   methods: {
     previewFiles(event) {
@@ -108,13 +109,7 @@ export default {
           body: data,
         });
         const insertRes = await result.json();
-        this.posts.push({
-          title: this.title,
-          text: this.text,
-          url: this.url,
-          src: this.src,
-          _id: insertRes.result.insertedId,
-        });
+        this.postsStore.createPost(this.title, this.text, this.url, this.src, insertRes.result.insertedId)
         this.title = "";
         this.text = "";
         this.url = "";
@@ -123,7 +118,7 @@ export default {
       }
     },
     delPost: async function (_id) {
-      this.posts.splice(this.posts.findIndex((p) => p._id == _id), 1);
+      this.postsStore.delel(_id)
       const result = await fetch("http://127.0.0.1:3002/posts", {
         method: "DELETE",
         headers: {
@@ -136,7 +131,7 @@ export default {
     },
     savePost: async function (_id) {
       if (this.titledit != '' && this.textedit != '') {
-        let post = this.posts.at(this.posts.findIndex((n) => n._id == _id));
+        let post = this.postsStore.findpost(_id);
         post.title = this.titledit
         post.text = this.textedit
         post.url = this.urledit
@@ -163,7 +158,7 @@ export default {
     editPost: async function (_id) {
       if (this.editId == '') {
         this.editId = _id;
-        let post = this.posts.at(this.posts.findIndex((n) => n._id == _id));
+        let post = this.postsStore.findpost(_id);
         this.titledit = post.title;
         this.textedit = post.text;
         this.urledit = post.url;
@@ -174,6 +169,7 @@ export default {
       }
     },
   },
+  computed: { ...mapStores(usePostsStore) },
 };
 </script>
 
