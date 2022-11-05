@@ -8,7 +8,7 @@
         <label :for="l.i" class=checkbox>
           <input type="checkbox" :id="l.i" :checked="l.checked" @change="fagol(l, $event)">
           <span>
-            {{ l.i }}
+            {{ l.i + 1 }}
           </span>
         </label>
         <ul>
@@ -16,7 +16,8 @@
             <input type="checkbox" :id="String(l.i) + i.i" :value="i.value" :checked=i.checked
               @change="fagal(i, $event)">
             <label :for="String(l.i) + i.i">
-              <input type=number v-model=i.count style="border:none; width:20%">
+              <input type=number min="0" v-model=i.blocks.length @change="rasc($event, i)"
+                style="border:none; width:20%">
               <div :style="{ 'background-color': i.color }" class="blocks">
               </div>
             </label>
@@ -28,12 +29,14 @@
       <div v-for="l of SortedLists" :key=l class="colorbox">
         <div style="display: flex; justify-content: space-around; padding: 5px">
           <p style="margin:0">lists {{ l.id + 1 }}</p>
-          <button @click="polbutt(l, $event)">Randomize</button>
+          <button @click="listsStore.lists[l.id].button = !listsStore.lists[l.id].button">{{
+              listsStore.lists[l.id].button ? 'True' : 'False'
+          }}</button>
         </div>
         <div>
           <div v-for="j of l.items" :key="j" style="display: flex;flex-wrap: wrap">
-            <div @click="j.count--" v-for="i in j.count" :key="i"
-              :style="{ 'background-color': j.color, 'margin': '10px' }" class="blocks">
+            <div @click="j.blocks.pop()" v-for="i of j.blocks" :key="i"
+              :style="{ 'background-color': i.color, 'margin': '10px' }" class="blocks">
             </div>
           </div>
         </div>
@@ -47,8 +50,9 @@
 </template>
 
 <script>
-import { useItemsStore } from "@/stores/items";
-import { useListsStore } from "@/stores/lists";
+import { useItemsStore } from "@/stores/items.js";
+import { useListsStore } from "@/stores/lists.js";
+import { useBlocksStore } from "@/stores/blocks.js";
 import { mapStores } from "pinia";
 export default {
   data() {
@@ -56,6 +60,9 @@ export default {
     }
   },
   methods: {
+    rasc(e, i) {
+      i.blocks = this.blocksStore.newBlocks(i.color, e.target.value)
+    },
     fagal(el, e) {
       el.checked = e.target.checked;
     },
@@ -71,39 +78,47 @@ export default {
         }
       }
     },
-    polbutt(l, e) {
-      l.button = !l.button
-      if (l.button) {
-        e.target.innerHTML = 'Sorted'
-      }
-      else {
-        e.target.innerHTML = 'Randomize'
-      }
-    }
-
   },
   computed: {
     ...mapStores(useListsStore),
     ...mapStores(useItemsStore),
+    ...mapStores(useBlocksStore),
     SortedLists() {
       const newLists = []
       for (let l of this.listsStore.lists) {
         let currentList = { id: l.i, items: [] }
-        for (let i of l.items) {
-          if (i.checked) {
-            currentList.items.push(i)
+        if (l.button == true) {
+          for (let i of l.items) {
+            if (i.checked) {
+              if (currentList.items.length == 0) {
+                currentList.items.push(JSON.parse(JSON.stringify(i)))
+              }
+              else {
+                currentList.items[0].blocks.push(...i.blocks)
+              }
+            }
+
+          }
+          if (currentList.items.length != 0) {
+            currentList.items[0].blocks.sort(() => Math.random() - 0.5)
           }
         }
+        else {
+          for (let i of l.items) {
+            if (i.checked) {
+              currentList.items.push(i)
+            }
+          }
+        }
+        console.log(currentList);
         newLists.push(currentList)
       }
       return newLists
     },
-
   },
   beforeMount() {
-    this.itemsStore.createItems()
     for (let i = 0; i < 5; i++) {
-      this.listsStore.createLists(i, this.itemsStore.createItems());
+      this.listsStore.createLists(i);
     }
   },
 

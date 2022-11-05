@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-
+import { useItemsStore } from './items.js'
 export const useListsStore = defineStore('lists', {
     state: () => ({
         lists: []
@@ -8,9 +8,11 @@ export const useListsStore = defineStore('lists', {
 
     },
     actions: {
-        createLists(i, items) {
+        createLists(i) {
+            const app = useItemsStore()
             let checked = false
-            this.lists.push({ i, items, checked, button: false, randarray: [] })
+            let items = app.createItems()
+            this.lists.push({ i, items, checked, button: false })
         }
     }
 })
