@@ -10,7 +10,7 @@ export const useListsStore = defineStore('lists', {
     actions: {
         createLists(i) {
             const app = useItemsStore()
-            let checked = false
+            let checked = 'uncheck'
             let items = app.createItems()
             this.lists.push({ i, items, checked, button: false })
         }

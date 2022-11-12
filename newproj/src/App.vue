@@ -5,8 +5,8 @@
   <div style="display: flex; justify-content: space-between">
     <ul>
       <li v-for="l of listsStore.lists" :key="l.i">
-        <label :for="l.i" class=checkbox>
-          <input type="checkbox" :id="l.i" :checked="l.checked" @change="fagol(l, $event)">
+        <label :for="l.i" :class="'checkbox ' + l.checked" @change="changeListCheck(l)">
+          <input type="checkbox" :id="l.i" :checked="l.checked">
           <span>
             {{ l.i + 1 }}
           </span>
@@ -14,7 +14,7 @@
         <ul>
           <li v-for="i of l.items" :key="i.i">
             <input type="checkbox" :id="String(l.i) + i.i" :value="i.value" :checked=i.checked
-              @change="fagal(i, $event)">
+              @click="getListStatus(l, i)">
             <label :for="String(l.i) + i.i">
               <input type=number min="0" v-model=i.blocks.length @change="rasc($event, i)"
                 style="border:none; width:20%">
@@ -30,18 +30,19 @@
         <div style="display: flex; justify-content: space-around; padding: 5px">
           <p style="margin:0">lists {{ l.id + 1 }}</p>
           <button @click="listsStore.lists[l.id].button = !listsStore.lists[l.id].button">{{
-              listsStore.lists[l.id].button ? 'True' : 'False'
+          listsStore.lists[l.id].button ? 'True' : 'False'
           }}</button>
         </div>
-        <div>
+        <div v-if="listsStore.lists[l.id].button == false">
           <div v-for="j of l.items" :key="j" style="display: flex;flex-wrap: wrap">
             <div @click="j.blocks.pop()" v-for="i of j.blocks" :key="i"
-              :style="{ 'background-color': i.color, 'margin': '10px' }" class="blocks">
+              :style="{ 'background-color': j.color, 'margin': '10px' }" class="blocks">
             </div>
           </div>
         </div>
-        <div>
-          <div></div>
+        <div v-else style="display: flex;flex-wrap: wrap">
+          <div v-for='j of l.randarr' :key="j" @click="delbl(j)"
+            :style="{ 'background-color': j.color, 'margin': '10px' }" class="blocks"></div>
         </div>
 
       </div>
@@ -60,24 +61,57 @@ export default {
     }
   },
   methods: {
-    rasc(e, i) {
-      i.blocks = this.blocksStore.newBlocks(i.color, e.target.value)
+    delbl(block) {
+      for (let l of this.listsStore.lists) {
+        for (let i of l.items) {
+          if (i.color == block.color) {
+            i.blocks.pop()
+          }
+        }
+      }
     },
-    fagal(el, e) {
-      el.checked = e.target.checked;
+    getListStatus(list, item) {
+      item.checked = !item.checked
+      const checked = this.checkListItems(list.items)
+      if (list.items.length == checked) {
+        list.checked = 'check'
+      } else if (!checked) {
+        list.checked = 'uncheck'
+      } else {
+        list.checked = 'dot'
+      }
     },
-    fagol(lists, e) {
-      if (e.target.checked == true) {
-        for (let item of lists.items) {
-          item.checked = true;
+    checkListItems(items) {
+      let checked = 0
+      for (let i of items) {
+        if (i.checked) {
+          checked++
+        }
+      }
+      return checked
+    },
+    changeListCheck(list) {
+      const checked = this.checkListItems(list.items)
+      if (list.items.length == checked) {
+        list.checked = 'uncheck'
+        for (let i of list.items) {
+          console.log(0);
+          i.checked = false
         }
       }
       else {
-        for (let item of lists.items) {
-          item.checked = false;
+        list.checked = 'check'
+        for (let i of list.items) {
+          console.log(1);
+          i.checked = true
         }
       }
     },
+    rasc(e, i) {
+      console.log(e.target);
+      i.blocks.push({ color: i.color })
+    },
+
   },
   computed: {
     ...mapStores(useListsStore),
@@ -86,21 +120,16 @@ export default {
     SortedLists() {
       const newLists = []
       for (let l of this.listsStore.lists) {
-        let currentList = { id: l.i, items: [] }
+        let currentList = { id: l.i, items: [], randarr: [] }
         if (l.button == true) {
           for (let i of l.items) {
             if (i.checked) {
-              if (currentList.items.length == 0) {
-                currentList.items.push(JSON.parse(JSON.stringify(i)))
-              }
-              else {
-                currentList.items[0].blocks.push(...i.blocks)
-              }
+              currentList.randarr.push(...i.blocks)
             }
 
           }
-          if (currentList.items.length != 0) {
-            currentList.items[0].blocks.sort(() => Math.random() - 0.5)
+          if (currentList.randarr.length != 0) {
+            currentList.randarr.sort(() => Math.random() - 0.5)
           }
         }
         else {
@@ -110,7 +139,6 @@ export default {
             }
           }
         }
-        console.log(currentList);
         newLists.push(currentList)
       }
       return newLists
@@ -154,8 +182,8 @@ label {
 .checkbox>span::before {
   content: '';
   display: inline-block;
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
   flex-shrink: 0;
   flex-grow: 0;
   border-radius: 0.25em;
@@ -165,8 +193,16 @@ label {
   background-size: 100%;
 }
 
-.checkbox>span::before {
+.uncheck>span::before {
+  background-image: url(../src/assets/img/unchecked.svg);
+}
+
+.dot>span::before {
   background-image: url(../src/assets/img/checkbox.svg);
+}
+
+.check>span::before {
+  background-image: url(../src/assets/img/check.svg);
 }
 
 .checkbox>input {

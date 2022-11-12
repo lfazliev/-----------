@@ -8,17 +8,20 @@ export const useItemsStore = defineStore('items', {
 
     },
     actions: {
-        getRandom(min, max) {
-            return Math.floor(Math.random() * (max - min) + min)
-        },
         createItems() {
             let items = []
             const app = useBlocksStore()
-            const length = this.getRandom(4, 10)
+            const length = app.getRandom(4, 10)
             for (let i = 0; i <= length; i++) {
                 let checked = false
                 let blocks = app.createBlocks()
-                let color = blocks.at(0).color
+                let color
+                if (blocks.length != 0) {
+                    color = blocks.at(0).color
+                }
+                else {
+                    color = app.getColor()
+                }
                 items.push({ i, blocks, color, checked })
             }
 
