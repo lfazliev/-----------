@@ -5,6 +5,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@1000&display=swap');
 
+* {
+    font-family: 'Nunito', sans-serif;
+    margin: 0
+}
+
 #head {
     transition: 300ms;
     background: url('/img/channels4_banner.jpg') 54% center/cover no-repeat;
@@ -56,11 +61,6 @@ ul {
 
 #visibl {
     animation: anim 2s
-}
-
-* {
-    font-family: 'Nunito', sans-serif;
-    margin: 0
 }
 
 @keyframes anim {
