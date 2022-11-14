@@ -4,27 +4,27 @@
 <template>
   <div class=main>
     <ul>
-      <li v-for="l of listsStore.lists" :key="l.i">
+      <li v-for="l of listsStore.lists" :key="l.id">
         <div style="display: flex;">
           <div class=showbtn @click="l.show = !l.show">{{ l.show ? '&#5167;' : '&#10095;' }}</div>
-          <label :for="l.i" :class="'checkbox ' + l.checked" @change="changeListCheck(l)">
-            <input type="checkbox" :id="l.i" :checked="l.checked">
-            <span>
-              {{ 'List ' + (Number(l.i) + 1) }}
+          <label :for="l.id" :class="'checkbox ' + l.checked">
+            <input type="checkbox" :id="l.id" :checked="l.checked">
+            <span @click="changeListCheck(l)">
+              {{ 'List ' + (Number(l.id) + 1) }}
             </span>
           </label>
         </div>
         <ul v-if="l.show" style="padding-top: 20px;">
           <li v-for="i of l.items" :key="i.i">
             <div style="display: flex;">
-              <input type="checkbox" :id="String(l.i) + i.i" :value="i.value" :checked=i.checked
+              <input type="checkbox" :id="String(l.id) + i.i" :value="i.value" :checked=i.checked
                 @click="getListStatus(l, i)">
-              <label :for="String(l.i) + i.i"> {{ 'Item ' + (i.i + 1) }}</label>
+              <label :for="String(l.id) + i.i"> {{ 'Item ' + (i.i + 1) }}</label>
             </div>
-            <label :for="String(l.i) + i.i">
+            <label :for="String(l.id) + i.i">
               <input type=number min="0" :value=i.blocks.length @change="rasc($event.target, i)"
                 style="border:none; width:30px">
-              <input type="color" @change="rasc($event.target, i)" :value=i.color class="blocks">
+              <input type="color" @change="rasc($event.target, i, l)" :value=i.color class="blocks">
             </label>
           </li>
         </ul>
@@ -34,9 +34,10 @@
       <div v-for="l of SortedLists" :key=l class="colorbox">
         <div>
           <p style="margin:0">lists {{ l.id + 1 }}</p>
-          <button @click="listsStore.lists[l.id].button = !listsStore.lists[l.id].button">{{
-              listsStore.lists[l.id].button ? 'Sorted' : 'Randomize'
-          }}</button>
+          <button
+            @click="listsStore.lists[l.id].button = !listsStore.lists[l.id].button; calc(listsStore.lists[l.id]);">{{
+                listsStore.lists[l.id].button ? 'Sorted' : 'Randomize'
+            }}</button>
         </div>
         <div v-if="listsStore.lists[l.id].button == false">
           <div v-for="j of l.items" :key="j" style="display: flex;flex-wrap: wrap">
@@ -46,8 +47,8 @@
           </div>
         </div>
         <div v-else style="display: flex;flex-wrap: wrap">
-          <div v-for='j of l.randarr' :key="j" @click="delbl(j)"
-            :style="{ 'background-color': j.color, 'margin': '10px' }" class="blocks"></div>
+          <div v-for='j in l.randarr' :key="l.randarr[j]" @click="delbl(l.randarr[j],j)"
+            :style="{ 'background-color': l.randarr[j].color, 'margin': '10px' }" class="blocks"></div>
         </div>
       </div>
     </div>
@@ -65,13 +66,28 @@ export default {
     }
   },
   methods: {
-    delbl(block) {
+    calc(list) {
+      list.randarr = []
+      if (list.button == true) {
+        for (let i of list.items) {
+          if (i.checked) {
+            list.randarr.push(...i.blocks)
+          }
+
+        }
+        if (list.randarr.length != 0) {
+          list.randarr.sort(() => Math.random() - 0.5)
+        }
+      }
+    },
+    delbl(block, i) {
       for (let l of this.listsStore.lists) {
         for (let i of l.items) {
           if (i.color == block.color) {
             i.blocks.pop()
           }
         }
+        l.randarr.splice(i, 1)
       }
     },
     getListStatus(list, item) {
@@ -84,6 +100,7 @@ export default {
       } else {
         list.checked = 'dot'
       }
+      this.calc(list)
     },
     checkListItems(items) {
       let checked = 0
@@ -110,15 +127,16 @@ export default {
           i.checked = true
         }
       }
+      this.calc(list)
     },
-    rasc(e, i) {
+    rasc(e, i, l) {
       if (e.type == "color") {
         i.color = e.value
         for (let l of i.blocks) {
           l.color = e.value
         }
       }
-      else
+      else {
         if (e.value > i.blocks.length) {
           while (e.value != i.blocks.length) {
             i.blocks.push({ color: i.color })
@@ -127,7 +145,8 @@ export default {
         else {
           i.blocks.splice(-(i.blocks.length - e.value))
         }
-
+      }
+      this.calc(l)
     },
   },
   computed: {
@@ -137,17 +156,9 @@ export default {
     SortedLists() {
       const newLists = []
       for (let l of this.listsStore.lists) {
-        let currentList = { id: l.i, items: [], randarr: [] }
-        if (l.button == true) {
-          for (let i of l.items) {
-            if (i.checked) {
-              currentList.randarr.push(...i.blocks)
-            }
-
-          }
-          if (currentList.randarr.length != 0) {
-            currentList.randarr.sort(() => Math.random() - 0.5)
-          }
+        let currentList = { id: l.id, items: [], button: l.button }
+        if (currentList.button == true) {
+          newLists.push(l)
         }
         else {
           for (let i of l.items) {
@@ -155,8 +166,8 @@ export default {
               currentList.items.push(i)
             }
           }
+          newLists.push(currentList)
         }
-        newLists.push(currentList)
       }
       return newLists
     },
@@ -175,6 +186,11 @@ export default {
 .main {
   display: flex;
   justify-content: space-between;
+}
+
+input[type="checkbox"]+label,
+input[type="checkbox"]+label {
+  cursor: pointer;
 }
 
 .main>div {
@@ -214,8 +230,16 @@ label {
   background-color: white;
 }
 
+.blocks:hover {
+  cursor: pointer;
+}
+
 .mincheck {
   opacity: 0;
+}
+
+.checkbox>span {
+  height: 30px;
 }
 
 .checkbox>span::before {
@@ -232,8 +256,14 @@ label {
   background-size: 100%;
 }
 
+.checkbox>span:hover,
 .showbtn:hover {
   cursor: pointer;
+}
+
+.showbtn {
+  margin: 3px;
+  height: 20px;
 }
 
 .uncheck>span::before {
