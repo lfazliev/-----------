@@ -22,3 +22,138 @@
 ::-webkit-scrollbar-thumb:hover {
     background-color: #866b12;
 }
+
+.main {
+    display: flex;
+    justify-content: space-between;
+}
+
+input[type="checkbox"]+label,
+input[type="checkbox"]+label {
+    cursor: pointer;
+}
+
+.main>div {
+    width: 45%
+}
+
+.main>div,
+.main>ul {
+    border: 1px black solid;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+ul {
+    list-style: none;
+    margin: 15px 0 0px 5px;
+    padding: 0px;
+    width: 70%;
+    max-width: 400px;
+}
+
+li {
+    display: flex;
+    justify-content: space-between
+}
+
+label {
+    display: flex;
+}
+
+.blocks {
+    width: 16px;
+    height: 20px;
+    border: none;
+    padding: 0;
+    background-color: white;
+}
+
+.blocks:hover {
+    cursor: pointer;
+}
+
+.mincheck {
+    opacity: 0;
+}
+
+.checkbox>span {
+    height: 30px;
+}
+
+.checkbox>span::before {
+    content: '';
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border-radius: 0.25em;
+    margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+
+.checkbox>span:hover,
+.showbtn:hover {
+    cursor: pointer;
+}
+
+.showbtn {
+    margin: 3px;
+    height: 20px;
+}
+
+.uncheck>span::before {
+    background-image: url(../src/assets/img/unchecked.svg);
+}
+
+.dot>span::before {
+    background-image: url(../src/assets/img/checkbox.svg);
+}
+
+.check>span::before {
+    background-image: url(../src/assets/img/check.svg);
+}
+
+.checkbox>input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.colorbox {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 5px;
+}
+
+.colorbox>p+div {
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+}
+
+.colorbox>p {
+    display: none;
+}
+
+@media screen and (max-width:500px) {
+    .main {
+        flex-direction: column;
+        align-items: center
+    }
+
+    .main>div {
+        width: 90%;
+    }
+
+    .main>ul {
+        width: 90%;
+        max-width: none;
+    }
+
+}

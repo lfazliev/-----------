@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { useBlocksStore } from './blocks.js'
+import { useListsStore } from "@/stores/lists.js";
 export const useItemsStore = defineStore('items', {
     state: () => ({
 
@@ -26,6 +27,36 @@ export const useItemsStore = defineStore('items', {
             }
 
             return items
+        },
+        checkListItems(items) {
+            let checked = 0
+            for (let i of items) {
+                if (i.checked) {
+                    checked++
+                }
+            }
+            return checked
+        },
+
+
+        changeNum(e, i, l) {
+            const app = useListsStore()
+            if (e.value > i.blocks.length) {
+                while (e.value != i.blocks.length) {
+                    i.blocks.push({ color: i.color })
+                }
+            }
+            else {
+                i.blocks.splice(-(i.blocks.length - e.value))
+            }
+            app.calc(l)
+
+        },
+        changeColor(e, i) {
+            i.color = e.value
+            for (let l of i.blocks) {
+                l.color = e.value
+            }
         },
 
     }

@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-
+import { useListsStore } from "@/stores/lists.js";
 export const useBlocksStore = defineStore('blocks', {
     state: () => ({
 
@@ -35,6 +35,17 @@ export const useBlocksStore = defineStore('blocks', {
                 blocks.push({ color: color })
             }
             return blocks
-        }
+        },
+        delbl(block, i) {
+            const app = useListsStore()
+            for (let l of app.lists) {
+                for (let c of l.items) {
+                    if (c.color == block.color) {
+                        c.blocks.pop()
+                    }
+                }
+                l.randarr.splice(i, 1)
+            }
+        },
     }
 })

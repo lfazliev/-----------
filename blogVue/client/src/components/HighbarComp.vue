@@ -3,10 +3,8 @@
     <div id="highbar">
         <nav>
             <ul>
-
                 <li>
                     <RouterLink to="/" class=button>Home</RouterLink>
-
                 </li>
                 <li>
                     <RouterLink to="/blog" class=button>Blog</RouterLink>
