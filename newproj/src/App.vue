@@ -22,9 +22,9 @@
               <label :for="String(l.id) + i.i"> {{ 'Item ' + (i.i + 1) }}</label>
             </div>
             <label :for="String(l.id) + i.i">
-              <input type=number min="0" :value=i.blocks.length @change="rasc($event.target, i, l)"
+              <input type=number min="0" :value=i.blocks.length @change="changeNum($event.target, i, l)"
                 style="border:none; width:30px">
-              <input type="color" @change="rasc($event.target, i, l)" :value=i.color class="blocks">
+              <input type="color" @change="changeColor($event.target, i)" :value=i.color class="blocks">
             </label>
           </li>
         </ul>
@@ -127,23 +127,23 @@ export default {
       }
       this.calc(list)
     },
-    rasc(e, i, l) {
-      if (e.type == "color") {
-        i.color = e.value
-        for (let l of i.blocks) {
-          l.color = e.value
+    changeNum(e, i, l) {
+
+      if (e.value > i.blocks.length) {
+        while (e.value != i.blocks.length) {
+          i.blocks.push({ color: i.color })
         }
       }
       else {
-        if (e.value > i.blocks.length) {
-          while (e.value != i.blocks.length) {
-            i.blocks.push({ color: i.color })
-          }
-        }
-        else {
-          i.blocks.splice(-(i.blocks.length - e.value))
-        }
-        this.calc(l)
+        i.blocks.splice(-(i.blocks.length - e.value))
+      }
+      this.calc(l)
+
+    },
+    changeColor(e, i) {
+      i.color = e.value
+      for (let l of i.blocks) {
+        l.color = e.value
       }
     },
   },
