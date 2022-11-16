@@ -22,7 +22,7 @@
               <label :for="String(l.id) + i.i"> {{ 'Item ' + (i.i + 1) }}</label>
             </div>
             <label :for="String(l.id) + i.i">
-              <input type=number min="0" :value=i.blocks.length @change="rasc($event.target, i)"
+              <input type=number min="0" :value=i.blocks.length @change="rasc($event.target, i, l)"
                 style="border:none; width:30px">
               <input type="color" @change="rasc($event.target, i, l)" :value=i.color class="blocks">
             </label>
@@ -47,8 +47,8 @@
           </div>
         </div>
         <div v-else style="display: flex;flex-wrap: wrap">
-          <div v-for='j in l.randarr' :key="l.randarr[j]" @click="delbl(l.randarr[j],j)"
-            :style="{ 'background-color': l.randarr[j].color, 'margin': '10px' }" class="blocks"></div>
+          <div v-for='(j, ind) in l.randarr' :key="j" @click="delbl(j, ind)"
+            :style="{ 'background-color': j.color, 'margin': '10px' }" class="blocks"></div>
         </div>
       </div>
     </div>
@@ -116,14 +116,12 @@ export default {
       if (list.items.length == checked) {
         list.checked = 'uncheck'
         for (let i of list.items) {
-          console.log(0);
           i.checked = false
         }
       }
       else {
         list.checked = 'check'
         for (let i of list.items) {
-          console.log(1);
           i.checked = true
         }
       }
@@ -145,8 +143,8 @@ export default {
         else {
           i.blocks.splice(-(i.blocks.length - e.value))
         }
+        this.calc(l)
       }
-      this.calc(l)
     },
   },
   computed: {
