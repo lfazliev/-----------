@@ -18,12 +18,12 @@ export const useBlocksStore = defineStore('blocks', {
             }
             return color
         },
-        createBlocks(id) {
+        createBlocks(l) {
             let blocks = []
             const count = this.getRandom(0, 40)
             let color = this.getColor()
             for (let i = 0; i < count; i++) {
-                blocks.push({ color: color, id: id })
+                blocks.push({ color: color, i: l })
             }
             return blocks
 
@@ -37,7 +37,7 @@ export const useBlocksStore = defineStore('blocks', {
         },
         delbl(block, i, l) {
             for (let c of l.items) {
-                if (c.id == block.id) {
+                if (c.i == block.i) {
                     c.blocks.pop()
                 }
             }
