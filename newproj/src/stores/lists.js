@@ -5,13 +5,30 @@ export const useListsStore = defineStore('lists', {
         lists: []
     }),
     getters: {
-
+        SortedLists(state) {
+            const newLists = []
+            for (let l of state.lists) {
+                let currentList = { id: l.id, items: [], button: l.button }
+                if (currentList.button == true) {
+                    newLists.push(l)
+                }
+                else {
+                    for (let i of l.items) {
+                        if (i.checked) {
+                            currentList.items.push(i)
+                        }
+                    }
+                    newLists.push(currentList)
+                }
+            }
+            return newLists
+        },
     },
     actions: {
         createLists(id) {
             const app = useItemsStore()
             let checked = 'uncheck'
-            let items = app.createItems()
+            let items = app.createItems(id)
             let randarr = []
             this.lists.push({ id, items, checked, button: false, show: true, randarr: randarr })
         },

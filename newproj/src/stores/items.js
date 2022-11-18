@@ -9,13 +9,14 @@ export const useItemsStore = defineStore('items', {
 
     },
     actions: {
-        createItems() {
+        createItems(id) {
             let items = []
             const app = useBlocksStore()
             const length = app.getRandom(4, 10)
             for (let i = 0; i <= length; i++) {
                 let checked = false
-                let blocks = app.createBlocks()
+                id = (String(id) + i)
+                let blocks = app.createBlocks(id)
                 let color
                 if (blocks.length != 0) {
                     color = blocks.at(0).color
@@ -23,7 +24,7 @@ export const useItemsStore = defineStore('items', {
                 else {
                     color = app.getColor()
                 }
-                items.push({ i, blocks, color, checked })
+                items.push({ i, blocks, color, checked, id })
             }
 
             return items

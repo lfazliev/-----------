@@ -6,7 +6,7 @@ import { mapStores } from "pinia";
 </script>
 <template>
     <div>
-        <div v-for="l of SortedLists" :key=l class="colorbox">
+        <div v-for="l of listsStore.SortedLists" :key=l class="colorbox">
             <div>
                 <p style="margin:0">lists {{ l.id + 1 }}</p>
                 <button
@@ -22,7 +22,7 @@ import { mapStores } from "pinia";
                 </div>
             </div>
             <div v-else style="display: flex;flex-wrap: wrap">
-                <div v-for='(j, ind) in l.randarr' :key="j" @click="blocksStore.delbl(j, ind)"
+                <div v-for='(j, ind) in l.randarr' :key="j" @click="blocksStore.delbl(j, ind,l)"
                     :style="{ 'background-color': j.color, 'margin': '10px' }" class="blocks"></div>
             </div>
         </div>

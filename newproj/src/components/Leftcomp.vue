@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
 import { useItemsStore } from "@/stores/items.js";
 import { useListsStore } from "@/stores/lists.js";
