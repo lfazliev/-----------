@@ -5,9 +5,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@1000&display=swap');
 
+* {
+  font-family: 'Nunito', sans-serif;
+  margin: 0
+}
+
 #head {
   transition: 300ms;
-  background: url('/img/channels4_banner.jpg') 54% center/cover no-repeat;
+  background: url('./img/channels4_banner.jpg') 54% center/cover no-repeat;
   height: 300px;
 }
 
@@ -56,15 +61,6 @@ ul {
 
 #visibl {
   animation: anim 2s
-}
-
-* {
-  font-family: 'Nunito', sans-serif;
-  margin: 0
-}
-
-a:-webkit-any-link {
-  color: rgb(160, 160, 160);
 }
 
 @keyframes anim {
@@ -245,27 +241,27 @@ footer div {
 }
 
 a.fb {
-  background: url('/imgfoot/fb_gray.png') center/cover no-repeat;
+  background: url('./imgfoot/fb_gray.png') center/cover no-repeat;
   transition: 300ms;
 }
 
 a.fb:hover {
-  background: url('/imgfoot/fb.png') center/cover no-repeat;
+  background: url('./imgfoot/fb.png') center/cover no-repeat;
   transition: 300ms;
 }
 
 a.yt {
-  background: url('/imgfoot/youtube_gray.png') center/cover no-repeat;
+  background: url('./imgfoot/youtube_gray.png') center/cover no-repeat;
   transition: 300ms;
 }
 
 a.yt:hover {
-  background: url('/imgfoot/youtube.png') center/cover no-repeat;
+  background: url('./imgfoot/youtube.png') center/cover no-repeat;
   transition: 300ms;
 }
 
 a.vk {
-  background: url('/imgfoot/vkgray.svg') center/cover no-repeat;
+  background: url('./imgfoot/vkgray.svg') center/cover no-repeat;
   transition: 300ms;
 }
 
@@ -283,7 +279,7 @@ a.caps:hover::after {
 }
 
 a.vk:hover {
-  background: url('/imgfoot/vk.svg') center/cover no-repeat;
+  background: url('./imgfoot/vk.svg') center/cover no-repeat;
   transition: 300ms;
 }
 
@@ -302,11 +298,12 @@ a.vk:hover {
   color: rgba(117, 117, 117, 0.942);
 }
 
-.page a:visited {
+
+.page a:-webkit-any-link {
   color: rgb(160, 160, 160);
 }
 
-.page a:visited:hover {
+.page a:-webkit-any-link:hover {
   color: rgba(117, 117, 117, 0.942);
 }
 
@@ -317,14 +314,13 @@ h1 {
 
 @media screen and (max-width:600px) {
   .page {
-    margin: 2rem 1.5rem 1.5rem;
+    margin: 2rem 1rem 1.5rem;
     transition: 300ms;
     font-size: 17px
   }
 
 }
 
-@media screen and (max-width:600px) {}
 
 h2 {
   margin-block-start: 0em;

@@ -11,7 +11,7 @@ import LeftComp from './components/LeftComp.vue'
 </template>
 
 <script>
-import { useListsStore } from "./stores/lists.js";
+import { useListsStore } from "./stores/lists";
 import { mapStores } from "pinia";
 export default {
   data() {
