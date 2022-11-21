@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { useBlocksStore } from './blocks.js'
-import { useListsStore } from "@/stores/lists.js";
+import { useListsStore } from "./stores/lists.js";
 export const useItemsStore = defineStore('items', {
     state: () => ({
 

@@ -1,6 +1,6 @@
 <script setup>
-import RightComp from '@/components/RightComp.vue'
-import LeftComp from '@/components/LeftComp.vue'
+import RightComp from './components/RightComp.vue'
+import LeftComp from './components/LeftComp.vue'
 </script>
 
 <template>
@@ -11,7 +11,7 @@ import LeftComp from '@/components/LeftComp.vue'
 </template>
 
 <script>
-import { useListsStore } from "@/stores/lists.js";
+import { useListsStore } from "./stores/lists.js";
 import { mapStores } from "pinia";
 export default {
   data() {

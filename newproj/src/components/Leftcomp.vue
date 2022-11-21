@@ -1,8 +1,7 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
-import { useItemsStore } from "@/stores/items.js";
-import { useListsStore } from "@/stores/lists.js";
-import { useBlocksStore } from "@/stores/blocks.js";
+import { useItemsStore } from "../stores/items.js";
+import { useListsStore } from "../stores/lists.js";
+import { useBlocksStore } from "../stores/blocks.js";
 import { mapStores } from "pinia";
 </script>
 <template>
