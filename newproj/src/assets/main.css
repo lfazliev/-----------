@@ -107,15 +107,15 @@ label {
 }
 
 .uncheck>span::before {
-    background-image: url(../src/assets/img/unchecked.svg);
+    background-image: url(./img/unchecked.svg);
 }
 
 .dot>span::before {
-    background-image: url(../src/assets/img/checkbox.svg);
+    background-image: url(./img/checkbox.svg);
 }
 
 .check>span::before {
-    background-image: url(../src/assets/img/check.svg);
+    background-image: url(./img/check.svg);
 }
 
 .checkbox>input {

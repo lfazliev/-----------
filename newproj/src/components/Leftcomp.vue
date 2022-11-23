@@ -11,7 +11,7 @@ import { mapStores } from "pinia";
                 <div class=showbtn @click="l.show = !l.show">{{ l.show ? '&#5167;' : '&#10095;' }}</div>
                 <label :for="l.id" :class="'checkbox ' + l.checked">
                     <input type="checkbox" :id="l.id" :checked="l.checked">
-                    <span @click="this.listsStore.changeListCheck(l)">
+                    <span @click="listsStore.changeListCheck(l)">
                         {{ 'List ' + (Number(l.id) + 1) }}
                     </span>
                 </label>
@@ -20,13 +20,13 @@ import { mapStores } from "pinia";
                 <li v-for="i of l.items" :key="i.i">
                     <div style="display: flex;">
                         <input type="checkbox" :id="String(l.id) + i.i" :value="i.value" :checked=i.checked
-                            @click="this.listsStore.getListStatus(l, i)">
+                            @click="listsStore.getListStatus(l, i)">
                         <label :for="String(l.id) + i.i"> {{ 'Item ' + (i.i + 1) }}</label>
                     </div>
                     <label :for="String(l.id) + i.i">
                         <input type=number min="0" :value=i.blocks.length
-                            @change="this.itemsStore.changeNum($event.target, i, l)" style="border:none; width:30px">
-                        <input type="color" @change="this.itemsStore.changeColor($event.target, i)" :value=i.color
+                            @change="itemsStore.changeNum($event.target, i, l)" style="border:none; width:30px">
+                        <input type="color" @change="itemsStore.changeColor($event.target, i)" :value=i.color
                             class="blocks">
                     </label>
                 </li>

@@ -31,7 +31,7 @@ import FooterC from './components/FooterComp.vue'
             <textarea v-else placeholder="Текст" v-model="textedit" style="width: 80%"></textarea>
           </div>
           <div class="imgConteiner">
-            <img :src="`/assets/${p.src}`" />
+            <img :src="`src/assets/${p.src}`" />
           </div>
           <div class="flex btnpost" v-if="editId != p._id">
             <a :href="'https://' + p.url" class="button">Discover Now</a>
