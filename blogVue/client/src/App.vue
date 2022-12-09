@@ -83,7 +83,7 @@ export default {
     };
   },
   async beforeMount() {
-    const data = await fetch("http://127.0.0.1:3002/posts");
+    const data = await fetch("https://blog.lfazliev.com/posts");
     const posts = await data.json();
     this.postsStore.posts = posts.all;
   },
@@ -107,7 +107,7 @@ export default {
         data.append("title", this.title);
         data.append("text", this.text);
         data.append("url", this.url);
-        const result = await fetch("http://127.0.0.1:3002/posts", {
+        const result = await fetch("https://blog.lfazliev.com/posts", {
           method: "POST",
           body: data,
         });
@@ -122,7 +122,7 @@ export default {
     },
     delPost: async function (_id) {
       this.postsStore.delel(_id)
-      const result = await fetch("http://127.0.0.1:3002/posts", {
+      const result = await fetch("https://blog.lfazliev.com/posts", {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
@@ -147,7 +147,7 @@ export default {
         data.append("src", post.src);
         data.append("_id", post._id);
         this.editId = '';
-        const result = await fetch('http://127.0.0.1:3002/posts', {
+        const result = await fetch('https://blog.lfazliev.com/posts', {
           method: 'PUT',
           body: data,
         })
