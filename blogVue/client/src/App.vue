@@ -176,6 +176,11 @@ export default {
 };
 </script>
 
+
+<style lang="scss">
+
+</style>
+
 <style>
 .imgConteiner img {
   width: 95%;
