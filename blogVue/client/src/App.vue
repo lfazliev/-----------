@@ -7,7 +7,7 @@ import FooterC from './components/FooterComp.vue'
     <HeaderC></HeaderC>
     <hr>
     <div class="res" id="flexdiv">
-      <input v-model="title" type="text" placeholder="Заголовок" />
+      <input v-model="titleform" type=text placeholder="Заголовок">
       <div>
         <input type="file" id="file1" @change="previewFiles" class="filest" />
         <label class="filecont" for="file1">
@@ -15,7 +15,7 @@ import FooterC from './components/FooterComp.vue'
           <div>Browse</div>
         </label>
       </div>
-      <input v-model="url" type="url" placeholder="Ссылка" />
+      <input v-model="urlform" type="url" placeholder="Ссылка" />
       <textarea v-model="text" placeholder="Текст"></textarea>
       <button @click="addPost">Добавить пост</button>
     </div>
@@ -26,7 +26,7 @@ import FooterC from './components/FooterComp.vue'
         <div>
           <div class="blogtext">
             <p v-if="editId != p._id">
-              {{ p.text }}
+              {{ p.textform }}
             </p>
             <textarea v-else placeholder="Текст" v-model="textedit" style="width: 80%"></textarea>
           </div>
@@ -72,10 +72,10 @@ export default {
       textedit: "",
       urledit: "",
       editId: '',
-      title: "",
-      text: "",
-      url: "",
-      src: "",
+      titleform: "",
+      textform: "",
+      urlform: "",
+      srcform: "",
       file: undefined,
       fileName: "Choose file",
       fileEditName: '',
@@ -92,7 +92,7 @@ export default {
       console.log(event.target.files[0]);
       this.file = event.target.files[0];
       this.fileName = event.target.files[0].name;
-      this.src = event.target.files[0].name;
+      this.srcform = event.target.files[0].name;
     },
     previewEditFiles(event) {
       console.log(event.target.files[0]);
@@ -104,18 +104,18 @@ export default {
       if (this.file) {
         const data = new FormData();
         data.append("file", this.file);
-        data.append("title", this.title);
-        data.append("text", this.text);
-        data.append("url", this.url);
+        data.append("title", this.titleform);
+        data.append("text", this.textform);
+        data.append("url", this.urlform);
         const result = await fetch("https://blog.lfazliev.com/posts", {
           method: "POST",
           body: data,
         });
         const insertRes = await result.json();
-        this.postsStore.createPost(this.title, this.text, this.url, this.src, insertRes.result.insertedId)
-        this.title = "";
-        this.text = "";
-        this.url = "";
+        this.postsStore.createPost(this.titleform, this.textform, this.urlform, this.srcform, insertRes.result.insertedId)
+        this.titleform = "";
+        this.textform = "";
+        this.urlform = "";
         this.file = undefined;
         this.fileName = "Choose file";
       }
@@ -175,6 +175,11 @@ export default {
   computed: { ...mapStores(usePostsStore) },
 };
 </script>
+
+
+<style lang="scss">
+
+</style>
 
 <style>
 .imgConteiner img {
