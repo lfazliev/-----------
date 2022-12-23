@@ -20,6 +20,7 @@
     background-color: black;
     align-items: center;
     justify-content: space-between;
+    line-height: 20px;
 
     .textbox {
         color: white;
@@ -28,7 +29,7 @@
         align-items: center;
 
         h5 {
-            margin-right: 8%;
+            margin-right: 56px;
         }
 
         p {
