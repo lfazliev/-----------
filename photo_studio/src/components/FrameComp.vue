@@ -23,7 +23,7 @@
     line-height: 20px;
 
     .textbox {
-        color: white;
+        color: #FFFFFF;
         margin-right: 140px;
         display: flex;
         align-items: center;

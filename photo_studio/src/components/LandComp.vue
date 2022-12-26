@@ -49,7 +49,7 @@
         margin-bottom: 61px;
 
         h1 {
-            color: white;
+            color: #FFFFFF;
             font-size: 54px;
             line-height: 59px;
         }

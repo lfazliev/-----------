@@ -3,7 +3,37 @@
 * {
   font-weight: 400;
 }
+.backimg {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  height: 600px;
+  flex-direction: column;
 
+  .textcont {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    margin-right: 60px;
+    width: 20.8%;
+    color: #ffffff;
+    height: 100%;
+
+    h3 {
+      text-transform: uppercase;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 2px;
+    }
+
+    p {
+      color: #c0c0c0;
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+}
 button {
   border-radius: 14px;
   color: black;
@@ -34,5 +64,24 @@ button {
       display: flex;
       flex-wrap: nowrap;
     }
+  }
+}
+.btnround {
+  color: black;
+
+  p {
+    padding: 9px 10px 13px 6px;
+  }
+
+  display: flex;
+  align-items: center;
+  padding: 0;
+
+  div {
+    background-color: black;
+    border-radius: 45%;
+    width: 32px;
+    height: 32px;
+    margin: 5px 0 5px 4px;
   }
 }
