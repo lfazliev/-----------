@@ -10,7 +10,7 @@
                 erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique
                 posuere.</p>
         </div>
-        <div class=icontain>
+        <div class=iconcont>
             <div class=icon>
                 <div><img src="../assets/img/time.svg" alt="excerpt">
                     <p>1/2000s</p>
@@ -61,28 +61,6 @@
         }
     }
 
-    .icontain {
-        width: 100%;
-    }
 
-    .icon {
-        justify-content: flex-end;
-        font-size: 12px;
-        line-height: 12px;
-        margin: 0 40px 40px 0;
-        color: white;
-        display: flex;
-
-        div {
-            margin-left: 16px;
-
-            p {
-                margin: 0 0 5px 5px;
-            }
-
-            display: flex;
-            flex-wrap: nowrap;
-        }
-    }
 }
 </style>
