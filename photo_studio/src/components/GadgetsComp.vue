@@ -37,7 +37,6 @@
 .gadgets {
     height: 540px;
     display: flex;
-    background-color: black;
 
     .cont {
         width: 50%;

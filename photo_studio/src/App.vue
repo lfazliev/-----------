@@ -5,6 +5,10 @@ import Colage from './components/ColageComp.vue'
 import Hill from './components/HillComp.vue'
 import Gadgets from './components/GadgetsComp.vue'
 import Flower from './components/FlowerComp.vue'
+import Blackico from './components/BlackbkgComp.vue'
+import Night from './components/NightComp.vue'
+import Blacktxt from './components/BlacktxtComp.vue'
+import Footer from './components/FooterComp.vue'
 </script>
 
 <template>
@@ -14,6 +18,10 @@ import Flower from './components/FlowerComp.vue'
   <Hill></Hill>
   <Gadgets></Gadgets>
   <Flower></Flower>
+  <Blackico></Blackico>
+  <Night></Night>
+  <Blacktxt></Blacktxt>
+  <Footer></Footer>
 </template>
 
 <style scoped>

@@ -17,7 +17,6 @@
     white-space: nowrap;
     height: 90px;
     display: flex;
-    background-color: black;
     align-items: center;
     justify-content: space-between;
     line-height: 20px;

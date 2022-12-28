@@ -59,7 +59,6 @@
 </template>
 <style lang="scss" scoped>
 .colage {
-    background-color: black;
     padding: 113px 120px 100px;
 
     .content {

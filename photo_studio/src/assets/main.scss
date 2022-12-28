@@ -34,7 +34,51 @@
     }
   }
 }
+hr {
+  height: 2px;
+  background-color: #ffffff;
+  margin: 36px 0;
+}
+.blackbkg {
+  // width: 100%;
+  padding: 115px 0 100px;
+
+  .maincont {
+    width: 83.33%;
+    margin: 0 auto;
+
+    .textcont {
+      color: #ffffff;
+      margin-bottom: 40px;
+      text-align: center;
+
+      h1 {
+        font-size: 40px;
+        line-height: 42px;
+      }
+
+      p {
+        color: #c0c0c0;
+        font-size: 24px;
+        line-height: 30px;
+        margin: 15px 0 2px;
+      }
+    }
+
+    .imgcont {
+      display: flex;
+      justify-content: space-around;
+      margin: 0 16px 0;
+      flex-wrap: wrap;
+
+      img {
+        margin: 40px 46px;
+      }
+    }
+  }
+}
 button {
+  transition: 300ms;
   border-radius: 14px;
   color: black;
   background-color: white;
@@ -43,6 +87,12 @@ button {
   line-height: 20px;
   letter-spacing: 0.4px;
 }
+button:hover {
+  cursor: pointer;
+  background-color: rgb(151, 151, 151);
+  transition: 300ms;
+}
+
 .iconcont {
   width: 100%;
 
