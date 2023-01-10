@@ -1,5 +1,5 @@
 <script setup>
-import Frame from './components/FrameComp.vue'
+import Head from './components/HeadComp.vue'
 import Land from './components/LandComp.vue'
 import Colage from './components/ColageComp.vue'
 import Hill from './components/HillComp.vue'
@@ -12,7 +12,9 @@ import Footer from './components/FooterComp.vue'
 </script>
 
 <template>
-  <Frame></Frame>
+  <a href=/hom/modHTML/index.html>Назад</a>
+
+  <Head></Head>
   <Land></Land>
   <Colage></Colage>
   <Hill></Hill>

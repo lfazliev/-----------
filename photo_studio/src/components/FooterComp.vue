@@ -63,6 +63,10 @@
     }
 
     .maincont {
+        @media screen and (max-width:800px) {
+            width: 90%;
+        }
+
         margin: 0 auto;
         width: 81.11%;
 
@@ -71,6 +75,10 @@
             justify-content: space-between;
 
             .textcont {
+                @media screen and (max-width: 450px) {
+                    display: none;
+                }
+
                 img {
                     margin-bottom: 20px;
                 }
@@ -82,6 +90,10 @@
             }
 
             .linkcont {
+                @media screen and (max-width:700px) {
+                    flex-direction: column;
+                }
+
                 display: flex;
 
                 .pages {
@@ -125,6 +137,10 @@
             justify-content: space-between;
 
             .inputcont {
+                @media screen and (max-width:700px) {
+                    display: none;
+                }
+
                 display: flex;
                 width: 39.21%;
                 background: #F9FAFB;
@@ -171,6 +187,7 @@
             div {
                 display: flex;
                 align-items: flex-end;
+                flex-wrap: wrap;
 
                 p {
                     font-size: 14px;

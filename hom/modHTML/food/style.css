@@ -23,6 +23,10 @@
     transition: 1s;
 }
 
+#main nav ul li>p {
+    text-align: center;
+}
+
 @media screen and (max-width:600px) {
     #main nav ul li {
         flex-basis: 90px;

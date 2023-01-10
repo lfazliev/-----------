@@ -47,6 +47,12 @@
 
 
         >div {
+            @media screen and (max-width:500px) {
+
+                padding: 60px 12px 40px;
+                width: 86.38%;
+            }
+
             color: #ffffff;
             padding: 60px 40px 40px;
             width: 71.38%;

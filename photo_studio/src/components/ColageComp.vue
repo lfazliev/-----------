@@ -59,6 +59,10 @@
 </template>
 <style lang="scss" scoped>
 .colage {
+    @media screen and (max-width:1000px) {
+        padding: 113px 20px 100px;
+    }
+
     padding: 113px 120px 100px;
 
     .content {
@@ -87,13 +91,22 @@
 
 
         .imgcont {
+            @media screen and (max-width:750px) {
+                grid-template: 25% 25% 25% 25%/ 100%;
+            }
+
             display: grid;
             grid-template: 50% 50% / 50% 50%;
 
             >div {
                 aspect-ratio: 24/25;
                 margin: 8px;
-                padding: 0 45px 30px 30px;
+                padding: 15px 45px 30px 30px;
+
+                @media screen and (max-width: 500px) {
+                    padding: 15px 10px 30px 15px;
+                }
+
                 display: flex;
                 align-items: flex-end;
 

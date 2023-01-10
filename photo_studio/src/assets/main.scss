@@ -19,7 +19,10 @@
     width: 20.8%;
     color: #ffffff;
     height: 100%;
-
+    @media screen and (max-width: 580px) {
+      margin-right: 20px;
+      width: 50%;
+    }
     h3 {
       text-transform: uppercase;
       font-size: 14px;
@@ -46,7 +49,9 @@ hr {
   .maincont {
     width: 83.33%;
     margin: 0 auto;
-
+    @media screen and (max-width: 580px) {
+      width: 90% !important;
+    }
     .textcont {
       color: #ffffff;
       margin-bottom: 40px;
@@ -99,6 +104,7 @@ button:hover {
   .icon {
     justify-content: flex-end;
     font-size: 12px;
+    flex-wrap: wrap;
     line-height: 12px;
     margin: 0 40px 40px 0;
     color: white;

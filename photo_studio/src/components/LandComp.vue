@@ -39,6 +39,10 @@
 
 
     .text {
+        @media screen and (max-width:1100px) {
+            width: 60%;
+        }
+
         display: flex;
         justify-content: center;
         flex-direction: column;

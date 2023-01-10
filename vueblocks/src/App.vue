@@ -4,6 +4,7 @@ import LeftComp from './components/LeftComp.vue'
 </script>
 
 <template>
+  <a href="/hom/index.html">Назад</a>
   <div class=main>
     <LeftComp></LeftComp>
     <RightComp></RightComp>
