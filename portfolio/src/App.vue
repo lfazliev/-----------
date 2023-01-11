@@ -7,7 +7,7 @@
       <router-link to="/contact">Contact</router-link>
     </div>
     <div class="logo">
-      <router-link to="/"><small>shevchenko mariia</small></router-link>
+      <router-link to="/home"><small>shevchenko mariia</small></router-link>
     </div>
     <div class="socials fullsc">
       <a href="#"><font-awesome-icon icon="fa-brands fa-pinterest" /></a>

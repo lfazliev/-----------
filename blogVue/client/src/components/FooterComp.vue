@@ -3,13 +3,13 @@
         <div id=center>
             <ul id=text>
                 <li>
-                    <a class="caps" href="../../../../ind/index.html">Home & about</a>
+                    <a class="caps" href="https://lfazliev.com/ind/index.html">Home & about</a>
                 </li>
                 <li>
-                    <a class="caps" href="../../../../contacts/index.html">Contacts</a>
+                    <a class="caps" href="https://lfazliev.com/contacts/index.html">Contacts</a>
                 </li>
                 <li>
-                    <a class="caps" href="../../../../hom/index.html">My works</a>
+                    <a class="caps" href="https://lfazliev.com/hom/index.html">My works</a>
                 </li>
                 <li>
                     <a class="caps" href="">Blog</a>

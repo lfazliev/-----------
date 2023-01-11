@@ -95,7 +95,7 @@ export default defineComponent({
             this.compareArrays(data, buf, E, pol)
             data.push(...buf)
             data.sort((a, b) => b[0] - a[0])
-            if (data.length > 5000) {
+            if (data.length > 1000) {
                 while (data.length > 1000) {
                     let minIndex = 0;
                     data.reduce((min, item, index) => {

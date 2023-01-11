@@ -5,7 +5,11 @@ import WorkView from "@/views/WorkView";
 
 const routes = [
   {
-    path: '/',
+    path: '/index.html',
+    redirect: '/home',
+  },
+  {
+    path: '/home',
     name: 'home',
     component: HomeView
   },

@@ -1,4 +1,5 @@
 <template>
+  <a href="/hom/modHTML/index.html" style="color: black;">Назад</a>
   <v-app>
     <v-toolbar>
       <v-toolbar-title>My Test App</v-toolbar-title>
