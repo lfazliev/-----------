@@ -10,6 +10,10 @@
     margin: 0
 }
 
+body {
+    height: 100vh;
+}
+
 #head {
     transition: 300ms;
     background: url('/img/channels4_banner.jpg') 54% center/cover no-repeat;
@@ -201,7 +205,8 @@ a.caps {
 
 footer {
     background-color: rgb(126, 110, 68);
-    padding: 40px 50px;
+    width: 90%;
+    padding: 3vw 5%;
 }
 
 footer ul {

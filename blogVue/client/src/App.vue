@@ -3,9 +3,8 @@ import HeaderC from './components/HeaderComp.vue'
 import FooterC from './components/FooterComp.vue'
 </script>
 <template>
+  <HeaderC></HeaderC>
   <main>
-    <HeaderC></HeaderC>
-    <hr>
     <div class="res" id="flexdiv">
       <input v-model="title" type="text" placeholder="Заголовок" />
       <div>
@@ -58,8 +57,8 @@ import FooterC from './components/FooterComp.vue'
         </div>
       </div>
     </div>
-    <FooterC></FooterC>
   </main>
+  <FooterC></FooterC>
 </template>
 
 <script>
