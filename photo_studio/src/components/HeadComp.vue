@@ -52,7 +52,7 @@
     @media screen and (max-width:580px) {
         flex-direction: column;
         align-items: stretch;
-        padding: 0 15px;
+        padding: 0 10px;
     }
 
     .textbox {
@@ -66,7 +66,7 @@
 
             }
 
-            justify-content: space-around;
+            justify-content: space-between;
 
             p {
                 margin-right: 0px !important;

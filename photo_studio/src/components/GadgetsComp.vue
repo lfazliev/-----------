@@ -45,6 +45,9 @@
         align-items: center;
         justify-content: center;
 
+        @media screen and (max-width:500px) {
+            width: 55%;
+        }
 
         >div {
             @media screen and (max-width:500px) {
