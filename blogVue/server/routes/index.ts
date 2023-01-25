@@ -1,6 +1,7 @@
 import Router from 'express'
 import { ObjectId } from 'mongodb'
 import client from '@/db'
+import fs from 'fs'
 const db = client.db('blog', 'posts')
 const router = Router()
 
@@ -34,7 +35,6 @@ router.put('/posts', async (request, response) => {
 router.post('/posts', async (request, response) => {
   try {
     let filedata = request.file
-    console.log(filedata)
     if (!filedata) {
       console.log("Ошибка при загрузке файла")
     } else {
@@ -49,7 +49,9 @@ router.post('/posts', async (request, response) => {
 
 router.delete('/posts', async (request, response) => {
   try {
-    const res = await db.deleteOne({ _id: new ObjectId(request.body._id) })
+    fs.unlinkSync(`../client/src/assets/${request.body.p.src}`)
+    // fs.unlinkSync(`./public/assets/${request.body.p.src}`)
+    const res = await db.deleteOne({ _id: new ObjectId(request.body.p._id) })
     response.send({ result: res })
 
   } catch (e) {

@@ -30,12 +30,13 @@ import FooterC from './components/FooterComp.vue'
             <textarea v-else placeholder="Текст" v-model="textedit" style="width: 80%"></textarea>
           </div>
           <div class="imgConteiner">
-            <img :src="url + '/assets/' + p.src" />
+            <!-- <img :src="dburl + '/assets/' + p.src" /> -->
+            <img :src="dburl + '/src/assets/' + p.src" />
           </div>
           <div class="flex btnpost" v-if="editId != p._id">
             <a :href="'https://' + p.url" class="button">Discover Now</a>
             <div style="margin-right: 30px">
-              <button class="btnact" @click="delPost(p._id)">
+              <button class="btnact" @click="delPost(p)">
                 <img src="./assets/img/trashimg.svg" />
               </button>
               <button class="btnact" @click="editPost(p._id)">
@@ -62,14 +63,14 @@ import FooterC from './components/FooterComp.vue'
 </template>
 
 <script>
+
 import { usePostsStore } from "./stores/posts";
 import { mapStores } from "pinia";
 export default {
   data() {
     return {
-      // clien local 'http://localhost:3002'
-      // clien server 'https://blog.lfazliev.com'
-      url: 'https://blog.lfazliev.com',
+      // dburl: 'https://blog.lfazliev.com',
+      dburl: 'http://localhost:3002',
       titledit: "",
       textedit: "",
       urledit: "",
@@ -85,7 +86,7 @@ export default {
     };
   },
   async beforeMount() {
-    const data = await fetch(`${url}/posts`);
+    const data = await fetch(`${this.dburl}/posts`);
     const posts = await data.json();
     this.postsStore.posts = posts.all;
   },
@@ -109,7 +110,7 @@ export default {
         data.append("title", this.title);
         data.append("text", this.text);
         data.append("url", this.url);
-        const result = await fetch(`${url}/posts`, {
+        const result = await fetch(`${this.dburl}/posts`, {
           method: "POST",
           body: data,
         });
@@ -122,14 +123,14 @@ export default {
         this.fileName = "Choose file";
       }
     },
-    delPost: async function (_id) {
-      this.postsStore.delel(_id)
-      const result = await fetch(`${url}/posts`, {
+    delPost: async function (p) {
+      this.postsStore.delel(p)
+      const result = await fetch(`${this.dburl}/posts`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
         },
-        body: JSON.stringify({ _id: _id }),
+        body: JSON.stringify({ p }),
       });
       const insertRes = await result.json();
       console.log(insertRes);
@@ -149,7 +150,7 @@ export default {
         data.append("src", post.src);
         data.append("_id", post._id);
         this.editId = '';
-        const result = await fetch(`${url}/posts`, {
+        const result = await fetch(`${this.dburl}/posts`, {
           method: 'PUT',
           body: data,
         })
