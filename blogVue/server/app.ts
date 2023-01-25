@@ -8,7 +8,7 @@ const { json, urlencoded } = pkg
 const port = 3002
 const storageConfig = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "../client/src/assets");
+    cb(null, "public/assets");
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname);

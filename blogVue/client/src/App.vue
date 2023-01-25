@@ -30,7 +30,7 @@ import FooterC from './components/FooterComp.vue'
             <textarea v-else placeholder="Текст" v-model="textedit" style="width: 80%"></textarea>
           </div>
           <div class="imgConteiner">
-            <img :src="`src/assets/${p.src}`" />
+            <img :src="url + '/assets/' + p.src" />
           </div>
           <div class="flex btnpost" v-if="editId != p._id">
             <a :href="'https://' + p.url" class="button">Discover Now</a>
@@ -67,6 +67,9 @@ import { mapStores } from "pinia";
 export default {
   data() {
     return {
+      // clien local 'http://localhost:3002'
+      // clien server 'https://blog.lfazliev.com'
+      url: 'https://blog.lfazliev.com',
       titledit: "",
       textedit: "",
       urledit: "",
@@ -82,7 +85,7 @@ export default {
     };
   },
   async beforeMount() {
-    const data = await fetch("https://blog.lfazliev.com/posts");
+    const data = await fetch(`${url}/posts`);
     const posts = await data.json();
     this.postsStore.posts = posts.all;
   },
@@ -106,7 +109,7 @@ export default {
         data.append("title", this.title);
         data.append("text", this.text);
         data.append("url", this.url);
-        const result = await fetch("https://blog.lfazliev.com/posts", {
+        const result = await fetch(`${url}/posts`, {
           method: "POST",
           body: data,
         });
@@ -121,7 +124,7 @@ export default {
     },
     delPost: async function (_id) {
       this.postsStore.delel(_id)
-      const result = await fetch("https://blog.lfazliev.com/posts", {
+      const result = await fetch(`${url}/posts`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
@@ -146,7 +149,7 @@ export default {
         data.append("src", post.src);
         data.append("_id", post._id);
         this.editId = '';
-        const result = await fetch('https://blog.lfazliev.com/posts', {
+        const result = await fetch(`${url}/posts`, {
           method: 'PUT',
           body: data,
         })
