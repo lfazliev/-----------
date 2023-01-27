@@ -58,23 +58,23 @@ router.delete('/posts', async (request, response) => {
 router.post('/header', async (request, response) => {
   try {
     const data = request.body
-    const user = await dbheader.findOne({ username: data.login });
+    const user = await dbheader.findOne({ login: data.login });
     if (!user) {
       response.send({ result: false })
     }
     else {
       if (user.pwd == data.pwd) {
-
+        const token = jwt.sign({ userId: user._id }, '123key', { expiresIn: 600 })
+        await dbtokens.insertOne({ token })
+        response.send({ result: token })
       }
-      const token = jwt.sign({ userId: user._id }, '123key', { expiresIn: 600 })
-      await dbtokens.insertOne({ token })
-      response.send({ result: token })
+      else {
+        response.send({ result: false })
+      }
     }
 
   } catch (e) {
     response.send({ result: 'error', data: e })
   }
 })
-
-
 export default router

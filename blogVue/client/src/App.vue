@@ -16,6 +16,7 @@ import Login from './components/LogComp.vue'
       <div v-for="p of postsStore.posts" :key="p._id" class="post">
         <h1 v-if="editId != p._id">{{ p.title }}</h1>
         <input v-else type="text" placeholder="Заголовок" v-model="titledit" style="margin-top: 10px" />
+        <h2>{{ p.date }}</h2>
         <div>
           <div class="blogtext">
             <p v-if="editId != p._id">
@@ -110,6 +111,7 @@ export default {
         data.append("file", this.fileEdit);
         data.append("title", post.title);
         data.append("text", post.text);
+        data.append("data", new Date().toLocaleDateString());
         data.append("url", post.url);
         data.append("src", post.src);
         data.append("_id", post._id);
