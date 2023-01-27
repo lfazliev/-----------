@@ -2,10 +2,11 @@ import Router from 'express'
 import { ObjectId } from 'mongodb'
 import client from '@/db'
 import fs from 'fs'
+import jwt from 'jsonwebtoken';
 const db = client.db('blog', 'posts')
 const dbheader = client.db('blog', 'header');
+const dbtokens = client.db('blog', 'tokens')
 const router = Router()
-
 router.get('/posts', async (request, response) => {
   //console.log(request.query)
   try {
@@ -54,15 +55,22 @@ router.delete('/posts', async (request, response) => {
     response.send({ result: 'error', data: e })
   }
 })
-
 router.post('/header', async (request, response) => {
   try {
-    const res = 'a'
-    const user = await dbheader.findOne({ username: request.body.username });
+    const data = request.body
+    const user = await dbheader.findOne({ username: data.login });
     if (!user) {
-      return false;
+      response.send({ result: false })
     }
-    response.send({ result: res })
+    else {
+      if (user.pwd == data.pwd) {
+
+      }
+      const token = jwt.sign({ userId: user._id }, '123key', { expiresIn: 600 })
+      await dbtokens.insertOne({ token })
+      response.send({ result: token })
+    }
+
   } catch (e) {
     response.send({ result: 'error', data: e })
   }

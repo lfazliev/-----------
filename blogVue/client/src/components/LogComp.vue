@@ -21,8 +21,8 @@ export default {
         sendUser: async function () {
             console.log('start');
             const data = new FormData();
-            data.append("login", this.title);
-            data.append("pwd", this.text);
+            data.append("login", this.login);
+            data.append("pwd", this.pwd);
             const result = await fetch(`${this.dburl}/header`, {
                 method: "POST",
                 body: data,
