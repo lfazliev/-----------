@@ -22,7 +22,7 @@ router.put('/posts', async (request, response) => {
   try {
     let data = request.body
     let filedata = request.file;
-    if (Boolean(data.src) && filedata) {
+    if (data.src && filedata) {
       fs.unlinkSync(`../client/src/assets/${data.src}`)
     }
     const res = await db.updateOne({ _id: new ObjectId(data._id) }, { $set: { title: data.title, text: data.text, url: data.url, src: (filedata) ? filedata.originalname : data.src } })
@@ -34,7 +34,7 @@ router.put('/posts', async (request, response) => {
 router.post('/posts', async (request, response) => {
   try {
     let filedata = request.file
-    const res = await db.insertOne({ ...request.body, src: (filedata) ? filedata.originalname : false })
+    const res = await db.insertOne({ ...request.body, src: (filedata) ? filedata.originalname : '' })
     response.send({ result: res })
 
   } catch (e) {
@@ -44,36 +44,55 @@ router.post('/posts', async (request, response) => {
 
 router.delete('/posts', async (request, response) => {
   try {
+    const res = await db.deleteOne({ _id: new ObjectId(request.body.p._id) })
     if (request.body.p.src) {
       fs.unlinkSync(`../client/src/assets/${request.body.p.src}`)
     }
-    // fs.unlinkSync(`./public/assets/${request.body.p.src}`)
-    const res = await db.deleteOne({ _id: new ObjectId(request.body.p._id) })
     response.send({ result: res })
+    // fs.unlinkSync(`./public/assets/${request.body.p.src}`)
 
   } catch (e) {
     response.send({ result: 'error', data: e })
   }
 })
-router.post('/header', async (request, response) => {
+router.post('/login', async (request, response) => {
   try {
     const data = request.body
     const user = await dbheader.findOne({ login: data.login });
     if (!user) {
-      response.send({ result: false })
+      response.end(false)
     }
     else {
       if (user.pwd == data.pwd) {
         const token = jwt.sign({ userId: user._id }, '123key', { expiresIn: 600 })
         await dbtokens.insertOne({ token })
-        response.send({ result: token })
+        response.setHeader('Access-Control-Expose-Headers', 'Authorization')
+        response.setHeader('Authorization', token);
+        response.end(true);
       }
       else {
-        response.send({ result: false })
+        response.end(false)
       }
     }
 
   } catch (e) {
+    response.send({ result: 'error', data: e })
+  }
+})
+router.post('/checkjwt', async (request, response) => {
+  try {
+    const token = request.headers.authorization
+    if (token) {
+      jwt.verify(token, '123key', (err) => {
+        if (err) {
+          response.end(false)
+        } else {
+          response.end(true)
+        }
+      });
+    }
+  }
+  catch (e) {
     response.send({ result: 'error', data: e })
   }
 })

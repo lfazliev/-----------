@@ -9,7 +9,7 @@ import Login from './components/LogComp.vue'
   <main>
     <Admin v-if="isAdmin"></Admin>
     <div v-else>
-      <Login v-if="showlogin"></Login>
+      <Login v-if="showlogin" :isAdmin="isAdmin" @changeIsAdmin="changeIsAdmin"></Login>
       <button @click="showlogin = !showlogin">{{(showlogin == true) ? 'Hide login' : 'Login'}}</button>
     </div>
     <div class="res">
@@ -24,7 +24,7 @@ import Login from './components/LogComp.vue'
             </p>
             <textarea v-else placeholder="Текст" v-model="textedit" style="width: 80%"></textarea>
           </div>
-          <div class="imgConteiner" v-if="p.src">
+          <div class="imgConteiner" v-if="Boolean(p.src)">
             <!-- <img :src="dburl + '/assets/' + p.src" /> -->
             <img :src="'http://localhost:5173/src/assets/' + p.src" />
             <!-- <img :src="dburl + '/src/assets/' + p.src" /> -->
@@ -63,6 +63,9 @@ import Login from './components/LogComp.vue'
 import { usePostsStore } from "./stores/posts";
 import { mapStores } from "pinia";
 export default {
+  components: {
+    Login
+  },
   data() {
     return {
       showlogin: false,
@@ -75,14 +78,32 @@ export default {
       editId: '',
       fileEditName: '',
       editSrc: "",
+      fileEdit: null
     };
   },
   async beforeMount() {
     const data = await fetch(`${this.dburl}/posts`);
     const posts = await data.json();
     this.postsStore.posts = posts.all;
+    const token = localStorage.getItem('token');
+    console.log(token);
+    const response = await fetch(`${this.dburl}/checkjwt`, {
+      headers: {
+        // 'Access-Control-Expose-Headers': 'Authorization',
+        "Content-Type": "application/json;charset=utf-8",
+        "Authorization": token,
+      },
+      method: "POST",
+    });
+    const result = await response.text()
+    if (result) {
+      this.isAdmin = true
+    }
   },
   methods: {
+    changeIsAdmin(newValue) {
+      this.isAdmin = newValue
+    },
     previewEditFiles(event) {
       console.log(event.target.files[0]);
       this.fileEdit = event.target.files[0];
@@ -108,7 +129,7 @@ export default {
         post.text = this.textedit
         post.url = this.urledit
         const data = new FormData();
-        data.append("file", this.fileEdit);
+        data.append("file", (this.fileEdit) ? this.fileEdit : null);
         data.append("title", post.title);
         data.append("text", post.text);
         data.append("data", new Date().toLocaleDateString());
@@ -123,6 +144,7 @@ export default {
         const insertRes = await result.json()
         console.log(insertRes);
         post.src = this.fileEditName
+        this.fileEdit = null
       }
       else {
         alert('Заполните поля текст и заголовок')

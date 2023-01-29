@@ -17,18 +17,24 @@ export default {
             dburl: 'http://localhost:3002',
         }
     },
+    props: ['isAdmin'],
     methods: {
         sendUser: async function () {
-            console.log('start');
             const data = new FormData();
             data.append("login", this.login);
             data.append("pwd", this.pwd);
-            const result = await fetch(`${this.dburl}/header`, {
+            const response = await fetch(`${this.dburl}/login`, {
                 method: "POST",
                 body: data,
             });
-            const insertRes = await result.json();
-            console.log(insertRes);
+            const result = await response.text()
+            if (Boolean(result) == true) {
+                localStorage.setItem('token', response.headers.get('Authorization'))
+                this.$emit('changeIsAdmin', true)
+            }
+            else {
+                console.log("Неврный логин или пароль");
+            }
         }
     }
 }
