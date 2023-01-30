@@ -34,6 +34,9 @@ router.put('/posts', async (request, response) => {
 router.post('/posts', async (request, response) => {
   try {
     let filedata = request.file
+    if (!request.file) {
+      delete request.body.file
+    }
     const res = await db.insertOne({ ...request.body, src: (filedata) ? filedata.originalname : '' })
     response.send({ result: res })
 

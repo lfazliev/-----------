@@ -12,8 +12,8 @@ export const usePostsStore = defineStore('posts', {
     delel(_id) {
       this.posts.splice(this.posts.findIndex((n) => n._id == _id), 1);
     },
-    createPost(title, text, url, src, _id) {
-      this.posts.push({ title: title, text: text, url: url, src: src, _id: _id })
+    createPost(title, date, text, url, src, _id) {
+      this.posts.push({ title: title, date: date, text: text, url: url, src: src, _id: _id })
     }
   }
 });

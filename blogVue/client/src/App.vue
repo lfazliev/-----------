@@ -1,5 +1,3 @@
-<!-- function renameFileWithTimestamp(filePath) { const fileExtension = filePath.split('.').pop(); const newFileName = `${new Date().getTime()}.${fileExtension}`; fs.renameSync(filePath, newFileName); return newFileName; }
-localStorage.removeItem("tokenName") -->
 <script setup>
 import HeaderC from './components/HeaderComp.vue'
 import FooterC from './components/FooterComp.vue'
@@ -7,9 +5,12 @@ import Admin from './components/AdminComp.vue'
 import Login from './components/LogComp.vue'
 </script>
 <template>
-  <HeaderC></HeaderC>
   <main>
-    <Admin v-if="isAdmin"></Admin>
+    <HeaderC></HeaderC>
+    <div v-if="isAdmin">
+      <button @click="logout()">Log out</button>
+      <Admin></Admin>
+    </div>
     <div v-else>
       <Login v-if="showlogin" :isAdmin="isAdmin" @changeIsAdmin="changeIsAdmin"></Login>
       <button @click="showlogin = !showlogin">{{(showlogin == true) ? 'Hide login' : 'Login'}}</button>
@@ -17,23 +18,22 @@ import Login from './components/LogComp.vue'
     <div class="res">
       <div v-for="p of postsStore.posts" :key="p._id" class="post">
         <h1 v-if="editId != p._id">{{ p.title }}</h1>
-        <input v-else type="text" placeholder="Заголовок" v-model="titledit" style="margin-top: 10px" />
-        <h2>{{ p.date }}</h2>
+        <input v-else type="text" placeholder="Header" v-model="titledit" style="margin-top: 10px" />
+        <p class=postdate>{{ p.date }}</p>
         <div>
           <div class="blogtext">
             <p v-if="editId != p._id">
               {{ p.text }}
             </p>
-            <textarea v-else placeholder="Текст" v-model="textedit" style="width: 80%"></textarea>
+            <textarea v-else placeholder="Text" v-model="textedit" style="width: 80%"></textarea>
           </div>
           <div class="imgConteiner" v-if="Boolean(p.src)">
             <!-- <img :src="dburl + '/assets/' + p.src" /> -->
             <img :src="'http://localhost:5173/src/assets/' + p.src" />
-            <!-- <img :src="dburl + '/src/assets/' + p.src" /> -->
           </div>
           <div class="flex btnpost" v-if="editId != p._id">
             <a :href="'https://' + p.url" class="button" v-if="Boolean(p.url)">Сlick link</a>
-            <div style="margin-right: 30px">
+            <div style="margin-right: 30px" v-if="isAdmin">
               <button class="btnact" @click="delPost(p)">
                 <img src="./assets/img/trashimg.svg" />
               </button>
@@ -43,15 +43,17 @@ import Login from './components/LogComp.vue'
             </div>
           </div>
           <div v-if="editId == p._id" class="res" id="flexdiv">
+            <button @click="fileEditName = ''; fileEdit = null; editSrc = '';" v-if="Boolean(p.src)">Delete
+              an image</button>
             <div>
-              <input type="file" id="file2" @change="previewEditFiles" class="filest" />
+              <input type="file" id="file2" accept="image/*" @change="previewEditFiles" class="filest" />
               <label class="filecont" for="file2">
                 <span>{{ (fileEditName) ? fileEditName : "Choose file" }}</span>
                 <div>Browse</div>
               </label>
             </div>
-            <input type="url" placeholder="Ссылка" v-model="urledit" />
-            <button @click="savePost(p._id)">Сохранить пост</button>
+            <input type="url" placeholder="link" v-model="urledit" />
+            <button @click="savePost(p._id)">Save post</button>
           </div>
         </div>
       </div>
@@ -88,10 +90,8 @@ export default {
     const posts = await data.json();
     this.postsStore.posts = posts.all;
     const token = localStorage.getItem('token');
-    console.log(token);
     const response = await fetch(`${this.dburl}/checkjwt`, {
       headers: {
-        // 'Access-Control-Expose-Headers': 'Authorization',
         "Content-Type": "application/json;charset=utf-8",
         "Authorization": token,
       },
@@ -103,17 +103,26 @@ export default {
     }
   },
   methods: {
+    logout() {
+      localStorage.removeItem('token')
+      this.isAdmin = false
+    },
     changeIsAdmin(newValue) {
       this.isAdmin = newValue
     },
     previewEditFiles(event) {
-      console.log(event.target.files[0]);
-      this.fileEdit = event.target.files[0];
-      this.fileEditName = event.target.files[0].name;
-      this.editSrc = event.target.files[0].name;
+      const allowedTypes = ['image/jpg', 'image/png', 'image/gif']
+      const file = event.target.files[0]
+      if (allowedTypes.includes(file.type)) {
+        const fileExtension = file.name.split('.').pop();
+        const editFile = new File([file], `${new Date().getTime()}.${fileExtension}`, { type: file.type })
+        this.fileEdit = editFile
+        this.fileEditName = file.name;
+        this.editSrc = editFile.name;
+      }
     },
     delPost: async function (p) {
-      this.postsStore.delel(p)
+      this.postsStore.delel(p._id)
       const result = await fetch(`${this.dburl}/posts`, {
         method: "DELETE",
         headers: {
@@ -145,7 +154,9 @@ export default {
         })
         const insertRes = await result.json()
         console.log(insertRes);
-        post.src = this.fileEditName
+        if (this.fileEdit) {
+          post.src = this.editSrc
+        }
         this.fileEdit = null
       }
       else {

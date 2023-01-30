@@ -1,16 +1,17 @@
 <template>
     <div class="res" id="flexdiv">
-        <input v-model="title" type="text" placeholder="Заголовок" />
+        <input v-model="title" type="text" placeholder="Header" />
+        <button @click="fileName = ''; file = null; src = '' " v-if="file">Delete an image</button>
         <div>
-            <input type="file" id="file1" @change="previewFiles" class="filest" />
+            <input type="file" id="file1" accept="image/*" @change="previewFiles" class="filest" />
             <label class="filecont" for="file1">
-                <span>{{ fileName }}</span>
+                <span>{{ (fileName) ? fileName : 'Choose file' }}</span>
                 <div>Browse</div>
             </label>
         </div>
-        <input v-model="url" type="url" placeholder="Ссылка" />
-        <textarea v-model="text" placeholder="Текст"></textarea>
-        <button @click="addPost">Добавить пост</button>
+        <input v-model="url" type="url" placeholder="Link for ex 'lfazlev.com'" />
+        <textarea v-model="text" placeholder="Text"></textarea>
+        <button @click="addPost">Add a post</button>
     </div>
 </template>
 <script>
@@ -21,12 +22,13 @@ export default {
         return {
             // dburl: 'https://blog.lfazliev.com',
             dburl: 'http://localhost:3002',
+            date: new Date().toLocaleDateString(),
             title: "",
             text: "",
             url: "",
             src: "",
             file: null,
-            fileName: "Choose file",
+            fileName: "",
         };
     },
     async beforeMount() {
@@ -36,10 +38,15 @@ export default {
     },
     methods: {
         previewFiles(event) {
-            console.log(event.target.files[0]);
-            this.file = event.target.files[0];
-            this.fileName = event.target.files[0].name;
-            this.src = event.target.files[0].name;
+            const allowedTypes = ['image/jpg', 'image/png', 'image/gif']
+            const file = event.target.files[0]
+            if (allowedTypes.includes(file.type)) {
+                const fileExtension = file.name.split('.').pop();
+                const editFile = new File([file], `${new Date().getTime()}.${fileExtension}`, { type: file.type })
+                this.file = editFile;
+                this.fileName = file.name;
+                this.src = editFile.name;
+            }
         },
         addPost: async function () {
             if (this.title != '' && this.text != '') {
@@ -53,12 +60,13 @@ export default {
                 data.append("title", this.title);
                 data.append("text", this.text);
                 data.append("url", this.url);
+                data.append('date', this.date)
                 const result = await fetch(`${this.dburl}/posts`, {
                     method: "POST",
                     body: data,
                 });
                 const insertRes = await result.json();
-                this.postsStore.createPost(this.title, this.text, this.url, this.src, insertRes.result.insertedId)
+                this.postsStore.createPost(this.title, this.date, this.text, this.url, this.src, insertRes.result.insertedId)
                 this.title = "";
                 this.text = "";
                 this.url = "";
