@@ -1,3 +1,5 @@
+<!-- function renameFileWithTimestamp(filePath) { const fileExtension = filePath.split('.').pop(); const newFileName = `${new Date().getTime()}.${fileExtension}`; fs.renameSync(filePath, newFileName); return newFileName; }
+localStorage.removeItem("tokenName") -->
 <script setup>
 import HeaderC from './components/HeaderComp.vue'
 import FooterC from './components/FooterComp.vue'
