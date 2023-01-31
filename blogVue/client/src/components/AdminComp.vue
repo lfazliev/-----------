@@ -31,6 +31,7 @@ export default {
             fileName: "",
         };
     },
+    props: ['isAdmin'],
     async beforeMount() {
         const data = await fetch(`${this.dburl}/posts`);
         const posts = await data.json();
@@ -38,7 +39,7 @@ export default {
     },
     methods: {
         previewFiles(event) {
-            const allowedTypes = ['image/jpg', 'image/png', 'image/gif']
+            const allowedTypes = ['image/jpg', 'image/png', 'image/gif', 'image/jpeg']
             const file = event.target.files[0]
             if (allowedTypes.includes(file.type)) {
                 const fileExtension = file.name.split('.').pop();
@@ -61,17 +62,26 @@ export default {
                 data.append("text", this.text);
                 data.append("url", this.url);
                 data.append('date', this.date)
+                const token = localStorage.getItem('token');
                 const result = await fetch(`${this.dburl}/posts`, {
                     method: "POST",
+                    headers: {
+                        "Authorization": token
+                    },
                     body: data,
                 });
                 const insertRes = await result.json();
-                this.postsStore.createPost(this.title, this.date, this.text, this.url, this.src, insertRes.result.insertedId)
-                this.title = "";
-                this.text = "";
-                this.url = "";
-                this.file = null;
-                this.fileName = "Choose file";
+                if (insertRes != false) {
+                    this.postsStore.createPost(this.title, this.date, this.text, this.url, this.src, insertRes.result.insertedId)
+                    this.title = "";
+                    this.text = "";
+                    this.url = "";
+                    this.file = null;
+                    this.fileName = "Choose file";
+                }
+                else {
+                    this.$emit('changeIsAdmin', false)
+                }
             }
         },
     },

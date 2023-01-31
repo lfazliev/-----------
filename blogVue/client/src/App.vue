@@ -9,7 +9,7 @@ import Login from './components/LogComp.vue'
     <HeaderC></HeaderC>
     <div v-if="isAdmin">
       <button @click="logout()">Log out</button>
-      <Admin></Admin>
+      <Admin :isAdmin="isAdmin" @changeIsAdmin="changeIsAdmin"></Admin>
     </div>
     <div v-else>
       <Login v-if="showlogin" :isAdmin="isAdmin" @changeIsAdmin="changeIsAdmin"></Login>
@@ -52,7 +52,7 @@ import Login from './components/LogComp.vue'
                 <div>Browse</div>
               </label>
             </div>
-            <input type="url" placeholder="link" v-model="urledit" />
+            <input type="url" placeholder="Link for ex 'lfazlev.com'" v-model="urledit" />
             <button @click="savePost(p._id)">Save post</button>
           </div>
         </div>
@@ -68,7 +68,8 @@ import { usePostsStore } from "./stores/posts";
 import { mapStores } from "pinia";
 export default {
   components: {
-    Login
+    Login,
+    Admin
   },
   data() {
     return {
@@ -98,7 +99,7 @@ export default {
       method: "POST",
     });
     const result = await response.text()
-    if (result) {
+    if (result != 'false') {
       this.isAdmin = true
     }
   },
@@ -111,7 +112,7 @@ export default {
       this.isAdmin = newValue
     },
     previewEditFiles(event) {
-      const allowedTypes = ['image/jpg', 'image/png', 'image/gif']
+      const allowedTypes = ['image/jpg', 'image/png', 'image/gif', 'image/jpeg']
       const file = event.target.files[0]
       if (allowedTypes.includes(file.type)) {
         const fileExtension = file.name.split('.').pop();
@@ -123,15 +124,19 @@ export default {
     },
     delPost: async function (p) {
       this.postsStore.delel(p._id)
+      const token = localStorage.getItem('token');
       const result = await fetch(`${this.dburl}/posts`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
+          "Authorization": token,
         },
         body: JSON.stringify({ p }),
       });
       const insertRes = await result.json();
-      console.log(insertRes);
+      if (insertRes == false) {
+        this.isAdmin = false
+      }
     },
     savePost: async function (_id) {
       if (this.titledit != '' && this.textedit != '') {
@@ -140,20 +145,32 @@ export default {
         post.text = this.textedit
         post.url = this.urledit
         const data = new FormData();
-        data.append("file", (this.fileEdit) ? this.fileEdit : null);
+        data.append("src", post.src);
+        if (this.fileEditName == '' && post.src) {
+          data.append("file", 'delete');
+          post.src = ''
+        }
+        else {
+          data.append("file", (this.fileEdit) ? this.fileEdit : null);
+        }
         data.append("title", post.title);
         data.append("text", post.text);
         data.append("data", new Date().toLocaleDateString());
         data.append("url", post.url);
-        data.append("src", post.src);
         data.append("_id", post._id);
         this.editId = '';
+        const token = localStorage.getItem('token');
         const result = await fetch(`${this.dburl}/posts`, {
+          headers: {
+            "Authorization": token,
+          },
           method: 'PUT',
           body: data,
         })
         const insertRes = await result.json()
-        console.log(insertRes);
+        if (insertRes == false) {
+          this.isAdmin = false
+        }
         if (this.fileEdit) {
           post.src = this.editSrc
         }
