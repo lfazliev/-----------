@@ -7,59 +7,60 @@ import Login from './components/LogComp.vue'
 <template>
   <main>
     <HeaderC></HeaderC>
-    <div v-if="isAdmin">
-      <button @click="logout()">Log out</button>
-      <Admin :isAdmin="isAdmin" @changeIsAdmin="changeIsAdmin"></Admin>
-    </div>
-    <div v-else>
-      <Login v-if="showlogin" :isAdmin="isAdmin" @changeIsAdmin="changeIsAdmin"></Login>
-      <button @click="showlogin = !showlogin">{{(showlogin == true) ? 'Hide login' : 'Login'}}</button>
-    </div>
-    <div class="res">
-      <div v-for="p of postsStore.posts" :key="p._id" class="post">
-        <h1 v-if="editId != p._id">{{ p.title }}</h1>
-        <input v-else type="text" placeholder="Header" v-model="titledit" style="margin-top: 10px" />
-        <p class=postdate>{{ p.date }}</p>
-        <div>
-          <div class="blogtext">
-            <p v-if="editId != p._id">
-              {{ p.text }}
-            </p>
-            <textarea v-else placeholder="Text" v-model="textedit" style="width: 80%"></textarea>
-          </div>
-          <div class="imgConteiner" v-if="Boolean(p.src)">
-            <!-- <img :src="dburl + '/assets/' + p.src" /> -->
-            <img :src="'http://localhost:5173/src/assets/' + p.src" />
-          </div>
-          <div class="flex btnpost" v-if="editId != p._id">
-            <a :href="'https://' + p.url" class="button" v-if="Boolean(p.url)">Сlick link</a>
-            <div style="margin-right: 30px" v-if="isAdmin">
-              <button class="btnact" @click="delPost(p)">
-                <img src="./assets/img/trashimg.svg" />
-              </button>
-              <button class="btnact" @click="editPost(p._id)">
-                <img src="./assets/img/edit-svgrepo-com.svg" />
-              </button>
+    <div class=visibl>
+      <div v-if="isAdmin">
+        <Admin :isAdmin="isAdmin" @changeIsAdmin="changeIsAdmin"></Admin>
+      </div>
+      <div v-else class=logcont>
+        <Login v-if="showlogin" :isAdmin="isAdmin" @changeIsAdmin="changeIsAdmin"></Login>
+        <button @click="showlogin = !showlogin">{{(showlogin == true) ? 'Hide login' : 'Login'}}</button>
+      </div>
+      <div class="postline">
+        <div v-for="p of postsStore.posts" :key="p._id" class="post">
+          <h1 v-if="editId != p._id">{{ p.title }}</h1>
+          <input v-else type="text" placeholder="Header" v-model="titledit" style="margin-top: 10px" />
+          <p class=postdate>{{ p.date }}</p>
+          <div>
+            <div class="blogtext">
+              <p v-if="editId != p._id">
+                {{ p.text }}
+              </p>
+              <textarea v-else placeholder="Text" v-model="textedit" style="width: 80%"></textarea>
             </div>
-          </div>
-          <div v-if="editId == p._id" class="res" id="flexdiv">
-            <button @click="fileEditName = ''; fileEdit = null; editSrc = '';" v-if="Boolean(p.src)">Delete
-              an image</button>
-            <div>
-              <input type="file" id="file2" accept="image/*" @change="previewEditFiles" class="filest" />
-              <label class="filecont" for="file2">
-                <span>{{ (fileEditName) ? fileEditName : "Choose file" }}</span>
-                <div>Browse</div>
-              </label>
+            <div class="imgConteiner" v-if="Boolean(p.src)">
+              <!-- <img :src="dburl + '/assets/' + p.src" /> -->
+              <img :src="'http://localhost:5173/src/assets/' + p.src" />
             </div>
-            <input type="url" placeholder="Link for ex 'lfazlev.com'" v-model="urledit" />
-            <button @click="savePost(p._id)">Save post</button>
+            <div class="flex btnpost" v-if="editId != p._id">
+              <a :href="'https://' + p.url" class="button" v-if="Boolean(p.url)">Сlick link</a>
+              <div style="margin-right: 30px" v-if="isAdmin">
+                <button class="btnact" @click="delPost(p)">
+                  <img src="./assets/img/trashimg.svg" />
+                </button>
+                <button class="btnact" @click="editPost(p._id)">
+                  <img src="./assets/img/edit-svgrepo-com.svg" />
+                </button>
+              </div>
+            </div>
+            <div v-if="editId == p._id" class="res" id="flexdiv">
+              <button @click="fileEditName = ''; fileEdit = null; editSrc = '';" v-if="Boolean(p.src)">Delete
+                an image</button>
+              <div>
+                <input type="file" id="file2" accept="image/*" @change="previewEditFiles" class="filest" />
+                <label class="filecont" for="file2">
+                  <span>{{ (fileEditName) ? fileEditName : "Choose file" }}</span>
+                  <div>Browse</div>
+                </label>
+              </div>
+              <input type="url" placeholder="Link for ex 'lfazlev.com'" v-model="urledit" />
+              <button @click="savePost(p._id)">Save post</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </main>
-  <FooterC></FooterC>
+  <FooterC class=visibl></FooterC>
 </template>
 
 <script>
@@ -109,6 +110,9 @@ export default {
       this.isAdmin = false
     },
     changeIsAdmin(newValue) {
+      if (newValue == false) {
+        localStorage.removeItem('token')
+      }
       this.isAdmin = newValue
     },
     previewEditFiles(event) {
@@ -177,7 +181,7 @@ export default {
         this.fileEdit = null
       }
       else {
-        alert('Заполните поля текст и заголовок')
+        alert('Fill in the text and title fields')
       }
     },
     editPost: async function (_id) {
@@ -190,7 +194,7 @@ export default {
         this.fileEditName = post.src
       }
       else {
-        alert('Вы не завершили ред-ие другого поста')
+        alert('You havent finished editing another post')
       }
     },
   },
@@ -198,53 +202,36 @@ export default {
 };
 </script>
 
-<style>
+<style  lang = 'scss'>
+.logcont {
+  padding: 10px;
+}
+
 .imgConteiner img {
   width: 95%;
   margin: 0 auto;
 }
 
-#flexdiv {
-  height: 300px;
-  justify-content: space-around;
+.postdate {
+  color: rgb(90, 90, 90);
+  font-size: 15px !important;
 }
 
-.btnpost {
-  align-items: center;
-  justify-content: space-between;
-}
-
-.res {
-  margin: 0.5rem 0rem 0.5rem 2px;
-  font-size: 17px;
-  display: flex;
-  padding: 5px;
-  flex-direction: column;
-  width: 80%;
+.postline {
+  width: 80vw;
   margin: 0 auto;
 }
 
-.flexinp {
-  margin: 10px;
-  display: flex;
-  width: 30%;
-  flex-direction: column;
-}
-
-.blogtext {
-  flex: 3;
-}
-
-.buttons:hover {
-  cursor: pointer;
-}
-
 .post {
-  border: 2px solid black;
+  box-shadow: 0px 8px 16px 10px rgba(0, 0, 0, 0.253);
   border-radius: 10px;
   background-color: aliceblue;
-  padding-left: 1em;
+  padding: 1em;
   margin-bottom: 1rem;
+
+  >p {
+    font-size: 22px;
+  }
 }
 
 .buttons a:visited {
@@ -264,16 +251,6 @@ export default {
   width: 15px;
 }
 
-.btnact {
-  cursor: pointer;
-  text-decoration: none;
-  transition: 300ms;
-  border: 1px solid #cccccc;
-  border-radius: 5px;
-  background: #f9f9f9;
-  color: #000000;
-  margin: 5px;
-}
 
 .filecont>div {
   background-color: rgb(188, 188, 188);
@@ -298,9 +275,7 @@ export default {
   justify-content: space-between;
   border-radius: 5px;
   color: black;
-  margin-bottom: 7px;
   border: 1px solid #ccc;
-  /* box-shadow: 0px 0px 18px -1px rgba(0, 0, 0, 0.2); */
 }
 
 input[type="file"] {

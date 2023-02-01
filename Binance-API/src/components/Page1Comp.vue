@@ -65,14 +65,14 @@ export default defineComponent({
                 const index = data.findIndex(d => d[0] == event[i][0]);
                 if (index >= 0) {
                     if (Number(event[i][1]) == 0) {
-                        this.$bus.emit('diffChange', `${(pol == 'a') ? 'ask:' : 'bid:'} ${data[index][0]} ${data[index][1]} удалено`)
+                        this.$bus.emit('diffChange', `${(pol == 'a') ? 'ask:' : 'bid:'} ${data[index][0]} ${data[index][1]} has been removed`)
                         data.splice(index, 1);
                         event.splice(i, 1)
                         i--
                     }
                     else {
                         if (Number(event[i][1]) != data[index][1]) {
-                            this.$bus.emit('diffChange', `${(pol == 'a') ? 'ask:' : 'bid:'} ${data[index][0]} ${data[index][1]} обновлено на ${event[i][0]} ${event[i][1]}`)
+                            this.$bus.emit('diffChange', `${(pol == 'a') ? 'ask:' : 'bid:'} ${data[index][0]} ${data[index][1]} updated to ${event[i][0]} ${event[i][1]}`)
                             data[index] = event[i]
                         }
                         event.splice(i, 1)
@@ -81,7 +81,7 @@ export default defineComponent({
                 }
                 else {
                     if (Number(event[i][1] != 0)) {
-                        this.$bus.emit('diffChange', `${(pol == 'a') ? 'ask:' : 'bid:'} ${event[i][0]} ${event[i][1]} добавлено`)
+                        this.$bus.emit('diffChange', `${(pol == 'a') ? 'ask:' : 'bid:'} ${event[i][0]} ${event[i][1]} been added`)
                     }
                     else {
                         event.splice(i, 1);

@@ -1,6 +1,6 @@
 <script></script>
 <template>
-  <a href="/hom/modHTML/index.html" style="color: aliceblue;">Назад</a>
+  <a href="/hom/modHTML/index.html" style="color: aliceblue;">Back</a>
   <nav>
     <div class="links">
       <router-link to="/work">Work</router-link>

@@ -32,6 +32,6 @@ app.listen(port, () => {
 
 process.on("SIGINT", () => {
   dbClient.close();
-  console.log('Соединение с базой закрыто')
+  console.log('The connection to the database is closed')
   process.exit();
 });

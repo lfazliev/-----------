@@ -12,7 +12,7 @@ import Footer from './components/FooterComp.vue'
 </script>
 
 <template>
-  <a href=/hom/modHTML/index.html>Назад</a>
+  <a href=/hom/modHTML/index.html>Back</a>
 
   <Head></Head>
   <Land></Land>

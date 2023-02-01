@@ -16,7 +16,7 @@ class Mongo {
     if (!this.connection) {
       try {
         await this.client.connect()
-        console.log('Соединение с базой прошло успешно')
+        console.log('The connection to the database was successful')
       } catch (e) {
         console.log(e)
       }

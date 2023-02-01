@@ -1,5 +1,5 @@
 <template>
-  <a href="/hom/modHTML/index.html" style="color: black;">Назад</a>
+  <a href="/hom/modHTML/index.html" style="color: black;">Back</a>
   <v-app>
     <v-toolbar>
       <v-toolbar-title>My Test App</v-toolbar-title>
@@ -15,8 +15,8 @@
 
 <script>
 import { defineAsyncComponent } from 'vue'
-const Page1 = defineAsyncComponent(() => import('./components/Page1Comp.vue')) // так импортируются асинхронные компоненты
-const Page2 = defineAsyncComponent(() => import('./components/Page2Comp.vue')) // так импортируются асинхронные компоненты
+const Page1 = defineAsyncComponent(() => import('./components/Page1Comp.vue'))
+const Page2 = defineAsyncComponent(() => import('./components/Page2Comp.vue'))
 export default {
   data() {
     return {

@@ -1,7 +1,9 @@
 <template>
-    <div class="res" id="flexdiv">
+    <div class="admin">
+        <button @click="this.$emit('changeIsAdmin', false)">Log out</button>
         <input v-model="title" type="text" placeholder="Header" />
         <button @click="fileName = ''; file = null; src = '' " v-if="file">Delete an image</button>
+        <input v-model="url" type="url" placeholder="Link for ex 'lfazlev.com'" />
         <div>
             <input type="file" id="file1" accept="image/*" @change="previewFiles" class="filest" />
             <label class="filecont" for="file1">
@@ -9,7 +11,6 @@
                 <div>Browse</div>
             </label>
         </div>
-        <input v-model="url" type="url" placeholder="Link for ex 'lfazlev.com'" />
         <textarea v-model="text" placeholder="Text"></textarea>
         <button @click="addPost">Add a post</button>
     </div>
@@ -88,3 +89,20 @@ export default {
     computed: { ...mapStores(usePostsStore) },
 };
 </script>
+<style lang = 'scss'>
+.admin {
+
+    >div,
+    input,
+    button,
+    textarea {
+        margin: 7px;
+    }
+
+    margin: 0 auto;
+    padding: 10px;
+    display: flex;
+    width: 80vw;
+    flex-direction: column;
+}
+</style>

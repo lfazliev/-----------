@@ -1,11 +1,9 @@
 <template>
-    <div class="res" id="flexdiv">
-        <form onsubmit="return false;">
-            <input v-model="login" type="text" placeholder="Login" />
-            <input v-model="pwd" type="text" placeholder="Password" />
-            <button type="submit" @click="sendUser()">отправить</button>
-        </form>
-    </div>
+    <form onsubmit="return false;" class="log">
+        <input v-model="login" type="text" placeholder="Login" />
+        <input v-model="pwd" type="text" placeholder="Password" />
+        <button type="submit" @click="sendUser()">Send</button>
+    </form>
 </template>
 <script>
 export default {
@@ -21,7 +19,7 @@ export default {
     methods: {
         sendUser: async function () {
             const data = new FormData();
-            data.append("login", this.login);
+            data.append("login", this.login.toLocaleLowerCase());
             data.append("pwd", this.pwd);
             const response = await fetch(`${this.dburl}/login`, {
                 method: "POST",
@@ -33,9 +31,29 @@ export default {
                 this.$emit('changeIsAdmin', true)
             }
             else {
-                console.log("Неврный логин или пароль");
+                console.log("wrong login or password");
             }
         }
     }
 }
 </script>
+<style lang = scss>
+.log {
+    @media screen and (max-width: 380px) {
+        width: 80vw;
+    }
+
+    @media screen and (max-width: 700px) {
+        width: 50vw;
+    }
+
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+
+    >input,
+    button {
+        margin: 5px;
+    }
+}
+</style>

@@ -9,7 +9,6 @@
     "prod": "node -r tsconfig-paths/register -r ts-node/register app.ts"
   },
   "keywords": [],
-  "author": "Nikolay Gakman",
   "license": "ISC",
   "dependencies": {
     "@types/express": "^4.17.13",
