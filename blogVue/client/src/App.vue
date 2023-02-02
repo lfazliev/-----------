@@ -20,41 +20,37 @@ import Login from './components/LogComp.vue'
           <h1 v-if="editId != p._id">{{ p.title }}</h1>
           <input v-else type="text" placeholder="Header" v-model="titledit" style="margin-top: 10px" />
           <p class=postdate>{{ p.date }}</p>
-          <div>
-            <div class="blogtext">
-              <p v-if="editId != p._id">
-                {{ p.text }}
-              </p>
-              <textarea v-else placeholder="Text" v-model="textedit" style="width: 80%"></textarea>
+          <p v-if="editId != p._id">
+            {{ p.text }}
+          </p>
+          <textarea v-else placeholder="Text" v-model="textedit"></textarea>
+          <div class="imgConteiner" v-if="Boolean(p.src)">
+            <img :src="dburl + '/assets/' + p.src" />
+            <!-- <img :src="'http://localhost:5173/src/assets/' + p.src" /> -->
+          </div>
+          <div v-if="editId != p._id" style="display: flex; justify-content: space-between;">
+            <a class=btnpost :href="'https://' + p.url"><button v-if="Boolean(p.url)"> Сlick link</button></a>
+            <div v-if="isAdmin">
+              <button class="btnact" @click="delPost(p)">
+                <img src="./assets/img/trashimg.svg" />
+              </button>
+              <button class="btnact" @click="editPost(p._id)">
+                <img src="./assets/img/edit-svgrepo-com.svg" />
+              </button>
             </div>
-            <div class="imgConteiner" v-if="Boolean(p.src)">
-              <!-- <img :src="dburl + '/assets/' + p.src" /> -->
-              <img :src="'http://localhost:5173/src/assets/' + p.src" />
+          </div>
+          <div v-if="editId == p._id" class="res">
+            <button @click="fileEditName = ''; fileEdit = null; editSrc = '';" v-if="Boolean(p.src)">Delete
+              an image</button>
+            <div>
+              <input type="file" id="file2" accept="image/*" @change="previewEditFiles" class="filest" />
+              <label class="filecont" for="file2">
+                <span>{{ (fileEditName) ? fileEditName : "Choose file" }}</span>
+                <div>Browse</div>
+              </label>
             </div>
-            <div class="flex btnpost" v-if="editId != p._id">
-              <a :href="'https://' + p.url" class="button" v-if="Boolean(p.url)">Сlick link</a>
-              <div style="margin-right: 30px" v-if="isAdmin">
-                <button class="btnact" @click="delPost(p)">
-                  <img src="./assets/img/trashimg.svg" />
-                </button>
-                <button class="btnact" @click="editPost(p._id)">
-                  <img src="./assets/img/edit-svgrepo-com.svg" />
-                </button>
-              </div>
-            </div>
-            <div v-if="editId == p._id" class="res" id="flexdiv">
-              <button @click="fileEditName = ''; fileEdit = null; editSrc = '';" v-if="Boolean(p.src)">Delete
-                an image</button>
-              <div>
-                <input type="file" id="file2" accept="image/*" @change="previewEditFiles" class="filest" />
-                <label class="filecont" for="file2">
-                  <span>{{ (fileEditName) ? fileEditName : "Choose file" }}</span>
-                  <div>Browse</div>
-                </label>
-              </div>
-              <input type="url" placeholder="Link for ex 'lfazlev.com'" v-model="urledit" />
-              <button @click="savePost(p._id)">Save post</button>
-            </div>
+            <input type="url" placeholder="Link for ex 'lfazlev.com'" v-model="urledit" />
+            <button @click="savePost(p._id)">Save post</button>
           </div>
         </div>
       </div>
@@ -76,8 +72,8 @@ export default {
     return {
       showlogin: false,
       isAdmin: false,
-      // dburl: 'https://blog.lfazliev.com',
-      dburl: 'http://localhost:3002',
+      dburl: 'https://blog.lfazliev.com',
+      // dburl: 'http://localhost:3002',
       titledit: "",
       textedit: "",
       urledit: "",
@@ -172,7 +168,7 @@ export default {
           body: data,
         })
         const insertRes = await result.json()
-        if (insertRes == false) {
+        if (insertRes == 'false') {
           this.isAdmin = false
         }
         if (this.fileEdit) {
@@ -207,9 +203,16 @@ export default {
   padding: 10px;
 }
 
-.imgConteiner img {
-  width: 95%;
-  margin: 0 auto;
+.imgConteiner {
+  display: flex;
+
+  justify-content: center;
+
+  img {
+    width: 100%;
+    max-height: 50vh;
+    object-fit: contain;
+  }
 }
 
 .postdate {
@@ -222,35 +225,67 @@ export default {
   margin: 0 auto;
 }
 
+a:-webkit-any-link {
+  color: black;
+  text-decoration: none;
+}
+
 .post {
   box-shadow: 0px 8px 16px 10px rgba(0, 0, 0, 0.253);
   border-radius: 10px;
   background-color: aliceblue;
-  padding: 1em;
+  padding: 3%;
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  >input,
+  >div,
+  >button,
+  p,
+  textarea {
+    margin: 5px 0;
+  }
+
+  >p,
+  >h1 {
+    overflow-wrap: break-word;
+
+  }
 
   >p {
     font-size: 22px;
   }
 }
 
-.buttons a:visited {
-  color: black;
-}
+
 
 .btnact {
   height: 28px;
   padding: 5px;
+  margin: 5px;
+
+  >img {
+    width: 15px;
+  }
 }
 
 .btnact:hover {
   background: #00000034;
 }
 
-.btnact>img {
-  width: 15px;
-}
+.btnpost {
+  width: 100%;
+  height: 100%;
 
+  >button {
+    background-color: rgb(87, 192, 253);
+    font-size: 20px;
+    padding: 7px;
+  }
+
+
+}
 
 .filecont>div {
   background-color: rgb(188, 188, 188);
@@ -275,11 +310,27 @@ export default {
   justify-content: space-between;
   border-radius: 5px;
   color: black;
-  border: 1px solid #ccc;
 }
 
 input[type="file"] {
   display: none;
+}
+
+.res {
+  >div {
+    background-color: #ffffff;
+    border-radius: 9px;
+    box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  >input,
+  >div,
+  >button {
+    margin: 5px 0;
+  }
+
+  display: flex;
+  flex-direction: column;
 }
 
 label:hover {

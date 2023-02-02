@@ -29,8 +29,8 @@ router.put('/posts', async (request, response) => {
           let data = request.body
           let filedata = request.file;
           if ((data.src && filedata) || data.file == 'delete') {
-            fs.unlinkSync(`../client/src/assets/${data.src}`)
-            // fs.unlinkSync(`./public/assets/${data.src}`)
+            // fs.unlinkSync(`../client/src/assets/${data.src}`)
+            fs.unlinkSync(`../public/assets/${data.src}`)
 
           }
           const res = await db.updateOne({ _id: new ObjectId(data._id) }, { $set: { title: data.title, text: data.text, url: data.url, src: (filedata) ? filedata.originalname : ((data.file == 'delete') ? '' : data.src) } })
@@ -77,8 +77,8 @@ router.delete('/posts', (request, response) => {
         } else {
           const res = await db.deleteOne({ _id: new ObjectId(request.body.p._id) })
           if (request.body.p.src) {
-            fs.unlinkSync(`../client/src/assets/${request.body.p.src}`)
-            // fs.unlinkSync(`./public/assets/${request.body.p.src}`)
+            // fs.unlinkSync(`../client/src/assets/${request.body.p.src}`)
+            fs.unlinkSync(`../public/assets/${request.body.p.src}`)
           }
           response.send({ result: res })
         }

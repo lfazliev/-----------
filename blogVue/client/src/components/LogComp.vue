@@ -11,8 +11,8 @@ export default {
         return {
             login: '',
             pwd: '',
-            // dburl: 'https://blog.lfazliev.com',
-            dburl: 'http://localhost:3002',
+            dburl: 'https://blog.lfazliev.com',
+            // dburl: 'http://localhost:3002',
         }
     },
     props: ['isAdmin'],
@@ -26,7 +26,7 @@ export default {
                 body: data,
             });
             const result = await response.text()
-            if (Boolean(result) == true) {
+            if (result == 'true') {
                 localStorage.setItem('token', response.headers.get('Authorization'))
                 this.$emit('changeIsAdmin', true)
             }

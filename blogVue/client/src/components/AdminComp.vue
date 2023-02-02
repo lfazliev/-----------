@@ -21,8 +21,8 @@ import { mapStores } from "pinia";
 export default {
     data() {
         return {
-            // dburl: 'https://blog.lfazliev.com',
-            dburl: 'http://localhost:3002',
+            dburl: 'https://blog.lfazliev.com',
+            // dburl: 'http://localhost:3002',
             date: new Date().toLocaleDateString(),
             title: "",
             text: "",
@@ -72,7 +72,7 @@ export default {
                     body: data,
                 });
                 const insertRes = await result.json();
-                if (insertRes != false) {
+                if (insertRes != 'false') {
                     this.postsStore.createPost(this.title, this.date, this.text, this.url, this.src, insertRes.result.insertedId)
                     this.title = "";
                     this.text = "";
@@ -97,6 +97,12 @@ export default {
     button,
     textarea {
         margin: 7px;
+    }
+
+    >div {
+        background-color: #ffffff;
+        border-radius: 9px;
+        box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.2);
     }
 
     margin: 0 auto;
