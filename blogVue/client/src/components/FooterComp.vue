@@ -34,8 +34,8 @@
 <style  lang = 'scss'>
 footer {
     background-color: rgb(126, 110, 68);
-    width: 90vw;
-    padding: 3vw 5vw;
+    width: 90%;
+    padding: 3vw 5%;
 
     >p {
         text-align: center;
