@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "overrides": {
+    "vue": "latest"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.1",
+    "nuxt": "^3.2.3",
+    "sass": "^1.59.3"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.4.7",
+    "jsonwebtoken": "^9.0.0",
+    "mongodb": "^5.1.0",
+    "scss": "^0.2.4"
+  }
+}

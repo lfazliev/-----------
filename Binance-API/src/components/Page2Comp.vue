@@ -1,7 +1,7 @@
 <template>
     <v-container class="d-flex cont listmobile">
         <div>
-            <v-virtual-scroll v-if="difflist.length != 0" :items="difflist" height="90%">
+            <v-virtual-scroll v-if="difflist.length != 0" :items="difflist" height="80%">
                 <template v-slot:default="{ item }">
                     {{ item }}
                 </template>
@@ -45,9 +45,12 @@ export default defineComponent({
 <style scoped lang="scss">
 .cont {
     height: 85vh;
+    flex-direction: column-reverse;
 
     >div {
-        width: 50%;
+        width: 100%;
+        overflow: hidden;
+        min-height: 60px;
     }
 
     ::-webkit-scrollbar-thumb {
@@ -73,18 +76,6 @@ export default defineComponent({
 
         >.v-virtual-scroll:hover {
             overflow-y: scroll
-        }
-    }
-}
-
-@media screen and (max-width:600px) {
-    .cont {
-        flex-direction: column-reverse;
-
-
-
-        >div {
-            width: 100%;
         }
     }
 }

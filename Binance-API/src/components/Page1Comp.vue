@@ -1,7 +1,7 @@
 <template>
     <div class="h-screen-10 d-flex justify-space-between visscroll">
 
-        <div class='h-100'>
+        <div class='oneStream'>
             <p>Bids ({{ symbol }})</p>
             <table class="w-100 h-100 d-flex flex-column listmobile">
                 <thead>
@@ -23,7 +23,7 @@
             </table>
 
         </div>
-        <div class='h-100'>
+        <div class='oneStream'>
             <p>Asks ({{ symbol }})</p>
             <table class="w-100 h-100 d-flex flex-column listmobile">
                 <thead>
@@ -234,7 +234,22 @@ export default defineComponent({
     }
 }
 
+.oneStream {
+    height: 100%;
+
+}
+
+@media screen and (max-width: 720px) {
+    .oneStream {
+        height: 50%;
+    }
+}
+
 .visscroll {
+    >:first-child {
+        margin-bottom: 30px;
+    }
+
     >div {
         width: 50%;
 
