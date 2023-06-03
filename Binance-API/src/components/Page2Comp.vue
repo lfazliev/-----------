@@ -1,13 +1,14 @@
 <template>
     <v-container class="d-flex cont listmobile">
-        <div class='diffcont'>
-            <div v-for="diff of difflist">{{
-                diff
-            }}</div>
+        <div>
+            <v-virtual-scroll v-if="difflist.length != 0" :items="difflist" height="90%">
+                <template v-slot:default="{ item }">
+                    {{ item }}
+                </template>
+            </v-virtual-scroll>
         </div>
         <div><v-combobox @change='symbolChange()' label="Symobol" :items="symbollist" v-model="selsymbol"></v-combobox>
         </div>
-
     </v-container>
 </template>
 
@@ -34,7 +35,7 @@ export default defineComponent({
         this.$bus.on('diffChange', (diff) => {
             // console.log(diff);
             this.difflist.unshift(diff)
-            if (this.difflist.length > 200) {
+            if (this.difflist.length > 5000) {
                 this.difflist.pop()
             }
         })
@@ -64,13 +65,15 @@ export default defineComponent({
         width: 10px;
     }
 
-    >.diffcont {
-        scrollbar-gutter: stable;
-        overflow: hidden
-    }
+    >div {
+        >.v-virtual-scroll {
+            scrollbar-gutter: stable;
+            overflow: hidden
+        }
 
-    >.diffcont:hover {
-        overflow-y: scroll
+        >.v-virtual-scroll:hover {
+            overflow-y: scroll
+        }
     }
 }
 

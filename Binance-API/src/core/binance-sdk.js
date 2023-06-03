@@ -3,9 +3,9 @@ import axios from 'axios'
 export const binanceSdk = {
     install(app) {
         app.config.globalProperties.$binance = {
-            getOrderBook(symbol) {
-                return fetch(`https://api.binance.com/api/v3/depth?symbol=${symbol}&limit=500`)
-                    .then(response => response.json())
+            async getOrderBook(symbol) {
+                const response = await fetch(`https://api.binance.com/api/v3/depth?symbol=${symbol}&limit=500`)
+                return await response.json()
             },
             subscribe(symbol) {
                 const ws = new window.WebSocket(`wss://stream.binance.com:9443/ws`)

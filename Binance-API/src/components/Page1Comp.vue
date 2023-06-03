@@ -11,18 +11,20 @@
                         <th class="total">Total</th>
                     </tr>
                 </thead>
-                <tbody class="w-100 h-95">
-                    <tr class='d-flex' v-for="bid of bids" :key="bid">
-                        <td>{{ bid[0] }}</td>
-                        <td>{{ bid[1] }}</td>
-                        <td class="total">{{ (bid[0] * bid[1]).toFixed(5) }}</td>
-                    </tr>
-                </tbody>
+                <v-virtual-scroll v-if="bids.length != 0" :items="bids" height="90%">
+                    <template v-slot:default="{ item }">
+                        <div>
+                            <td>{{ Number(item.price).toFixed(2) }}</td>
+                            <td>{{ Number(item.quantity).toFixed(5) }}</td>
+                            <td class="total">{{ (item.price * item.quantity).toFixed(5) }}</td>
+                        </div>
+                    </template>
+                </v-virtual-scroll>
             </table>
 
         </div>
         <div class='h-100'>
-            <p>Asks {{ symbol }}</p>
+            <p>Asks ({{ symbol }})</p>
             <table class="w-100 h-100 d-flex flex-column listmobile">
                 <thead>
                     <tr class='d-flex'>
@@ -31,14 +33,17 @@
                         <th class="total">Total</th>
                     </tr>
                 </thead>
-                <tbody class="w-100 h-95">
-                    <tr class='d-flex' v-for="ask of asks">
-                        <td>{{ ask[0] }}</td>
-                        <td>{{ ask[1] }}</td>
-                        <td class="total">{{ (ask[0] * ask[1]).toFixed(5) }}</td>
-                    </tr>
-                </tbody>
+                <v-virtual-scroll v-if="asks.length != 0" :items="asks" height="90%">
+                    <template v-slot:default="{ item }">
+                        <div>
+                            <td>{{ Number(item.price).toFixed(2) }}</td>
+                            <td>{{ Number(item.quantity).toFixed(5) }}</td>
+                            <td class="total">{{ (item.price * item.quantity).toFixed(5) }}</td>
+                        </div>
+                    </template>
+                </v-virtual-scroll>
             </table>
+
         </div>
     </div>
 </template>
@@ -50,7 +55,7 @@ export default defineComponent({
     data() {
         return {
             symbol: 'BTCUSDT',
-            bids: null,
+            bids: [],
             asks: [],
             lastUpdateId: 0,
             buffer: [],
@@ -61,18 +66,18 @@ export default defineComponent({
     methods: {
         compareArrays(data, event, E, pol) {
             for (let i = 0; i < event.length; i++) {
-                event[i].push(E)
-                const index = data.findIndex(d => d[0] == event[i][0]);
+                event[i].createtime = E
+                const index = data.findIndex(d => d.price === event[i].price);
                 if (index >= 0) {
-                    if (Number(event[i][1]) == 0) {
-                        this.$bus.emit('diffChange', `${(pol == 'a') ? 'ask:' : 'bid:'} ${data[index][0]} ${data[index][1]} has been removed`)
+                    if (Number(event[i].quantity) < 0.00001) {
+                        this.$bus.emit('diffChange', `${(pol === 'a') ? 'ask:' : 'bid:'} ${data[index].price} ${data[index].quantity} has been removed`)
                         data.splice(index, 1);
                         event.splice(i, 1)
                         i--
                     }
                     else {
-                        if (Number(event[i][1]) != data[index][1]) {
-                            this.$bus.emit('diffChange', `${(pol == 'a') ? 'ask:' : 'bid:'} ${data[index][0]} ${data[index][1]} updated to ${event[i][0]} ${event[i][1]}`)
+                        if (Number(event[i].quantity) !== data[index].quantity) {
+                            this.$bus.emit('diffChange', `${(pol === 'a') ? 'ask:' : 'bid:'} ${data[index].price} ${data[index].quantity} updated to ${event[i].price} ${event[i].quantity}`)
                             data[index] = event[i]
                         }
                         event.splice(i, 1)
@@ -80,8 +85,8 @@ export default defineComponent({
                     }
                 }
                 else {
-                    if (Number(event[i][1] != 0)) {
-                        this.$bus.emit('diffChange', `${(pol == 'a') ? 'ask:' : 'bid:'} ${event[i][0]} ${event[i][1]} been added`)
+                    if (Number(event[i].quantity > 0.00001)) {
+                        this.$bus.emit('diffChange', `${(pol === 'a') ? 'ask:' : 'bid:'} ${event[i].price} ${event[i].quantity} been added`)
                     }
                     else {
                         event.splice(i, 1);
@@ -94,31 +99,42 @@ export default defineComponent({
             const buf = event
             this.compareArrays(data, buf, E, pol)
             data.push(...buf)
-            data.sort((a, b) => b[0] - a[0])
-            if (data.length > 1000) {
-                while (data.length > 1000) {
+            data.sort((a, b) => b.price - a.price)
+            if (data.length > 5000) {
+                while (data.length > 5000) {
                     let minIndex = 0;
                     data.reduce((min, item, index) => {
-                        if (item[2] === undefined) {
+                        if (item.createtime === undefined) {
                             minIndex = index;
                             return min;
                         }
-                        if (item[2] < min) {
+                        if (item.createtime < min) {
                             minIndex = index;
-                            return item[2];
+                            return item.createtime;
                         }
                         return min;
-                    }, data[0][2]);
+                    }, data[0].createtime);
 
                     data.splice(minIndex, 1);
                 }
             }
         },
         eventProcess(event) {
+            const transformedBids = event.b.map(bid => ({
+                price: bid[0],
+                quantity: bid[1],
+                createtime: bid[3]
+            }));
+
+            const transformedAsks = event.a.map(ask => ({
+                price: ask[0],
+                quantity: ask[1],
+                createtime: ask[3]
+            }));
             this.lastUpdateId = event.u
-            this.checkeventdata(event.b, this.bids, event.E, 'b')
+            this.checkeventdata(transformedBids, this.bids, event.E, 'b')
             console.log(this.bids.length);
-            this.checkeventdata(event.a, this.asks, event.E, 'a')
+            this.checkeventdata(transformedAsks, this.asks, event.E, 'a')
         },
         processBuffer() {
             for (const item in this.buffer) {
@@ -146,28 +162,41 @@ export default defineComponent({
         },
         getSnap() {
             setTimeout(() => {
-                if (this.bids == null) {
+
+                if (this.bids.length === 0) {
                     this.$binance.getOrderBook(this.symbol).then(data => {
-                        this.bids = data.bids
-                        this.asks = data.asks
-                        this.lastUpdateId = data.lastUpdateId
-                        if (this.buffer.length > 2) {
-                            this.processBuffer()
-                        }
+                        data.bids = data.bids.filter(item => item[1] >= 0.00001);
+                        data.asks = data.asks.filter(item => item[1] >= 0.00001);
+                        const transformedBids = data.bids.map(bid => ({
+                            price: bid[0],
+                            quantity: bid[1],
+                            createtime: bid[3]
+                        }));
+
+                        const transformedAsks = data.asks.map(ask => ({
+                            price: ask[0],
+                            quantity: ask[1],
+                            createtime: ask[3]
+                        }));
+                        this.bids = transformedBids;
+                        this.asks = transformedAsks;
+                        this.lastUpdateId = data.lastUpdateId;
+
                     })
                 }
-            }, 2500)
+
+            }, 1500)
         },
         getWS() {
-            if (this.ws == null) {
+            if (this.ws === null) {
                 this.ws = this.$binance.subscribe(this.symbol)
             }
             this.ws.onmessage = function (e) {
                 const event = JSON.parse(e.data)
-                if (event.e === 'depthUpdate' && event.s == this.symbol) {
+                if (event.e === 'depthUpdate' && event.s === this.symbol) {
                     this.buffer.push(event)
                     if (this.lastUpdateId !== 0) {
-                        if (this.buffer.length > 2) {
+                        if (this.buffer.length > 10) {
                             this.processBuffer()
                         }
                     }
@@ -180,7 +209,7 @@ export default defineComponent({
         this.$bus.on('symbolChange', (symbol) => {
             this.$binance.unsubscribe(this.symbol, this.ws)
             this.symbol = symbol
-            this.bids = null
+            this.bids = []
             this.asks = []
             this.lastUpdateId = 0
             this.buffer = []
@@ -193,7 +222,6 @@ export default defineComponent({
         this.getWS()
     }
 })
-
 </script>
 <style scoped lang = 'scss'>
 @media screen and (max-width:600px) {
@@ -202,12 +230,6 @@ export default defineComponent({
 
         >div {
             width: 100% !important;
-        }
-
-        table {
-            >tbody {
-                height: 90%;
-            }
         }
     }
 }
@@ -236,24 +258,32 @@ export default defineComponent({
                 width: 10px;
             }
 
-            >tbody {
+            .v-virtual-scroll {
                 scrollbar-gutter: stable;
                 overflow: hidden
             }
 
-            >tbody:hover {
+            .v-virtual-scroll:hover {
                 overflow-y: scroll
             }
 
             @media screen and (max-width:800px) {
-                tr {
+                table {
                     .total {
                         display: none;
                         width: 0%;
                     }
+                }
 
-                    >td,
+                tr {
                     >th {
+                        text-align: center;
+                        width: 50% !important;
+                    }
+                }
+
+                .v-virtual-scroll {
+                    td {
                         text-align: center;
                         width: 50% !important;
                     }
@@ -262,12 +292,18 @@ export default defineComponent({
 
             tr {
 
-                >td,
-                >th {
-                    text-align: center;
-                    width: 33.3%;
-                }
+                display: flex;
+                justify-content: space-around;
+
             }
+
+
+            .v-virtual-scroll__container>div>div {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                justify-items: center;
+            }
+
         }
     }
 }
